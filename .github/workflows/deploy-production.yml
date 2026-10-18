@@ -1,0 +1,77 @@
+name: Production release
+
+# Separate production deploy path. A run waits for a required reviewer to
+# approve it in the GitHub UI before it starts (environment: production).
+# Roll back by dispatching this workflow again with the previous release tag.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Commit SHA or tag to release (a prior release tag rolls back)"
+        required: true
+        default: main
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+          fetch-depth: 0
+
+      - name: Record release identity
+        id: identity
+        run: |
+          SHA="$(git rev-parse HEAD)"
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          echo "short=${SHA::7}" >> "$GITHUB_OUTPUT"
+
+      - name: Build and check site
+        env:
+          BUILD_SHA: ${{ steps.identity.outputs.sha }}
+          BUILD_ENV: production
+        run: BUILD_TIME="$(date -u +%Y-%m-%dT%H:%M:%SZ)" bash scripts/build-site.sh site
+
+      - name: Package site
+        run: |
+          tar czf "site-${{ steps.identity.outputs.short }}.tar.gz" -C site .
+          sha256sum "site-${{ steps.identity.outputs.short }}.tar.gz" > "site-${{ steps.identity.outputs.short }}.tar.gz.sha256"
+
+      - name: Tag and publish production release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHORT: ${{ steps.identity.outputs.short }}
+          RELEASED_REF: ${{ inputs.ref }}
+        run: |
+          TAG="prod-${SHORT}-$(date -u +%Y%m%d-%H%M%S)"
+          git config user.name "production-release-bot"
+          git config user.email "noreply@github.com"
+          git tag -a "$TAG" -m "Production release of $RELEASED_REF ($SHORT)"
+          git push origin "$TAG"
+          gh release create "$TAG" \
+            "site-${SHORT}.tar.gz" "site-${SHORT}.tar.gz.sha256" \
+            --title "Production release $TAG" \
+            --notes "Released ref: $RELEASED_REF
+          Commit: ${{ steps.identity.outputs.sha }}
+          Environment: production
+          Rollback: dispatch this workflow again with the previous prod-* tag.
+          Hosting upload step is configured at go-live (DIG-20)."
+          echo "RELEASE_TAG=$TAG" >> "$GITHUB_ENV"
+
+      - name: Summary
+        run: |
+          {
+            echo "## Production release"
+            echo ""
+            echo "- Release tag: \`$RELEASE_TAG\`"
+            echo "- Released ref: \`${{ inputs.ref }}\`"
+            echo "- Commit: \`${{ steps.identity.outputs.sha }}\`"
+            echo "- Site artifact attached to the GitHub release."
+            echo "- Next (go-live, DIG-20): upload the artifact to production hosting."
+          } >> "$GITHUB_STEP_SUMMARY"
