@@ -57,6 +57,17 @@ touch "$OUT_DIR/.nojekyll"
 # docs/migration/generated/ for reference.
 if [ -d "$SRC_DIR/legacy-static" ]; then
   cp -r "$SRC_DIR/legacy-static/." "$OUT_DIR/"
+  # Prune legacy media nothing references (DIG-90). The old-site media
+  # library keeps 62 MB of files in the repo for the migration record, but
+  # only files a legacy page or stylesheet actually links belong in the
+  # deploy output. Deletes run on the output copy only; legacy-static/ is
+  # never modified.
+  while IFS= read -r media_file; do
+    name=$(basename "$media_file")
+    if ! grep -rqF "$name" "$SRC_DIR/legacy-static" --include='*.html' --include='*.css'; then
+      rm -f "$media_file"
+    fi
+  done < <(find "$OUT_DIR/assets/media" -type f 2>/dev/null)
 fi
 
 # Redirect map (DIG-89): generate the hosting redirect file into the output.

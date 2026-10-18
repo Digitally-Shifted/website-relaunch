@@ -40,7 +40,9 @@
   --wordmark-bold-weight: 900; --wordmark-light-weight: 300; --wordmark-gap: 0.5em;
   --tagline-weight: 400; --tagline-tracking: 0.65em; --tagline-cap-ratio: 0.20;
   /* Type */
-  --font-family: "Raleway", ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
+  /* "Raleway Fallback" (global.css) holds Arial-metric overrides for the
+     swap window; it renders only while the webfont loads. */
+  --font-family: "Raleway", "Raleway Fallback", ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
   --type-display-xl-size: 4.75rem;  --type-display-xl-leading: 1.05; --type-display-xl-weight: 900; --type-display-xl-tracking: -0.015em;
   --type-display-size: 3rem;        --type-display-leading: 1.08;    --type-display-weight: 900;  --type-display-tracking: -0.01em;
   --type-h1-size: 2.25rem;          --type-h1-leading: 1.12;         --type-h1-weight: 800;
