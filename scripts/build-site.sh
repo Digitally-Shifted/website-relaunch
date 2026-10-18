@@ -12,6 +12,13 @@ set -euo pipefail
 OUT_DIR="${1:?usage: build-site.sh <output-dir>}"
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+# The output directory may sit inside the source tree (CI builds into
+# ./site). Never read from it while assembling.
+mkdir -p "$OUT_DIR"
+OUT_ABS="$(cd "$OUT_DIR" && pwd -P)"
+rm -rf "$OUT_DIR"
+mkdir -p "$OUT_DIR"
+
 BUILD_SHA="${BUILD_SHA:-unknown}"
 BUILD_TIME="${BUILD_TIME:-unknown}"
 BUILD_ENV="${BUILD_ENV:-staging}"
@@ -30,9 +37,11 @@ cp "$SRC_DIR/404.html" "$OUT_DIR/404.html" 2>/dev/null || true
     -not -path './index.html' \
     -print0 ) |
 while IFS= read -r -d '' f; do
+  src="$(realpath -m -- "$SRC_DIR/$f")"
+  case "$src" in "$OUT_ABS"/*) continue ;; esac
   dest="$OUT_DIR/${f#./}"
   mkdir -p "$(dirname "$dest")"
-  cp "$SRC_DIR/$f" "$dest"
+  cp "$src" "$dest"
 done
 
 if [ -d "$SRC_DIR/assets" ]; then
