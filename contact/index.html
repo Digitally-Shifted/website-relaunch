@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Digitally Shifted | Digital Marketing Agency SA</title>
+  <meta name="description" content="Speak to Digitally Shifted about SEO, web design, Google Ads, social media or automation for your South African business. Call or WhatsApp us.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://digitallyshifted.com/contact/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Digitally Shifted">
+  <meta property="og:title" content="Contact Digitally Shifted | Digital Marketing Agency SA">
+  <meta property="og:description" content="Speak to Digitally Shifted about SEO, web design, Google Ads, social media or automation for your South African business. Call or WhatsApp us.">
+  <meta property="og:url" content="https://digitallyshifted.com/contact/">
+  <meta property="og:image" content="https://digitallyshifted.com/assets/media/pexels-ketut-subiyanto-4350093.webp">
+  <meta property="og:image:alt" content="Business consultation meeting for contacting Digitally Shifted">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/jpeg" href="../assets/media/Artboard-10.webp">
+  <link rel="stylesheet" href="../assets/content.css">
+    <script>
+    // Minimal render-time form state (full validation and submit handling land
+    // with the form backend at go-live; see docs/conversion-spec.md section 4).
+    (function () {
+      function ready(fn) {
+        if (document.readyState !== "loading") { fn(); }
+        else { document.addEventListener("DOMContentLoaded", fn); }
+      }
+      ready(function () {
+        var form = document.querySelector("form.form");
+        if (!form) { return; }
+        form.querySelector('[name="form_started_at"]').value = String(Date.now());
+        var params = new URLSearchParams(window.location.search);
+        ["utm_source", "utm_medium", "utm_campaign"].forEach(function (key) {
+          var value = params.get(key);
+          if (value) { form.querySelector('[name="' + key + '"]').value = value; }
+        });
+        var need = params.get("need");
+        var select = form.querySelector('[name="need"]');
+        var submit = document.getElementById("f-submit");
+        function label() {
+          var quote = ["new-website", "redesign", "waas", "quote"].indexOf(select.value) !== -1;
+          submit.textContent = quote ? "Request quote" : "Send enquiry";
+        }
+        if (need) {
+          for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].value === need) { select.value = need; break; }
+          }
+        }
+        label();
+        select.addEventListener("change", label);
+      });
+    })();
+  </script>
+</head>
+<body class="no-action-bar no-header-cta">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../"><span class="brand-bold">Digitally</span> <span class="brand-light">Shifted</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a class="nav-link" href="../services/">Services</a></li>
+          <li><a class="nav-link" href="../blog/">Blog</a></li>
+          <li><a class="nav-link" href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h1>Contact Digitally Shifted</h1>
+        <p class="lead">Tell us what you want to improve online and the Digitally Shifted
+        team will guide the next step. We help South African businesses with SEO, website
+        development, Google Ads, social media, hosting and digital strategy.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container contact-layout">
+        <div class="contact-intro">
+          <p>Send a service request, call, WhatsApp or email us. We will review your goals
+          and respond with practical guidance for your project, including the most relevant
+          next step for your budget, timeline and growth targets.</p>
+          <img src="../assets/media/pexels-ketut-subiyanto-4350093.webp"
+               alt="Business consultation meeting for contacting Digitally Shifted"
+               width="1162" height="775" loading="lazy">
+          <ul class="contact-routes">
+            <li><span class="label">Location</span>South Africa</li>
+            <li><span class="label">Calls &amp; WhatsApp</span><a href="tel:+27631718750">+27 63 171 8750</a></li>
+            <li><span class="label">Email</span><a href="mailto:baruch@digitallyshifted.com">baruch@digitallyshifted.com</a></li>
+          </ul>
+        </div>
+        <form class="form" action="/api/contact" method="post" novalidate>
+          <div class="error-summary" id="error-summary" tabindex="-1">
+            <h2>Fix the errors below and send again.</h2>
+            <ul></ul>
+          </div>
+          <div class="field">
+            <label for="f-name">Your name (required)</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="100">
+          </div>
+          <div class="field">
+            <label for="f-email">Email (required)</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone (optional)</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="field">
+            <label for="f-business">Business name (optional)</label>
+            <input id="f-business" name="business" type="text" autocomplete="organization" maxlength="120">
+          </div>
+          <div class="field">
+            <label for="f-need">What do you need? (required)</label>
+            <select id="f-need" name="need" required>
+              <option value="general" selected>General enquiry</option>
+              <option value="new-website">A new website</option>
+              <option value="redesign">A redesign or upgrade</option>
+              <option value="waas">Website-as-a-Service (monthly plan)</option>
+              <option value="seo">SEO</option>
+              <option value="hosting">Hosting or management</option>
+              <option value="quote">Not sure &mdash; I want prices</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-message">Tell us about your project (required)</label>
+            <textarea id="f-message" name="message" rows="5" required maxlength="5000"></textarea>
+          </div>
+          <div class="hp-field" aria-hidden="true">
+            <label for="f-company-website">Company website</label>
+            <input id="f-company-website" name="company_website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="form_location" value="/contact/">
+          <input type="hidden" name="submission_id" value="a4641494-8903-4506-a9fe-d924979a221f">
+          <input type="hidden" name="form_started_at" value="">
+          <input type="hidden" name="utm_source" value="">
+          <input type="hidden" name="utm_medium" value="">
+          <input type="hidden" name="utm_campaign" value="">
+          <p class="consent-line">We use your details to reply to this enquiry. We do not
+          sell them. See our <a href="../privacy/">privacy notice</a>.</p>
+          <div class="form-actions">
+            <button class="button button-primary" type="submit" id="f-submit">Send enquiry</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer ground-ink">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="../"><span class="brand-bold">Digitally</span> <span class="brand-light">Shifted</span></a>
+          <ul class="footer-contact">
+            <li><span class="label">Phone</span><a href="tel:+27631718750">+27 63 171 8750</a></li>
+            <li><span class="label">WhatsApp</span><a href="https://wa.me/27631718750">+27 63 171 8750</a></li>
+            <li><span class="label">Email</span><a href="mailto:baruch@digitallyshifted.com">baruch@digitallyshifted.com</a></li>
+            <li><span class="label">Domain</span><a href="https://digitallyshifted.com">digitallyshifted.com</a></li>
+          </ul>
+        </div>
+        <nav aria-label="Footer">
+          <ul class="footer-nav">
+            <li><a href="../services/">Services</a></li>
+            <li><a href="../blog/">Blog</a></li>
+            <li><a href="../contact/">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-legal">&copy; 2026 Digitally Shifted. All rights Reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
