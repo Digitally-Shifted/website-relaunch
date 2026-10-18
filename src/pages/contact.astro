@@ -12,6 +12,7 @@
  * The header CTA and the mobile action bar are hidden on this page.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { site } from '../lib/site.config';
 import { withBase } from '../lib/urls';
 ---
@@ -34,17 +35,12 @@ import { withBase } from '../lib/urls';
       </header>
 
       {/*
-        DIG-69 form slot. The component that lands here implements
-        conversion spec section 4 exactly: fields, validation, honeypot
-        (company_website), time trap, data-ds-form="contact".
+        The enquiry form (conversion spec 4). The component owns fields,
+        spam traps, validation, and the managed-service submission. The
+        slot attribute stays for verification and analytics targeting.
       */}
       <div class="mt-12 max-w-2xl" data-ds-form-slot="contact">
-        <div class="card border-grey-700">
-          <p class="text-body text-text-on-dark-muted">
-            The enquiry form is built in DIG-69. Until it lands, reach us
-            directly through any route below.
-          </p>
-        </div>
+        <ContactForm />
       </div>
 
       <div class="mt-16 max-w-2xl border-t border-grey-800 pt-8">

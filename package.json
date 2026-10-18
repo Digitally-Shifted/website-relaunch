@@ -11,7 +11,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "test": "node --test test/",
+    "test:analytics": "node analytics/test/run-tests.cjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

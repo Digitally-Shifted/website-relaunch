@@ -23,8 +23,17 @@ const redirectMap = JSON.parse(
   readFileSync(new URL('./docs/migration/redirect-map.json', import.meta.url), 'utf8'),
 );
 const trim = (p) => (p === '/' ? '/' : p.replace(/\/+$/, ''));
+
+/*
+ * Prefix the active base path onto stub destinations. Without this, a
+ * staging stub refreshes to /blog and misses the /website-relaunch prefix,
+ * which lands on a 404 (DIG-88). Production builds run with no base path
+ * and keep the map's own root-relative destinations.
+ */
+const prefixBase = (p) =>
+  basePath && basePath !== '/' && !/^https?:\/\//.test(p) ? `${basePath}${p}` : p;
 const redirects = Object.fromEntries(
-  redirectMap.redirects.map((r) => [trim(r.old), trim(r.new)]),
+  redirectMap.redirects.map((r) => [trim(r.old), prefixBase(trim(r.new))]),
 );
 
 export default defineConfig({
