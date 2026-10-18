@@ -75,10 +75,18 @@ const year = new Date().getFullYear();
               >
             </li>
             <li>
-              <a href={`mailto:${site.email}`} class="link-dark text-body-sm">{site.email}</a>
+              <!-- overflow-wrap lets the email break in narrow footer
+                   columns instead of widening the grid (DIG-90, 768px). -->
+              <a
+                href={`mailto:${site.email}`}
+                class="link-dark text-body-sm [overflow-wrap:anywhere]">{site.email}</a
+              >
             </li>
             <li>
-              <a href={site.url} class="link-dark text-body-sm">{site.domain}</a>
+              <a
+                href={site.url}
+                class="link-dark text-body-sm [overflow-wrap:anywhere]">{site.domain}</a
+              >
             </li>
           </ul>
         </div>

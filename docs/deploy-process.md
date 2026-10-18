@@ -46,10 +46,21 @@ Every deploy runs `scripts/build-site.sh`, which fails the deploy when:
 - the output `index.html` is missing or empty,
 - an unreplaced build placeholder stays in the output,
 - a local `href` or `src` in `index.html` points to a file the output does
-  not contain.
+  not contain,
+- the redirect map fails verification: a stub page is missing, a redirect
+  destination does not resolve in the output, or an old URL from
+  `docs/migration/redirect-map.json` is orphaned (`scripts/test-redirects.mjs`,
+  DIG-91).
 
 After each staging deploy, do one browser check: open the staging URL and
 confirm the build marker shows the expected commit.
+
+For a full route, head-tag, 404, and redirect check of any deployed URL,
+run the smoke test (DIG-91):
+
+```sh
+bash scripts/smoke-test.sh <base-url> staging      # or production
+```
 
 ## Promote to production (manual approval step)
 

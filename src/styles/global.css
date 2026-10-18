@@ -12,13 +12,55 @@
 @import "tailwindcss";
 @import "../../brand/tokens/tokens.css";
 
-/* Self-hosted Raleway variable font (brand/fonts, SIL OFL 1.1). */
+/* Self-hosted Raleway variable font (brand/fonts, SIL OFL 1.1), subset to
+ * the latin set the site renders (scripts/subset-font.sh regenerates it).
+ * Preloaded in BaseLayout; swap keeps text visible while it loads. */
 @font-face {
   font-family: "Raleway";
   src: url("/fonts/raleway-variable.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
+}
+
+/* Metric-compatible fallbacks for the swap window (DIG-90). Raleway's
+ * advance width grows with weight (variable axis), so one fallback face
+ * cannot fit every weight. Two weight-scoped faces map the platform fonts
+ * onto Raleway's metrics so fallback text occupies the same space and the
+ * swap causes no layout shift.
+ *
+ * Method (scripts record the inputs): least-squares fit of Raleway's
+ * average advance over the latin set against Arial/Liberation Sans and
+ * Roboto (South African traffic is Android-majority), then a compromise
+ * that bounds the width error of both platforms across the weights each
+ * face covers. Residual width error is about 2-5 percent at the edges.
+ *   text face (100-550, regular file), weights 300/400/500 dominate:
+ *     size-adjust = 100.4%; ascent = 0.940 / 1.004 = 93.63%;
+ *     descent = 0.234 / 1.004 = 23.31%; line gap = 0%.
+ *   display face (551-900, bold file), weights 700/800/900 dominate:
+ *     size-adjust = 103.5%; ascent = 0.940 / 1.035 = 90.82%;
+ *     descent = 0.234 / 1.035 = 22.61%; line gap = 0%.
+ * If no local() source exists the face fails and the next family in
+ * --font-family (tokens.css) takes over, as before. */
+@font-face {
+  font-family: "Raleway Fallback";
+  src: local("Arial"), local("ArialMT"), local("Roboto"), local("Liberation Sans");
+  font-weight: 100 550;
+  font-style: normal;
+  size-adjust: 100.4%;
+  ascent-override: 93.63%;
+  descent-override: 23.31%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Raleway Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Roboto Bold"), local("Roboto-Bold"), local("Liberation Sans Bold");
+  font-weight: 551 900;
+  font-style: normal;
+  size-adjust: 103.5%;
+  ascent-override: 90.82%;
+  descent-override: 22.61%;
+  line-gap-override: 0%;
 }
 
 @theme inline {

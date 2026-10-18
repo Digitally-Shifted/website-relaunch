@@ -7,6 +7,13 @@ new client project and fill the IDs table.
 Status on 2026-10-18:
 
 - Tracking code and event layer: done and tested. See `analytics/ds-analytics.js`.
+- Loader installed on every page (DIG-91): `BaseLayout` loads the module
+  site-wide. Measurement starts only when the build gets a `PUBLIC_GA4_ID`
+  variable (format `G-XXXXXXXXXX`). Without it the site ships analytics
+  dormant: no gtag request, no console errors. The thank-you page fires the
+  two-signal lead conversions from `docs/conversion-spec.md` section 7.2;
+  the form (DIG-69) writes `sessionStorage.lead_pending` and the server
+  sets the `lead_ok` cookie.
 - GA4 property and data stream: waits on a person with Google account access.
   The steps are below. Fill the IDs table after creation.
 - Search Console verification: waits on domain DNS access.
@@ -47,6 +54,11 @@ in this file. Fill each row during setup.
 
 Put the measurement ID into the site config when the site code exists.
 Do not put any other Google credential in this repository.
+
+To activate measurement, set the repository variable `PUBLIC_GA4_ID` to the
+measurement ID (GitHub: Settings → Secrets and variables → Actions →
+Variables) and redeploy. A local production build takes it as an
+environment variable. See `docs/go-live-runbook.md` step 8.
 
 ## 3. GA4 property and data stream
 

@@ -57,7 +57,30 @@ touch "$OUT_DIR/.nojekyll"
 # docs/migration/generated/ for reference.
 if [ -d "$SRC_DIR/legacy-static" ]; then
   cp -r "$SRC_DIR/legacy-static/." "$OUT_DIR/"
+  # Prune legacy media nothing references (DIG-90). The old-site media
+  # library keeps 62 MB of files in the repo for the migration record, but
+  # only files a legacy page or stylesheet actually links belong in the
+  # deploy output. Deletes run on the output copy only; legacy-static/ is
+  # never modified.
+  while IFS= read -r media_file; do
+    name=$(basename "$media_file")
+    if ! grep -rqF "$name" "$SRC_DIR/legacy-static" --include='*.html' --include='*.css'; then
+      rm -f "$media_file"
+    fi
+  done < <(find "$OUT_DIR/assets/media" -type f 2>/dev/null)
 fi
+
+# Redirect map (DIG-89): generate the hosting redirect file into the output.
+# Production hosts this on LiteSpeed; on GitHub Pages staging it ships inert.
+# Runs after the DIG-90 media prune, so 301 rules exist only for upload files
+# that really ship in this output; pruned media URLs fall to the 410 fallback.
+python3 "$SRC_DIR/docs/migration/tools/generate_redirects.py" \
+  --map "$SRC_DIR/docs/migration/redirect-map.json" \
+  --media-manifest "$SRC_DIR/docs/migration/media-manifest.json" \
+  --media-dir "$SRC_DIR/legacy-static/assets/media" \
+  --media-output-dir "$OUT_DIR/assets/media" \
+  --base-path "${PUBLIC_BASE_PATH:-}" \
+  --out "$OUT_DIR/.htaccess"
 
 # Inject build identity into the marker block (every HTML file).
 find "$OUT_DIR" -name '*.html' -type f -exec sed -i \
@@ -97,5 +120,8 @@ while IFS= read -r html_file; do
     fail "local reference '$ref' in $html_rel not found in output"
   done < <(grep -oE '(href|src)="[^"]+"' "$html_file" | sed -E 's/^(href|src)="//; s/"$//')
 done < <(find "$OUT_DIR" -name '*.html' -type f)
+
+# Redirect map (DIG-89/DIG-91): stubs ship, destinations resolve, no orphan.
+node scripts/test-redirects.mjs --dir "$OUT_DIR"
 
 echo "Build OK: $OUT_DIR (sha=$BUILD_SHA env=$BUILD_ENV)"

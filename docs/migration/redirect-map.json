@@ -1,0 +1,242 @@
+{
+  "version": 1,
+  "title": "URL redirect map — digitallyshifted.com relaunch",
+  "issue": "DIG-89",
+  "domain": "digitallyshifted.com",
+  "canonicalOrigin": "https://digitallyshifted.com",
+  "platform": {
+    "production": "LiteSpeed on dshost.co.za (Plesk). Apache-compatible .htaccess generated into the build output at deploy time; upload is a DIG-20 go-live step.",
+    "staging": "GitHub Pages project hosting cannot execute .htaccess. The file ships inert in the staging output; staging routes serve directly under /website-relaunch.",
+    "generator": "docs/migration/tools/generate_redirects.py",
+    "test": "docs/migration/tools/test_redirects.py"
+  },
+  "evidence": [
+    "docs/audit-evidence/urls.json — 14 crawled old pages, all HTTP 200",
+    "docs/audit-evidence/sitemaps.json — Rank Math post/page/category sitemaps (12 URLs)",
+    "docs/audit-evidence/final-checks.json — old host/redirect behaviour and system endpoint statuses",
+    "docs/migration/extracted/*.json — per-page records incl. all internal links (tags, anchors, feeds)",
+    "docs/migration/media-manifest.json — 47 migrated upload files with old source URLs",
+    "docs/CONTENT-AUDIT.md — per-page KEEP/REWRITE/MERGE decisions (DIG-51)",
+    "docs/migration/MIGRATION-LOG.md — recorded 301 decisions (DIG-73)"
+  ],
+  "sameUrl": [
+    {
+      "path": "/",
+      "note": "Home keeps its URL; the Astro index serves it. Inventory row 1 (Rewrite, DIG-63)."
+    },
+    {
+      "path": "/blog/",
+      "note": "Blog index keeps its URL; served from legacy-static/blog until ported (DIG-71)."
+    },
+    {
+      "path": "/2023/02/09/ultimate-digital-marketing-guide-for-businesses/",
+      "note": "Pillar guide keeps its exact URL (migration log row 7, KEEP). Served from legacy-static until ported. Pattern fallbacks must not swallow it; tests assert 200."
+    }
+  ],
+  "redirects": [
+    {
+      "old": "/contact-us/",
+      "new": "/contact/",
+      "status": 301,
+      "kind": "1:1 page move",
+      "inventoryRow": 2,
+      "note": "Contact page moved to the new IA route. Query strings preserved via QSA (e.g. ?need=)."
+    },
+    {
+      "old": "/privacy-policy/",
+      "new": "/privacy/",
+      "status": 301,
+      "kind": "1:1 page move",
+      "inventoryRow": 4,
+      "note": "Legal page moved; POPIA rewrite is a separate content issue."
+    },
+    {
+      "old": "/2024/07/04/unlock-your-online-potential-with-digitally-shifted-expert-domain-and-hosting-services/",
+      "new": "/services/domains-hosting/",
+      "status": 301,
+      "kind": "merged content",
+      "inventoryRow": 8,
+      "note": "Promo post merged into the domains and hosting service page. Migration log: 'URL becomes a 301 after launch'; CONTENT-AUDIT 2.8 recommends the 301."
+    },
+    {
+      "old": "/2024/07/15/maximizing-roi-with-precision-explore-paid-advertising-with-digitally-shifted/",
+      "new": "/services/paid-advertising/",
+      "status": 301,
+      "kind": "merged content",
+      "inventoryRow": 9,
+      "note": "Promo post merged into the paid advertising service page (page exists since DIG-72). CONTENT-AUDIT 2.9 recommends the 301."
+    },
+    {
+      "old": "/2024/08/12/elevate-your-online-presence-professional-website-development-at-digitally-shifted/",
+      "new": "/services/website-development/",
+      "status": 301,
+      "kind": "merged content",
+      "inventoryRow": 10,
+      "note": "Promo post merged into the website development service page. CONTENT-AUDIT 2.10 recommends the 301."
+    },
+    {
+      "old": "/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/",
+      "new": "/blog/",
+      "status": 301,
+      "kind": "interim target",
+      "inventoryRow": 5,
+      "note": "Post is pending a year refresh (REWRITE, not removed), so a 410 would be wrong. Interim 301 to the blog hub; update this row to the final URL when the rewrite publishes. If the owner picks the audit's 'drop' option, flip this row to 410."
+    },
+    {
+      "old": "/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts/",
+      "new": "/blog/",
+      "status": 301,
+      "kind": "interim target",
+      "inventoryRow": 6,
+      "note": "Post is pending a light rewrite (REWRITE, not removed). Interim 301 to the blog hub; update on publish."
+    },
+    {
+      "old": "/category/digital-marketing/",
+      "new": "/blog/digital-marketing/",
+      "status": 301,
+      "kind": "1:1 archive move",
+      "inventoryRow": 11,
+      "note": "Category archive replaced by the blog topic page; description carried over verbatim (migration log rows 11-14)."
+    },
+    {
+      "old": "/category/hosting-domains/",
+      "new": "/blog/hosting-domains/",
+      "status": 301,
+      "kind": "1:1 archive move",
+      "inventoryRow": 12,
+      "note": "Category archive replaced by the blog topic page."
+    },
+    {
+      "old": "/category/paid-advertising/",
+      "new": "/blog/paid-advertising/",
+      "status": 301,
+      "kind": "1:1 archive move",
+      "inventoryRow": 13,
+      "note": "Category archive replaced by the blog topic page."
+    },
+    {
+      "old": "/category/website-development/",
+      "new": "/blog/website-development/",
+      "status": 301,
+      "kind": "1:1 archive move",
+      "inventoryRow": 14,
+      "note": "Category archive replaced by the blog topic page."
+    }
+  ],
+  "system410": [
+    { "path": "/feed/", "note": "RSS feed intentionally retired with WordPress; no static equivalent." },
+    { "path": "/comments/feed/", "note": "Comment feed; comments were not migrated." },
+    { "path": "/wp-login.php", "note": "WordPress login; WordPress is removed at cutover. Observed 200 on the old site." },
+    { "path": "/xmlrpc.php", "note": "XML-RPC endpoint; removed. Observed 405 on the old site." },
+    { "path": "/wp-admin/", "note": "Admin area; removed with WordPress." },
+    { "path": "/wp-json/", "note": "REST API root and sub-routes; removed. Observed 200 on the old site (also /wp-json/wp/v2/users)." },
+    { "path": "/wp-cron.php", "note": "Cron endpoint; removed." },
+    { "path": "/readme.html", "note": "WordPress readme leak; observed 200 on the old site." },
+    { "path": "/wp-includes/", "note": "Core asset tree; removed." },
+    { "path": "/wp-content/plugins/", "note": "Plugin assets; removed." },
+    { "path": "/wp-content/themes/", "note": "Theme assets; removed." },
+    { "path": "/wp-content/litespeed/", "note": "LiteSpeed Cache assets; removed." },
+    { "path": "/wp-content/cache/", "note": "Cache tree; removed." },
+    { "path": "/wp-content/upgrade/", "note": "Upgrade temp tree; removed." }
+  ],
+  "patterns": [
+    {
+      "id": "host-canonical",
+      "match": "(https or www variants of any path)",
+      "action": "301 to https://digitallyshifted.com + path",
+      "appliesWhen": "production only (no base path); matches the behaviour recorded in audit-evidence/final-checks.json",
+      "note": "http://, http://www and https://www must land on the https apex. Skipped under prefix hosting."
+    },
+    {
+      "id": "category-catchall",
+      "regex": "^category/([a-z0-9_-]+)/?$",
+      "status": 301,
+      "target": "/blog/",
+      "note": "Any category slug not in the explicit list goes to the blog hub, never into a 404. Guards: target must exist (file/dir)."
+    },
+    {
+      "id": "tag-catchall",
+      "regex": "^tag/.+",
+      "status": 301,
+      "target": "/blog/",
+      "note": "About 90 /tag/<slug>/ archive URLs were linked from post pages (see extracted link records). No new-site equivalent exists by design; the blog hub receives them."
+    },
+    {
+      "id": "author",
+      "regex": "^author/.+",
+      "status": 410,
+      "target": null,
+      "note": "Author archives are WordPress plumbing; the only author was 'admin'. Intentionally removed."
+    },
+    {
+      "id": "feed-any",
+      "regex": "^(feed/?$|comments/feed/?$|.+\\bfeed/?$)",
+      "status": 410,
+      "target": null,
+      "note": "Catches /feed/, /comments/feed/ and per-post comment feeds. Evaluated before the date fallback."
+    },
+    {
+      "id": "wp-system-catchall",
+      "regex": "^(wp-admin|wp-login\\.php|xmlrpc\\.php|wp-json|wp-cron\\.php|readme\\.html|wp-includes/|wp-content/(plugins|themes|litespeed|cache|upgrade)/)",
+      "status": 410,
+      "target": null,
+      "note": "Safety net behind the explicit list. Runs after the uploads rules so /wp-content/uploads/ keeps its own handling."
+    },
+    {
+      "id": "uploads-fallback",
+      "regex": "^wp-content/uploads/",
+      "status": 410,
+      "target": null,
+      "note": "Upload files outside the 47 migrated ones (size variants, leftovers) are intentionally gone; the migrated canonical files have exact 1:1 rules generated from media-manifest.json."
+    },
+    {
+      "id": "date-archives",
+      "regex": "^\\d{4}/?$|^\\d{4}/\\d{2}/?$",
+      "status": 410,
+      "target": null,
+      "note": "WordPress date archives were never content; intentionally removed."
+    },
+    {
+      "id": "date-permalink-fallback",
+      "regex": "^\\d{4}/\\d{2}/\\d{2}/",
+      "status": 410,
+      "target": null,
+      "note": "Any date-structured post URL outside the mapped set (old drafts, comment pages) is gone. Runs after every explicit rule. Guards: skip when the path exists as a file or directory so the pillar guide keeps serving."
+    },
+    {
+      "id": "pagination",
+      "regex": "^page/\\d+/?$",
+      "status": 410,
+      "target": null,
+      "note": "Archive pagination never existed on a 6-post blog; intentionally removed."
+    }
+  ],
+  "queries": [
+    { "regex": "^p=\\d+$", "status": 301, "target": "/blog/", "note": "WordPress numeric post shortlinks; post IDs do not survive migration." },
+    { "regex": "^page_id=\\d+$", "status": 301, "target": "/blog/", "note": "WordPress page shortlinks." },
+    { "regex": "^cat=\\d+$", "status": 301, "target": "/blog/", "note": "Category shortlinks." },
+    { "regex": "^s=.+$", "status": 301, "target": "/blog/", "note": "Search results have no static equivalent; land on the blog hub." },
+    { "regex": "^attachment_id=\\d+$", "status": 301, "target": "/blog/", "note": "Attachment pages were not migrated." }
+  ],
+  "media": {
+    "manifest": "media-manifest.json",
+    "oldPrefix": "/wp-content/uploads/",
+    "targetDir": "/assets/media/",
+    "nameRule": "Same base name as the old upload; the 12 converted files (jpg/png to webp) use the webp name. Derivation is verified against legacy-static/assets/media at generation time.",
+    "deployRule": "scripts/build-site.sh prunes media that no deploy page references (DIG-90), so the generator emits exact 301s only for files present in the build output. At the current build state that is 3 of 47 (Analytics.webp, Artboard-10.webp, pexels-ketut-subiyanto-4350093.webp). Every other old upload URL returns 410 until a page that reuses the asset ships and the file re-enters the output.",
+    "fallbackStatus": 410,
+    "count": 47
+  },
+  "verification": {
+    "test": "docs/migration/tools/test_redirects.py",
+    "report": "docs/migration/redirect-test-results.md",
+    "steps": [
+      "Build a production output with scripts/build-site.sh.",
+      "Serve the output through the .htaccess rule engine (LiteSpeed-compatible subset) over local HTTP.",
+      "Request every old URL, slash and query variants, tag samples, system endpoints, all 47 media URLs and host variants.",
+      "Assert status and Location for each case and that every 301 target exists in the build output.",
+      "Extract every internal URL from the old-page records and prove each one is covered by the map (no orphans)."
+    ],
+    "hostCaveat": "The local test executes the generated .htaccess rules through a compatible engine. A curl pass against the live LiteSpeed host is a DIG-20 go-live step."
+  }
+}

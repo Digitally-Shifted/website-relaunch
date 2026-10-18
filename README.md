@@ -7,6 +7,7 @@ Astro static build styled with the DS design tokens v4.1
 - Design spec (tokens, components, layouts): `docs/DESIGN-SPEC.md`
 - Conversion goals, forms, and CTAs: `docs/conversion-spec.md`
 - Deploy process, checks, and rollback: `docs/deploy-process.md`
+- Old-URL redirects (map, generation, tests): `docs/migration/REDIRECTS.md`
 - Security review checklist (launch gate): `docs/security-review.md`
 - Dependency audit cadence: `docs/dependency-audit.md`
 - Staging URL: https://digitally-shifted.github.io/website-relaunch/
