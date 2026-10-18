@@ -1,0 +1,66 @@
+{
+ "http_apex": {
+  "requested": "http://digitallyshifted.com/",
+  "finalUrl": "https://digitallyshifted.com/",
+  "status": 200,
+  "title": "Digital Marketing Agency South Africa | Digitally Shifted"
+ },
+ "http_www": {
+  "requested": "http://www.digitallyshifted.com/",
+  "finalUrl": "https://digitallyshifted.com/",
+  "status": 200,
+  "title": "Digital Marketing Agency South Africa | Digitally Shifted"
+ },
+ "https_www": {
+  "requested": "https://www.digitallyshifted.com/",
+  "finalUrl": "https://digitallyshifted.com/",
+  "status": 200,
+  "title": "Digital Marketing Agency South Africa | Digitally Shifted"
+ },
+ "status_404": {
+  "url": "https://digitallyshifted.com/this-page-does-not-exist-xyz123/",
+  "status": 404,
+  "location": null,
+  "server": "LiteSpeed"
+ },
+ "wp_json_root": {
+  "url": "https://digitallyshifted.com/wp-json/",
+  "status": 200,
+  "location": null,
+  "server": "LiteSpeed"
+ },
+ "wp_json_users": {
+  "url": "https://digitallyshifted.com/wp-json/wp/v2/users",
+  "status": 200,
+  "location": null,
+  "server": "LiteSpeed"
+ },
+ "wp_login": {
+  "url": "https://digitallyshifted.com/wp-login.php",
+  "status": 200,
+  "location": null,
+  "server": "LiteSpeed"
+ },
+ "xmlrpc": {
+  "url": "https://digitallyshifted.com/xmlrpc.php",
+  "status": 405,
+  "location": null,
+  "server": "LiteSpeed"
+ },
+ "readme": {
+  "url": "https://digitallyshifted.com/readme.html",
+  "status": 200,
+  "location": null,
+  "server": "LiteSpeed"
+ },
+ "security_headers": {
+  "x-powered-by": "PHP/8.1.34",
+  "x-litespeed-cache": "hit",
+  "server": "LiteSpeed"
+ },
+ "ttfb_request_ms": [
+  74,
+  56,
+  55
+ ]
+}

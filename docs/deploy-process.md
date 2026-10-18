@@ -117,12 +117,16 @@ against the live repository.
 
 | # | Step | Evidence | Result |
 | --- | --- | --- | --- |
-| 1 | Push scaffold to `main`; staging workflow runs | Run: see repository Actions history | PASS |
-| 2 | Staging URL reachable and serves the build | `curl` + browser check | PASS |
-| 3 | Push a test change; staging updates | Run: see repository Actions history | PASS |
-| 4 | Browser check shows the test change on the staging URL | Screenshot saved on the issue | PASS |
-| 5 | Roll back with `scripts/rollback-staging.sh` | Run: see repository Actions history | PASS |
-| 6 | Browser check shows the earlier build again | Screenshot saved on the issue | PASS |
-| 7 | Production workflow waits for reviewer approval | Run: see repository Actions history | PASS |
+| 1 | Push scaffold to `main`; staging workflow runs | Run `39149499789`, commit `c0c3290`, build `2026-10-18T17:25:22Z` | PASS |
+| 2 | Staging URL reachable and serves the build | `curl` showed commit `c0c3290`; browser screenshot `staging-initial.png` | PASS |
+| 3 | Push a test change; staging updates | Run `39149663121`, commit `de86e4f`, build `2026-10-18T17:27:29Z` | PASS |
+| 4 | Browser check shows the test change on the staging URL | Screenshot `staging-test-change.png` shows the test banner and commit `de86e4f` | PASS |
+| 5 | Roll back with `scripts/rollback-staging.sh` | Rerun of `39149499789`, build `2026-10-18T17:28:25Z`, staging serves `c0c3290` again | PASS |
+| 6 | Browser check shows the earlier build again | Screenshot `staging-rolled-back.png` shows commit `c0c3290`, test banner gone | PASS |
+| 7 | Production workflow waits for reviewer approval | Run `39149826134` stayed `waiting`; API self-approval denied (404); run cancelled with no release or tag | PASS |
 
-Exact run IDs and timestamps are in the DIG-64 issue thread on Paperclip.
+Run links:
+
+- Staging scaffold deploy: https://github.com/Digitally-Shifted/website-relaunch/actions/runs/39149499789
+- Staging test-change deploy: https://github.com/Digitally-Shifted/website-relaunch/actions/runs/39149663121
+- Production approval-gate test (waiting, then cancelled): https://github.com/Digitally-Shifted/website-relaunch/actions/runs/39149826134
