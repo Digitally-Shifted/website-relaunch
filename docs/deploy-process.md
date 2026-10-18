@@ -58,6 +58,10 @@ pauses the run until a required reviewer approves it. The approval happens in
 the GitHub Actions run page (Actions → Production release → the waiting run →
 Review deployments → Approve and deploy).
 
+Before approval, the reviewer confirms the security review passed for this
+ref. The checklist and the evidence rules live in `docs/security-review.md`
+(DIG-75).
+
 1. Choose the commit or tag to release.
 2. Start the release:
 
