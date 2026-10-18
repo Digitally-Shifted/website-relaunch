@@ -45,11 +45,11 @@ in this file. Fill each row during setup.
 
 | Item | Value | Set by |
 | --- | --- | --- |
-| GA4 property name | Digitally Shifted — digitallyshifted.com | human, step 3.1 |
-| GA4 property ID | `TO FILL — format 123456789` | human, step 3.1 |
-| Web data stream ID | `TO FILL — format 1234567890` | human, step 3.2 |
-| Measurement ID | `TO FILL — format G-XXXXXXXXXX` | human, step 3.2 |
-| Search Console property | Domain property `digitallyshifted.com` | human, step 4.1 |
+| GA4 property name | Digitally Shifted — digitallyshifted.com | route A agent, or human, step 3.1 |
+| GA4 property ID | `TO FILL — format 123456789` | route A agent, or human, step 3.1 |
+| Web data stream ID | `TO FILL — format 1234567890` | route A agent, or human, step 3.2 |
+| Measurement ID | `TO FILL — format G-XXXXXXXXXX` | route A agent, or human, step 3.2 |
+| Search Console property | Domain property `digitallyshifted.com` | route A agent, or human, step 4.1 |
 | Search Console verification | DNS TXT record at the registrar | human, step 4.2 |
 
 Put the measurement ID into the site config when the site code exists.
@@ -62,8 +62,43 @@ environment variable. See `docs/go-live-runbook.md` step 8.
 
 ## 3. GA4 property and data stream
 
-A person with access to the company Google account does this part.
-Log in at analytics.google.com.
+The Google account is `accounts@digitallyshifted.com`.
+
+### 3.0 Access route
+
+Two routes reach the goal. Route A is the standard.
+
+**Route A — platform connection (preferred).** Paperclip connects Google
+Analytics through the Composio service. The agent then runs every step through
+that connection. No raw Google credential ever reaches this repository.
+
+Current state: the provider question is pending on this issue. A human picks
+the provider. Then the human approves the access card. Then the Google
+authorization happens once, in the Composio flow, under
+`accounts@digitallyshifted.com`.
+
+Human actions for Route A:
+
+1. Answer the provider question on this issue. Pick `Composio`.
+2. Approve the access card that follows.
+3. In the Composio authorization flow, sign in as
+   `accounts@digitallyshifted.com` and allow Google Analytics access.
+4. If the GA account has no property yet, keep access to
+   analytics.google.com. The agent works through the connection.
+
+Then the agent runs through the connection: account lookup, property creation,
+data stream creation, measurement ID, key events, Search Console site insert,
+verification token, and sitemap submission.
+
+Search Console keeps two small human steps. Place the DNS TXT record at the
+registrar when the agent supplies the verification token (section 4.2). Or use
+the HTML file method when the site is live.
+
+**Route B — owner does the browser steps.** The owner follows sections 3.1 to
+3.4 and section 4 in the browser. The steps below work without any connection.
+
+Follow 3.1 to 3.4 for both routes. Route A runs them through the connection.
+Route B runs them in the browser.
 
 ### 3.1 Create the property
 
@@ -102,6 +137,10 @@ The module sends five events that count conversions. Mark each one as a key even
    `generate_lead`.
 
 ## 4. Search Console
+
+Route A: the agent inserts the site through the connection and supplies the
+verification token. The human places the DNS record (step 4.2) and confirms.
+Route B: the owner does all steps in the browser.
 
 ### 4.1 Create the property
 
