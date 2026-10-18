@@ -46,7 +46,9 @@ gh run list -R Digitally-Shifted/website-relaunch --workflow "Dependency audit" 
   unreachable script fails the run.
 - Dependabot watches GitHub Actions versions and opens update PRs weekly.
 - Runner images and GitHub Pages are GitHub-managed. Their advisories land in
-  the GitHub changelog. The quarterly review reads them.
+  the GitHub changelog. The quarterly review reads them. Note: `ubuntu-latest`
+  moves to Ubuntu 26 from 2026-10-19 (runner-images issue 14748). The next
+  quarterly review confirms the build tools on the new image.
 
 ## Outdated packages
 
@@ -112,6 +114,7 @@ Append one row per review or incident. Do not rewrite old rows.
 | Date | Cadence | Change or finding | Result | Evidence |
 | --- | --- | --- | --- | --- |
 | 2026-10-18 | setup | Process defined. Dependabot config and weekly audit workflow added. | PASS | DIG-77 |
+| 2026-10-18 | first audit | All four actions behind newer majors. Upgraded: checkout v4 to v7, configure-pages v5 to v6, upload-pages-artifact v3 to v5, deploy-pages v4 to v5. | PASS | Staging deploy [39155138895](https://github.com/Digitally-Shifted/website-relaunch/actions/runs/39155138895); audit run [39155202240](https://github.com/Digitally-Shifted/website-relaunch/actions/runs/39155202240) |
 
 ## One-time setup (done)
 
