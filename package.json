@@ -1,0 +1,23 @@
+{
+  "name": "website-relaunch",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Digitally Shifted website relaunch — Astro static site with the DS design tokens v4.1",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
+  }
+}

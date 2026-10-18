@@ -1,0 +1,87 @@
+---
+/*
+ * About (conversion spec 3.3): trust, then contact. No testimonials,
+ * metrics or case studies exist, so the page publishes none (DIG-38
+ * proof-point rule). One "Get a quote" button at the end.
+ *
+ * DRAFT COPY: pending DIG-63.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { withBase } from '../lib/urls';
+import { site } from '../lib/site.config';
+---
+
+<BaseLayout
+  title="About"
+  description="Digitally Shifted is a South African digital agency. We design, host and manage websites, and we keep them working. Meet the team behind the work."
+  path="/about"
+>
+  <PageHero
+    eyebrow="About us"
+    statement='A digital agency that <em>stays</em> after launch.'
+    opener="We build websites and then we keep them working. That is the whole idea."
+    secondaryHref="/services"
+    secondaryLabel="See what is included"
+  />
+
+  <section class="bg-grey-100" aria-labelledby="who-we-are">
+    <div class="container-ds section">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <div>
+          <SectionHeader
+            eyebrow="Who we are"
+            heading='Digitally Shifted, <em>in short</em>.'
+            dark={false}
+          />
+          <div class="prose-ds mt-6 max-w-xl text-body text-text-on-light-muted">
+            <p>
+              Digitally Shifted is a digital agency in South Africa. We design and
+              build websites, host and manage them, and help businesses get found.
+            </p>
+            <p>
+              We keep our offer simple: four services that cover the whole life of
+              a website, delivered by one team you can call, email or WhatsApp.
+            </p>
+          </div>
+        </div>
+        <div>
+          <SectionHeader
+            eyebrow="How we work"
+            heading='Plain language, <em>plain dealing</em>.'
+            dark={false}
+          />
+          <div class="prose-ds mt-6 max-w-xl text-body text-text-on-light-muted">
+            <ul class="list-disc pl-6">
+              <li>You tell us what you need. We answer in plain language.</li>
+              <li>We agree the scope and the price before any work starts.</li>
+              <li>We build, launch, and then we stay available.</li>
+              <li>
+                Most clients choose Website-as-a-Service: one monthly fee, no
+                large upfront cost.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper" aria-labelledby="work-with-us">
+    <div class="container-ds section">
+      <SectionHeader
+        eyebrow="Work with us"
+        heading='Start with <em>one message</em>.'
+        dark={false}
+        opener="Tell us about your business and what you need. We reply within one business day."
+      />
+      <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <a href={withBase('/contact?need=quote')} class="btn btn--primary" data-ds-location="content">
+          Get a quote
+        </a>
+        <a href={`mailto:${site.email}`} class="link-light text-body">{site.email}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,80 @@
+---
+/*
+ * BaseLayout — the one page shell for the whole site (DESIGN-SPEC section 5).
+ * Carries the head, skip link, header, footer, mobile action bar and the
+ * deploy marker that the staging verification checks for.
+ */
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileActionBar from '../components/MobileActionBar.astro';
+import { canonical, withBase } from '../lib/urls';
+import { site } from '../lib/site.config';
+
+interface Props {
+  /** Page title without the site suffix. */
+  title: string;
+  /** Meta description, 155 characters or less. */
+  description: string;
+  /** Absolute site path, for example /services. */
+  path: string;
+  /** Force noindex regardless of environment (thank-you, privacy). */
+  noindex?: boolean;
+  /** Hide the header CTA (contact and thank-you pages). */
+  hideHeaderCta?: boolean;
+  /** Hide the mobile action bar (contact, thank-you, privacy). */
+  hideMobileBar?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  noindex = false,
+  hideHeaderCta = false,
+  hideMobileBar = false,
+} = Astro.props;
+
+const buildEnv = import.meta.env.PUBLIC_BUILD_ENV || 'production';
+const isStaging = buildEnv !== 'production';
+const robotsContent = noindex || isStaging ? 'noindex, nofollow' : 'index, follow';
+const pageTitle = `${title} — ${site.name}`;
+const pageUrl = canonical(path);
+const ogImage = canonical('/app-icon-1024.png');
+const fontHref = withBase('/fonts/raleway-variable.woff2');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robotsContent} />
+    <link rel="canonical" href={pageUrl} />
+    <link rel="icon" href={withBase('/favicon.ico')} sizes="48x48" />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preload" href={fontHref} as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header path={path} hideCta={hideHeaderCta} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    {
+      !hideMobileBar && <MobileActionBar />
+    }
+  </body>
+</html>

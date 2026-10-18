@@ -1,0 +1,39 @@
+---
+/*
+ * Privacy (conversion spec 3.6): one screen that says what the form stores
+ * and how to remove it. Plain text on Paper, no CTA, no tracking events.
+ * The owner reviews the wording (conversion spec open item 5).
+ */
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { site } from '../lib/site.config';
+---
+
+<ContentLayout
+  title="Privacy notice"
+  description="What Digitally Shifted stores when you send an enquiry, why we store it, and how to have it removed."
+  path="/privacy"
+  eyebrow="Privacy"
+  noindex={true}
+>
+  <h2>What we store</h2>
+  <p>
+    When you send us an enquiry through our forms, we store the details you
+    send: your name, email address or phone number, your business name when
+    you give it, and your message, with the date.
+  </p>
+
+  <h2>Why we store it</h2>
+  <p>To reply to your enquiry and to prepare any quote you asked for.</p>
+
+  <h2>What we do not do</h2>
+  <p>
+    We do not sell your details. We do not pass them to third parties for
+    their own marketing.
+  </p>
+
+  <h2>How to have your details removed</h2>
+  <p>
+    Email <a href={`mailto:${site.email}`}>{site.email}</a> and ask us to
+    remove your details. We will delete them and confirm that we have done it.
+  </p>
+</ContentLayout>

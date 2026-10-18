@@ -1,0 +1,15 @@
+# Build output
+dist/
+site/
+site-prod/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.*
+
+# OS noise
+.DS_Store

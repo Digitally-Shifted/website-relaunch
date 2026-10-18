@@ -1,0 +1,121 @@
+---
+/*
+ * Home (conversion spec 3.1): the visitor starts an enquiry or requests a
+ * quote. Primary CTA above the fold, secondary "See what is included",
+ * one repeated CTA after the services summary, one in the closing band.
+ *
+ * DRAFT COPY: page copy is pending DIG-63 (website copy). Structure and
+ * claims follow docs/conversion-spec.md; no unproven claims.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Card from '../components/Card.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { withBase } from '../lib/urls';
+
+const services = [
+  {
+    title: 'Website design and development',
+    body: 'A fast, clear website built around your customers. We design it, build it and hand you a site that is easy to live with.',
+    need: 'new-website',
+  },
+  {
+    title: 'Hosting and management',
+    body: 'We host your site, keep it updated, watch it and fix problems before your visitors see them.',
+    need: 'hosting',
+  },
+  {
+    title: 'Website-as-a-Service',
+    body: 'One monthly fee covers design, hosting, management and SEO. No large upfront cost, and the site stays current.',
+    need: 'waas',
+  },
+  {
+    title: 'SEO',
+    body: 'We help the right people find you on Google with honest, technical and content work that lasts.',
+    need: 'seo',
+  },
+];
+---
+
+<BaseLayout
+  title="Websites that work as hard as you do"
+  description="Digitally Shifted designs, hosts and manages websites for South African businesses. Get a quote for a new website, hosting, WaaS or SEO."
+  path="/"
+>
+  <PageHero
+    eyebrow="Websites, hosting and SEO"
+    statement='Your website, <strong>built</strong>, <em>hosted</em> and <em>managed</em>.'
+    opener="We design, host and manage websites for South African businesses."
+    secondaryHref="/services"
+    secondaryLabel="See what is included"
+  />
+
+  <section class="bg-carbon" aria-labelledby="services-summary">
+    <div class="container-ds section">
+      <SectionHeader
+        eyebrow="What we do"
+        heading='Everything your site needs, <em>in one place</em>.'
+        opener="Four services that cover the whole life of your website."
+      />
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {
+          services.map((service) => (
+            <Card title={service.title} interactive>
+              <p class="text-text-on-dark-muted">{service.body}</p>
+            </Card>
+          ))
+        }
+      </div>
+      <div class="mt-12">
+        <a href={withBase('/contact?need=quote')} class="btn btn--primary" data-ds-location="content">
+          Get a quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-grey-100" aria-labelledby="how-we-work">
+    <div class="container-ds section">
+      <div class="feature-panel corner-cut-md">
+        <p class="text-eyebrow uppercase text-text-on-dark-muted">How we work</p>
+        <h2 id="how-we-work" class="mt-3 text-display text-paper">
+          One monthly fee. <em>Everything covered.</em>
+        </h2>
+        <p class="mt-4 max-w-xl text-body-lg text-text-on-dark-muted">
+          Website-as-a-Service: your website stays a product we look after, not a
+          project you have to re-buy every few years. Design, hosting, management
+          and SEO for one monthly fee.
+        </p>
+        <ol class="mt-8 grid gap-6 sm:grid-cols-3">
+          <li>
+            <p class="text-h4 text-paper">1. Enquiry</p>
+            <p class="mt-2 text-body-sm text-text-on-dark-muted">
+              You tell us what you need. We reply within one business day.
+            </p>
+          </li>
+          <li>
+            <p class="text-h4 text-paper">2. Scope and build</p>
+            <p class="mt-2 text-body-sm text-text-on-dark-muted">
+              We agree the scope, then design and build your site.
+            </p>
+          </li>
+          <li>
+            <p class="text-h4 text-paper">3. Managed</p>
+            <p class="mt-2 text-body-sm text-text-on-dark-muted">
+              We host, manage and improve it while you run your business.
+            </p>
+          </li>
+        </ol>
+        <a href={withBase('/contact?need=waas')} class="btn btn--primary mt-10" data-ds-location="content">
+          Get a quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    heading='Tell us what you need. <em>We take it from there.</em>'
+    line="One short form. We reply within one business day."
+  />
+</BaseLayout>

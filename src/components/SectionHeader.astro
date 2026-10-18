@@ -1,0 +1,44 @@
+---
+/*
+ * Section header (DESIGN-SPEC 4.7): optional 2px accent rule, eyebrow in
+ * letterspaced caps, then a display heading. Key words carry the 900/300
+ * pairing through `strong` (900) and `em` (300, not italic) in `heading`.
+ */
+interface Props {
+  eyebrow?: string;
+  /** Heading content as HTML, for example: We build <strong>websites</strong>. */
+  heading: string;
+  opener?: string;
+  dark?: boolean;
+  align?: 'left' | 'center';
+}
+
+const { eyebrow, heading, opener, dark = true, align = 'left' } = Astro.props;
+---
+
+<div class:list={['max-w-2xl', align === 'center' && 'mx-auto text-center']}>
+  {
+    eyebrow && (
+      <p class:list={['text-eyebrow uppercase', dark ? 'text-text-on-dark-muted' : 'text-slate']}>
+        {eyebrow}
+      </p>
+    )
+  }
+  <h2
+    class:list={['mt-3 text-display', dark ? 'text-paper' : 'text-text-on-light']}
+    set:html={heading}
+  />
+  {
+    opener && (
+      <p
+        class:list={[
+          'mt-4 text-body-lg measure',
+          dark ? 'text-text-on-dark-muted' : 'text-text-on-light-muted',
+          align === 'center' && 'mx-auto',
+        ]}
+      >
+        {opener}
+      </p>
+    )
+  }
+</div>

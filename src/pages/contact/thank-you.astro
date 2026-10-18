@@ -1,0 +1,53 @@
+---
+/*
+ * Thank-you page (conversion spec 3.5): confirms the submission and gives
+ * direct routes for speed. Reached only through the form's 303 redirect;
+ * never linked from navigation. No conversion event fires here (it fired
+ * at submit time). Headline takes focus on load.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../lib/site.config';
+import { withBase } from '../../lib/urls';
+---
+
+<BaseLayout
+  title="Thank you"
+  description="We have your message. We aim to reply within one business day."
+  path="/contact/thank-you"
+  noindex={true}
+  hideHeaderCta={true}
+  hideMobileBar={true}
+>
+  <div class="bg-carbon">
+    <div class="container-ds pt-24 pb-32 md:pt-32 md:pb-40">
+      <div class="max-w-2xl">
+        <h1 id="thankyou-title" tabindex="-1" class="text-display text-paper">
+          Thank you. <em>We have your message.</em>
+        </h1>
+        <p class="mt-4 text-body-lg text-text-on-dark-muted">
+          We aim to reply within one business day.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a
+            href={site.phoneHref}
+            class="btn btn--primary"
+            data-ds-location="thankyou">Call</a
+          >
+          <a
+            href={site.whatsappHref}
+            class="btn btn--secondary-dark"
+            data-ds-location="thankyou"
+            rel="noopener">WhatsApp us</a
+          >
+        </div>
+        <p class="mt-8">
+          <a href={withBase('/services')} class="link-dark text-body">See what we do</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  document.getElementById('thankyou-title')?.focus();
+</script>

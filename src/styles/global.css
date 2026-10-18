@@ -1,0 +1,433 @@
+/*
+ * Global styles for the Digitally Shifted website relaunch.
+ *
+ * Token source of truth: brand/tokens/tokens.css (design tokens v4.1.0,
+ * see docs/DESIGN-SPEC.md). This file never restates a brand value; every
+ * rule reads the custom properties defined there.
+ *
+ * Tailwind CSS 4 maps the token custom properties onto utilities through
+ * the @theme inline block below. tokens.css is imported after the Tailwind
+ * layers, so its unlayered :root declarations always win the cascade.
+ */
+@import "tailwindcss";
+@import "../../brand/tokens/tokens.css";
+
+/* Self-hosted Raleway variable font (brand/fonts, SIL OFL 1.1). */
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/raleway-variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  /* Breakpoints — DESIGN-SPEC 2.7 (sm/md/lg/xl). */
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* Color — core, grey ramp, the single accent, interactive and text states. */
+  --color-paper: var(--color-paper);
+  --color-ink: var(--color-ink);
+  --color-slate: var(--color-slate);
+  --color-carbon: var(--color-carbon);
+  --color-accent: var(--color-accent);
+  --color-grey-50: var(--color-grey-50);
+  --color-grey-100: var(--color-grey-100);
+  --color-grey-200: var(--color-grey-200);
+  --color-grey-300: var(--color-grey-300);
+  --color-grey-400: var(--color-grey-400);
+  --color-grey-500: var(--color-grey-500);
+  --color-grey-600: var(--color-grey-600);
+  --color-grey-700: var(--color-grey-700);
+  --color-grey-800: var(--color-grey-800);
+  --color-grey-900: var(--color-grey-900);
+  --color-grey-950: var(--color-grey-950);
+  --color-text-on-light: var(--color-text-on-light);
+  --color-text-on-light-muted: var(--color-text-on-light-muted);
+  --color-text-on-dark: var(--color-text-on-dark);
+  --color-text-on-dark-muted: var(--color-text-on-dark-muted);
+  --color-link-on-dark: var(--color-link-on-dark);
+  --color-link-on-light: var(--color-link-on-light);
+  --color-focus-on-dark: var(--color-focus-on-dark);
+  --color-focus-on-light: var(--color-focus-on-light);
+  --color-disabled-on-dark: var(--color-disabled-on-dark);
+  --color-disabled-on-light: var(--color-disabled-on-light);
+
+  /* Typography — family and the full type scale (DESIGN-SPEC 2.2). */
+  --font-sans: var(--font-family);
+  --text-display-xl: var(--type-display-xl-size);
+  --text-display-xl--line-height: var(--type-display-xl-leading);
+  --text-display-xl--font-weight: var(--type-display-xl-weight);
+  --text-display-xl--letter-spacing: var(--type-display-xl-tracking);
+  --text-display: var(--type-display-size);
+  --text-display--line-height: var(--type-display-leading);
+  --text-display--font-weight: var(--type-display-weight);
+  --text-display--letter-spacing: var(--type-display-tracking);
+  --text-h1: var(--type-h1-size);
+  --text-h1--line-height: var(--type-h1-leading);
+  --text-h1--font-weight: var(--type-h1-weight);
+  --text-h2: var(--type-h2-size);
+  --text-h2--line-height: var(--type-h2-leading);
+  --text-h2--font-weight: var(--type-h2-weight);
+  --text-h3: var(--type-h3-size);
+  --text-h3--line-height: var(--type-h3-leading);
+  --text-h3--font-weight: var(--type-h3-weight);
+  --text-h4: var(--type-h4-size);
+  --text-h4--line-height: var(--type-h4-leading);
+  --text-h4--font-weight: var(--type-h4-weight);
+  --text-body-lg: var(--type-body-lg-size);
+  --text-body-lg--line-height: var(--type-body-lg-leading);
+  --text-body: var(--type-body-size);
+  --text-body--line-height: var(--type-body-leading);
+  --text-body-sm: var(--type-body-sm-size);
+  --text-body-sm--line-height: var(--type-body-sm-leading);
+  --text-caption: var(--type-caption-size);
+  --text-caption--line-height: var(--type-caption-leading);
+  --text-caption--font-weight: var(--type-caption-weight);
+  --text-eyebrow: var(--type-eyebrow-size);
+  --text-eyebrow--line-height: var(--type-eyebrow-line-height, 1);
+  --text-eyebrow--font-weight: var(--type-eyebrow-weight);
+  --text-eyebrow--letter-spacing: var(--type-eyebrow-tracking);
+
+  /* Elevation (DESIGN-SPEC 2.5). */
+  --shadow-raised-dark: var(--shadow-raised-dark);
+  --shadow-overlay-dark: var(--shadow-overlay-dark);
+  --shadow-raised-light: var(--shadow-raised-light);
+
+  /* Motion (DESIGN-SPEC 2.6). */
+  --ease-standard: var(--easing-standard);
+
+  /* Container width (DESIGN-SPEC 2.7). */
+  --container-ds: var(--layout-container-max);
+}
+
+/*
+ * Z-index scale from the Launch design-system standard (v1.1.0 section 3.7).
+ * tokens.css does not carry these; they are layering, not brand values.
+ */
+:root {
+  --z-nav: 20;
+  --z-dropdown: 30;
+  --z-overlay: 40;
+  --z-modal: 50;
+  --z-toast: 60;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-text-on-light);
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Focus ring: 2px accent, always visible on both grounds (DESIGN-SPEC 2.1). */
+  :focus-visible {
+    outline: 2px solid var(--color-focus-on-light);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-grey-200);
+  }
+
+  /*
+   * Mobile action bar (conversion spec 2.3): reserve its height so it
+   * never covers footer content.
+   */
+  @media (max-width: 767.98px) {
+    body:has(.mobile-action-bar) {
+      padding-bottom: 49px;
+    }
+  }
+
+  /*
+   * Display pairing (DESIGN-SPEC 2.2): headings pair weight 900 with
+   * weight 300. strong carries 900, em carries 300 with no italic slant.
+   */
+  h1 strong,
+  h2 strong {
+    font-weight: 900;
+  }
+
+  h1 em,
+  h2 em {
+    font-style: normal;
+    font-weight: 300;
+  }
+}
+
+@layer components {
+  /*
+   * Page container: 1200px max, gutter 24px, page margin 24px that
+   * switches to 64px at lg (DESIGN-SPEC 2.7).
+   */
+  .container-ds {
+    width: 100%;
+    max-width: calc(var(--layout-container-max) + 2 * var(--layout-page-margin-lg));
+    margin-inline: auto;
+    padding-inline: var(--layout-page-margin-sm);
+  }
+
+  @media (min-width: 1024px) {
+    .container-ds {
+      padding-inline: var(--layout-page-margin-lg);
+    }
+  }
+
+  /* Vertical section rhythm (DESIGN-SPEC 2.7 sectionSpacing). */
+  .section {
+    padding-block: var(--layout-section-spacing);
+  }
+
+  /* Measured text column: 60-75 characters (DESIGN-SPEC 2.2 rules). */
+  .measure {
+    max-width: 42rem;
+  }
+
+  /*
+   * Prose: long-form content on the standard content page layout.
+   * Links keep the required underline; headings keep the token scale.
+   */
+  .prose-ds p {
+    margin-block-start: var(--space-4);
+  }
+
+  .prose-ds h2 {
+    margin-block-start: var(--space-9);
+    font-size: var(--type-h2-size);
+    line-height: var(--type-h2-leading);
+    font-weight: var(--type-h2-weight);
+    color: var(--color-text-on-light);
+  }
+
+  .prose-ds h3 {
+    margin-block-start: var(--space-7);
+    font-size: var(--type-h3-size);
+    line-height: var(--type-h3-leading);
+    font-weight: var(--type-h3-weight);
+    color: var(--color-text-on-light);
+  }
+
+  .prose-ds ul {
+    margin-block-start: var(--space-4);
+    list-style-type: disc;
+    padding-inline-start: var(--space-6);
+  }
+
+  .prose-ds li {
+    margin-block-start: var(--space-2);
+  }
+
+  .prose-ds a {
+    color: var(--color-link-on-light);
+    text-decoration-line: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose-ds a:hover {
+    color: var(--color-slate);
+  }
+
+  .prose-ds strong {
+    font-weight: 600;
+  }
+
+  /*
+   * Motion: shift-enter (DESIGN-SPEC 2.6). Movement enters on the
+   * 45-degree diagonal. Reduced motion keeps opacity only (tokens.css
+   * already collapses the durations).
+   */
+  .shift-enter {
+    animation: ds-shift-enter var(--duration-slow) var(--easing-standard) both;
+  }
+
+  @keyframes ds-shift-enter {
+    from {
+      opacity: 0;
+      transform: translate(-8px, 8px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+
+  /* Section texture: legacy stationery line pattern at max 8% contrast. */
+  .texture-lines {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 23px,
+      rgb(255 255 255 / 0.05) 23px,
+      rgb(255 255 255 / 0.05) 24px
+    );
+  }
+
+  /*
+   * Buttons (DESIGN-SPEC 4.3). Sharp corners, 48px height (40px compact),
+   * space-5 horizontal padding, body weight 600 label.
+   */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 48px;
+    padding-inline: var(--space-5);
+    border-radius: var(--radius-none);
+    font-size: var(--type-body-size);
+    line-height: var(--type-body-leading);
+    font-weight: 600;
+    text-decoration-line: none;
+    transition:
+      background-color var(--duration-fast) var(--easing-standard),
+      border-color var(--duration-fast) var(--easing-standard),
+      color var(--duration-fast) var(--easing-standard);
+  }
+
+  .btn--compact {
+    min-height: 40px;
+  }
+
+  /* Primary: accent fill, Ink label. Hover shifts one grey step darker. */
+  .btn--primary {
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  .btn--primary:hover {
+    background-color: var(--color-grey-700);
+    color: var(--color-paper);
+  }
+
+  .btn--primary:active {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  /* Secondary on dark: 2px light outline, transparent fill. */
+  .btn--secondary-dark {
+    border: 2px solid var(--color-grey-100);
+    color: var(--color-grey-100);
+    background-color: transparent;
+  }
+
+  .btn--secondary-dark:hover {
+    border-color: var(--color-paper);
+    color: var(--color-paper);
+  }
+
+  .btn--secondary-dark:active {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  /* Secondary on light: 2px Ink outline, transparent fill. */
+  .btn--secondary-light {
+    border: 2px solid var(--color-ink);
+    color: var(--color-ink);
+    background-color: transparent;
+  }
+
+  .btn--secondary-light:hover {
+    border-color: var(--color-grey-600);
+    color: var(--color-grey-600);
+  }
+
+  .btn--secondary-light:active {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  /* Ghost: text only, underline on hover. */
+  .btn--ghost-dark {
+    color: var(--color-text-on-dark);
+    background-color: transparent;
+  }
+
+  .btn--ghost-dark:hover {
+    text-decoration-line: underline;
+  }
+
+  .btn:disabled {
+    background-color: var(--color-disabled-on-light);
+    border-color: var(--color-disabled-on-light);
+    color: var(--color-paper);
+    cursor: not-allowed;
+  }
+
+  /*
+   * Links (DESIGN-SPEC 4.4). Always underlined; accent on dark grounds,
+   * Ink on light grounds. Never color alone.
+   */
+  .link-dark {
+    color: var(--color-link-on-dark);
+    text-decoration-line: underline;
+    text-underline-offset: 3px;
+  }
+
+  .link-dark:hover {
+    filter: brightness(1.15);
+  }
+
+  .link-light {
+    color: var(--color-link-on-light);
+    text-decoration-line: underline;
+    text-underline-offset: 3px;
+  }
+
+  .link-light:hover {
+    color: var(--color-slate);
+  }
+
+  /* Card (DESIGN-SPEC 4.5): sharp corners, hairline border, no rest shadow. */
+  .card {
+    border: 1px solid var(--color-grey-800);
+    padding: var(--space-6);
+  }
+
+  .card--interactive:hover {
+    box-shadow: var(--shadow-raised-dark);
+    border-color: var(--color-grey-700);
+  }
+
+  .card--light {
+    border-color: var(--color-grey-200);
+  }
+
+  .card--light.card--interactive:hover {
+    box-shadow: var(--shadow-raised-light);
+    border-color: var(--color-grey-300);
+  }
+
+  /* Feature panel (DESIGN-SPEC 4.5): corner-cut Carbon surface, one per view. */
+  .feature-panel {
+    background-color: var(--color-carbon);
+    border: 1px solid var(--color-grey-700);
+    padding: var(--space-7);
+  }
+
+  /* Visually hidden until focused (skip link). */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: var(--z-toast);
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+    padding: var(--space-3) var(--space-5);
+    font-weight: 600;
+  }
+
+  .skip-link:focus {
+    left: 0;
+  }
+}

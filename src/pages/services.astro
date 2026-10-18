@@ -1,0 +1,100 @@
+---
+/*
+ * Services (conversion spec 3.2): one section per service, in the spec's
+ * order. Each section ends with one "Get a quote" button that preselects
+ * that service's need value on the contact form.
+ *
+ * DRAFT COPY: section copy is pending DIG-63. Prices are not stated (the
+ * spec forbids inventing them).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { withBase } from '../lib/urls';
+
+const sections = [
+  {
+    id: 'web-design',
+    eyebrow: 'Service 01',
+    heading: 'Website design <em>and development</em>.',
+    body: 'We design and build your website around your customers and your goals. Fast pages, clear structure, and a site you can grow. You own the result, and we stay available to look after it.',
+    need: 'new-website',
+    panel: false,
+  },
+  {
+    id: 'hosting',
+    eyebrow: 'Service 02',
+    heading: 'Hosting <em>and management</em>.',
+    body: 'We host your site, keep its software current, watch uptime and fix problems before visitors see them. Backups, updates and security are our job, not your weekend.',
+    need: 'hosting',
+    panel: false,
+  },
+  {
+    id: 'waas',
+    eyebrow: 'Service 03',
+    heading: 'Website-as-a-Service <em>(WaaS)</em>.',
+    body: 'One monthly fee covers design, hosting, management and SEO. Your website stays current without a large upfront cost, and we keep improving it. This is how most of our clients run their sites.',
+    need: 'waas',
+    panel: true,
+  },
+  {
+    id: 'seo',
+    eyebrow: 'Service 04',
+    heading: 'SEO, <em>done honestly</em>.',
+    body: 'Technical foundations, clear content and steady improvement that help the right people find you on Google. No tricks that put your domain at risk.',
+    need: 'seo',
+    panel: false,
+  },
+];
+---
+
+<BaseLayout
+  title="Services"
+  description="Website design and development, hosting and management, Website-as-a-Service, and SEO. One team covers the whole life of your website."
+  path="/services"
+>
+  <PageHero
+    eyebrow="Services"
+    statement='The whole life of your website, <em>covered</em>.'
+    opener="Four services, one team, one monthly option. Choose what you need today and add more later."
+    ctaHref="/contact?need=quote"
+    secondaryHref="/about"
+    secondaryLabel="About Digitally Shifted"
+  />
+
+  {
+    sections.map((section) => (
+      <section class="border-t border-grey-800 bg-carbon" aria-labelledby={section.id}>
+        <div class="container-ds section">
+          {section.panel ? (
+            <div class="feature-panel corner-cut-md">
+              <p class="text-eyebrow uppercase text-text-on-dark-muted">{section.eyebrow}</p>
+              <h2 id={section.id} class="mt-3 text-display text-paper" set:html={section.heading} />
+              <p class="mt-4 max-w-xl text-body-lg text-text-on-dark-muted">{section.body}</p>
+              <a
+                href={withBase(`/contact?need=${section.need}`)}
+                class="btn btn--primary mt-8"
+                data-ds-location="content"
+              >
+                Get a quote
+              </a>
+            </div>
+          ) : (
+            <div class="grid gap-8 md:grid-cols-2 md:items-center">
+              <SectionHeader eyebrow={section.eyebrow} heading={section.heading} opener={section.body} />
+              <div class="md:text-right">
+                <a
+                  href={withBase(`/contact?need=${section.need}`)}
+                  class="btn btn--secondary-dark"
+                  data-ds-location="content"
+                >
+                  Get a quote
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    ))
+  }
+</BaseLayout>

@@ -1,0 +1,73 @@
+---
+/*
+ * Contact (conversion spec 3.4): the conversion page of the site. Heading,
+ * one line under it, the enquiry form, then the footer contact block
+ * repeated as plain text with clickable links. No map, no calendar.
+ *
+ * The form itself is DIG-69 (core feature): server POST to /api/contact,
+ * the field set in conversion spec section 4, honeypot and time trap.
+ * This page ships the layout shell and marks the form slot so DIG-69 can
+ * drop the form component in without layout work.
+ *
+ * The header CTA and the mobile action bar are hidden on this page.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../lib/site.config';
+import { withBase } from '../lib/urls';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Tell Digitally Shifted what you need. Send an enquiry or request a quote, or call and WhatsApp us directly."
+  path="/contact"
+  hideHeaderCta={true}
+  hideMobileBar={true}
+>
+  <div class="bg-carbon">
+    <div class="container-ds pt-16 pb-24 md:pt-24 md:pb-32">
+      <header class="max-w-2xl">
+        <p class="text-eyebrow uppercase text-text-on-dark-muted">Contact</p>
+        <h1 class="mt-3 text-display text-paper">Tell us <em>what you need</em>.</h1>
+        <p class="mt-4 text-body-lg text-text-on-dark-muted">
+          Send the form, or reach us directly. We reply within one business day.
+        </p>
+      </header>
+
+      {/*
+        DIG-69 form slot. The component that lands here implements
+        conversion spec section 4 exactly: fields, validation, honeypot
+        (company_website), time trap, data-ds-form="contact".
+      */}
+      <div class="mt-12 max-w-2xl" data-ds-form-slot="contact">
+        <div class="card border-grey-700">
+          <p class="text-body text-text-on-dark-muted">
+            The enquiry form is built in DIG-69. Until it lands, reach us
+            directly through any route below.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-16 max-w-2xl border-t border-grey-800 pt-8">
+        <h2 class="text-eyebrow uppercase text-text-on-dark-muted">Reach us directly</h2>
+        <ul class="mt-4 space-y-3">
+          <li>
+            <a href={site.phoneHref} class="link-dark text-body" data-ds-location="content">
+              Call {site.phoneDisplay}
+            </a>
+          </li>
+          <li>
+            <a
+              href={site.whatsappHref}
+              class="link-dark text-body"
+              data-ds-location="content"
+              rel="noopener">WhatsApp us</a
+            >
+          </li>
+          <li>
+            <a href={`mailto:${site.email}`} class="link-dark text-body">{site.email}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

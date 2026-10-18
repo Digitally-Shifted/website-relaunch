@@ -1,0 +1,31 @@
+---
+/*
+ * Closing CTA band (DESIGN-SPEC 5.1: allow 128-192px before hero closers).
+ * One primary call to action with a short supporting line.
+ */
+import { withBase } from '../lib/urls';
+
+interface Props {
+  /** Heading content as HTML with strong/em for the 900/300 pairing. */
+  heading: string;
+  line?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+}
+
+const { heading, line, ctaHref = '/contact?need=quote', ctaLabel = 'Get a quote' } = Astro.props;
+---
+
+<div class="bg-carbon">
+  <div class="container-ds pt-32 pb-32">
+    <div class="feature-panel corner-cut-md">
+      <h2 class="text-display text-paper" set:html={heading} />
+      {
+        line && <p class="mt-4 max-w-xl text-body-lg text-text-on-dark-muted">{line}</p>
+      }
+      <a href={withBase(ctaHref)} class="btn btn--primary mt-8" data-ds-location="content">
+        {ctaLabel}
+      </a>
+    </div>
+  </div>
+</div>

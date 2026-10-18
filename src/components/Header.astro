@@ -1,0 +1,181 @@
+---
+/*
+ * Header (DESIGN-SPEC 4.1): Carbon ground, 64px tall, hairline bottom
+ * border, compact horizontal lockup in Paper. Nav links are Paper at rest,
+ * underlined with accent on hover and on the current page. Under 768px the
+ * nav collapses into a full-screen Carbon overlay menu with display-size
+ * links and a shift-enter entrance.
+ */
+import { nav, primaryCta } from '../lib/site.config';
+import { withBase } from '../lib/urls';
+
+interface Props {
+  path: string;
+  hideCta?: boolean;
+}
+
+const { path, hideCta = false } = Astro.props;
+
+const normalized = path === '/' ? '/' : path.replace(/\/$/, '');
+const isContactPage = normalized === '/contact' || normalized === '/contact/thank-you';
+const showCta = !hideCta && !isContactPage;
+const ctaHref = withBase(primaryCta.href);
+
+const isActive = (href: string) =>
+  href === '/' ? normalized === '/' : normalized === href || normalized.startsWith(`${href}/`);
+---
+
+<header class="border-b border-grey-800 bg-carbon">
+  <div class="container-ds flex h-16 items-center justify-between gap-6">
+    <a href={withBase('/')} class="flex items-center py-3" aria-label="Digitally Shifted — home">
+      <img
+        src={withBase('/brand/logo/ds-lockup-horizontal-compact-paper.svg')}
+        alt="Digitally Shifted"
+        width="245"
+        height="31"
+        class="h-6 w-auto sm:h-7"
+      />
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Main">
+      {
+        nav.map((item) => (
+          <a
+            href={withBase(item.href)}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+            class:list={[
+              'text-body no-underline hover:underline hover:text-accent underline-offset-4',
+              isActive(item.href) ? 'text-accent underline' : 'text-paper',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden md:block">
+      {
+        showCta && (
+          <a href={ctaHref} class="btn btn--primary btn--compact" data-ds-location="header">
+            {primaryCta.label}
+          </a>
+        )
+      }
+    </div>
+
+    <button
+      id="menu-open"
+      type="button"
+      class="inline-flex items-center gap-2 border-2 border-grey-100 p-3 text-paper md:hidden"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open menu</span>
+      <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true" fill="currentColor">
+        <rect width="20" height="2" y="0" />
+        <rect width="20" height="2" y="6" />
+        <rect width="20" height="2" y="12" />
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!--
+ * Mobile overlay menu: full-screen Carbon, display-size links, close
+ * button top-right, shift-enter entrance (DESIGN-SPEC 4.1).
+ -->
+<div
+  id="mobile-menu"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menu"
+  hidden
+  class="fixed inset-0 z-40 flex flex-col bg-carbon"
+>
+  <div class="container-ds flex h-16 items-center justify-between border-b border-grey-800">
+    <img
+      src={withBase('/brand/logo/ds-lockup-horizontal-compact-paper.svg')}
+      alt="Digitally Shifted"
+      width="245"
+      height="31"
+      class="h-6 w-auto"
+    />
+    <button
+      id="menu-close"
+      type="button"
+      class="border-2 border-grey-100 p-3 text-paper"
+      aria-label="Close menu"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">
+        <path d="M1.6 0 0 1.6 6.4 8 0 14.4 1.6 16 8 9.6 14.4 16 16 14.4 9.6 8 16 1.6 14.4 0 8 6.4Z" />
+      </svg>
+    </button>
+  </div>
+  <nav class="container-ds shift-enter flex flex-1 flex-col justify-center gap-6" aria-label="Mobile">
+    {
+      nav.map((item) => (
+        <a
+          href={withBase(item.href)}
+          aria-current={isActive(item.href) ? 'page' : undefined}
+          class:list={[
+            'text-display font-bold no-underline hover:text-accent',
+            isActive(item.href) ? 'text-accent' : 'text-paper',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    {
+      showCta && (
+        <a href={ctaHref} class="btn btn--primary mt-4 self-start" data-ds-location="header">
+          {primaryCta.label}
+        </a>
+      )
+    }
+  </nav>
+</div>
+
+<script>
+  const openButton = document.getElementById('menu-open');
+  const closeButton = document.getElementById('menu-close');
+  const menu = document.getElementById('mobile-menu');
+
+  function setMenu(open: boolean) {
+    if (!openButton || !closeButton || !menu) return;
+    menu.hidden = !open;
+    openButton.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      closeButton.focus();
+    } else {
+      openButton.focus();
+    }
+  }
+
+  openButton?.addEventListener('click', () => setMenu(true));
+  closeButton?.addEventListener('click', () => setMenu(false));
+
+  document.addEventListener('keydown', (event) => {
+    if (!menu || menu.hidden) return;
+    if (event.key === 'Escape') {
+      setMenu(false);
+      return;
+    }
+    /* Keep Tab focus inside the open menu. */
+    if (event.key === 'Tab') {
+      const focusable = menu.querySelectorAll<HTMLElement>('a[href], button');
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+</script>

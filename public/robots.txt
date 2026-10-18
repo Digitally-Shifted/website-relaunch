@@ -1,0 +1,6 @@
+# Search engines may index the production site. Staging builds carry a
+# noindex meta tag on every page (see BaseLayout).
+User-agent: *
+Allow: /
+
+Sitemap: https://digitallyshifted.com/sitemap-index.xml

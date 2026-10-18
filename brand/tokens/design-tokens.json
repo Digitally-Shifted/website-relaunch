@@ -1,0 +1,466 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Digitally Shifted brand design tokens v4.1. Monochrome core from the legacy CI. Accent: ONE orange, #FD4000 (owner decision 2026-10-18) — supersedes the v3.0/v3.1 soft/core/deep/tint family. Interactive states only, plus large display accents and small UI markers; never on the logo, never body-size text on light grounds. Gradients run on greys, black and white only. The v2.0 indigo, v2.1 monochrome baseline, v3.0 Shift Orange family and v3.1 electric family are all superseded.",
+  "$version": "4.1.0",
+  "color": {
+    "core": {
+      "paper": {
+        "$type": "color",
+        "$value": "#FFFFFF",
+        "$description": "Light ground. Legacy CI fill."
+      },
+      "ink": {
+        "$type": "color",
+        "$value": "#000000",
+        "$description": "Primary dark. Logo Ink variant, text on light. Legacy CI fill."
+      },
+      "slate": {
+        "$type": "color",
+        "$value": "#4D4D4D",
+        "$description": "Secondary logo fill and muted text on light. Legacy CI fill."
+      },
+      "carbon": {
+        "$type": "color",
+        "$value": "#070808",
+        "$description": "Near-black surface. Measured from legacy business card ground."
+      }
+    },
+    "grey": {
+      "50": {
+        "$type": "color",
+        "$value": "#FAFAFA"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#F0F0F0"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#DEDEDE"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#C4C4C4"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#A3A3A3"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#808080"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#4D4D4D",
+        "$description": "= core.slate"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#383838"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#262626"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#141414"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#070808",
+        "$description": "= core.carbon"
+      }
+    },
+    "text": {
+      "onLight": {
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "onLightMuted": {
+        "$type": "color",
+        "$value": "#4D4D4D"
+      },
+      "onDark": {
+        "$type": "color",
+        "$value": "#F0F0F0"
+      },
+      "onDarkMuted": {
+        "$type": "color",
+        "$value": "#A3A3A3"
+      },
+      "onLightLink": {
+        "$type": "color",
+        "$value": "#000000",
+        "$description": "Link text on light grounds, always underlined (Ink — accent fails AA at body size on light)."
+      },
+      "onDarkLink": {
+        "$type": "color",
+        "$value": "#FD4000",
+        "$description": "Link text on dark grounds, always underlined (accent.core)."
+      }
+    },
+    "interactive": {
+      "$description": "Interactive states. Links always underlined on dark grounds; on light grounds links are Ink underlined (the accent measures 3.55:1 on Paper — below AA for body text). Focus rings 2px, always visible, on both grounds.",
+      "linkOnDark": {
+        "$type": "color",
+        "$value": "#FD4000",
+        "$description": "Link text on dark; always underlined. 5.64:1 on Carbon."
+      },
+      "linkOnLight": {
+        "$type": "color",
+        "$value": "#000000",
+        "$description": "Link text on light; always underlined. The accent is too light on Paper for body-size text."
+      },
+      "focusOnDark": {
+        "$type": "color",
+        "$value": "#FD4000",
+        "$description": "2px focus ring on dark grounds. 5.64:1."
+      },
+      "focusOnLight": {
+        "$type": "color",
+        "$value": "#FD4000",
+        "$description": "2px focus ring on light grounds. 3.55:1 — passes the 3:1 UI-component minimum."
+      },
+      "disabledOnDark": {
+        "$type": "color",
+        "$value": "#5A5A5A",
+        "$description": "Disabled controls on dark."
+      },
+      "disabledOnLight": {
+        "$type": "color",
+        "$value": "#A3A3A3",
+        "$description": "Disabled controls on light."
+      }
+    },
+    "accent": {
+      "$description": "The single accent (owner decision 2026-10-18): #FD4000 only. Interactive states, large/bold display accents, 2px focus rings and small square markers. Never on the logo, never decoration, never body-size text on light grounds (3.55:1 on Paper), never white text on the fill (3.55:1).",
+      "core": {
+        "$type": "color",
+        "$value": "#FD4000",
+        "$description": "The only orange. Links and icons on dark (5.64:1 on Carbon). Button fill with Ink text on any ground (5.91:1). Focus rings (2px). Large display accents on light (3.55:1, large/bold only)."
+      }
+    }
+  },
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "$value": [
+        "Raleway",
+        "ui-sans-serif",
+        "system-ui",
+        "Segoe UI",
+        "Arial",
+        "sans-serif"
+      ],
+      "$description": "Raleway variable (SIL OFL). Verified against the legacy wordmark outlines: DIGITALLY = 900, SHIFTED = 300."
+    },
+    "wordmark": {
+      "boldWeight": {
+        "$type": "fontWeight",
+        "$value": 900
+      },
+      "lightWeight": {
+        "$type": "fontWeight",
+        "$value": 300
+      },
+      "wordGapEm": {
+        "$type": "number",
+        "$value": 0.5
+      }
+    },
+    "tagline": {
+      "weight": {
+        "$type": "fontWeight",
+        "$value": 400,
+        "$description": "Thickened from Light 300 per owner direction (2026-10-18)."
+      },
+      "trackingEm": {
+        "$type": "number",
+        "$value": 0.65
+      },
+      "capHeightRatio": {
+        "$type": "number",
+        "$value": 0.2,
+        "$description": "Tagline cap = 0.20 x wordmark cap. Space above = 0.78 x cap. Vertical lockup only."
+      }
+    }
+  },
+  "typography": {
+    "$description": "Ramp ratio 1.25 from 16px base. Line heights in unitless multiples.",
+    "displayXl": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": "4.75rem",
+        "lineHeight": "1.05",
+        "fontWeight": 900,
+        "letterSpacing": "-0.015em"
+      }
+    },
+    "display": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": "3rem",
+        "lineHeight": "1.08",
+        "fontWeight": 900,
+        "letterSpacing": "-0.01em"
+      }
+    },
+    "h1": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": "2.25rem",
+        "lineHeight": "1.12",
+        "fontWeight": 800
+      }
+    },
+    "h2": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": "1.75rem",
+        "lineHeight": "1.18",
+        "fontWeight": 700
+      }
+    },
+    "h3": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": "1.375rem",
+        "lineHeight": "1.25",
+        "fontWeight": 700
+      }
+    },
+    "h4": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": "1.125rem",
+        "lineHeight": "1.35",
+        "fontWeight": 600
+      }
+    },
+    "bodyLg": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": "1.125rem",
+        "lineHeight": "1.6",
+        "fontWeight": 400
+      }
+    },
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": "1rem",
+        "lineHeight": "1.65",
+        "fontWeight": 400
+      }
+    },
+    "bodySm": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": "0.875rem",
+        "lineHeight": "1.55",
+        "fontWeight": 400
+      }
+    },
+    "caption": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": "0.8125rem",
+        "lineHeight": "1.4",
+        "fontWeight": 500
+      }
+    },
+    "eyebrow": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": "0.8125rem",
+        "lineHeight": "1",
+        "fontWeight": 500,
+        "letterSpacing": "0.32em",
+        "textTransform": "uppercase"
+      },
+      "$description": "Derived from the legacy DIGITAL AGENCY tagline treatment."
+    }
+  },
+  "space": {
+    "$description": "4px base grid.",
+    "1": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "7": {
+      "$type": "dimension",
+      "$value": "48px"
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "64px"
+    },
+    "9": {
+      "$type": "dimension",
+      "$value": "96px"
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "128px"
+    },
+    "11": {
+      "$type": "dimension",
+      "$value": "192px"
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "256px"
+    }
+  },
+  "radius": {
+    "$description": "The mark has no curves. Sharp corners are the default. Pills are for tags and avatars only.",
+    "none": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "9999px"
+    }
+  },
+  "cornerCut": {
+    "$description": "Signature 45-degree cut, from the monogram notch (19/129 of the square). Apply to the top-right and bottom-left corners.",
+    "sm": {
+      "$type": "dimension",
+      "$value": "6px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "10px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "16px"
+    }
+  },
+  "shadow": {
+    "raisedDark": {
+      "$type": "shadow",
+      "$value": "0 2px 8px rgba(0,0,0,0.35)"
+    },
+    "overlayDark": {
+      "$type": "shadow",
+      "$value": "0 8px 32px rgba(0,0,0,0.5)"
+    },
+    "raisedLight": {
+      "$type": "shadow",
+      "$value": "0 1px 3px rgba(7,8,8,0.12)"
+    }
+  },
+  "motion": {
+    "$description": "The shift: movement enters on the 45-degree diagonal, like the mark.",
+    "durationFast": {
+      "$type": "duration",
+      "$value": "120ms"
+    },
+    "durationBase": {
+      "$type": "duration",
+      "$value": "200ms"
+    },
+    "durationSlow": {
+      "$type": "duration",
+      "$value": "320ms"
+    },
+    "durationReveal": {
+      "$type": "duration",
+      "$value": "560ms"
+    },
+    "easingStandard": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.2,
+        0,
+        0,
+        1
+      ]
+    },
+    "shiftEnter": {
+      "$type": "string",
+      "$value": "translate(-8px, 8px) -> translate(0,0), opacity 0 -> 1"
+    }
+  },
+  "layout": {
+    "containerMax": {
+      "$type": "dimension",
+      "$value": "1200px"
+    },
+    "gridColumns": {
+      "$type": "number",
+      "$value": 12
+    },
+    "gutter": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "pageMarginSm": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "pageMarginLg": {
+      "$type": "dimension",
+      "$value": "64px"
+    },
+    "sectionSpacing": {
+      "$type": "dimension",
+      "$value": "96px"
+    }
+  },
+  "logo": {
+    "clearSpaceUnit": {
+      "$type": "string",
+      "$value": "one bracket arm: 15% of mark side, or 9% of lockup height"
+    },
+    "minSize": {
+      "markPx": 24,
+      "markMm": 8,
+      "lockupHorizontalPx": 140,
+      "lockupHorizontalMm": 35,
+      "lockupCompactPx": 120,
+      "lockupCompactMm": 30
+    },
+    "appIconMarkRatio": {
+      "$type": "number",
+      "$value": 0.6,
+      "$description": "Measured 59.6% from legacy 1x/Artboard 1.png"
+    }
+  }
+}

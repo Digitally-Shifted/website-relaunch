@@ -1,0 +1,25 @@
+---
+/*
+ * Mobile action bar (conversion spec 2.3): fixed to the bottom under 768px
+ * with two equal Call and WhatsApp buttons, always visible while scrolling.
+ * BaseLayout hides it on /contact, /contact/thank-you and /privacy.
+ * The page adds bottom padding so the bar never covers footer content.
+ */
+import { site } from '../lib/site.config';
+---
+
+<div
+  class="mobile-action-bar fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-px border-t border-grey-800 bg-carbon md:hidden"
+>
+  <a
+    href={site.phoneHref}
+    class="btn btn--secondary-dark"
+    data-ds-location="mobile_bar">Call</a
+  >
+  <a
+    href={site.whatsappHref}
+    class="btn btn--primary"
+    data-ds-location="mobile_bar"
+    rel="noopener">WhatsApp us</a
+  >
+</div>

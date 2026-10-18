@@ -1,0 +1,54 @@
+---
+/*
+ * Page hero (DESIGN-SPEC 5.1): eyebrow, display-xl statement with the
+ * 900/300 pairing, body-lg opener, primary button. Below 768px the
+ * statement scales down one ramp step (DESIGN-SPEC 5.2).
+ */
+import { withBase } from '../lib/urls';
+
+interface Props {
+  eyebrow: string;
+  /** Statement content as HTML with strong/em for the 900/300 pairing. */
+  statement: string;
+  opener: string;
+  /** Primary CTA href; defaults to the site primary CTA. */
+  ctaHref?: string;
+  ctaLabel?: string;
+  /** Optional secondary text link under the button row. */
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  eyebrow,
+  statement,
+  opener,
+  ctaHref = '/contact?need=quote',
+  ctaLabel = 'Get a quote',
+  secondaryHref,
+  secondaryLabel,
+} = Astro.props;
+---
+
+<div class="texture-lines bg-carbon">
+  <div class="container-ds pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
+    <p class="text-eyebrow uppercase text-text-on-dark-muted">{eyebrow}</p>
+    <h1
+      class="mt-6 max-w-4xl text-display md:text-display-xl text-paper"
+      set:html={statement}
+    />
+    <p class="mt-6 max-w-xl text-body-lg text-text-on-dark-muted">{opener}</p>
+    <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+      <a href={withBase(ctaHref)} class="btn btn--primary" data-ds-location="content">
+        {ctaLabel}
+      </a>
+      {
+        secondaryHref && secondaryLabel && (
+          <a href={withBase(secondaryHref)} class="link-dark text-body">
+            {secondaryLabel}
+          </a>
+        )
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+---
+/*
+ * Footer (DESIGN-SPEC 4.2): Ink ground, hairline top border, vertical
+ * lockup with tagline, nav columns at body-sm, legal line at caption size.
+ * The contact block keeps all four routes always visible (conversion
+ * spec 2.2). The build marker block is the DIG-64 staging verification
+ * contract: the deploy check greps for "Deployed build".
+ */
+import { nav, site } from '../lib/site.config';
+import { withBase } from '../lib/urls';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-grey-800 bg-ink text-text-on-dark">
+  <div class="container-ds section">
+    <div class="grid gap-12 md:grid-cols-[minmax(0,20rem)_1fr]">
+      <div>
+        <img
+          src={withBase('/brand/logo/ds-lockup-vertical-paper.svg')}
+          alt={`Digitally Shifted — ${site.tagline}`}
+          width="200"
+          height="28"
+          class="h-auto w-48"
+        />
+        <p class="mt-6 text-body-sm text-text-on-dark-muted">
+          Websites that work hard for South African businesses. Designed, hosted
+          and managed by one team.
+        </p>
+      </div>
+
+      <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+        <nav aria-label="Footer">
+          <h2 class="text-eyebrow uppercase text-grey-400">Site</h2>
+          <ul class="mt-4 space-y-2">
+            {
+              nav.map((item) => (
+                <li>
+                  <a
+                    href={withBase(item.href)}
+                    class="text-body-sm text-grey-400 no-underline hover:text-paper hover:underline"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+            <li>
+              <a
+                href={withBase('/privacy')}
+                class="text-body-sm text-grey-400 no-underline hover:text-paper hover:underline"
+              >
+                Privacy
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div>
+          <h2 class="text-eyebrow uppercase text-grey-400">Contact</h2>
+          <ul class="mt-4 space-y-2">
+            <li>
+              <a
+                href={site.phoneHref}
+                class="link-dark text-body-sm"
+                data-ds-location="footer">Call {site.phoneDisplay}</a
+              >
+            </li>
+            <li>
+              <a
+                href={site.whatsappHref}
+                class="link-dark text-body-sm"
+                data-ds-location="footer"
+                rel="noopener">WhatsApp us</a
+              >
+            </li>
+            <li>
+              <a href={`mailto:${site.email}`} class="link-dark text-body-sm">{site.email}</a>
+            </li>
+            <li>
+              <a href={site.url} class="link-dark text-body-sm">{site.domain}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 border-t border-grey-800 pt-8">
+      <p class="text-caption text-grey-500">
+        &copy; {year} {site.name}. All rights reserved.
+      </p>
+      <p class="text-caption text-grey-500">
+        Deployed build: <strong data-build-sha>__BUILD_SHA__</strong><br />
+        Build time (UTC): <strong>__BUILD_TIME__</strong><br />
+        Environment: <strong>__BUILD_ENV__</strong>
+      </p>
+    </div>
+  </div>
+</footer>
