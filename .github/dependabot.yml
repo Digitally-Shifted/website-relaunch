@@ -1,0 +1,16 @@
+# Weekly update PRs for the GitHub Actions used by the workflows.
+# Cadence and patch classes: docs/dependency-audit.md.
+# Minor and patch updates are grouped. Major upgrades stay one change each.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
