@@ -2,7 +2,8 @@
 
 This document gives the commands, checks, and rollback steps for the staging
 and production deploy paths. Owner: DIG-64. Related: DIG-15, DIG-16 (page
-implementation), DIG-20 (go-live), DIG-34 (release process).
+implementation), DIG-20 (go-live), DIG-78 (release process,
+`docs/release-process.md`).
 
 ## Environments
 
