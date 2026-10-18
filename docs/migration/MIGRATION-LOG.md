@@ -152,16 +152,17 @@ alt on `AI-Trends-2023` (row 5 issue) and the off-topic web-dev thumbnail
 
 ## 6. Issues created by this migration
 
-1. Home page rewrite (Critical) — copy expansion, 8→4 service card wiring,
-   client-logo permission check, hero videos.
-2. Privacy policy rewrite (Critical) — POPIA-aware text, client sign-off,
-   keep `noindex`.
-3. Trends post rewrite (Secondary) — refresh to current year with local
-   examples; fallback drop + 301 to `/blog/`.
-4. ROI post light rewrite (Secondary) — ~800 words, South African SME
-   example, end CTA.
-5. Paid Advertising content decision (High) — placement or retirement; 301
-   for row 9; feeds DIG-18.
-6. Statistics verification (High) — hosting post's Google/Symantec claims,
-   guide source links.
-7. Pillar guide content upgrades (Low) — author byline, content-upgrade CTA.
+- **DIG-79** (Critical): home page rewrite — copy expansion, 8→4 service
+  card wiring, client-logo permission check, hero videos.
+- **DIG-80** (Critical): privacy policy rewrite — POPIA-aware text, client
+  sign-off, keep `noindex`.
+- **DIG-81** (High): trends post rewrite — refresh to current year with
+  local examples; fallback drop + 301 to `/blog/`.
+- **DIG-82** (High): ROI post light rewrite — ~800 words, South African SME
+  example, end CTA.
+- **DIG-83** (High): Paid Advertising content decision — placement or
+  retirement; 301 for row 9; feeds DIG-18.
+- **DIG-84** (High): statistics verification — hosting post's
+  Google/Symantec claims, guide source links.
+- **DIG-85** (Low): pillar guide content upgrades — author byline,
+  content-upgrade CTA.
