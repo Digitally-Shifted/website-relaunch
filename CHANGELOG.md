@@ -40,6 +40,9 @@ apply to production releases only. Staging has no versions.
 
 - The build gate now also verifies the redirect map
   (`scripts/build-site.sh`, DIG-91).
+- The form backend accepts cPanel/Passenger mounts: `MOUNT_PATH=/api`
+  makes both the prefixed and the stripped request path reach the same
+  routes (DIG-91).
 
 ### Fixed
 

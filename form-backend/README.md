@@ -52,17 +52,21 @@ node --test form-backend/test/                    # 14 end-to-end tests
 ## Deploy and host wiring (go-live, DIG-91)
 
 The static site and this service share one origin: the host serves the
-built site and routes `/api/*` to this process. Per-host steps land in
-`docs/go-live-runbook.md` step 3 once the owner names the production host
-(the decision is open — "another host", unnamed).
+built site and routes `/api/*` to this process. Host decided
+2026-10-18: the company **WHM/cPanel** server. Concrete steps live in
+`docs/go-live-runbook.md` step 3; the short version:
 
-1. Run the service under a process manager (systemd user unit works).
-2. Reverse-proxy `/api/*` to `PORT`; pass `X-Forwarded-For` and set
-   `TRUST_PROXY=true`.
-3. Keep `/healthz` internal or allow it — the monitoring checker can use
-   it as a second signal.
-4. Seed the env file from the table above (`MAILER=agentmail` with the
-   company AgentMail inbox, or `sendmail` where the host provides it).
+1. cPanel Application Manager (Setup Node.js App): application root with
+   this directory, application URL `/api`, startup file `server.mjs`,
+   newest Node the panel offers (>= 22.5 for `node:sqlite`; 24 preferred).
+2. Set `MOUNT_PATH=/api` (the router accepts the mount kept or stripped —
+   both request shapes reach the same routes), `TRUST_PROXY=true`,
+   `MAILER=sendmail` (cPanel supplies sendmail and SPF/DKIM under Email
+   Deliverability), `MAIL_TO`, `COOKIE_SECRET`, `LEAD_COOKIE_SECURE=true`.
+3. Verify `GET /api/healthz` answers `{"ok":true}` and one test enquiry
+   returns 303, stores a row, and emails the owner.
+4. Non-cPanel hosts: run under a process manager, reverse-proxy `/api/*`
+   to `PORT`, pass `X-Forwarded-For`, set `TRUST_PROXY=true`.
 
 Staging (GitHub Pages) cannot run this service: the form's POST 404s
 there. That is expected — staging is the rehearsal environment, and the

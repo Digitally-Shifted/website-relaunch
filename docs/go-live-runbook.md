@@ -24,11 +24,18 @@ DNS switch in step 6. Nothing below touches the old site before that step.
 | Contact form | Built and verified end to end (14 backend tests + 14 real-browser checks). Ships with the host deployment; go-live waits on it (owner decision 2026-10-18). | step 3, `form-backend/` |
 | Production deploy | Release steps in step 4; needs a reviewer approval in GitHub and the owner's go (owner decision 2026-10-18: wait for the go). | step 4 |
 
-Open decisions that gate go-live (owner): the production host name and
-access (owner chose "another host", unnamed — steps 3, 5, 6 adapt once
-named), the production reviewer set (step 4), and the release go signal.
-Decided on 2026-10-18: the contact form must work end to end before
-go-live (it does — see `form-backend/`), and GA4 stays dormant at launch.
+Host (decided 2026-10-18): the company's **WHM/cPanel** server — Apache
+compatible, so the generated `.htaccess` works as-is and email can use the
+host's own sendmail with cPanel's SPF/DKIM. Extra gate from the owner:
+**nothing goes live before the owner approves and reviews the deployed
+site first** — step 3 ends with a review on a preview subdomain, and the
+DNS switch (step 6) happens only after that approval in writing.
+
+Open items (owner): the second production reviewer's GitHub username (the
+`mj-adendorff` placeholder was declined; a name is needed to finish the
+A4 fix), and the release go. Decided on 2026-10-18: the contact form must
+work end to end before go-live (it does — see `form-backend/`), and GA4
+stays dormant at launch.
 
 ## 1. Preconditions
 
@@ -58,51 +65,59 @@ go-live (it does — see `form-backend/`), and GA4 stays dormant at launch.
    git push origin v1.0.0
    ```
 
-## 3. Hosting decision and host configuration
+## 3. Hosting setup on WHM/cPanel
 
-The owner chose "another host" (unnamed as of 2026-10-18). The steps below
-are host-neutral; the concrete panel commands land here once the host is
-named. Two needs drive the choice: static file serving for the site, and a
-Node >= 24 process for the form backend (`form-backend/`) reachable at
-`/api/*` on the same origin.
+The host is the company WHM/cPanel server (decided 2026-10-18). Apache
+compatible: the generated `.htaccess` carries the redirects, 410s, custom
+404, and HTTPS canonicalization with no translation. The review gate in
+3.9 keeps the old WordPress site live until the owner has approved the new
+site on the preview subdomain.
 
-1. Choose the document root for the new site on the host.
+1. In cPanel, create the preview subdomain
+   `new.digitallyshifted.com` with its own document root
+   (for example `~/new.digitallyshifted.com`). All review happens there;
+   the apex keeps serving the old site.
 2. Upload the release artifact and verify it:
 
    ```sh
    sha256sum -c site-<short-sha>.tar.gz.sha256
-   tar xzf site-<short-sha>.tar.gz -C <document-root>
+   tar xzf site-<short-sha>.tar.gz -C ~/new.digitallyshifted.com
    ```
 
-3. Install the redirect/host config. Two sources:
+3. Generate and upload `.htaccess` into the document root (301s, WordPress
+   410s, media redirects, HTTPS canonicalization, `ErrorDocument 404`,
+   `Options -Indexes`):
 
-   - Apache-compatible hosts (LiteSpeed, Apache, LiteSpeed via Plesk):
-     generate and install `.htaccess` from the map (301s, WordPress 410s,
-     media redirects, HTTPS canonicalization, `ErrorDocument 404`,
-     `Options -Indexes`):
+   ```sh
+   python3 docs/migration/tools/generate_redirects.py --out .htaccess
+   ```
 
-     ```sh
-     python3 docs/migration/tools/generate_redirects.py --out .htaccess
-     ```
+4. Deploy the form backend as a cPanel Node.js app (Application Manager /
+   Setup Node.js App):
 
-   - nginx or other: translate the same rules from
-     `docs/migration/redirect-map.json`; the map is the source of truth
-     either way.
+   1. Application root: a directory outside the document root (for
+      example `~/form-backend`); upload `form-backend/` there.
+   2. Application URL: `/api`. Startup file: `server.mjs`.
+   3. Node version: the newest the panel offers, at least 22.5
+      (`node:sqlite`). Node 24 per `.nvmrc` if the panel has it.
+   4. Environment variables: `MOUNT_PATH=/api`, `TRUST_PROXY=true`,
+      `MAILER=sendmail` (cPanel provides the sendmail binary and manages
+      SPF/DKIM under Email Deliverability), `MAIL_TO`, `COOKIE_SECRET`,
+      `LEAD_COOKIE_SECURE=true`. Full table: `form-backend/README.md`.
+   5. Start the app, then verify both mount behaviours from the server:
 
-4. Deploy the form backend (owner decision: launch waits on the form):
+      ```sh
+      curl -s https://new.digitallyshifted.com/api/healthz
+      curl -s -X POST https://new.digitallyshifted.com/api/contact \
+        -d 'name=Test&email=test@example.com&need=general&message=check&form_started_at=0&form_location=/contact' \
+        -o /dev/null -w '%{http_code}\n'   # expect 303
+      ```
 
-   1. Run `node form-backend/server.mjs` under a process manager
-      (systemd user unit is enough) with `HOST=127.0.0.1`.
-   2. Reverse-proxy `/api/*` to its port; pass `X-Forwarded-For` and set
-      `TRUST_PROXY=true`. Full env table: `form-backend/README.md`.
-   3. Set `MAILER` (`agentmail` with the company inbox, or `sendmail`
-      where the host provides it), `MAIL_TO`, and `COOKIE_SECRET`.
-   4. Verify: `POST /api/contact` with a test enquiry answers 303, stores
-      the row, and the owner email arrives.
+      A test lead must appear in the leads table and reach
+      `baruch@digitallyshifted.com`.
 
-5. Add the security headers (security review C3). For Apache-compatible
-   hosts add to `.htaccess`; nginx uses `add_header`. Keep them in step
-   with any script-origin change:
+5. Add the security headers (security review C3). Apache-compatible: add
+   to `.htaccess`. Keep them in step with any script-origin change:
 
    ```apache
    <IfModule mod_headers.c>
@@ -114,7 +129,21 @@ Node >= 24 process for the form backend (`form-backend/`) reachable at
    </IfModule>
    ```
 
-5. Turn on HTTPS for the hostname (step 5) before the DNS switch.
+9. **Owner review gate.** With the preview subdomain serving the site
+   (statics + redirects + headers + form), send the owner the preview URL
+   and the smoke output:
+
+   ```sh
+   bash scripts/smoke-test.sh https://new.digitallyshifted.com production
+   ```
+
+   The owner reviews and approves in writing. Checklist for the review:
+   every page, the form journey (submit a real enquiry, confirm the
+   thank-you page and the email), the redirects, the 404 page, mobile
+   views. The DNS switch (step 6) waits for that approval. The old site
+   stays live and untouched the whole time.
+
+6. Turn on HTTPS for the hostname (step 5) before the DNS switch.
 
 ## 4. Production release
 
@@ -137,10 +166,11 @@ matter as long as the uploaded bytes match the release checksum (G4).
 
 ## 5. TLS certificate
 
-1. In Plesk (or the host panel), issue a Let's Encrypt certificate for
-   `digitallyshifted.com` and `www.digitallyshifted.com` while the host
-   still serves the old site. Issue it before the DNS switch so the new
-   records land on a working TLS endpoint.
+1. In cPanel (SSL/TLS Status or AutoSSL), issue a certificate for
+   `new.digitallyshifted.com` first — the review in 3.9 runs over HTTPS.
+   Then issue for `digitallyshifted.com` and `www.digitallyshifted.com`
+   while the host still serves the old site. Issue before the DNS switch
+   so the new records land on a working TLS endpoint.
 2. Enable "Redirect from HTTP to HTTPS" at the panel level as a backstop;
    the `.htaccess` rule already enforces it.
 3. Verify on the host before cutover (hosts file or direct IP):
@@ -153,6 +183,10 @@ Expiry monitoring is already active: the DIG-76 checker alerts 14 days
 before any certificate in `monitoring/sites.txt` expires.
 
 ## 6. DNS switch
+
+**Precondition: the owner's written approval of the preview review
+(step 3.9). Nothing goes live before that approval — owner decision
+2026-10-18.**
 
 Do this in a low-traffic window. The old site stays reachable until the
 records flip.

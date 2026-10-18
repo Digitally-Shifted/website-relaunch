@@ -327,3 +327,37 @@ test('retry loop re-sends a lead whose first mail attempt failed', async () => {
     await rm(stubDir, { recursive: true, force: true });
   }
 });
+
+test('MOUNT_PATH accepts both the stripped and the full request path', async () => {
+  const svc = createService({
+    dbPath: ':memory:', cookieSecure: false, retryIntervalMs: 60_000,
+    mailer: 'stub', stubDir: mkdtempSync(join(tmpdir(), 'ds-mail-')),
+    ipSalt: 'test-salt', mountPath: '/api',
+  });
+  await new Promise((resolve) => svc.server.listen(0, '127.0.0.1', resolve));
+  const base = `http://127.0.0.1:${svc.server.address().port}`;
+  try {
+    // Host keeps the mount prefix: /api/healthz and /api/contact work.
+    const h1 = await fetch(`${base}/api/healthz`);
+    assert.equal(h1.status, 200);
+    const r1 = await fetch(`${base}/api/contact`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(validFields()).toString(),
+      redirect: 'manual',
+    });
+    assert.equal(r1.status, 303);
+    // Host strips the mount: /healthz and /contact reach the same routes.
+    const h2 = await fetch(`${base}/healthz`);
+    assert.equal(h2.status, 200);
+    const r2 = await fetch(`${base}/contact`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(validFields()).toString(),
+      redirect: 'manual',
+    });
+    assert.equal(r2.status, 303);
+  } finally {
+    stopService(svc);
+  }
+});

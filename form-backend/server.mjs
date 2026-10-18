@@ -18,7 +18,10 @@
  *
  * Env: PORT, HOST, DB_PATH, BASE_PATH, TRUST_PROXY, LEAD_COOKIE_SECURE,
  *      COOKIE_SECRET, MAILER, MAIL_TO, MAIL_FROM, MAIL_STUB_DIR,
- *      SENDMAIL_PATH, AGENTMAIL_API_KEY, AGENTMAIL_INBOX, SITE_ORIGIN.
+ *      SENDMAIL_PATH, AGENTMAIL_API_KEY, AGENTMAIL_INBOX, SITE_ORIGIN,
+ *      MOUNT_PATH (cPanel/Passenger: the Application URL the host mounts
+ *      this app under, for example /api — the host strips it from some
+ *      requests and not others, so the router accepts both forms).
  */
 import { createServer } from 'node:http';
 import { randomBytes, randomUUID } from 'node:crypto';
@@ -67,6 +70,7 @@ export function defaultConfig(env = process.env) {
     agentmailApiKey: env.AGENTMAIL_API_KEY,
     agentmailInbox: env.AGENTMAIL_INBOX,
     siteOrigin: env.SITE_ORIGIN || 'https://digitallyshifted.com',
+    mountPath: (env.MOUNT_PATH || '').replace(/\/$/, ''),
     retryIntervalMs: 0, // 0 keeps the production default (5 min); tests set a small value
   };
 }
@@ -183,7 +187,17 @@ export function createService(overrides = {}) {
 
   const server = createServer((req, res) => {
     try {
-      const path = (req.url || '/').split('?')[0];
+      let path = (req.url || '/').split('?')[0];
+      /* cPanel/Passenger mounts: some hosts hand the app the full path
+       * (/api/contact), some strip the Application URL (/contact). Accept
+       * both so the same env works everywhere. */
+      if (config.mountPath) {
+        if (path.startsWith(`${config.mountPath}/`)) {
+          path = path.slice(config.mountPath.length);
+        }
+        /* Host stripped the mount: the contact route arrives as /contact. */
+        if (path === '/contact') path = '/api/contact';
+      }
       if (path === '/healthz') {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ ok: true }));
