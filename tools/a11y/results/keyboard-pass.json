@@ -1,0 +1,1641 @@
+{
+  "generatedAt": "2026-10-18T19:35:55.801Z",
+  "findings": [
+    {
+      "page": "home",
+      "check": "S3 skip link first and reaches main",
+      "ok": false,
+      "detail": "skip link focused, Enter lands in main: false"
+    },
+    {
+      "page": "home",
+      "check": "K5 focus not obscured (2.4.11)",
+      "ok": false,
+      "detail": "mobile action bar covers focused a \"Call\""
+    },
+    {
+      "page": "home",
+      "check": "K5 focus not obscured (2.4.11)",
+      "ok": false,
+      "detail": "mobile action bar covers focused a \"WhatsApp us\""
+    },
+    {
+      "page": "home",
+      "check": "A10 menu opens with expanded state",
+      "ok": true,
+      "detail": "aria-expanded=true, focus in menu: true"
+    },
+    {
+      "page": "home",
+      "check": "K6 focus stays inside open menu",
+      "ok": true,
+      "detail": "after 2 tabs focus in menu: true"
+    },
+    {
+      "page": "home",
+      "check": "K7 Escape closes menu and returns focus",
+      "ok": true,
+      "detail": "hidden=true, focus on trigger=true, aria-expanded=false"
+    },
+    {
+      "page": "services-hub",
+      "check": "S3 skip link first and reaches main",
+      "ok": false,
+      "detail": "skip link focused, Enter lands in main: false"
+    },
+    {
+      "page": "services-hub",
+      "check": "K5 focus not obscured (2.4.11)",
+      "ok": false,
+      "detail": "mobile action bar covers focused a \"Call\""
+    },
+    {
+      "page": "services-hub",
+      "check": "K5 focus not obscured (2.4.11)",
+      "ok": false,
+      "detail": "mobile action bar covers focused a \"WhatsApp us\""
+    },
+    {
+      "page": "services-hub",
+      "check": "A10 menu opens with expanded state",
+      "ok": true,
+      "detail": "aria-expanded=true, focus in menu: true"
+    },
+    {
+      "page": "services-hub",
+      "check": "K6 focus stays inside open menu",
+      "ok": true,
+      "detail": "after 2 tabs focus in menu: true"
+    },
+    {
+      "page": "services-hub",
+      "check": "K7 Escape closes menu and returns focus",
+      "ok": true,
+      "detail": "hidden=true, focus on trigger=true, aria-expanded=false"
+    },
+    {
+      "page": "services-hub",
+      "check": "K1 dialog opens from keyboard",
+      "ok": true,
+      "detail": "open=true, focus inside=true"
+    },
+    {
+      "page": "services-hub",
+      "check": "K6 focus stays inside dialog",
+      "ok": true,
+      "detail": "after 6 tabs focus in dialog: true"
+    },
+    {
+      "page": "services-hub",
+      "check": "K7 Escape closes dialog and returns focus",
+      "ok": true,
+      "detail": "closed=true, focus on trigger=true"
+    },
+    {
+      "page": "faq",
+      "check": "S3 skip link first and reaches main",
+      "ok": false,
+      "detail": "skip link focused, Enter lands in main: false"
+    },
+    {
+      "page": "faq",
+      "check": "K5 focus not obscured (2.4.11)",
+      "ok": false,
+      "detail": "mobile action bar covers focused a \"Call\""
+    },
+    {
+      "page": "faq",
+      "check": "K5 focus not obscured (2.4.11)",
+      "ok": false,
+      "detail": "mobile action bar covers focused a \"WhatsApp us\""
+    },
+    {
+      "page": "faq",
+      "check": "A10 menu opens with expanded state",
+      "ok": true,
+      "detail": "aria-expanded=true, focus in menu: true"
+    },
+    {
+      "page": "faq",
+      "check": "K6 focus stays inside open menu",
+      "ok": true,
+      "detail": "after 2 tabs focus in menu: true"
+    },
+    {
+      "page": "faq",
+      "check": "K7 Escape closes menu and returns focus",
+      "ok": true,
+      "detail": "hidden=true, focus on trigger=true, aria-expanded=false"
+    },
+    {
+      "page": "contact",
+      "check": "S3 skip link first and reaches main",
+      "ok": false,
+      "detail": "skip link focused, Enter lands in main: false"
+    },
+    {
+      "page": "contact",
+      "check": "A10 menu opens with expanded state",
+      "ok": true,
+      "detail": "aria-expanded=true, focus in menu: true"
+    },
+    {
+      "page": "contact",
+      "check": "K6 focus stays inside open menu",
+      "ok": true,
+      "detail": "after 2 tabs focus in menu: true"
+    },
+    {
+      "page": "contact",
+      "check": "K7 Escape closes menu and returns focus",
+      "ok": true,
+      "detail": "hidden=true, focus on trigger=true, aria-expanded=false"
+    }
+  ],
+  "run": {
+    "generatedAt": "2026-10-18T19:35:55.801Z",
+    "baseUrl": "http://localhost:4173",
+    "pages": [
+      {
+        "name": "home",
+        "path": "/",
+        "width": 375,
+        "steps": [
+          {
+            "phase": "skip-link",
+            "step": 1,
+            "tag": "a",
+            "id": null,
+            "cls": "skip-link",
+            "text": "Skip to content",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 162,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 1,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--primary",
+            "text": "Get a quote",
+            "rect": {
+              "x": 24,
+              "y": 475,
+              "w": 136,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 2,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body",
+            "text": "See what is included",
+            "rect": {
+              "x": 192,
+              "y": 486,
+              "w": 153,
+              "h": 26
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 3,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--primary",
+            "text": "Get a quote",
+            "rect": {
+              "x": 24,
+              "y": 1891,
+              "w": 136,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 4,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--primary mt-10",
+            "text": "Get a quote",
+            "rect": {
+              "x": 73,
+              "y": 3029,
+              "w": 136,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 5,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--primary mt-8",
+            "text": "Get a quote",
+            "rect": {
+              "x": 73,
+              "y": 3816,
+              "w": 136,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 6,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Home",
+            "rect": {
+              "x": 24,
+              "y": 4334,
+              "w": 40,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 7,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Services",
+            "rect": {
+              "x": 24,
+              "y": 4366,
+              "w": 55,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 8,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "About",
+            "rect": {
+              "x": 24,
+              "y": 4396,
+              "w": 39,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 9,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Blog",
+            "rect": {
+              "x": 24,
+              "y": 4428,
+              "w": 30,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 10,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "FAQ",
+            "rect": {
+              "x": 24,
+              "y": 4460,
+              "w": 27,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 11,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Contact",
+            "rect": {
+              "x": 24,
+              "y": 4492,
+              "w": 51,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 12,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Privacy",
+            "rect": {
+              "x": 24,
+              "y": 4524,
+              "w": 47,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 13,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "Call +27 63 171 8750",
+            "rect": {
+              "x": 24,
+              "y": 4625,
+              "w": 126,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 14,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "WhatsApp us",
+            "rect": {
+              "x": 24,
+              "y": 4655,
+              "w": 87,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 15,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "baruch@digitallyshifted.com",
+            "rect": {
+              "x": 24,
+              "y": 4687,
+              "w": 183,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 16,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "digitallyshifted.com",
+            "rect": {
+              "x": 24,
+              "y": 4719,
+              "w": 126,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 17,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--secondary-dark",
+            "text": "Call",
+            "rect": {
+              "x": 0,
+              "y": 852,
+              "w": 187,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": true
+          },
+          {
+            "phase": "walk",
+            "step": 18,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--primary",
+            "text": "WhatsApp us",
+            "rect": {
+              "x": 188,
+              "y": 852,
+              "w": 187,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": true
+          },
+          {
+            "phase": "walk",
+            "step": 19,
+            "tag": "body",
+            "none": true,
+            "coveredByActionBar": true
+          },
+          {
+            "phase": "menu-open",
+            "expanded": "true",
+            "focusInMenu": true,
+            "firstInMenu": {
+              "tag": "button",
+              "id": "menu-close",
+              "cls": "border-2 border-grey-100 p-3",
+              "text": "Close menu",
+              "rect": {
+                "x": 307,
+                "y": 10,
+                "w": 44,
+                "h": 44
+              },
+              "ariaExpanded": null,
+              "outline": "2px solid"
+            }
+          },
+          {
+            "phase": "menu-close",
+            "closedHidden": true,
+            "backOnTrigger": true,
+            "expAfter": "false"
+          }
+        ]
+      },
+      {
+        "name": "services-hub",
+        "path": "/services/",
+        "width": 375,
+        "steps": [
+          {
+            "phase": "skip-link",
+            "step": 1,
+            "tag": "a",
+            "id": null,
+            "cls": "skip-link",
+            "text": "Skip to content",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 162,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 1,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--primary",
+            "text": "Get a quote",
+            "rect": {
+              "x": 24,
+              "y": 556,
+              "w": 136,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 2,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body",
+            "text": "About Digitally Shifted",
+            "rect": {
+              "x": 24,
+              "y": 620,
+              "w": 165,
+              "h": 26
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 3,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--secondary-dark",
+            "text": "Get a quote",
+            "rect": {
+              "x": 24,
+              "y": 1180,
+              "w": 140,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 4,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark mt-4 block",
+            "text": "Read about website development",
+            "rect": {
+              "x": 24,
+              "y": 1241,
+              "w": 327,
+              "h": 26
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 5,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--secondary-dark",
+            "text": "Get a quote",
+            "rect": {
+              "x": 24,
+              "y": 1781,
+              "w": 140,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 6,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark mt-4 block",
+            "text": "Read about domains and hosting",
+            "rect": {
+              "x": 24,
+              "y": 1845,
+              "w": 327,
+              "h": 26
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 7,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--primary",
+            "text": "Get a quote",
+            "rect": {
+              "x": 73,
+              "y": 2652,
+              "w": 136,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 8,
+            "tag": "button",
+            "id": null,
+            "cls": "link-dark text-body",
+            "text": "See what the plan covers",
+            "rect": {
+              "x": 73,
+              "y": 2716,
+              "w": 186,
+              "h": 26
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 9,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--secondary-dark",
+            "text": "Get a quote",
+            "rect": {
+              "x": 24,
+              "y": 3277,
+              "w": 140,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 10,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Home",
+            "rect": {
+              "x": 24,
+              "y": 3713,
+              "w": 40,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 11,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Services",
+            "rect": {
+              "x": 24,
+              "y": 3745,
+              "w": 55,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 12,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "About",
+            "rect": {
+              "x": 24,
+              "y": 3777,
+              "w": 39,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 13,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Blog",
+            "rect": {
+              "x": 24,
+              "y": 3809,
+              "w": 30,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 14,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "FAQ",
+            "rect": {
+              "x": 24,
+              "y": 3841,
+              "w": 27,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 15,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Contact",
+            "rect": {
+              "x": 24,
+              "y": 3873,
+              "w": 51,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 16,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Privacy",
+            "rect": {
+              "x": 24,
+              "y": 3903,
+              "w": 47,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 17,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "Call +27 63 171 8750",
+            "rect": {
+              "x": 24,
+              "y": 4004,
+              "w": 126,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 18,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "WhatsApp us",
+            "rect": {
+              "x": 24,
+              "y": 4036,
+              "w": 87,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 19,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "baruch@digitallyshifted.com",
+            "rect": {
+              "x": 24,
+              "y": 4068,
+              "w": 183,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 20,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "digitallyshifted.com",
+            "rect": {
+              "x": 24,
+              "y": 4100,
+              "w": 126,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 21,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--secondary-dark",
+            "text": "Call",
+            "rect": {
+              "x": 0,
+              "y": 852,
+              "w": 187,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": true
+          },
+          {
+            "phase": "walk",
+            "step": 22,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--primary",
+            "text": "WhatsApp us",
+            "rect": {
+              "x": 188,
+              "y": 852,
+              "w": 187,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": true
+          },
+          {
+            "phase": "walk",
+            "step": 23,
+            "tag": "body",
+            "none": true,
+            "coveredByActionBar": true
+          },
+          {
+            "phase": "menu-open",
+            "expanded": "true",
+            "focusInMenu": true,
+            "firstInMenu": {
+              "tag": "button",
+              "id": "menu-close",
+              "cls": "border-2 border-grey-100 p-3",
+              "text": "Close menu",
+              "rect": {
+                "x": 307,
+                "y": 10,
+                "w": 44,
+                "h": 44
+              },
+              "ariaExpanded": null,
+              "outline": "2px solid"
+            }
+          },
+          {
+            "phase": "menu-close",
+            "closedHidden": true,
+            "backOnTrigger": true,
+            "expAfter": "false"
+          },
+          {
+            "phase": "dialog-open",
+            "dialogOpen": true,
+            "focusInDialog": true
+          }
+        ]
+      },
+      {
+        "name": "faq",
+        "path": "/faq/",
+        "width": 375,
+        "steps": [
+          {
+            "phase": "skip-link",
+            "step": 1,
+            "tag": "a",
+            "id": null,
+            "cls": "skip-link",
+            "text": "Skip to content",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 162,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 1,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--primary",
+            "text": "Get a quote",
+            "rect": {
+              "x": 24,
+              "y": 501,
+              "w": 136,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 2,
+            "tag": "summary",
+            "id": null,
+            "cls": null,
+            "text": "How much does a website cost?",
+            "rect": {
+              "x": 24,
+              "y": 930,
+              "w": 327,
+              "h": 72
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 3,
+            "tag": "summary",
+            "id": null,
+            "cls": null,
+            "text": "What is Website-as-a-Service?",
+            "rect": {
+              "x": 24,
+              "y": 1004,
+              "w": 327,
+              "h": 72
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 4,
+            "tag": "summary",
+            "id": null,
+            "cls": null,
+            "text": "How does the process work?",
+            "rect": {
+              "x": 24,
+              "y": 1077,
+              "w": 327,
+              "h": 72
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 5,
+            "tag": "summary",
+            "id": null,
+            "cls": null,
+            "text": "How long will my project take?",
+            "rect": {
+              "x": 24,
+              "y": 1150,
+              "w": 327,
+              "h": 72
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 6,
+            "tag": "summary",
+            "id": null,
+            "cls": null,
+            "text": "What do you do with my details?",
+            "rect": {
+              "x": 24,
+              "y": 1224,
+              "w": 327,
+              "h": 72
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 7,
+            "tag": "summary",
+            "id": null,
+            "cls": null,
+            "text": "Do you host the sites you build?",
+            "rect": {
+              "x": 24,
+              "y": 1297,
+              "w": 327,
+              "h": 72
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 8,
+            "tag": "summary",
+            "id": null,
+            "cls": null,
+            "text": "Can you move my existing website?",
+            "rect": {
+              "x": 24,
+              "y": 1347,
+              "w": 327,
+              "h": 97
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 9,
+            "tag": "summary",
+            "id": null,
+            "cls": null,
+            "text": "Do you only work with South African busi",
+            "rect": {
+              "x": 24,
+              "y": 1445,
+              "w": 327,
+              "h": 97
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 10,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--primary mt-8",
+            "text": "Get a quote",
+            "rect": {
+              "x": 73,
+              "y": 2105,
+              "w": 136,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 11,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Home",
+            "rect": {
+              "x": 24,
+              "y": 2624,
+              "w": 40,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 12,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Services",
+            "rect": {
+              "x": 24,
+              "y": 2656,
+              "w": 55,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 13,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "About",
+            "rect": {
+              "x": 24,
+              "y": 2688,
+              "w": 39,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 14,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Blog",
+            "rect": {
+              "x": 24,
+              "y": 2718,
+              "w": 30,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 15,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "FAQ",
+            "rect": {
+              "x": 24,
+              "y": 2750,
+              "w": 27,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 16,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Contact",
+            "rect": {
+              "x": 24,
+              "y": 2782,
+              "w": 51,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 17,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Privacy",
+            "rect": {
+              "x": 24,
+              "y": 2814,
+              "w": 47,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 18,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "Call +27 63 171 8750",
+            "rect": {
+              "x": 24,
+              "y": 2915,
+              "w": 126,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 19,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "WhatsApp us",
+            "rect": {
+              "x": 24,
+              "y": 2947,
+              "w": 87,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 20,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "baruch@digitallyshifted.com",
+            "rect": {
+              "x": 24,
+              "y": 2979,
+              "w": 183,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 21,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "digitallyshifted.com",
+            "rect": {
+              "x": 24,
+              "y": 3009,
+              "w": 126,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 22,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--secondary-dark",
+            "text": "Call",
+            "rect": {
+              "x": 0,
+              "y": 852,
+              "w": 187,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": true
+          },
+          {
+            "phase": "walk",
+            "step": 23,
+            "tag": "a",
+            "id": null,
+            "cls": "btn btn--primary",
+            "text": "WhatsApp us",
+            "rect": {
+              "x": 188,
+              "y": 852,
+              "w": 187,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": true
+          },
+          {
+            "phase": "walk",
+            "step": 24,
+            "tag": "body",
+            "none": true,
+            "coveredByActionBar": true
+          },
+          {
+            "phase": "menu-open",
+            "expanded": "true",
+            "focusInMenu": true,
+            "firstInMenu": {
+              "tag": "button",
+              "id": "menu-close",
+              "cls": "border-2 border-grey-100 p-3",
+              "text": "Close menu",
+              "rect": {
+                "x": 307,
+                "y": 10,
+                "w": 44,
+                "h": 44
+              },
+              "ariaExpanded": null,
+              "outline": "2px solid"
+            }
+          },
+          {
+            "phase": "menu-close",
+            "closedHidden": true,
+            "backOnTrigger": true,
+            "expAfter": "false"
+          }
+        ]
+      },
+      {
+        "name": "contact",
+        "path": "/contact/",
+        "width": 375,
+        "steps": [
+          {
+            "phase": "skip-link",
+            "step": 1,
+            "tag": "a",
+            "id": null,
+            "cls": "skip-link",
+            "text": "Skip to content",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 162,
+              "h": 48
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 1,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body",
+            "text": "Call +27 63 171 8750",
+            "rect": {
+              "x": 24,
+              "y": 653,
+              "w": 144,
+              "h": 19
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 2,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body",
+            "text": "WhatsApp us",
+            "rect": {
+              "x": 24,
+              "y": 689,
+              "w": 100,
+              "h": 19
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 3,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body",
+            "text": "baruch@digitallyshifted.com",
+            "rect": {
+              "x": 24,
+              "y": 727,
+              "w": 209,
+              "h": 19
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 4,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Home",
+            "rect": {
+              "x": 24,
+              "y": 1140,
+              "w": 40,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 5,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Services",
+            "rect": {
+              "x": 24,
+              "y": 1172,
+              "w": 55,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 6,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "About",
+            "rect": {
+              "x": 24,
+              "y": 1204,
+              "w": 39,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 7,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Blog",
+            "rect": {
+              "x": 24,
+              "y": 1213,
+              "w": 30,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 8,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "FAQ",
+            "rect": {
+              "x": 24,
+              "y": 1245,
+              "w": 27,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 9,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Contact",
+            "rect": {
+              "x": 24,
+              "y": 1277,
+              "w": 51,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 10,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Privacy",
+            "rect": {
+              "x": 24,
+              "y": 1309,
+              "w": 47,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 11,
+            "tag": "a",
+            "id": null,
+            "cls": "link-dark text-body-sm",
+            "text": "Call +27 63 171 8750",
+            "rect": {
+              "x": 24,
+              "y": 1410,
+              "w": 126,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "menu-open",
+            "expanded": "true",
+            "focusInMenu": true,
+            "firstInMenu": {
+              "tag": "button",
+              "id": "menu-close",
+              "cls": "border-2 border-grey-100 p-3",
+              "text": "Close menu",
+              "rect": {
+                "x": 307,
+                "y": 10,
+                "w": 44,
+                "h": 44
+              },
+              "ariaExpanded": null,
+              "outline": "2px solid"
+            }
+          },
+          {
+            "phase": "menu-close",
+            "closedHidden": true,
+            "backOnTrigger": true,
+            "expAfter": "false"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "bad": {
+    "path": "bad.html",
+    "mustFindRules": ["html-has-lang", "image-alt", "label", "color-contrast"]
+  },
+  "good": {
+    "path": "good.html",
+    "mustFindRules": [],
+    "maxViolations": 0
+  }
+}
