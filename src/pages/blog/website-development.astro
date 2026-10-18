@@ -1,0 +1,41 @@
+---
+/*
+ * Blog topic filter: Website Development (DIG-72). Verbatim category
+ * text. The topic's post merged into the website development service page.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Card from '../../components/Card.astro';
+import { withBase } from '../../lib/urls';
+---
+
+<BaseLayout
+  title="Website development posts"
+  description="Website development advice for planning, building and improving conversion-focused business websites: WordPress development, responsive design, website performance, user experience and content structure."
+  path="/blog/website-development"
+>
+  <PageHero
+    eyebrow="Blog topic"
+    statement="Website Development"
+    opener="Explore website development advice for planning, building and improving conversion-focused business websites. Digitally Shifted covers WordPress development, responsive design, website performance, user experience and content structure for South African businesses that need a stronger digital foundation."
+    ctaHref="/contact?need=quote"
+  />
+
+  <section class="bg-paper" aria-labelledby="posts">
+    <div class="container-ds section">
+      <SectionHeader eyebrow="From the archive" heading='Where the posts <em>live now</em>.' dark={false} />
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <Card title="Professional Website Development (August 2024)" dark={false}>
+          <p>This guide now lives with our website development service, where we keep it current.</p>
+          <div slot="action" class="mt-4">
+            <a class="link-dark text-body" href={withBase('/services/website-development')}>Read it on the service page</a>
+          </div>
+        </Card>
+      </div>
+      <div class="mt-10">
+        <a class="link-dark text-body" href={withBase('/blog')}>All blog topics</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

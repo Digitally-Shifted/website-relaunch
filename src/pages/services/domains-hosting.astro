@@ -1,0 +1,77 @@
+---
+/*
+ * Service detail: domains and hosting (DIG-72). Merge target of the
+ * 2024-07-04 post. CTA preselects need=hosting (conversion spec 3.2).
+ * DRAFT COPY: pending DIG-63.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Card from '../../components/Card.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { withBase } from '../../lib/urls';
+---
+
+<BaseLayout
+  title="Domains and hosting"
+  description="Domain registration, LiteSpeed hosting, and website management for South African businesses: fast, secure, and maintained for you."
+  path="/services/domains-hosting"
+>
+  <PageHero
+    eyebrow="Services — Domains and hosting"
+    statement='A fast, secure base for your <em>site</em>.'
+    opener="We register and protect your domain, host on LiteSpeed servers, and manage updates, backups, and security. You run the business; we keep the site up."
+    ctaHref="/contact?need=hosting"
+  />
+
+  <section class="bg-paper" aria-labelledby="included">
+    <div class="container-ds section">
+      <SectionHeader eyebrow="What is included" heading='Hosting and management, <em>handled</em>.' dark={false} />
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <Card title="Domains and email" dark={false}>
+          <p>
+            Registration, renewal, and DNS handled for you, with protected
+            business email set up on your domain.
+          </p>
+        </Card>
+        <Card title="Fast hosting" dark={false}>
+          <p>
+            LiteSpeed servers built for speed, with seamless email migration
+            from your old host when you move.
+          </p>
+        </Card>
+        <Card title="Security and backups" dark={false}>
+          <p>
+            Imunify360 protection, patches applied on time, and backups taken
+            so a bad day never becomes a lost site.
+          </p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-grey-100" aria-labelledby="how-we-work">
+    <div class="container-ds section">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <SectionHeader eyebrow="How we work" heading='Move once, <em>move cleanly</em>.' dark={false} />
+        <div class="prose-ds text-body text-text-on-light-muted">
+          <p>
+            We review your current domain, host, and email setup, then quote
+            the move in plain language. We migrate the site and email, switch
+            the DNS, and stay on for management, updates, and small changes.
+            Your site stays live while we work.
+          </p>
+          <p>
+            <a class="link-dark" href={withBase('/services')}>See all services</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    heading='Hosting is one part of the <em>plan</em>.'
+    line="Website-as-a-Service bundles hosting with design, management, and SEO in one monthly fee."
+    ctaHref="/contact?need=waas"
+  />
+</BaseLayout>

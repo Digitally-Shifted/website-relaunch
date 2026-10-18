@@ -19,6 +19,8 @@ const sections = [
     heading: 'Website design <em>and development</em>.',
     body: 'We design and build your website around your customers and your goals. Fast pages, clear structure, and a site you can grow. You own the result, and we stay available to look after it.',
     need: 'new-website',
+    detailHref: '/services/website-development',
+    detailLabel: 'Read about website development',
     panel: false,
   },
   {
@@ -27,6 +29,8 @@ const sections = [
     heading: 'Hosting <em>and management</em>.',
     body: 'We host your site, keep its software current, watch uptime and fix problems before visitors see them. Backups, updates and security are our job, not your weekend.',
     need: 'hosting',
+    detailHref: '/services/domains-hosting',
+    detailLabel: 'Read about domains and hosting',
     panel: false,
   },
   {
@@ -90,6 +94,16 @@ const sections = [
                 >
                   Get a quote
                 </a>
+                {
+                  section.detailHref && (
+                    <a
+                      href={withBase(section.detailHref)}
+                      class="link-dark mt-4 block text-body"
+                    >
+                      {section.detailLabel}
+                    </a>
+                  )
+                }
               </div>
             </div>
           )}

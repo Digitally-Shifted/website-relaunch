@@ -1,0 +1,44 @@
+---
+/*
+ * Blog topic filter: Digital Marketing (DIG-72). Description is the
+ * verbatim category text kept per the content inventory.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Card from '../../components/Card.astro';
+import { withBase } from '../../lib/urls';
+---
+
+<BaseLayout
+  title="Digital Marketing posts"
+  description="Practical digital marketing guidance for South African businesses that want stronger online visibility, better leads and clearer reporting: strategy, SEO, analytics and campaign planning."
+  path="/blog/digital-marketing"
+>
+  <PageHero
+    eyebrow="Blog topic"
+    statement="Digital Marketing"
+    opener="Explore practical digital marketing guidance from Digitally Shifted for South African businesses that want stronger online visibility, better leads and clearer reporting. This section covers strategy, SEO, analytics, campaign planning and the digital foundations that help marketing activity connect to measurable business growth."
+    ctaHref="/contact?need=quote"
+  />
+
+  <section class="bg-paper" aria-labelledby="posts">
+    <div class="container-ds section">
+      <SectionHeader eyebrow="Posts" heading='Posts in this <em>topic</em>.' dark={false} />
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <Card title="The Ultimate Digital Marketing Guide for Businesses" dark={false} interactive>
+          <p>
+            The long-form guide: reach the right audience, stand out in a
+            crowded market, and turn attention into enquiries.
+          </p>
+          <div slot="action" class="mt-4">
+            <a class="link-dark text-body" href={withBase('/2023/02/09/ultimate-digital-marketing-guide-for-businesses/')}>Read the guide</a>
+          </div>
+        </Card>
+      </div>
+      <div class="mt-10">
+        <a class="link-dark text-body" href={withBase('/blog')}>All blog topics</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+/*
+ * Blog topic filter: Hosting & Domains (DIG-72). Verbatim category text.
+ * The topic's post merged into the Domains and Hosting service page.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Card from '../../components/Card.astro';
+import { withBase } from '../../lib/urls';
+---
+
+<BaseLayout
+  title="Hosting and domain posts"
+  description="Domain and hosting guidance for building a stable, secure and fast online presence: domain registration, WordPress hosting, website speed, email protection and technical hosting choices."
+  path="/blog/hosting-domains"
+>
+  <PageHero
+    eyebrow="Blog topic"
+    statement="Hosting &amp; Domains"
+    opener="Find domain and hosting guidance for building a stable, secure and fast online presence. Digitally Shifted helps South African businesses understand domain registration, WordPress hosting, website speed, email protection and the technical hosting choices that support reliable digital growth."
+    ctaHref="/contact?need=quote"
+  />
+
+  <section class="bg-paper" aria-labelledby="posts">
+    <div class="container-ds section">
+      <SectionHeader eyebrow="From the archive" heading='Where the posts <em>live now</em>.' dark={false} />
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <Card title="Expert Domain and Hosting Services (July 2024)" dark={false}>
+          <p>This guide now lives with our Domains and Hosting service, where we keep it current.</p>
+          <div slot="action" class="mt-4">
+            <a class="link-dark text-body" href={withBase('/services/domains-hosting')}>Read it on the service page</a>
+          </div>
+        </Card>
+      </div>
+      <div class="mt-10">
+        <a class="link-dark text-body" href={withBase('/blog')}>All blog topics</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

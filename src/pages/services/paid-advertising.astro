@@ -1,0 +1,77 @@
+---
+/*
+ * Service detail: paid advertising (DIG-72). Merge target of the
+ * 2024-07-15 post. The form has no paid-advertising need value (spec 4.2),
+ * so the CTA uses need=quote. DRAFT COPY: pending DIG-63.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Card from '../../components/Card.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { withBase } from '../../lib/urls';
+---
+
+<BaseLayout
+  title="Paid advertising"
+  description="Google Ads and Meta campaign management for South African businesses: targeting, budget control, and reporting tied to outcomes."
+  path="/services/paid-advertising"
+>
+  <PageHero
+    eyebrow="Services — Paid advertising"
+    statement='Spend on ads with <em>precision</em>, not on hope.'
+    opener="We plan and manage Google Ads and Meta campaigns with tight targeting, controlled budgets, and reporting that connects spend to enquiries."
+    ctaHref="/contact?need=quote"
+  />
+
+  <section class="bg-paper" aria-labelledby="included">
+    <div class="container-ds section">
+      <SectionHeader eyebrow="What is included" heading='Campaigns built around <em>outcomes</em>.' dark={false} />
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <Card title="Targeting and structure" dark={false}>
+          <p>
+            Campaigns structured around your services and the buyers who search
+            for them, from broad reach to tight intent.
+          </p>
+        </Card>
+        <Card title="Budget control" dark={false}>
+          <p>
+            Clear daily and monthly caps. You see where every rand goes, and
+            spend follows what performs.
+          </p>
+        </Card>
+        <Card title="Measurement and reporting" dark={false}>
+          <p>
+            Enquiries tracked from click to contact. One plain report: what
+            ran, what it cost, what it brought in.
+          </p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-grey-100" aria-labelledby="how-we-work">
+    <div class="container-ds section">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <SectionHeader eyebrow="How we work" heading='Start small, <em>measure</em>, then scale.' dark={false} />
+        <div class="prose-ds text-body text-text-on-light-muted">
+          <p>
+            We agree the goal, the budget, and the channels in one short
+            conversation. The quote states both fees and ad spend. Campaigns go
+            live, early data sets the direction, and we tune against real
+            enquiries.
+          </p>
+          <p>
+            <a class="link-dark" href={withBase('/services')}>See all services</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    heading='Ads work best on a site that <em>converts</em>.'
+    line="Pair paid advertising with a website built to receive the traffic. Ask about Website-as-a-Service."
+    ctaHref="/contact?need=waas"
+  />
+</BaseLayout>

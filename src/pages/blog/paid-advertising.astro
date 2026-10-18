@@ -1,0 +1,41 @@
+---
+/*
+ * Blog topic filter: Paid Advertising (DIG-72). Verbatim category text.
+ * The topic's post merged into the Paid Advertising service page.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Card from '../../components/Card.astro';
+import { withBase } from '../../lib/urls';
+---
+
+<BaseLayout
+  title="Paid advertising posts"
+  description="Practical insights into Google Ads, Meta campaigns, targeting, budget control and ROI measurement for South African businesses that need clearer leads, smarter spend and campaigns connected to real commercial outcomes."
+  path="/blog/paid-advertising"
+>
+  <PageHero
+    eyebrow="Blog topic"
+    statement="Paid Advertising"
+    opener="Improve paid media performance with practical insights into Google Ads, Meta campaigns, targeting, budget control and ROI measurement. Digitally Shifted shares paid advertising guidance for South African businesses that need clearer leads, smarter spend and campaigns connected to real commercial outcomes."
+    ctaHref="/contact?need=quote"
+  />
+
+  <section class="bg-paper" aria-labelledby="posts">
+    <div class="container-ds section">
+      <SectionHeader eyebrow="From the archive" heading='Where the posts <em>live now</em>.' dark={false} />
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <Card title="Maximizing ROI with Precision (July 2024)" dark={false}>
+          <p>This guide now lives with our Paid Advertising service, where we keep it current.</p>
+          <div slot="action" class="mt-4">
+            <a class="link-dark text-body" href={withBase('/services/paid-advertising')}>Read it on the service page</a>
+          </div>
+        </Card>
+      </div>
+      <div class="mt-10">
+        <a class="link-dark text-body" href={withBase('/blog')}>All blog topics</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

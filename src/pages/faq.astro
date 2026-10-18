@@ -1,0 +1,135 @@
+---
+/*
+ * FAQ (DIG-72): eight questions covering pricing, process, timelines,
+ * POPIA and hosting. Native details/summary gives keyboard and screen
+ * reader support without JavaScript. Candidate questions come from the
+ * content inventory; answers follow the DIG-38 proof-point rules (no
+ * invented prices or timelines).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const faqs = [
+  {
+    q: 'How much does a website cost?',
+    a: 'Every quote follows the work, so we do not publish set prices. Send one message about your goal and we reply with a clear quote and what sits behind it. If a large upfront build does not suit you, Website-as-a-Service spreads the cost as one monthly fee.',
+  },
+  {
+    q: 'What is Website-as-a-Service?',
+    a: 'One monthly fee covers your website design, hosting, management, and SEO together. There is no large upfront build, one invoice, and one team that answers. Ask us for the current monthly price.',
+  },
+  {
+    q: 'How does the process work?',
+    a: 'You send one message. We reply with questions if we need them, then a clear quote. Once you approve, we design, you review, we build and launch. You get progress updates in plain language at every step.',
+  },
+  {
+    q: 'How long will my project take?',
+    a: 'It depends on the size of the site and how quickly content and feedback arrive. The quote states the plan and the expected dates before any work starts, and we tell you early if anything moves.',
+  },
+  {
+    q: 'What do you do with my details?',
+    a: 'We store what you send through our forms, with the date, and use it to reply to you. We do not sell your details. Ask us to remove them at any time by email, and we will confirm once it is done. Read the privacy notice for the full picture.',
+  },
+  {
+    q: 'Do you host the sites you build?',
+    a: 'Yes. We host on LiteSpeed servers with security protection, and we manage updates, backups, and small changes. We can also host and manage a site we did not build, after a short review.',
+  },
+  {
+    q: 'Can you move my existing website?',
+    a: 'Yes. We review your current domain, host, and email setup, quote the move in plain language, then migrate the site and email and switch the DNS. Your site stays live while we work.',
+  },
+  {
+    q: 'Do you only work with South African businesses?',
+    a: 'We are based in South Africa and we know the local market well, but the work is not limited to it. If you want a partner who answers plainly and builds properly, send us a message.',
+  },
+];
+---
+
+<BaseLayout
+  title="FAQ"
+  description="Answers on pricing, process, timelines, hosting, and your details: frequently asked questions for Digitally Shifted."
+  path="/faq"
+>
+  <PageHero
+    eyebrow="FAQ"
+    statement='Questions, answered <em>plainly</em>.'
+    opener="Pricing, process, timelines, hosting, and your details. If your question is not here, ask us directly."
+  />
+
+  <section class="bg-paper" aria-labelledby="faq-heading">
+    <div class="container-ds section">
+      <SectionHeader eyebrow="FAQ" heading='Frequently asked <em>questions</em>.' dark={false} />
+      <div class="accordion mt-10 max-w-3xl">
+        {faqs.map((item) => (
+          <details>
+            <summary>{item.q}</summary>
+            <div class="accordion-body">
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    heading='Still stuck on <em>something</em>?'
+    line="Send one message and we will answer it plainly, with a quote if you want one."
+    ctaHref="/contact?need=general"
+  />
+</BaseLayout>
+
+<style>
+  .accordion {
+    border-top: 1px solid var(--color-grey-200);
+  }
+
+  .accordion details {
+    border-bottom: 1px solid var(--color-grey-200);
+  }
+
+  .accordion summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4, 16px);
+    padding: 24px 8px;
+    cursor: pointer;
+    font-size: 1.125rem;
+    line-height: 1.35;
+    font-weight: 600;
+    list-style: none;
+    color: var(--color-text-on-light);
+  }
+
+  .accordion summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .accordion summary::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+    border-right: 2px solid var(--color-ink);
+    border-bottom: 2px solid var(--color-ink);
+    transform: rotate(45deg);
+    transition: transform 120ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .accordion details[open] summary::after {
+    transform: rotate(225deg);
+  }
+
+  .accordion summary:hover {
+    color: var(--color-slate);
+  }
+
+  .accordion .accordion-body {
+    padding: 0 8px 24px;
+    max-width: 44rem;
+    color: var(--color-slate);
+  }
+</style>

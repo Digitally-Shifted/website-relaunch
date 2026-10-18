@@ -1,0 +1,77 @@
+---
+/*
+ * Service detail: website design and development (DIG-72). Merge target
+ * of the 2024-08-12 post. CTA preselects need=new-website (conversion
+ * spec 3.2). DRAFT COPY: pending DIG-63.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Card from '../../components/Card.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { withBase } from '../../lib/urls';
+---
+
+<BaseLayout
+  title="Website design and development"
+  description="Conversion-focused website design and development for South African businesses: planning, design, build, and launch."
+  path="/services/website-development"
+>
+  <PageHero
+    eyebrow="Services — Website development"
+    statement='A website that works as hard as <em>you</em> do.'
+    opener="We design and build business websites that load fast, read clearly, and turn visitors into enquiries. Quality of work and fast turnaround, from one team."
+    ctaHref="/contact?need=new-website"
+  />
+
+  <section class="bg-paper" aria-labelledby="included">
+    <div class="container-ds section">
+      <SectionHeader eyebrow="What is included" heading='Built to win work, <em>not awards</em>.' dark={false} />
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <Card title="Plan" dark={false}>
+          <p>
+            We map the pages around the actions that matter: enquiries, quote
+            requests, and calls. Content structure comes before design.
+          </p>
+        </Card>
+        <Card title="Design and build" dark={false}>
+          <p>
+            A precise monochrome design with one accent, built mobile-first,
+            accessible, and quick to load on South African connections.
+          </p>
+        </Card>
+        <Card title="Launch and measure" dark={false}>
+          <p>
+            We connect analytics, track enquiries, and hand you a site you own,
+            with the option to keep us on for hosting and management.
+          </p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-grey-100" aria-labelledby="how-we-work">
+    <div class="container-ds section">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <SectionHeader eyebrow="How we work" heading='A short road, <em>plainly explained</em>.' dark={false} />
+        <div class="prose-ds text-body text-text-on-light-muted">
+          <p>
+            You send one message about your goal. We reply with a clear quote
+            and the plan behind it. Once you approve, we design, you review, we
+            build and launch, with progress updates in plain language at every
+            step.
+          </p>
+          <p>
+            <a class="link-dark" href={withBase('/services')}>See all services</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    heading='Prefer one monthly <em>plan</em> instead?'
+    line="Website-as-a-Service bundles the design, the hosting, the management, and the SEO into one monthly fee."
+    ctaHref="/contact?need=waas"
+  />
+</BaseLayout>
