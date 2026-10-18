@@ -75,13 +75,18 @@ const sections = [
               <p class="text-eyebrow uppercase text-text-on-dark-muted">{section.eyebrow}</p>
               <h2 id={section.id} class="mt-3 text-display text-paper" set:html={section.heading} />
               <p class="mt-4 max-w-xl text-body-lg text-text-on-dark-muted">{section.body}</p>
-              <a
-                href={withBase(`/contact?need=${section.need}`)}
-                class="btn btn--primary mt-8"
-                data-ds-location="content"
-              >
-                Get a quote
-              </a>
+              <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <a
+                  href={withBase(`/contact?need=${section.need}`)}
+                  class="btn btn--primary"
+                  data-ds-location="content"
+                >
+                  Get a quote
+                </a>
+                <button type="button" class="link-dark text-body" data-open-dialog="waas-modal">
+                  See what the plan covers
+                </button>
+              </div>
             </div>
           ) : (
             <div class="grid gap-8 md:grid-cols-2 md:items-center">
@@ -111,4 +116,56 @@ const sections = [
       </section>
     ))
   }
+
+  <dialog class="waas-dialog" id="waas-modal" aria-labelledby="waas-modal-title">
+    <p class="text-eyebrow uppercase text-text-on-dark-muted">Website-as-a-Service</p>
+    <h2 id="waas-modal-title" class="mt-3 text-h2 text-paper">What the monthly plan covers</h2>
+    <ul class="mt-6 list-disc pl-6 text-body text-text-on-dark">
+      <li>Design — your site designed in the Digitally Shifted system.</li>
+      <li>Hosting — LiteSpeed servers, monitored and patched.</li>
+      <li>Management — updates, backups, security, and small changes.</li>
+      <li>SEO — the technical base, a content plan, and plain reporting.</li>
+    </ul>
+    <p class="mt-4 text-body-sm text-text-on-dark-muted">
+      One plan replaces the separate design bill, the hosting bills, and the
+      agency retainer. Ask us for the current monthly price.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+      <a href={withBase('/contact?need=waas')} class="btn btn--primary" data-ds-location="content">
+        Get a quote
+      </a>
+      <button type="button" class="btn btn--secondary-dark" data-close-dialog>Close</button>
+    </div>
+  </dialog>
 </BaseLayout>
+
+<script>
+  /* WaaS modal (DIG-72): native dialog keeps focus management and Escape. */
+  const trigger = document.querySelector('[data-open-dialog="waas-modal"]');
+  const dialog = document.getElementById('waas-modal') as HTMLDialogElement | null;
+  if (trigger && dialog) {
+    trigger.addEventListener('click', () => dialog.showModal());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.querySelector('[data-close-dialog]')?.addEventListener('click', () => dialog.close());
+  }
+</script>
+
+<style>
+  /* Dialog surface (DESIGN-SPEC 2.5 overlay): Carbon ground, hairline
+   * border, overlay shadow, dark scrim. */
+  .waas-dialog {
+    width: min(40rem, calc(100% - 48px));
+    margin: auto;
+    padding: 48px;
+    border: 1px solid var(--color-grey-700);
+    background: var(--color-carbon);
+    color: var(--color-text-on-dark);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  .waas-dialog::backdrop {
+    background: rgba(7, 8, 8, 0.7);
+  }
+</style>
