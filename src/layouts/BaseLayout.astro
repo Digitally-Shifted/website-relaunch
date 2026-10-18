@@ -40,8 +40,11 @@ const isStaging = buildEnv !== 'production';
 const robotsContent = noindex || isStaging ? 'noindex, nofollow' : 'index, follow';
 const pageTitle = `${title} — ${site.name}`;
 const pageUrl = canonical(path);
-const ogImage = canonical('/app-icon-1024.png');
+const ogImage = canonical('/og-default.png');
 const fontHref = withBase('/fonts/raleway-variable.woff2');
+/* GA4 measurement ID (format G-XXXXXXXXXX), set at build time. Empty means
+ * analytics stays dormant until the ID lands (docs/analytics-setup.md §2). */
+const ga4Id = import.meta.env.PUBLIC_GA4_ID || '';
 ---
 
 <!doctype html>
@@ -62,9 +65,30 @@ const fontHref = withBase('/fonts/raleway-variable.woff2');
     <meta property="og:description" content={description} />
     <meta property="og:url" content={pageUrl} />
     <meta property="og:image" content={ogImage} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Digitally Shifted — digital agency" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <link rel="preload" href={fontHref} as="font" type="font/woff2" crossorigin />
+    <script>
+      /*
+       * Analytics boot (DIG-65, conversion spec §7). Loads the shared
+       * ds-analytics module on every page, then starts measurement only
+       * when a valid GA4 measurement ID was set at build time. Without an
+       * ID the module loads dormant: no gtag script, no hits, no errors.
+       * tel: and wa.me click events bind inside the module.
+       */
+      import '../../analytics/ds-analytics.js';
+      const ga4Id: string = import.meta.env.PUBLIC_GA4_ID || '';
+      const analytics = (window as unknown as { DSAnalytics?: { init(o: object): unknown } }).DSAnalytics;
+      if (analytics && /^G-[A-Z0-9]{6,12}$/.test(ga4Id)) {
+        analytics.init({ measurementId: ga4Id });
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

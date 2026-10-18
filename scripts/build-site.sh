@@ -98,4 +98,7 @@ while IFS= read -r html_file; do
   done < <(grep -oE '(href|src)="[^"]+"' "$html_file" | sed -E 's/^(href|src)="//; s/"$//')
 done < <(find "$OUT_DIR" -name '*.html' -type f)
 
+# Redirect map (DIG-89/DIG-91): stubs ship, destinations resolve, no orphan.
+node scripts/test-redirects.mjs --dir "$OUT_DIR"
+
 echo "Build OK: $OUT_DIR (sha=$BUILD_SHA env=$BUILD_ENV)"

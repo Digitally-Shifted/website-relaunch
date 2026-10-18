@@ -2,8 +2,7 @@
 /*
  * Thank-you page (conversion spec 3.5): confirms the submission and gives
  * direct routes for speed. Reached only through the form's 303 redirect;
- * never linked from navigation. No conversion event fires here (it fired
- * at submit time). Headline takes focus on load.
+ * never linked from navigation. Headline takes focus on load.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site } from '../../lib/site.config';
@@ -50,4 +49,53 @@ import { withBase } from '../../lib/urls';
 
 <script>
   document.getElementById('thankyou-title')?.focus();
+</script>
+
+<script>
+  /*
+   * Lead conversion firing (conversion spec §7.2, two-signal rule).
+   * The form (DIG-69) writes sessionStorage.lead_pending = {need,
+   * form_location} before its POST; the server sets the lead_ok cookie on a
+   * genuine success only. Both signals together mean one real lead: fire
+   * exactly one conversion event, then clear both signals so a refresh
+   * never double counts and a spam redirect never counts at all. Events
+   * only send when analytics started (a GA4 measurement ID was set at
+   * build time); the signals still clear, so the count cannot back up.
+   */
+  import { needOptions } from '../../lib/site.config';
+
+  interface LeadPending {
+    need: string;
+    form_location?: string;
+  }
+  const analytics = (
+    window as unknown as {
+      DSAnalytics?: {
+        ready: boolean;
+        contactSubmit(params: object): void;
+        quoteRequest(params: object): void;
+      };
+    }
+  ).DSAnalytics;
+
+  const pendingRaw = sessionStorage.getItem('lead_pending');
+  const hasLeadOk = /(?:^|;\s*)lead_ok=/.test(document.cookie);
+  if (pendingRaw && hasLeadOk) {
+    try {
+      const lead = JSON.parse(pendingRaw) as LeadPending;
+      const option = needOptions.find((o) => o.value === lead.need);
+      if (analytics && analytics.ready) {
+        const params = { formLocation: lead.form_location };
+        if (option?.quoteIntent) {
+          analytics.quoteRequest(params);
+        } else {
+          analytics.contactSubmit(params);
+        }
+      }
+    } catch {
+      /* malformed signal: clear it below, never block the page */
+    }
+    sessionStorage.removeItem('lead_pending');
+    document.cookie = 'lead_ok=; Max-Age=0; path=/';
+  }
 </script>
