@@ -1,4 +1,4 @@
-# Automated scan — 2026-10-18T20:12:41.479Z
+# Automated scan — 2026-10-18T20:16:11.826Z
 
 Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors: 0
 
@@ -8,7 +8,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 7 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 8 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 7 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 7 node(s)
@@ -21,7 +21,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 6 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
@@ -34,7 +34,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 6 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
@@ -47,7 +47,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
@@ -60,7 +60,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
@@ -73,7 +73,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
@@ -86,7 +86,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
@@ -99,7 +99,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
@@ -112,7 +112,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
@@ -125,7 +125,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
@@ -138,7 +138,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 3 node(s)
@@ -151,7 +151,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
@@ -162,8 +162,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 
 ### 375px · default — 0 rule hits, 0 needs review
 
-### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 1 node(s)
+### 768px · default — 0 rule hits, 0 needs review
 
 ### 1280px · default — 0 rule hits, 0 needs review
 
@@ -172,8 +171,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 
 ### 375px · default — 0 rule hits, 0 needs review
 
-### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 1 node(s)
+### 768px · default — 0 rule hits, 0 needs review
 
 ### 1280px · default — 0 rule hits, 0 needs review
 
@@ -182,8 +180,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 
 ### 375px · default — 0 rule hits, 0 needs review
 
-### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 1 node(s)
+### 768px · default — 0 rule hits, 0 needs review
 
 ### 1280px · default — 0 rule hits, 0 needs review
 
@@ -192,8 +189,7 @@ Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 
 ### 375px · default — 0 rule hits, 0 needs review
 
-### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 1 node(s)
+### 768px · default — 0 rule hits, 0 needs review
 
 ### 1280px · default — 0 rule hits, 0 needs review
 

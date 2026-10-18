@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T20:13:06.024Z",
+  "generatedAt": "2026-10-18T20:16:36.529Z",
   "findings": [
     {
       "page": "home",
@@ -117,7 +117,7 @@
     }
   ],
   "run": {
-    "generatedAt": "2026-10-18T20:13:06.024Z",
+    "generatedAt": "2026-10-18T20:16:36.529Z",
     "baseUrl": "http://127.0.0.1:4173",
     "pages": [
       {
@@ -385,7 +385,7 @@
             "step": 15,
             "tag": "a",
             "id": null,
-            "cls": "link-dark text-body-sm",
+            "cls": "link-dark text-body-sm [overflow-wrap:anywhere]",
             "text": "baruch@digitallyshifted.com",
             "rect": {
               "x": 24,
@@ -402,7 +402,7 @@
             "step": 16,
             "tag": "a",
             "id": null,
-            "cls": "link-dark text-body-sm",
+            "cls": "link-dark text-body-sm [overflow-wrap:anywhere]",
             "text": "digitallyshifted.com",
             "rect": {
               "x": 24,
@@ -815,7 +815,7 @@
             "step": 19,
             "tag": "a",
             "id": null,
-            "cls": "link-dark text-body-sm",
+            "cls": "link-dark text-body-sm [overflow-wrap:anywhere]",
             "text": "baruch@digitallyshifted.com",
             "rect": {
               "x": 24,
@@ -832,7 +832,7 @@
             "step": 20,
             "tag": "a",
             "id": null,
-            "cls": "link-dark text-body-sm",
+            "cls": "link-dark text-body-sm [overflow-wrap:anywhere]",
             "text": "digitallyshifted.com",
             "rect": {
               "x": 24,
@@ -1267,7 +1267,7 @@
             "step": 20,
             "tag": "a",
             "id": null,
-            "cls": "link-dark text-body-sm",
+            "cls": "link-dark text-body-sm [overflow-wrap:anywhere]",
             "text": "baruch@digitallyshifted.com",
             "rect": {
               "x": 24,
@@ -1284,7 +1284,7 @@
             "step": 21,
             "tag": "a",
             "id": null,
-            "cls": "link-dark text-body-sm",
+            "cls": "link-dark text-body-sm [overflow-wrap:anywhere]",
             "text": "digitallyshifted.com",
             "rect": {
               "x": 24,

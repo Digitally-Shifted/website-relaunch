@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T20:12:41.479Z",
+  "generatedAt": "2026-10-18T20:16:11.826Z",
   "baseUrl": "http://127.0.0.1:4173",
   "tags": [
     "wcag2a",
@@ -156,12 +156,6 @@
                     ".link-dark.text-body[href$=\"services\"]"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -438,12 +432,6 @@
                     ".link-dark.text-body[href$=\"services\"]"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -696,12 +684,6 @@
                     ".link-dark.text-body[href$=\"about\"]"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -942,12 +924,6 @@
                     ".max-w-xl.text-body-lg.mt-6"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -1176,12 +1152,6 @@
                     ".max-w-xl.text-body-lg.mt-6"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -1410,12 +1380,6 @@
                     ".max-w-xl.text-body-lg.mt-6"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -1644,12 +1608,6 @@
                     ".max-w-xl"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -1866,12 +1824,6 @@
                     ".max-w-xl"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -2076,12 +2028,6 @@
                     ".max-w-xl"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -2286,12 +2232,6 @@
                     ".max-w-xl"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -2496,12 +2436,6 @@
                     ".max-w-xl"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -2718,12 +2652,6 @@
                     ".max-w-xl.text-body-lg.mt-6"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
             }
@@ -2859,37 +2787,7 @@
           "width": 768,
           "theme": "default",
           "violations": [],
-          "incomplete": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
-                }
-              ]
-            }
-          ],
+          "incomplete": [],
           "passCount": 37
         },
         {
@@ -2925,37 +2823,7 @@
           "width": 768,
           "theme": "default",
           "violations": [],
-          "incomplete": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
-                }
-              ]
-            }
-          ],
+          "incomplete": [],
           "passCount": 37
         },
         {
@@ -2991,37 +2859,7 @@
           "width": 768,
           "theme": "default",
           "violations": [],
-          "incomplete": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
-                }
-              ]
-            }
-          ],
+          "incomplete": [],
           "passCount": 38
         },
         {
@@ -3057,37 +2895,7 @@
           "width": 768,
           "theme": "default",
           "violations": [],
-          "incomplete": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
-                }
-              ]
-            }
-          ],
+          "incomplete": [],
           "passCount": 37
         },
         {

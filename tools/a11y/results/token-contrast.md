@@ -1,4 +1,4 @@
-# Token contrast table — 2026-10-18T20:07:35.107Z
+# Token contrast table — 2026-10-18T20:16:43.520Z
 
 Source: DS design tokens v4.1.0 (2026-10-18), brand/tokens/design-tokens.json. Method: WCAG 2.2 relative luminance.
 Pairs measured: 27 · Below minimum: 5
