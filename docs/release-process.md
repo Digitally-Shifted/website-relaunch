@@ -3,7 +3,7 @@
 This document gives the version rules, changelog rules, tags, and rollback
 steps for production releases of the site. Owner: DIG-78. Related: DIG-64
 (`docs/deploy-process.md`, deploy commands and checks), DIG-20 (go-live and
-production hosting).
+production hosting), DIG-75 (`docs/security-review.md`, launch gate).
 
 The deploy process and the release process are separate:
 
@@ -95,14 +95,17 @@ Do the steps in this order.
    gh workflow run deploy-production.yml -R Digitally-Shifted/website-relaunch -f ref=vX.Y.Z
    ```
 
-5. A reviewer approves the run in the GitHub UI. The person who starts
+5. Give the reviewer the security review result for this ref. The
+   reviewer confirms it before approval. The rules are in
+   `docs/security-review.md` (DIG-75).
+6. A reviewer approves the run in the GitHub UI. The person who starts
    the run must not approve it. GitHub denied self-approval in the DIG-64
    test. UI path: Actions → Production release → the waiting run → Review
    deployments → Approve and deploy.
-6. The workflow builds the site, runs the checks, and packages the archive
+7. The workflow builds the site, runs the checks, and packages the archive
    with a `sha256` file. The workflow pushes the `prod-*` tag and creates
    the GitHub release with the artifacts.
-7. Record the release. See "Release record" below.
+8. Record the release. See "Release record" below.
 
 ## Check a release
 
