@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fixture — clean page</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: Arial, sans-serif; color: #000000; background: #ffffff; }
+    a { color: #000000; }
+    nav a { display: inline-block; padding: 6px 10px; }
+    .skip { position: absolute; left: -9999px; }
+    .skip:focus { left: 8px; top: 8px; }
+    .skip:focus { outline: 2px solid #000000; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+  <header>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services">Services</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <h1>Clean fixture page</h1>
+    <p>Every element on this page passes the audited rule collections.</p>
+    <img src="banner.png" alt="Team reviewing a website launch plan">
+    <form action="#" method="post">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" autocomplete="name">
+      <button type="submit">Send request</button>
+    </form>
+  </main>
+  <footer>
+    <p>© 2026 Digitally Shifted</p>
+  </footer>
+</body>
+</html>

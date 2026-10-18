@@ -1,0 +1,5093 @@
+{
+  "generatedAt": "2026-10-18T19:29:35.564Z",
+  "baseUrl": "http://localhost:4173",
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa",
+    "best-practice"
+  ],
+  "pages": [
+    {
+      "name": "home",
+      "path": "/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section[aria-labelledby=\"services-summary\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"services-summary\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".pt-24 > .text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > strong"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "em:nth-child(2)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "em:nth-child(3)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".mt-6.max-w-xl.text-body-lg"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"services\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section[aria-labelledby=\"services-summary\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"services-summary\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".pt-24 > .text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > strong"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "em:nth-child(2)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "em:nth-child(3)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".mt-6.max-w-xl.text-body-lg"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"services\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section[aria-labelledby=\"services-summary\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"services-summary\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".pt-24 > .text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > strong"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "em:nth-child(2)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "em:nth-child(3)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".mt-6.max-w-xl.text-body-lg"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"services\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section[aria-labelledby=\"services-summary\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"services-summary\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".pt-24 > .text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > strong"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "em:nth-child(2)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "em:nth-child(3)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".mt-6.max-w-xl.text-body-lg"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"services\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        }
+      ]
+    },
+    {
+      "name": "about",
+      "path": "/about/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"who-we-are\""
+                },
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"work-with-us\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".text-body-lg.max-w-xl.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"services\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"who-we-are\""
+                },
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"work-with-us\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".text-body-lg.max-w-xl.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"services\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"who-we-are\""
+                },
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"work-with-us\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".text-body-lg.max-w-xl.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"services\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"who-we-are\""
+                },
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"work-with-us\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".text-body-lg.max-w-xl.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"services\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        }
+      ]
+    },
+    {
+      "name": "services-hub",
+      "path": "/services/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section[aria-labelledby=\"web-design\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"web-design\""
+                },
+                {
+                  "target": [
+                    "section[aria-labelledby=\"hosting\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"hosting\""
+                },
+                {
+                  "target": [
+                    "section[aria-labelledby=\"seo\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"seo\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".pt-24 > .text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.mt-6.text-body-lg"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"about\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section[aria-labelledby=\"web-design\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"web-design\""
+                },
+                {
+                  "target": [
+                    "section[aria-labelledby=\"hosting\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"hosting\""
+                },
+                {
+                  "target": [
+                    "section[aria-labelledby=\"seo\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"seo\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".pt-24 > .text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.mt-6.text-body-lg"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"about\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section[aria-labelledby=\"web-design\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"web-design\""
+                },
+                {
+                  "target": [
+                    "section[aria-labelledby=\"hosting\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"hosting\""
+                },
+                {
+                  "target": [
+                    "section[aria-labelledby=\"seo\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"seo\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".pt-24 > .text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.mt-6.text-body-lg"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"about\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section[aria-labelledby=\"web-design\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"web-design\""
+                },
+                {
+                  "target": [
+                    "section[aria-labelledby=\"hosting\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"hosting\""
+                },
+                {
+                  "target": [
+                    "section[aria-labelledby=\"seo\"]"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"seo\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".pt-24 > .text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.mt-6.text-body-lg"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"about\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        }
+      ]
+    },
+    {
+      "name": "service-website-development",
+      "path": "/services/website-development/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        }
+      ]
+    },
+    {
+      "name": "service-domains-hosting",
+      "path": "/services/domains-hosting/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        }
+      ]
+    },
+    {
+      "name": "service-paid-advertising",
+      "path": "/services/paid-advertising/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-paper"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
+                },
+                {
+                  "target": [
+                    ".bg-grey-100"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        }
+      ]
+    },
+    {
+      "name": "blog-index",
+      "path": "/blog/",
+      "httpStatus": 404,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 36
+        }
+      ]
+    },
+    {
+      "name": "blog-website-development",
+      "path": "/blog/website-development/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"website-development\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            },
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"website-development\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"website-development\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"website-development\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        }
+      ]
+    },
+    {
+      "name": "blog-digital-marketing",
+      "path": "/blog/digital-marketing/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".mt-4 > .link-dark.text-body"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            },
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".mt-4 > .link-dark.text-body"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".mt-4 > .link-dark.text-body"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".mt-4 > .link-dark.text-body"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        }
+      ]
+    },
+    {
+      "name": "blog-hosting-domains",
+      "path": "/blog/hosting-domains/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"domains-hosting\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            },
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"domains-hosting\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"domains-hosting\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"domains-hosting\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        }
+      ]
+    },
+    {
+      "name": "blog-paid-advertising",
+      "path": "/blog/paid-advertising/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"paid-advertising\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            },
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"paid-advertising\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"paid-advertising\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "a[href$=\"paid-advertising\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".link-dark.text-body[href$=\"blog\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        }
+      ]
+    },
+    {
+      "name": "faq",
+      "path": "/faq/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"faq-heading\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 38
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"faq-heading\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"faq-heading\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "tags": [
+                "cat.aria",
+                "wcag2a",
+                "wcag412",
+                "EN-301-549",
+                "EN-9.4.1.2",
+                "RGAAv4",
+                "RGAA-7.1.1"
+              ],
+              "help": "ARIA attributes must conform to valid values",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "criteria": [
+                "4.1.2"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "section"
+                  ],
+                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"faq-heading\""
+                }
+              ]
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-eyebrow.uppercase.text-text-on-dark-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        }
+      ]
+    },
+    {
+      "name": "contact",
+      "path": "/contact/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 36
+        }
+      ]
+    },
+    {
+      "name": "contact-thank-you",
+      "path": "/contact/thank-you/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 38
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 37
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 37
+        }
+      ]
+    },
+    {
+      "name": "privacy",
+      "path": "/privacy/",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 38
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 37
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 37
+        }
+      ]
+    },
+    {
+      "name": "not-found",
+      "path": "/404.html",
+      "httpStatus": 200,
+      "htmlErrors": [],
+      "scans": [
+        {
+          "width": 375,
+          "theme": "default",
+          "violations": [
+            {
+              "id": "region",
+              "impact": "moderate",
+              "tags": [
+                "cat.keyboard",
+                "best-practice",
+                "RGAAv4",
+                "RGAA-9.2.1"
+              ],
+              "help": "All page content should be contained by landmarks",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+              "criteria": [],
+              "nodes": [
+                {
+                  "target": [
+                    ".mobile-action-bar"
+                  ],
+                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                }
+              ]
+            }
+          ],
+          "incomplete": [],
+          "passCount": 37
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ]
+            }
+          ],
+          "passCount": 36
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 36
+        },
+        {
+          "width": 1920,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [],
+          "passCount": 36
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pages": 16,
+    "axeViolationRules": 29,
+    "htmlErrors": 0
+  }
+}
