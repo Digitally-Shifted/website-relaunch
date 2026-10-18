@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Example alert hook for the site monitor. Copy to notify.sh and edit.
+#
+# The checker calls:
+#   notify.sh open    <site-url> <detail>     an alert started
+#   notify.sh resolve <site-url> <detail>     the site recovered
+#   notify.sh tls     <site-url> <detail>     a certificate expires soon
+#
+# Keep this script fast and quiet. It must never fail the check round.
+# Replace the echo below with your delivery, for example:
+#   curl -fsS -X POST -H 'Content-type: application/json' \
+#     --data "{\"text\":\"[$1] $2 $3\"}" "$SLACK_WEBHOOK_URL"
+event="$1"; site="$2"; detail="$3"
+echo "$(date -u +%FT%TZ) $event $site $detail" >> "$HOME/.local/share/site-monitor/notify.log"

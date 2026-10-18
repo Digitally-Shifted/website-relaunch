@@ -1,0 +1,45 @@
+# Monitored sites for the observability baseline (DIG-76).
+# Source of truth: `novamira sites list` (launched client portfolio, verified 2026-10-18).
+# One URL per line. Lines that start with # are comments.
+# To add a site: add its URL here, then run monitoring/install.sh again.
+
+# --- Client sites: dealer groups ---
+https://bmgmotorgroup.co.za
+https://bmgpaarl.co.za
+https://bmgtruckcentre.co.za
+https://bmgworcester.co.za
+https://bolandisuzuceres.co.za
+
+# --- Client sites: Worcester brands ---
+https://cheryworcester.co.za
+https://fotontrucksworcester.co.za
+https://geelyworcester.co.za
+https://gwmworcester.co.za
+https://hyundaiworcester.co.za
+https://kiaworcester.co.za
+https://mitsubishiworcester.co.za
+
+# --- Client sites: Paarl brands ---
+https://geelypaarl.co.za
+https://gwmorapaarl.co.za
+https://gwmpaarl.co.za
+https://gwmtankpaarl.co.za
+https://havalpaarl.co.za
+https://isuzupaarl.co.za
+https://isuzutrucksworcester.co.za
+https://suzukirobertson.co.za
+
+# --- Client sites: other ---
+https://94principle.com
+https://avin.co.za
+https://deuxlions.za.com
+https://labri.co.za
+https://ligenlewepraktyk.co.za
+https://outofcoffee.co.za
+https://veritysigns.co.za
+https://wallartstudios.com
+https://wrappingspecialist.co.za
+https://digitallyshifted.com
+
+# --- Own sites ---
+https://digitally-shifted.github.io/website-relaunch/

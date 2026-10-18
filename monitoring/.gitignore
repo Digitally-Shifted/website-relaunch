@@ -1,0 +1,6 @@
+state.json
+alerts.jsonl
+notify.log
+logs/
+.check.lock
+notify.sh
