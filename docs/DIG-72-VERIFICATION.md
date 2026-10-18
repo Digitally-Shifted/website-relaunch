@@ -12,6 +12,7 @@ not include, in the same component system:
 | Route | File | Purpose |
 | --- | --- | --- |
 | `/faq/` | `src/pages/faq.astro` | Eight-question accordion (native `details`/`summary`, no JS needed). Pricing, process, timelines, POPIA, hosting. |
+| Services hub modal | `src/pages/services.astro` | WaaS "See what the plan covers" native dialog: inclusion list, quote CTA, overlay scrim (interactive element per the issue). |
 | `/services/website-development/` | `src/pages/services/website-development.astro` | Service detail; merge target of the 2024-08-12 post. CTA preselects `new-website`. |
 | `/services/paid-advertising/` | `src/pages/services/paid-advertising.astro` | Service detail; merge target of the 2024-07-15 post. CTA uses `quote` (spec 4.2 has no paid-advertising value). |
 | `/services/domains-hosting/` | `src/pages/services/domains-hosting.astro` | Service detail; merge target of the 2024-07-04 post. CTA preselects `hosting`. |
@@ -45,9 +46,10 @@ whole-output local-reference check.
 | 7 | Sitemap excludes thank-you and privacy (DIG-71 filter); new pages included | PASS (build log) |
 | 8 | CTA labels come from the approved list (conversion spec 2.5) | PASS |
 | 9 | Services hub links to the two detail pages; blog topic cards link to the filters | PASS |
+| 10 | WaaS modal: opens from "See what the plan covers", centred with the overlay scrim, closes on Close/backdrop/Escape | PASS (browser) |
 
-Screenshot evidence: 21-astro-faq, 22-astro-faq-accordion, 23-astro-detail
-(delivered on the issue).
+Screenshot evidence: 21-astro-faq, 22-astro-faq-accordion, 23-astro-detail,
+25-astro-waas-modal (delivered on the issue).
 
 ## Open items
 
