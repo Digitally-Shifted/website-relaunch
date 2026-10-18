@@ -66,38 +66,46 @@ The Google account is `accounts@digitallyshifted.com`.
 
 ### 3.0 Access route
 
-Two routes reach the goal. Route A is the standard.
+Status 2026-10-18: the external provider route (Composio) was offered and
+declined. The answer was `None for now` for Google Analytics and for Search
+Console. Do not reconnect it unless the owner asks.
 
-**Route A — platform connection (preferred).** Paperclip connects Google
-Analytics through the Composio service. The agent then runs every step through
-that connection. No raw Google credential ever reaches this repository.
+Two routes remain.
 
-Current state: the provider question is pending on this issue. A human picks
-the provider. Then the human approves the access card. Then the Google
-authorization happens once, in the Composio flow, under
-`accounts@digitallyshifted.com`.
+**Route A — service account key through the secret pathway (active).** A
+google service account works through the Google APIs. The key reaches this
+agent only through the Paperclip secret pathway. No key value ever lands in a
+comment, document, or this file.
 
-Human actions for Route A:
+One-time bootstrap. The owner of `accounts@digitallyshifted.com` does this:
 
-1. Answer the provider question on this issue. Pick `Composio`.
-2. Approve the access card that follows.
-3. In the Composio authorization flow, sign in as
-   `accounts@digitallyshifted.com` and allow Google Analytics access.
-4. If the GA account has no property yet, keep access to
-   analytics.google.com. The agent works through the connection.
+1. Log in at console.cloud.google.com as `accounts@digitallyshifted.com`.
+2. Pick one project. Enable the Google Analytics Admin API. For Search Console
+   work, also enable the Search Console API and the Site Verification API.
+3. Create one service account. Download the JSON key file.
+4. Log in at analytics.google.com. Open Admin, then Account User Management.
+   Add the service account email with the Editor role at account level.
+5. Deliver the key through the secret pathway: create a Paperclip secret named
+   `google/accounts-sa-key`, and bind it to the agent Tracking & Measurement
+   Specialist with the config path `access.google_accounts_sa`. Or paste the
+   key in the pending answer on this issue. The agent registers it through the
+   secret proposal pathway at once, and never writes the value anywhere.
+6. Answer the pending question on DIG-65.
 
-Then the agent runs through the connection: account lookup, property creation,
-data stream creation, measurement ID, key events, Search Console site insert,
-verification token, and sitemap submission.
+Then the agent runs through the APIs: account lookup, property creation, data
+stream creation, measurement ID, key events, Search Console site insert with
+the verification token, and sitemap submission.
 
-Search Console keeps two small human steps. Place the DNS TXT record at the
-registrar when the agent supplies the verification token (section 4.2). Or use
-the HTML file method when the site is live.
+Search Console keeps two human steps. Place the DNS TXT record at the registrar
+when the agent supplies the token (section 4.2). Or use the HTML file method
+when the site is live. After the first verification, add the service account
+email as a delegated owner in Search Console (Settings, then Users).
 
 **Route B — owner does the browser steps.** The owner follows sections 3.1 to
-3.4 and section 4 in the browser. The steps below work without any connection.
+3.4 and section 4 in the browser and sends the three IDs. The steps below work
+without any connection or key.
 
-Follow 3.1 to 3.4 for both routes. Route A runs them through the connection.
+Follow 3.1 to 3.4 for both routes. Route A runs them through the APIs.
 Route B runs them in the browser.
 
 ### 3.1 Create the property
@@ -138,8 +146,8 @@ The module sends five events that count conversions. Mark each one as a key even
 
 ## 4. Search Console
 
-Route A: the agent inserts the site through the connection and supplies the
-verification token. The human places the DNS record (step 4.2) and confirms.
+Route A: the agent inserts the site through the Site Verification API and
+supplies the verification token. The human places the DNS record (step 4.2).
 Route B: the owner does all steps in the browser.
 
 ### 4.1 Create the property
