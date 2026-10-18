@@ -3,4 +3,4 @@ alerts.jsonl
 notify.log
 logs/
 .check.lock
-notify.sh
+email.conf

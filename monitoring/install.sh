@@ -11,9 +11,13 @@ SYSTEMD_DIR="$HOME/.config/systemd/user"
 mkdir -p "$DEST/logs" "$SYSTEMD_DIR"
 install -m 644 "$SRC/sites.txt" "$DEST/sites.txt"
 install -m 755 "$SRC/uptime_check.py" "$DEST/uptime_check.py"
+install -m 755 "$SRC/notify.sh" "$DEST/notify.sh"
 
-# Keep an existing alert hook and state across reinstalls.
-[ -f "$SRC/notify.sh" ] && install -m 755 "$SRC/notify.sh" "$DEST/notify.sh"
+# Keep an existing alert configuration across reinstalls.
+if [ ! -f "$DEST/email.conf" ]; then
+  printf '# Alert email. RECIPIENT is required for delivery.\n# SENDER: agentmail (needs AGENTMAIL_API_KEY and AGENTMAIL_INBOX) or sendmail.\n#RECIPIENT=you@example.com\n#SENDER=agentmail\n#AGENTMAIL_INBOX=\n#AGENTMAIL_API_KEY=\n' > "$DEST/email.conf"
+  chmod 600 "$DEST/email.conf"
+fi
 
 cat > "$SYSTEMD_DIR/site-monitor.service" <<'UNIT'
 [Unit]

@@ -4,8 +4,10 @@ This document describes the monitoring baseline for the launched client
 sites. Owner: DIG-76. Related: DIG-64 (deploy process), DIG-65 (analytics
 baseline), DIG-20 (go-live).
 
-Status on 2026-10-18: uptime checks and local alert records run. Alert
-delivery and error tracking wait on an owner decision (section 7).
+Status on 2026-10-18: uptime checks and local alert records run. The owner
+picked email as the alert channel (baruch@digitallyshifted.com) and deferred
+error tracking on 2026-10-18. The email sender needs a service connection
+(section 7).
 
 ## 1. Standard baseline for client sites
 
@@ -31,7 +33,8 @@ untouched.
 | Current status | `state.json` |
 | Alert events | `alerts.jsonl` |
 | Run logs (14 days) | `logs/` |
-| Alert delivery hook | `notify.sh` (optional; template `notify.sh.example`) |
+| Alert delivery hook | `notify.sh` (logs every event; sends email when configured) |
+| Alert email config | `email.conf` on the installed copy (600 permissions; not versioned) |
 | Timer units | `~/.config/systemd/user/site-monitor.{service,timer}` |
 
 ## 3. Commands
@@ -77,8 +80,8 @@ delete the line and reinstall. Record the reason in the commit message.
 | Slow-site record | more than 10 s | Recorded in the run log; no alert |
 | Log retention | 14 days of run logs | The checker prunes old files |
 
-Alert events go to `alerts.jsonl` with `open`, `resolve`, or `tls`. When
-`notify.sh` exists, the checker also calls it:
+Alert events go to `alerts.jsonl` with `open`, `resolve`, or `tls`. The
+checker also calls `notify.sh` with the same event:
 
 ```text
 notify.sh open    <site-url> <detail>
@@ -86,7 +89,10 @@ notify.sh resolve <site-url> <detail>
 notify.sh tls     <site-url> <detail>
 ```
 
-Keep the hook under 30 seconds. It must never fail the check round.
+`notify.sh` appends every event to `notify.log`. When `email.conf` in the
+installed copy sets `RECIPIENT` and a working `SENDER`, the hook also sends
+the event as email to the owner address. Keep the hook under 30 seconds. It
+must never fail the check round.
 
 ## 6. Verification record, 2026-10-18
 
@@ -101,18 +107,20 @@ Keep the hook under 30 seconds. It must never fail the check round.
 4. systemd run: `site-monitor.service` checked 31 sites, 0 down. The timer
    is enabled and fires every 5 minutes with `Persistent=true`.
 
-## 7. Open decisions (owner)
+## 7. Owner decisions, answered 2026-10-18
 
-Two parts of the baseline wait on an owner decision. They are recorded in
-the DIG-76 thread as a question card.
+The owner answered the DIG-76 question card:
 
-1. **Alert delivery.** The checker writes alerts to `alerts.jsonl` today.
-   Pick a delivery channel: email, Slack, or local records only. I wire the
-   chosen channel into `notify.sh`.
-2. **Error tracking.** Pick a service: Sentry or PostHog, or defer. Either
-   service needs an account connection first. The relaunch site gets a
-   client-side error hook. WordPress client sites need a plugin or snippet
-   per site, and each install needs the site owner's approval.
+1. **Alert delivery: email to baruch@digitallyshifted.com.** The hook reads
+   the address from `email.conf`. This machine has no mail agent, so the
+   sender needs a service connection. The requested route is AgentMail
+   (`email-agent`); Gmail through the catalog can only draft, not send.
+   Until the connection is approved and wired, alerts land in `alerts.jsonl`
+   and `notify.log` only.
+2. **Error tracking: defer.** No error tracking for now. Uptime checks and
+   TLS alerts continue. The baseline stays valid without it. Revisit the
+   deferral when a client incident shows the need, or at the next review of
+   this document.
 
 ## 8. Cost and risk notes
 
