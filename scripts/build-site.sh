@@ -59,6 +59,18 @@ if [ -d "$SRC_DIR/legacy-static" ]; then
   cp -r "$SRC_DIR/legacy-static/." "$OUT_DIR/"
 fi
 
+# Redirect map (DIG-89): generate the hosting redirect file into the output.
+# Production hosts this on LiteSpeed; on GitHub Pages staging it ships inert.
+# Runs after the DIG-90 media prune, so 301 rules exist only for upload files
+# that really ship in this output; pruned media URLs fall to the 410 fallback.
+python3 "$SRC_DIR/docs/migration/tools/generate_redirects.py" \
+  --map "$SRC_DIR/docs/migration/redirect-map.json" \
+  --media-manifest "$SRC_DIR/docs/migration/media-manifest.json" \
+  --media-dir "$SRC_DIR/legacy-static/assets/media" \
+  --media-output-dir "$OUT_DIR/assets/media" \
+  --base-path "${PUBLIC_BASE_PATH:-}" \
+  --out "$OUT_DIR/.htaccess"
+
 # Inject build identity into the marker block (every HTML file).
 find "$OUT_DIR" -name '*.html' -type f -exec sed -i \
   "s/__BUILD_SHA__/$BUILD_SHA/g; s/__BUILD_TIME__/$BUILD_TIME/g; s/__BUILD_ENV__/$BUILD_ENV/g" {} +

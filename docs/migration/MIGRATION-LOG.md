@@ -166,3 +166,25 @@ alt on `AI-Trends-2023` (row 5 issue) and the off-topic web-dev thumbnail
   Google/Symantec claims, guide source links.
 - **DIG-85** (Low): pillar guide content upgrades — author byline,
   content-upgrade CTA.
+
+## 5. Redirect map (DIG-89, 2026-10-18)
+
+Every old URL now has a defined destination. Source of truth:
+`docs/migration/redirect-map.json`; decisions and regeneration steps:
+`docs/migration/REDIRECTS.md`; the build writes `.htaccess` into every output
+and `docs/migration/tools/test_redirects.py` verifies it locally (117/117
+cases, 0 orphans over 145 recorded old URLs).
+
+Updates to this log's rows:
+
+- Rows 5 and 6 (2023 posts, REWRITE pending): interim 301 to `/blog/`.
+  Update the map rows when the rewrites publish (DIG-81, DIG-82).
+- Row 9 (paid advertising post): 301 to `/services/paid-advertising/`
+  (the service page exists since DIG-72; closes this log's open placement
+  question for the redirect itself, DIG-83 still owns the content decision).
+- Rows 11–14 (category archives): this log said "no 301s needed" because the
+  descriptions moved into the blog index. DIG-72 then added real topic pages,
+  so the four category URLs now 301 to `/blog/<topic>/` — the stronger
+  outcome the audit's "301 to the new slugs" option described.
+- Media (section 4): upload URLs only 301 while the file ships in the deploy
+  output (DIG-90 prune); the rest return 410 until a page reuses the asset.
