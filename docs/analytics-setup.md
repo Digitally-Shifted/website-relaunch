@@ -19,6 +19,9 @@ Status on 2026-10-18:
 - Search Console verification: waits on domain DNS access.
 - Weekly report: recipe below. Build it after the GA4 property exists.
 - Live event test: waits on the GA4 property. The offline event test passed.
+- Owner decision 2026-10-18: the site launches with analytics dormant (no
+  measurement ID at build). Enable it in a patch release with the steps in
+  section 2 and `docs/go-live-runbook.md` step 8.
 
 Issue: DIG-65. Related: DIG-20 (go-live checklist), DIG-66 (lead capture spec).
 
@@ -45,11 +48,11 @@ in this file. Fill each row during setup.
 
 | Item | Value | Set by |
 | --- | --- | --- |
-| GA4 property name | Digitally Shifted — digitallyshifted.com | human, step 3.1 |
-| GA4 property ID | `TO FILL — format 123456789` | human, step 3.1 |
-| Web data stream ID | `TO FILL — format 1234567890` | human, step 3.2 |
-| Measurement ID | `TO FILL — format G-XXXXXXXXXX` | human, step 3.2 |
-| Search Console property | Domain property `digitallyshifted.com` | human, step 4.1 |
+| GA4 property name | Digitally Shifted — digitallyshifted.com | route A agent, or human, step 3.1 |
+| GA4 property ID | `TO FILL — format 123456789` | route A agent, or human, step 3.1 |
+| Web data stream ID | `TO FILL — format 1234567890` | route A agent, or human, step 3.2 |
+| Measurement ID | `TO FILL — format G-XXXXXXXXXX` | route A agent, or human, step 3.2 |
+| Search Console property | Domain property `digitallyshifted.com` | route A agent, or human, step 4.1 |
 | Search Console verification | DNS TXT record at the registrar | human, step 4.2 |
 
 Put the measurement ID into the site config when the site code exists.
@@ -62,8 +65,51 @@ environment variable. See `docs/go-live-runbook.md` step 8.
 
 ## 3. GA4 property and data stream
 
-A person with access to the company Google account does this part.
-Log in at analytics.google.com.
+The Google account is `accounts@digitallyshifted.com`.
+
+### 3.0 Access route
+
+Status 2026-10-18: the external provider route (Composio) was offered and
+declined. The answer was `None for now` for Google Analytics and for Search
+Console. Do not reconnect it unless the owner asks.
+
+Two routes remain.
+
+**Route A — service account key through the secret pathway (active).** A
+google service account works through the Google APIs. The key reaches this
+agent only through the Paperclip secret pathway. No key value ever lands in a
+comment, document, or this file.
+
+One-time bootstrap. The owner of `accounts@digitallyshifted.com` does this:
+
+1. Log in at console.cloud.google.com as `accounts@digitallyshifted.com`.
+2. Pick one project. Enable the Google Analytics Admin API. For Search Console
+   work, also enable the Search Console API and the Site Verification API.
+3. Create one service account. Download the JSON key file.
+4. Log in at analytics.google.com. Open Admin, then Account User Management.
+   Add the service account email with the Editor role at account level.
+5. Deliver the key through the secret pathway: create a Paperclip secret named
+   `google/accounts-sa-key`, and bind it to the agent Tracking & Measurement
+   Specialist with the config path `access.google_accounts_sa`. Or paste the
+   key in the pending answer on this issue. The agent registers it through the
+   secret proposal pathway at once, and never writes the value anywhere.
+6. Answer the pending question on DIG-65.
+
+Then the agent runs through the APIs: account lookup, property creation, data
+stream creation, measurement ID, key events, Search Console site insert with
+the verification token, and sitemap submission.
+
+Search Console keeps two human steps. Place the DNS TXT record at the registrar
+when the agent supplies the token (section 4.2). Or use the HTML file method
+when the site is live. After the first verification, add the service account
+email as a delegated owner in Search Console (Settings, then Users).
+
+**Route B — owner does the browser steps.** The owner follows sections 3.1 to
+3.4 and section 4 in the browser and sends the three IDs. The steps below work
+without any connection or key.
+
+Follow 3.1 to 3.4 for both routes. Route A runs them through the APIs.
+Route B runs them in the browser.
 
 ### 3.1 Create the property
 
@@ -102,6 +148,10 @@ The module sends five events that count conversions. Mark each one as a key even
    `generate_lead`.
 
 ## 4. Search Console
+
+Route A: the agent inserts the site through the Site Verification API and
+supplies the verification token. The human places the DNS record (step 4.2).
+Route B: the owner does all steps in the browser.
 
 ### 4.1 Create the property
 

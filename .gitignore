@@ -14,3 +14,8 @@ node_modules/
 # OS noise
 .DS_Store
 __pycache__/
+
+# Form backend local artifacts
+form-backend/leads.db
+form-backend/mail-stub/
+mail-stub/

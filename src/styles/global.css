@@ -496,12 +496,18 @@
   .ds-error {
     font-size: var(--type-body-sm-size);
     color: var(--color-grey-100);
+    /* Reserved line: toggling an error must not shift the fields below
+     * it while the visitor is moving toward the submit button (DIG-91). */
+    min-height: 1.5em;
   }
 
   .ds-error::before {
     content: '! ';
     font-weight: 700;
     color: var(--color-accent);
+  }
+  .ds-error:empty::before {
+    content: none;
   }
 
   .ds-summary {

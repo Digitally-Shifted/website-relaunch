@@ -1,22 +1,21 @@
 /*
  * Contact form behaviour (conversion spec 4).
  *
- * Static-host adaptation: there is no application server on GitHub Pages,
- * so the form posts to the managed form service (Web3Forms, the stack
- * standard default) instead of POST /api/contact. The service emails every
- * submission to the owner inbox. Deviations from spec 4.4 that this forces:
- * no server-side rate limit and no spam row storage. The honeypot
- * (6.2) and the time trap (6.2) run client side; a trapped submission is
- * dropped with no request, no event, and no feedback.
+ * Submission path: a normal browser POST to /api/contact on the same
+ * origin (spec 4.3). The server (form-backend/) validates again, stores
+ * the lead, applies the spam rules, and answers 303 to the thank-you page
+ * with the lead_ok cookie on genuine success. The thank-you page then
+ * fires the one conversion event from two signals (spec 7.2): the
+ * sessionStorage.lead_pending written here and that cookie. This module
+ * never sends analytics itself.
  *
  * Everything else follows the spec: field set and labels (4.1), need
- * options and preselect (4.2), error summary plus inline errors with focus
- * management (4.3), submit label switch (4.5), consent line without a
- * checkbox (4.6), and the conversion event fired once after the service
- * accepts the submission (4.3, 7.1; analytics README rule).
+ * options and preselect (4.2), error summary plus inline errors with
+ * focus management (4.3), submit label switch (4.5), consent line
+ * without a checkbox (4.6). The honeypot (6.2) and the time trap (6.2)
+ * also run here; a trapped submission is dropped with no request, no
+ * event, and no feedback. The server re-checks both.
  */
-
-export const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 
 /** Time trap (conversion spec 6.2): a submit inside 3 seconds is spam. */
 export const MIN_SUBMIT_MS = 3000;
@@ -77,30 +76,17 @@ export function validateContactFields(values) {
   return errors;
 }
 
-/** Email subject line (conversion spec 5.2). */
-export function buildSubject(intent, needLabel, name) {
-  const kind = intent ? 'Quote request' : 'Website enquiry';
-  return `${kind} — ${needLabel} — ${name}`;
-}
-
 /**
  * Wire one contact form element. Returns the controller for tests.
  *
  * env is injectable so tests run without a browser:
- *   request(url, options)  - defaults to global fetch
- *   locate()               - defaults to window.location
- *   navigate(url)          - defaults to window.location.assign
- *   analytics()            - defaults to window.DSAnalytics or null
- *   uuid()                 - defaults to crypto.randomUUID
- *   now()                  - defaults to Date.now
+ *   locate()      - defaults to window.location
+ *   uuid()        - defaults to crypto.randomUUID
+ *   now()         - defaults to Date.now
+ *   store()       - defaults to window.sessionStorage
  */
 export function setupContactForm(form, env = {}) {
-  const request = env.request || ((url, options) => fetch(url, options));
   const locate = env.locate || (() => window.location);
-  const navigate = env.navigate || ((url) => window.location.assign(url));
-  const analytics =
-    env.analytics ||
-    (() => (typeof window !== 'undefined' && window.DSAnalytics ? window.DSAnalytics : null));
   const uuid =
     env.uuid ||
     (() =>
@@ -108,12 +94,11 @@ export function setupContactForm(form, env = {}) {
         ? crypto.randomUUID()
         : `sub-${Date.now()}-${Math.random().toString(16).slice(2)}`);
   const now = env.now || (() => Date.now());
+  const store = env.store || (() => (typeof window !== 'undefined' ? window.sessionStorage : null));
 
   const select = form.querySelector('[data-ds-field="need"]');
   const button = form.querySelector('[data-ds-submit]');
   const summary = form.querySelector('[data-ds-summary]');
-  const status = form.querySelector('[data-ds-status]');
-  const fallback = form.querySelector('[data-ds-fallback]');
   const fields = {
     name: form.querySelector('[data-ds-field="name"]'),
     email: form.querySelector('[data-ds-field="email"]'),
@@ -122,6 +107,11 @@ export function setupContactForm(form, env = {}) {
     message: form.querySelector('[data-ds-field="message"]'),
     honeypot: form.querySelector('[data-ds-field="company_website"]'),
   };
+  const hidden = {};
+  for (const key of ['form_started_at', 'submission_id', 'utm_source', 'utm_medium', 'utm_campaign']) {
+    hidden[key] = form.querySelector(`input[name="${key}"]`);
+  }
+
   const errorSlots = {};
   for (const key of ['name', 'email', 'phone', 'business', 'need', 'message']) {
     errorSlots[key] = form.querySelector(`[data-ds-error-for="${key}"]`);
@@ -137,6 +127,10 @@ export function setupContactForm(form, env = {}) {
   const defaultSubmitLabel = button ? button.textContent : '';
   const quoteSubmitLabel = form.getAttribute('data-quote-label') || 'Request quote';
   const startedAt = now();
+  const formLocation = form.getAttribute('data-form-location') || '/contact';
+
+  if (hidden.form_started_at) hidden.form_started_at.value = String(startedAt);
+  if (hidden.submission_id) hidden.submission_id.value = uuid();
 
   let submittedOnce = false;
   let inFlight = false;
@@ -169,7 +163,9 @@ export function setupContactForm(form, env = {}) {
     return errors;
   };
 
-  const renderErrors = (errors) => {
+  /* Inline error slots keep their reserved line, so showing or clearing
+     * one never shifts the layout under the visitor's pointer. */
+  const renderErrors = (errors, { focusSummary = true, updateSummary = true } = {}) => {
     let firstMessage = '';
     for (const key of Object.keys(errorSlots)) {
       const slot = errorSlots[key];
@@ -177,20 +173,18 @@ export function setupContactForm(form, env = {}) {
       const control = fields[key] || select;
       if (errors[key]) {
         slot.textContent = errors[key];
-        slot.hidden = false;
         if (control && control.setAttribute) {
           control.setAttribute('aria-invalid', 'true');
         }
         if (!firstMessage) firstMessage = errors[key];
       } else {
         slot.textContent = '';
-        slot.hidden = true;
         if (control && control.setAttribute) {
           control.setAttribute('aria-invalid', 'false');
         }
       }
     }
-    if (summary) {
+    if (summary && updateSummary) {
       if (firstMessage) {
         summary.textContent = '';
         const heading = form.ownerDocument
@@ -205,14 +199,21 @@ export function setupContactForm(form, env = {}) {
           : null;
         if (list) {
           for (const value of Object.values(errors)) {
-            const item = form.ownerDocument.createElement('li');
-            item.textContent = value;
-            list.appendChild(item);
+            const item = form.ownerDocument
+              ? form.ownerDocument.createElement('li')
+              : null;
+            if (item) {
+              item.textContent = value;
+              list.appendChild(item);
+            }
           }
           summary.appendChild(list);
         }
         summary.hidden = false;
-        if (summary.focus) summary.focus();
+        /* Focus moves to the summary on a failed submit only (spec 4.3).
+         * A blur revalidation must never steal focus from the field the
+         * user just clicked into. */
+        if (focusSummary && summary.focus) summary.focus();
       } else {
         summary.hidden = true;
         summary.textContent = '';
@@ -222,6 +223,9 @@ export function setupContactForm(form, env = {}) {
 
   const validateOnBlur = () => {
     if (!submittedOnce) return;
+    /* Field-scoped: inline slots update, the summary box stays untouched.
+     * Re-rendering the summary on blur shifts the page while the visitor
+     * is reaching for the next field or the submit button. */
     renderErrors(
       fieldErrors({
         name: fields.name && fields.name.value,
@@ -230,6 +234,7 @@ export function setupContactForm(form, env = {}) {
         business: fields.business && fields.business.value,
         message: fields.message && fields.message.value,
       }),
+      { focusSummary: false, updateSummary: false },
     );
   };
   for (const control of Object.values(fields)) {
@@ -238,7 +243,7 @@ export function setupContactForm(form, env = {}) {
     }
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     /* Honeypot (6.2): a filled trap is a bot. Drop with no feedback. */
     if (fields.honeypot && fields.honeypot.value) {
       event.preventDefault();
@@ -265,106 +270,51 @@ export function setupContactForm(form, env = {}) {
       return;
     }
 
-    /* Valid submission: the fetch path owns navigation (spec 4.3). */
-    event.preventDefault();
-    if (inFlight) return;
+    /* Valid: record the pending lead for the thank-you two-signal rule
+     * (spec 7.2), then let the native POST run. The server's 303 carries
+     * the visitor to the thank-you page; its lead_ok cookie is the second
+     * signal and only a genuine success sets it. */
+    if (inFlight) {
+      event.preventDefault();
+      return;
+    }
     inFlight = true;
+
+    const need = select ? select.value : DEFAULT_NEED;
+    try {
+      const storage = store();
+      if (storage) {
+        storage.setItem('lead_pending', JSON.stringify({ need, form_location: formLocation }));
+      }
+    } catch {
+      /* storage unavailable (private mode): the lead still submits */
+    }
+
+    const params = new URL(locate().href).searchParams;
+    for (const key of ['utm_source', 'utm_medium', 'utm_campaign']) {
+      const value = params.get(key);
+      if (value && hidden[key]) hidden[key].value = value.slice(0, 200);
+    }
+
     if (button) {
       button.disabled = true;
       button.textContent = 'Sending…';
     }
-    if (status) {
-      status.hidden = true;
-      status.textContent = '';
-    }
-
-    const need = select ? select.value : DEFAULT_NEED;
-    const intent = isQuoteIntent(need, quoteIntentValues);
-    const needLabel =
-      select && select.selectedOptions && select.selectedOptions[0]
-        ? select.selectedOptions[0].textContent
-        : need;
-    const params = new URL(locate().href).searchParams;
-    const endpoint = form.getAttribute('data-endpoint') || WEB3FORMS_ENDPOINT;
-    const payload = {
-      access_key: form.getAttribute('data-access-key') || '',
-      subject: buildSubject(intent, needLabel, (values.name || '').trim()),
-      from_name: 'Digitally Shifted website',
-      name: (values.name || '').trim(),
-      email: (values.email || '').trim(),
-      phone: (values.phone || '').trim(),
-      business: (values.business || '').trim(),
-      need,
-      need_label: needLabel,
-      message: (values.message || '').trim(),
-      form_location: form.getAttribute('data-form-location') || '/contact',
-      form_started_at: String(startedAt),
-      submission_id: uuid(),
-      page_url: locate().href,
-    };
-    for (const key of ['utm_source', 'utm_medium', 'utm_campaign']) {
-      const value = params.get(key);
-      if (value) payload[key] = value;
-    }
-
-    const fail = () => {
-      inFlight = false;
-      if (button) {
-        button.disabled = false;
-        button.textContent = defaultSubmitLabel;
-      }
-      setButtonLabel();
-      if (status) {
-        status.textContent = 'Something broke on our side. Please call or WhatsApp us.';
-        status.hidden = false;
-      }
-      if (fallback) fallback.hidden = false;
-    };
-
-    let response;
-    try {
-      response = await request(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(payload),
+    /* Restore on back-navigation (bfcache keeps the disabled button). */
+    if (typeof window !== 'undefined' && window.addEventListener && !handleSubmit._pageshow) {
+      handleSubmit._pageshow = true;
+      window.addEventListener('pageshow', () => {
+        inFlight = false;
+        if (button) {
+          button.disabled = false;
+          setButtonLabel();
+        }
       });
-    } catch {
-      fail();
-      return;
     }
-
-    let result = {};
-    try {
-      result = await response.json();
-    } catch {
-      result = {};
-    }
-
-    if (!(response.ok && result.success)) {
-      fail();
-      return;
-    }
-
-    /* Conversion event (spec 7.1): one event, non-spam, after accept. */
-    const tracker = analytics();
-    if (tracker) {
-      const location = form.getAttribute('data-form-location') || '/contact';
-      if (intent) {
-        tracker.quoteRequest({ formLocation: location });
-      } else {
-        tracker.contactSubmit({ formLocation: location });
-      }
-    }
-    const thankyouHref = form.getAttribute('data-thankyou-href');
-    navigate(thankyouHref || '/contact/thank-you/');
+    /* No preventDefault: the browser POSTs and follows the 303. */
   };
 
-  form.addEventListener('submit', (event) => {
-    /* preventDefault inside handleSubmit; the promise keeps no caller. */
-    Promise.resolve(handleSubmit(event)).catch(() => {
-      event.preventDefault();
-    });
-  });
+  form.addEventListener('submit', handleSubmit);
 
   return {
     setButtonLabel,

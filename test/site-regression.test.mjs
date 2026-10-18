@@ -107,7 +107,12 @@ test('the form shows the consent line, direct routes, and never a dead end', asy
   assert.match(form, /href="[^"]*\/privacy"/);
   /* No consent checkbox at launch (spec 4.6). */
   assert.ok(!/type="checkbox"/.test(form), 'consent must stay a line, not a checkbox');
-  assert.match(form, /data-ds-fallback/);
+  /* Server contract (spec 4.4): native POST to the form backend with the
+     render-time and UTM fields the backend reads. */
+  assert.match(form, /action="\/api\/contact"/);
+  assert.match(form, /name="form_started_at"/);
+  assert.match(form, /name="submission_id"/);
+  assert.match(form, /name="utm_source"/);
   assert.match(form, /<noscript>/);
   assert.match(form, /tel:\+27631718750/);
 });
@@ -211,14 +216,13 @@ test('every page loads the analytics module and the wiring keeps the event contr
 });
 
 /* ---------- 5. base path reaches the form ---------- */
-
-test('the staging base path reaches the thank-you redirect target', async () => {
+test('the form posts to /api/contact; the server owns the 303 redirect', async () => {
   const html = await readBuilt('contact/index.html');
-  assert.match(
-    html,
-    /data-thankyou-href="\/website-relaunch\/contact\/thank-you\/"/,
-    'the form redirect must carry the staging base path',
-  );
+  /* Native POST (spec 4.3): no client-side navigation target. The
+     backend answers 303 with the base path from its BASE_PATH env, so
+     the staging prefix is a server concern, not a markup attribute. */
+  assert.match(html, /action="\/api\/contact"/);
+  assert.ok(!html.includes('data-thankyou-href'), 'client-side redirect target must be gone');
   const thankYou = findHtml(join('contact', 'thank-you', 'index.html'));
   assert.ok(thankYou);
 });

@@ -16,17 +16,19 @@ DNS switch in step 6. Nothing below touches the old site before that step.
 | Redirects configured and tested | Build-gate tested (stubs + map). Host-level 301/410 tested locally; live-host pass is step 7. | `docs/migration/redirect-map.json`, `scripts/test-redirects.mjs`, step 3 |
 | DNS records ready to switch | Record table and cutover steps in step 6. Needs registrar access (owner). | step 6 |
 | TLS/SSL certificate | Issued on the production host in step 5. Expiry alerting active (DIG-76). | step 5 |
-| Analytics installed | Module loads on every page; dormant until `PUBLIC_GA4_ID` is set at build. Activation in step 8. | `docs/analytics-setup.md` |
+| Analytics installed | Module loads on every page; dormant until `PUBLIC_GA4_ID` is set at build (owner decision 2026-10-18: launch without analytics, enable in a patch release). Activation in step 8. | `docs/analytics-setup.md` |
 | robots.txt and sitemap.xml | Verified in the build: `robots.txt` points at `sitemap-index.xml`; noindex pages are excluded. | build checks |
 | Social meta tags | Every page ships Open Graph + Twitter card tags and a 1200x630 share image. | `src/layouts/BaseLayout.astro`, `public/og-default.png` |
 | 404 page | Built and branded; host serves it with a real 404 status (`ErrorDocument`). | `src/pages/404.astro`, step 3 |
 | Monitoring and alerting | Uptime checks run every 5 minutes and already watch `digitallyshifted.com`; email alert delivery is wired (owner address). | `docs/monitoring-setup.md` |
-| Production deploy | Release steps in step 4; needs a reviewer approval in GitHub. | step 4 |
+| Contact form | Built and verified end to end (14 backend tests + 14 real-browser checks). Ships with the host deployment; go-live waits on it (owner decision 2026-10-18). | step 3, `form-backend/` |
+| Production deploy | Release steps in step 4; needs a reviewer approval in GitHub and the owner's go (owner decision 2026-10-18: wait for the go). | step 4 |
 
-Open decisions that gate go-live (owner): the contact-form backend
-(DIG-69/`docs/conversion-spec.md` section 5), the GA4 measurement ID
-(DIG-65), the production reviewer set (security review A3/A4), and the
-hosting upload destination (step 5).
+Open decisions that gate go-live (owner): the production host name and
+access (owner chose "another host", unnamed — steps 3, 5, 6 adapt once
+named), the production reviewer set (step 4), and the release go signal.
+Decided on 2026-10-18: the contact form must work end to end before
+go-live (it does — see `form-backend/`), and GA4 stays dormant at launch.
 
 ## 1. Preconditions
 
@@ -37,10 +39,12 @@ hosting upload destination (step 5).
 3. The security review checklist (`docs/security-review.md`) has no FAIL
    items open for the release ref, except items this runbook closes at
    go-live (C1, C3, B6, G2 close in steps 5–7).
-4. The owner has decided the contact-form question. A production site whose
-   only form is a placeholder fails security review F1 (no draft text
-   public). Either the form backend ships first, or the owner accepts a
-   recorded exception and the contact page hides the form slot.
+4. The owner has decided the contact-form question (decided 2026-10-18:
+   the form must work end to end at launch). Deploy the form backend with
+   the site and run its verification before opening the launch:
+   `node --test form-backend/test/` (14 tests) and the browser checks in
+   the DIG-91 evidence. On a static-only rehearsal host the form's POST
+   404s — expected there, not acceptable in production.
 
 ## 2. Prepare the release content
 
@@ -56,9 +60,11 @@ hosting upload destination (step 5).
 
 ## 3. Hosting decision and host configuration
 
-The planned host is the existing LiteSpeed/Plesk account at dshost.co.za
-(same platform as the old site; the redirect tooling targets it). Any
-Apache-compatible host works with the same steps.
+The owner chose "another host" (unnamed as of 2026-10-18). The steps below
+are host-neutral; the concrete panel commands land here once the host is
+named. Two needs drive the choice: static file serving for the site, and a
+Node >= 24 process for the form backend (`form-backend/`) reachable at
+`/api/*` on the same origin.
 
 1. Choose the document root for the new site on the host.
 2. Upload the release artifact and verify it:
@@ -68,17 +74,35 @@ Apache-compatible host works with the same steps.
    tar xzf site-<short-sha>.tar.gz -C <document-root>
    ```
 
-3. Generate the host redirect file from the map and install it as
-   `.htaccess` in the document root. It carries the 301s, the WordPress
-   410s, the media redirects, HTTPS canonicalization, `ErrorDocument 404`,
-   and `Options -Indexes`:
+3. Install the redirect/host config. Two sources:
 
-   ```sh
-   python3 docs/migration/tools/generate_redirects.py --out .htaccess
-   ```
+   - Apache-compatible hosts (LiteSpeed, Apache, LiteSpeed via Plesk):
+     generate and install `.htaccess` from the map (301s, WordPress 410s,
+     media redirects, HTTPS canonicalization, `ErrorDocument 404`,
+     `Options -Indexes`):
 
-4. Add the security headers to `.htaccess` (security review C3). Keep them
-   in step with any script-origin change:
+     ```sh
+     python3 docs/migration/tools/generate_redirects.py --out .htaccess
+     ```
+
+   - nginx or other: translate the same rules from
+     `docs/migration/redirect-map.json`; the map is the source of truth
+     either way.
+
+4. Deploy the form backend (owner decision: launch waits on the form):
+
+   1. Run `node form-backend/server.mjs` under a process manager
+      (systemd user unit is enough) with `HOST=127.0.0.1`.
+   2. Reverse-proxy `/api/*` to its port; pass `X-Forwarded-For` and set
+      `TRUST_PROXY=true`. Full env table: `form-backend/README.md`.
+   3. Set `MAILER` (`agentmail` with the company inbox, or `sendmail`
+      where the host provides it), `MAIL_TO`, and `COOKIE_SECRET`.
+   4. Verify: `POST /api/contact` with a test enquiry answers 303, stores
+      the row, and the owner email arrives.
+
+5. Add the security headers (security review C3). For Apache-compatible
+   hosts add to `.htaccess`; nginx uses `add_header`. Keep them in step
+   with any script-origin change:
 
    ```apache
    <IfModule mod_headers.c>
@@ -90,8 +114,6 @@ Apache-compatible host works with the same steps.
    </IfModule>
    ```
 
-   When the form backend lands on another origin, add that origin to
-   `form-action` and `connect-src` in the same change.
 5. Turn on HTTPS for the hostname (step 5) before the DNS switch.
 
 ## 4. Production release
@@ -169,13 +191,17 @@ The build marker must show the released commit SHA.
    URL from `docs/migration/redirect-map.json` plus slash variants and the
    WordPress 410 endpoints. Every 301 target must answer 200 and every
    410 must answer 410.
-3. Security headers: `curl -sI https://digitallyshifted.com` shows HSTS,
+3. Form pass on the live host: submit one real enquiry through the page,
+   confirm the thank-you page, the stored row, and the owner email; then
+   confirm a honeypot-filled submission stores a spam row and sends no
+   email (`form-backend/README.md`, spec section 7.4).
+4. Security headers: `curl -sI https://digitallyshifted.com` shows HSTS,
    CSP, `X-Content-Type-Options`, `Referrer-Policy`, and frame protection
    (security review C1/C3 PASS).
-4. Staging stays up and noindexed; it is the next release's rehearsal
+5. Staging stays up and noindexed; it is the next release's rehearsal
    environment.
-5. Record the go-live evidence (smoke output, header output, redirect
-   results) on the DIG-91 issue.
+6. Record the go-live evidence (smoke output, header output, redirect and
+   form results) on the DIG-91 issue.
 
 ## 8. Analytics and Search Console activation
 

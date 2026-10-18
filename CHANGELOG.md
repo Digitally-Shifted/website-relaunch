@@ -10,6 +10,11 @@ apply to production releases only. Staging has no versions.
 
 ### Added
 
+- The enquiry form end to end: the `ContactForm` component (validation,
+  honeypot, time trap, UTM capture, quote-intent button) and the
+  zero-dependency backend behind `POST /api/contact` (SQLite leads store,
+  email notification with retries, rate limit, idempotency) with 14
+  end-to-end tests and 14 real-browser checks (DIG-69, DIG-91).
 - Redirect map for every old URL (`docs/migration/redirect-map.json`, DIG-89):
   meta-refresh stubs ship in the static build, and a generator produces the
   LiteSpeed `.htaccess` (11 page 301s, 47 media redirects, 14 WordPress
@@ -29,8 +34,24 @@ apply to production releases only. Staging has no versions.
   variable is set; the thank-you page implements the two-signal lead
   conversion firing from the conversion spec section 7.2 (DIG-65, DIG-91).
 - Threat model for the full site stack (`docs/THREAT-MODEL.md`, DIG-74).
+- Blog index page at `/blog/` that lists the four blog topics (DIG-92, AC-009).
 
 ### Changed
 
 - The build gate now also verifies the redirect map
   (`scripts/build-site.sh`, DIG-91).
+
+### Fixed
+
+- The skip link now moves keyboard focus into the page content (DIG-92, AC-007).
+- Blog topic and service detail pages use ink links on light grounds; the
+  previous accent links failed the 4.5:1 text contrast minimum (DIG-92, AC-006).
+- Keyboard focus on mobile now rests above the fixed action bar, never under
+  it (DIG-92, AC-008).
+- Section headings carry ids, so every `aria-labelledby` section label
+  resolves to its heading (DIG-92, AC-010).
+- The mobile action bar is a navigation landmark named "Quick actions"
+  (DIG-92, AC-011).
+- Interactive card hover borders use grey-500, which meets the 3:1 non-text
+  contrast minimum on both grounds (DIG-92, AC-012).
+- Smooth scrolling is disabled for users who prefer reduced motion (DIG-92).
