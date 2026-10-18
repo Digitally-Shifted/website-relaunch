@@ -25,10 +25,17 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
+      - name: Test
+        run: |
+          npm run test:analytics
+          npm test
+
       - name: Build and check site
         env:
           BUILD_SHA: ${{ github.sha }}
           BUILD_ENV: staging
+          PUBLIC_FORM_ACCESS_KEY: ${{ secrets.PUBLIC_FORM_ACCESS_KEY }}
+          PUBLIC_GA4_ID: ${{ secrets.PUBLIC_GA4_ID }}
         run: BUILD_TIME="$(date -u +%Y-%m-%dT%H:%M:%SZ)" bash scripts/build-site.sh site
 
       - uses: actions/configure-pages@v6

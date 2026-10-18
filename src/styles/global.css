@@ -430,4 +430,115 @@
   .skip-link:focus {
     left: 0;
   }
+
+  /*
+   * Contact form controls (DESIGN-SPEC 4.6, dark ground). Grey-900 fill,
+   * 1px grey-700 border, 48px height, radius 0, Paper text. Focus keeps
+   * the 2px accent ring and drops the border to accent. Errors state the
+   * fix and carry an accent marker, never color alone (4.6).
+   */
+  .ds-form-grid {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .ds-form-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .ds-field--full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .ds-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .ds-label {
+    font-size: var(--type-body-sm-size);
+    font-weight: 500;
+    color: var(--color-grey-100);
+  }
+
+  .ds-control {
+    width: 100%;
+    min-height: 48px;
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-grey-900);
+    border: 1px solid var(--color-grey-700);
+    border-radius: var(--radius-none);
+    color: var(--color-paper);
+    font-family: inherit;
+    font-size: var(--type-body-size);
+    line-height: var(--type-body-leading);
+  }
+
+  textarea.ds-control {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .ds-control:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 0;
+    border-color: var(--color-accent);
+  }
+
+  .ds-control[aria-invalid='true'] {
+    border-color: var(--color-accent);
+  }
+
+  .ds-error {
+    font-size: var(--type-body-sm-size);
+    color: var(--color-grey-100);
+  }
+
+  .ds-error::before {
+    content: '! ';
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  .ds-summary {
+    margin-block-end: var(--space-5);
+    border: 1px solid var(--color-accent);
+    padding: var(--space-4);
+    color: var(--color-grey-100);
+    font-size: var(--type-body-sm-size);
+  }
+
+  .ds-summary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .ds-consent {
+    margin-block-start: var(--space-5);
+    font-size: var(--type-body-sm-size);
+    color: var(--color-text-on-dark-muted);
+  }
+
+  .ds-status {
+    margin-block-start: var(--space-4);
+    font-size: var(--type-body-sm-size);
+    color: var(--color-grey-100);
+  }
+
+  .ds-fallback {
+    margin-block-start: var(--space-4);
+  }
+
+  /* Honeypot (conversion spec 6.2): hidden from people and screen readers. */
+  .ds-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 }

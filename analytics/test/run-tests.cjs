@@ -9,8 +9,19 @@
  */
 'use strict';
 
+const fs = require('fs');
 const path = require('path');
-const { DSAnalytics, validMeasurementId } = require(path.join(__dirname, '..', 'ds-analytics.js'));
+
+/*
+ * Load ds-analytics with an explicit CommonJS module context. The site
+ * package runs with "type": "module", so a plain require() sees the file
+ * as ESM and returns no exports. Evaluating the source with our own
+ * module object works under any package type.
+ */
+const dsSource = fs.readFileSync(path.join(__dirname, '..', 'ds-analytics.js'), 'utf8');
+const dsModule = { exports: {} };
+new Function('module', 'exports', dsSource)(dsModule, dsModule.exports);
+const { DSAnalytics, validMeasurementId } = dsModule.exports;
 
 const TEL = 'a[href^="tel:"]';
 

@@ -1,0 +1,171 @@
+---
+/*
+ * Contact form (conversion spec 4). The one form on the site at launch.
+ *
+ * Static-host adaptation: submissions post to the managed form service
+ * (Web3Forms, the stack standard default) and arrive as email in the owner
+ * inbox. Set the PUBLIC_FORM_ACCESS_KEY build secret to activate the form.
+ * Without the key the form still renders; a submission shows the direct
+ * contact routes instead of a dead end. Behaviour lives in
+ * src/scripts/contact-form.js; styles follow DESIGN-SPEC 4.6 (dark ground).
+ *
+ * Analytics: this is a JavaScript-handled form, so it does NOT carry
+ * data-ds-form (that attribute switches on the module's submit-time
+ * auto event for server-POST forms). The behaviour module calls the
+ * analytics methods once, after the service accepts the submission,
+ * per analytics/README.md.
+ */
+import { withBase } from '../lib/urls';
+import { needOptions } from '../lib/site.config';
+
+const accessKey = import.meta.env.PUBLIC_FORM_ACCESS_KEY || '';
+const quoteNeeds = needOptions
+  .filter((option) => option.quoteIntent)
+  .map((option) => option.value)
+  .join(',');
+---
+
+<form
+  class="ds-form"
+  method="POST"
+  action="https://api.web3forms.com/submit"
+  novalidate
+  data-ds-contact-form
+  data-ds-location="content"
+  data-endpoint="https://api.web3forms.com/submit"
+  data-access-key={accessKey}
+  data-quote-needs={quoteNeeds}
+  data-quote-label="Request quote"
+  data-form-location="/contact"
+  data-thankyou-href={withBase('/contact/thank-you/')}
+  aria-describedby="contact-consent"
+>
+  <div class="ds-summary" data-ds-summary tabindex="-1" hidden></div>
+
+  <div class="ds-form-grid">
+    <div class="ds-field">
+      <label class="ds-label" for="field-name">Your name (required)</label>
+      <input
+        class="ds-control"
+        id="field-name"
+        name="name"
+        type="text"
+        maxlength="100"
+        autocomplete="name"
+        required
+        data-ds-field="name"
+      />
+      <p class="ds-error" data-ds-error-for="name" hidden></p>
+    </div>
+
+    <div class="ds-field">
+      <label class="ds-label" for="field-email">Email (required)</label>
+      <input
+        class="ds-control"
+        id="field-email"
+        name="email"
+        type="email"
+        autocomplete="email"
+        data-ds-field="email"
+      />
+      <p class="ds-error" data-ds-error-for="email" hidden></p>
+    </div>
+
+    <div class="ds-field">
+      <label class="ds-label" for="field-phone">Phone (optional)</label>
+      <input
+        class="ds-control"
+        id="field-phone"
+        name="phone"
+        type="tel"
+        inputmode="tel"
+        autocomplete="tel"
+        data-ds-field="phone"
+      />
+      <p class="ds-error" data-ds-error-for="phone" hidden></p>
+    </div>
+
+    <div class="ds-field">
+      <label class="ds-label" for="field-business">Business name (optional)</label>
+      <input
+        class="ds-control"
+        id="field-business"
+        name="business"
+        type="text"
+        maxlength="120"
+        autocomplete="organization"
+        data-ds-field="business"
+      />
+      <p class="ds-error" data-ds-error-for="business" hidden></p>
+    </div>
+
+    <div class="ds-field">
+      <label class="ds-label" for="field-need">What do you need? (required)</label>
+      <select class="ds-control" id="field-need" name="need" required data-ds-field="need">
+        {needOptions.map((option) => <option value={option.value}>{option.label}</option>)}
+      </select>
+      <p class="ds-error" data-ds-error-for="need" hidden></p>
+    </div>
+
+    <div class="ds-field ds-field--full">
+      <label class="ds-label" for="field-message">Tell us about your project (required)</label>
+      <textarea
+        class="ds-control"
+        id="field-message"
+        name="message"
+        rows="5"
+        maxlength="5000"
+        required
+        data-ds-field="message"></textarea>
+      <p class="ds-error" data-ds-error-for="message" hidden></p>
+    </div>
+  </div>
+
+  <!-- Honeypot (conversion spec 6.2): hidden from people, filled by bots. -->
+  <input
+    class="ds-honeypot"
+    type="text"
+    name="company_website"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+    data-ds-field="company_website"
+  />
+
+  <p class="ds-consent" id="contact-consent">
+    We use your details to reply to this enquiry. We do not sell them. See our
+    <a href={withBase('/privacy')} class="link-dark">privacy notice</a>.
+  </p>
+
+  <button class="btn btn--primary" type="submit" data-ds-submit>Send enquiry</button>
+
+  <p class="ds-status" role="status" aria-live="polite" data-ds-status hidden></p>
+
+  <div class="ds-fallback" data-ds-fallback hidden>
+    <p class="text-body text-text-on-dark-muted">
+      Reach us directly: call
+      <a href="tel:+27631718750" class="link-dark">+27 63 171 8750</a> or email
+      <a href="mailto:baruch@digitallyshifted.com" class="link-dark">baruch@digitallyshifted.com</a>.
+    </p>
+  </div>
+
+  <noscript>
+    <div class="ds-fallback">
+      <p class="text-body text-text-on-dark-muted">
+        This form needs JavaScript. Reach us directly: call
+        <a href="tel:+27631718750" class="link-dark">+27 63 171 8750</a>, WhatsApp
+        <a href="https://wa.me/27631718750" class="link-dark">+27 63 171 8750</a>, or email
+        <a href="mailto:baruch@digitallyshifted.com" class="link-dark">baruch@digitallyshifted.com</a>.
+      </p>
+    </div>
+  </noscript>
+</form>
+
+<script>
+  import { setupContactForm } from '../scripts/contact-form.js';
+
+  const form = document.querySelector('form[data-ds-contact-form]');
+  if (form) {
+    setupContactForm(form);
+  }
+</script>

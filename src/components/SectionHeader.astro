@@ -11,9 +11,11 @@ interface Props {
   opener?: string;
   dark?: boolean;
   align?: 'left' | 'center';
+  /** Heading id. Deep links from migrated content target these ids. */
+  id?: string;
 }
 
-const { eyebrow, heading, opener, dark = true, align = 'left' } = Astro.props;
+const { eyebrow, heading, opener, dark = true, align = 'left', id } = Astro.props;
 ---
 
 <div class:list={['max-w-2xl', align === 'center' && 'mx-auto text-center']}>
@@ -25,6 +27,7 @@ const { eyebrow, heading, opener, dark = true, align = 'left' } = Astro.props;
     )
   }
   <h2
+    id={id}
     class:list={['mt-3 text-display', dark ? 'text-paper' : 'text-text-on-light']}
     set:html={heading}
   />

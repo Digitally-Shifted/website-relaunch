@@ -37,10 +37,17 @@ jobs:
           echo "sha=$SHA" >> "$GITHUB_OUTPUT"
           echo "short=${SHA::7}" >> "$GITHUB_OUTPUT"
 
+      - name: Test
+        run: |
+          npm run test:analytics
+          npm test
+
       - name: Build and check site
         env:
           BUILD_SHA: ${{ steps.identity.outputs.sha }}
           BUILD_ENV: production
+          PUBLIC_FORM_ACCESS_KEY: ${{ secrets.PUBLIC_FORM_ACCESS_KEY }}
+          PUBLIC_GA4_ID: ${{ secrets.PUBLIC_GA4_ID }}
         run: BUILD_TIME="$(date -u +%Y-%m-%dT%H:%M:%SZ)" bash scripts/build-site.sh site
 
       - name: Package site
