@@ -50,6 +50,15 @@ rm -rf "$OUT_DIR"
 cp -r dist "$OUT_DIR"
 touch "$OUT_DIR/.nojekyll"
 
+# Migrated legacy content pages (DIG-73): blog and old posts keep serving
+# from legacy-static/ until they are ported to Astro routes. The four
+# routes that the Astro app implements (services, contact, thank-you,
+# privacy) are not in legacy-static; their pre-port versions are kept in
+# docs/migration/generated/ for reference.
+if [ -d "$SRC_DIR/legacy-static" ]; then
+  cp -r "$SRC_DIR/legacy-static/." "$OUT_DIR/"
+fi
+
 # Inject build identity into the marker block (every HTML file).
 find "$OUT_DIR" -name '*.html' -type f -exec sed -i \
   "s/__BUILD_SHA__/$BUILD_SHA/g; s/__BUILD_TIME__/$BUILD_TIME/g; s/__BUILD_ENV__/$BUILD_ENV/g" {} +

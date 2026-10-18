@@ -48,7 +48,12 @@ prefix and carry `noindex`. Production builds run with
 
 ```text
 brand/           DS brand kit: tokens, logo SVGs, fonts, icon exports
-docs/            Design spec, conversion spec, deploy process, audits
+docs/            Design spec, conversion spec, deploy process, audits,
+                 migration records; docs/migration/generated/ keeps the
+                 pre-port versions of migrated pages that the Astro app
+                 now implements
+legacy-static/   Migrated legacy content (blog index, old posts, media)
+                 served until each page is ported to an Astro route
 public/          Favicons, fonts, logo SVGs, robots.txt
 scripts/         Build, staging deploy, and rollback scripts
 src/components/  Header, footer, mobile action bar, cards, CTAs
@@ -74,3 +79,8 @@ the final copy. The contact form component and the remaining interactive
 components belong to DIG-69 and DIG-72; the contact page marks the form
 slot. CTA links carry `data-ds-location` attributes so the analytics
 module (DIG-65) can bind its click events without layout changes.
+
+New content pages land as Astro routes or content-collection entries.
+The generator in `docs/migration/tools/` writes to `legacy-static/`; when
+a legacy page is ported to an Astro route, remove it from `legacy-static/`
+so the Astro page takes over the route.
