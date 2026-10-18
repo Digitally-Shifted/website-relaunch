@@ -148,11 +148,19 @@ function eventByName(window, name) {
     script && script.async === true && script.attrs['data-ds-ga4'] === 'G-TEST12345');
 }
 
+/* 3b. debugMode adds debug_mode to the config command. */
+{
+  const { window } = boot({ stub: true, debugMode: true });
+  const config = eventsOf(window).find((e) => e[0] === 'config');
+  check('init: debug_mode set in config', config && config[2] && config[2].debug_mode === true,
+    JSON.stringify(config));
+}
+
 /* 4. tel: click sends call_click with the phone number. */
 {
   const { ds, window } = boot({ stub: true });
   const anchor = makeAnchor('tel:0762968981', 'footer');
-  window.document.dispatch('click', { target: anchor });
+  document.dispatch('click', { target: anchor });
   const events = eventByName(window, 'call_click');
   check('call_click: one event on tel: click', events.length === 1, `got ${events.length}`);
   const params = events[0] && events[0][2];
@@ -165,7 +173,7 @@ function eventByName(window, name) {
 /* 5. wa.me click sends whatsapp_click. */
 {
   const { window } = boot({ stub: true });
-  window.document.dispatch('click', { target: makeAnchor('https://wa.me/2776296981', 'contact') });
+  document.dispatch('click', { target: makeAnchor('https://wa.me/2776296981', 'contact') });
   const events = eventByName(window, 'whatsapp_click');
   check('whatsapp_click: one event on wa.me click', events.length === 1, `got ${events.length}`);
   check('whatsapp_click: link_url and location captured',
@@ -177,7 +185,7 @@ function eventByName(window, name) {
 /* 6. api.whatsapp.com click sends whatsapp_click. */
 {
   const { window } = boot({ stub: true });
-  window.document.dispatch('click', {
+  document.dispatch('click', {
     target: makeAnchor('https://api.whatsapp.com/send?phone=2776296981')
   });
   const events = eventByName(window, 'whatsapp_click');
@@ -187,7 +195,7 @@ function eventByName(window, name) {
 /* 7. Contact form submit sends contact_form_submit then generate_lead. */
 {
   const { window } = boot({ stub: true });
-  window.document.dispatch('submit', { target: makeForm('contact', 'contact-page') });
+  document.dispatch('submit', { target: makeForm('contact', 'contact-page') });
   const submits = eventByName(window, 'contact_form_submit');
   const leads = eventByName(window, 'generate_lead');
   check('contact: contact_form_submit queued', submits.length === 1, `got ${submits.length}`);
@@ -204,7 +212,7 @@ function eventByName(window, name) {
 /* 8. Quote form submit sends quote_request then generate_lead. */
 {
   const { window } = boot({ stub: true });
-  window.document.dispatch('submit', { target: makeForm('quote', 'pricing-page') });
+  document.dispatch('submit', { target: makeForm('quote', 'pricing-page') });
   const requests = eventByName(window, 'quote_request');
   const leads = eventByName(window, 'generate_lead');
   check('quote: quote_request queued', requests.length === 1, `got ${requests.length}`);
@@ -215,8 +223,8 @@ function eventByName(window, name) {
 {
   const { window } = boot({ stub: true });
   const form = makeForm('contact', 'home');
-  window.document.dispatch('submit', { target: form });
-  window.document.dispatch('submit', { target: form });
+  document.dispatch('submit', { target: form });
+  document.dispatch('submit', { target: form });
   const submits = eventByName(window, 'contact_form_submit');
   const leads = eventByName(window, 'generate_lead');
   check('guard: no duplicate contact_form_submit', submits.length === 1, `got ${submits.length}`);

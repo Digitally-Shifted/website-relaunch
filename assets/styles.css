@@ -43,6 +43,16 @@ h1 {
   line-height: 1.2;
 }
 
+.smoke {
+  margin: 0 0 1rem;
+  padding: 0.5rem 0.75rem;
+  background: #b45309;
+  border-radius: 0.4rem;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 .marker {
   margin-top: 1.5rem;
   padding: 0.9rem 1rem;

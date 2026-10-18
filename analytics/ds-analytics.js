@@ -68,7 +68,11 @@
         ad_personalization: 'denied'
       });
       gtag('js', new Date());
-      gtag('config', id);
+      if (options.debugMode === true) {
+        gtag('config', id, { debug_mode: true });
+      } else {
+        gtag('config', id);
+      }
 
       if (options.stub !== true) {
         this._loadScript();
@@ -185,12 +189,16 @@
     }
   };
 
+  function snakeCase(key) {
+    return key.replace(/([a-z0-9])([A-Z])/g, '$1_$2').toLowerCase();
+  }
+
   function withDefaults(params) {
     var out = {};
     var key;
     for (key in params) {
       if (Object.prototype.hasOwnProperty.call(params, key) && params[key] !== undefined && params[key] !== null) {
-        out[key] = params[key];
+        out[snakeCase(key)] = params[key];
       }
     }
     return out;

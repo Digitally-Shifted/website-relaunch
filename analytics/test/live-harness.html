@@ -1,0 +1,101 @@
+<!doctype html>
+<!--
+  Live-fire harness for ds-analytics.
+
+  Purpose: fire each conversion event from a real browser visit and watch the
+  events land in GA4 DebugView. Use this before go-live and after any change
+  to the tracking module.
+
+  Steps:
+  1. Serve this folder:  python3 -m http.server 8901
+  2. Open: http://localhost:8901/live-harness.html?id=G-XXXXXXXXXX
+     (replace the ID with the real measurement ID of the data stream)
+  3. Open GA4 > Admin > DebugView in a second tab.
+  4. Click each button once. Watch each event land in DebugView.
+  5. Record the result in docs/analytics-setup.md, section "Test record".
+
+  Do not run this harness with a placeholder ID and record it as a pass.
+  A pass needs the real measurement ID and a visible DebugView entry.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ds-analytics live harness</title>
+  <script src="../ds-analytics.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 46rem; margin: 2rem auto; padding: 0 1rem; }
+    button { display: block; width: 100%; margin: .5rem 0; padding: .75rem 1rem; font-size: 1rem; cursor: pointer; }
+    #log { background: #111; color: #9f9; font-family: monospace; font-size: .8rem; padding: 1rem; min-height: 3rem; white-space: pre-wrap; }
+    .bad { background: #fee; border: 2px solid #c00; padding: .75rem; }
+    code { background: #eee; padding: .1rem .3rem; }
+  </style>
+</head>
+<body>
+  <h1>ds-analytics live harness</h1>
+  <p id="status">Checking setup...</p>
+  <p>Open GA4 DebugView in a second tab. Then click each button once.
+     Each click sends one event. The log below shows each hit.</p>
+
+  <form data-ds-form="contact" data-ds-location="live-harness"
+        onsubmit="return handleForm(event, 'contact')">
+    <h2>Contact form (form element)</h2>
+    <input name="name" placeholder="Name" required>
+    <input name="email" type="email" placeholder="Email" required>
+    <button type="submit">Submit contact form</button>
+  </form>
+
+  <form data-ds-form="quote" data-ds-location="live-harness"
+        onsubmit="return handleForm(event, 'quote')">
+    <h2>Quote request (form element)</h2>
+    <input name="company" placeholder="Company" required>
+    <button type="submit">Request quote</button>
+  </form>
+
+  <h2>Click actions</h2>
+  <a href="tel:0762968981" data-ds-location="live-harness"
+     onclick="return note('call_click')">Call link (tel:0762968981)</a>
+  <a href="https://wa.me/2776296981" data-ds-location="live-harness" target="_blank" rel="noopener"
+     onclick="return note('whatsapp_click')">WhatsApp link (wa.me/2776296981)</a>
+
+  <h2>Queued hits</h2>
+  <pre id="log"></pre>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var id = params.get('id');
+      var status = document.getElementById('status');
+      if (!id || !/^G-[A-Z0-9]{6,12}$/.test(id)) {
+        status.innerHTML = '<span class="bad">No valid measurement ID. ' +
+          'Open this page as live-harness.html?id=G-XXXXXXXXXX ' +
+          'with the real measurement ID.</span>';
+        return;
+      }
+      window.__DS_EVENTS = [];
+      window.DSAnalytics.init({
+        measurementId: id,
+        debug: true,
+        debugMode: true
+      });
+      status.textContent = 'Sending hits to ' + id + ' with debug_mode. Watch GA4 DebugView.';
+      setInterval(function () {
+        document.getElementById('log').textContent =
+          JSON.stringify(window.DSAnalytics.log.slice(3), null, 2);
+      }, 400);
+    })();
+
+    function handleForm(event, kind) {
+      event.preventDefault();
+      note(kind);
+      event.target.reset();
+      return false;
+    }
+
+    function note(kind) {
+      console.log('[harness] action fired:', kind);
+      return true; /* let the browser follow tel:/wa.me links as in production */
+    }
+  </script>
+</body>
+</html>
