@@ -69,12 +69,40 @@ const fontHref = withBase('/fonts/raleway-variable.woff2');
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <Header path={path} hideCta={hideHeaderCta} />
-    <main id="main">
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <Footer />
     {
       !hideMobileBar && <MobileActionBar />
     }
+    <script>
+      /*
+       * Focus not obscured (WCAG 2.2 2.4.11, AC-008): the fixed mobile
+       * bar covers the bottom 49 px. CSS scroll margins handle focus that
+       * enters from below the fold. Browsers leave focus that is already
+       * visible in place, even when the bar partially covers it, so this
+       * handler scrolls the page by the exact overlap. Fixed containers
+       * (menu overlay, dialog top layer) cannot be lifted this way; they
+       * are skipped.
+       */
+      document.addEventListener('focusin', () => {
+        const bar = document.querySelector('.mobile-action-bar');
+        const el = document.activeElement;
+        if (!bar || getComputedStyle(bar).display === 'none') return;
+        if (!el || el === document.body || bar.contains(el)) return;
+        if (el.closest('dialog')) return;
+        for (let n = el; n && n !== document.body; n = n.parentElement) {
+          if (getComputedStyle(n).position === 'fixed') return;
+        }
+        const overlap =
+          el.getBoundingClientRect().bottom - bar.getBoundingClientRect().top;
+        /*
+         * Instant, not smooth: a focus lift should be immediate, and an
+         * animated scroll races any check that reads the position.
+         */
+        if (overlap > 0) window.scrollBy({ top: overlap, behavior: 'instant' });
+      });
+    </script>
   </body>
 </html>

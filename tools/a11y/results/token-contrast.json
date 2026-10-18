@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-18T19:33:58.253Z",
+  "generatedAt": "2026-10-18T20:07:35.107Z",
   "source": "DS design tokens v4.1.0 (2026-10-18), brand/tokens/design-tokens.json",
-  "pairsMeasured": 26,
+  "pairsMeasured": 27,
   "failures": 5,
   "rows": [
     {
@@ -272,7 +272,7 @@
       "fg": "grey-300",
       "bg": "paper",
       "theme": "light",
-      "use": "Interactive card hover border on light — state indication",
+      "use": "Reserved — unused since AC-012 moved card hover borders to grey-500",
       "criterion": "1.4.11",
       "minimum": 3,
       "fgHex": "#C4C4C4",
@@ -296,7 +296,7 @@
       "fg": "grey-700",
       "bg": "carbon",
       "theme": "dark",
-      "use": "Interactive card hover border on carbon — state indication",
+      "use": "Decorative hairline borders on carbon (feature panel, dialog) — decorative boundary, text carries identification",
       "criterion": "1.4.11",
       "minimum": 3,
       "fgHex": "#383838",
@@ -306,9 +306,21 @@
     },
     {
       "fg": "grey-500",
+      "bg": "carbon",
+      "theme": "dark",
+      "use": "Interactive card hover border on carbon — state indication (AC-012)",
+      "criterion": "1.4.11",
+      "minimum": 3,
+      "fgHex": "#808080",
+      "bgHex": "#070808",
+      "measured": 5.08,
+      "pass": true
+    },
+    {
+      "fg": "grey-500",
       "bg": "paper",
       "theme": "light",
-      "use": "Decorative markers on light (never text)",
+      "use": "Interactive card hover border on light — state indication (AC-012)",
       "criterion": "1.4.11",
       "minimum": 3,
       "fgHex": "#808080",

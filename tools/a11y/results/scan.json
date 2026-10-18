@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-18T19:29:35.564Z",
-  "baseUrl": "http://localhost:4173",
+  "generatedAt": "2026-10-18T20:12:41.479Z",
+  "baseUrl": "http://127.0.0.1:4173",
   "tags": [
     "wcag2a",
     "wcag2aa",
@@ -19,56 +19,8 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
-            {
-              "id": "region",
-              "impact": "moderate",
-              "tags": [
-                "cat.keyboard",
-                "best-practice",
-                "RGAAv4",
-                "RGAA-9.2.1"
-              ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
-              "nodes": [
-                {
-                  "target": [
-                    ".mobile-action-bar"
-                  ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section[aria-labelledby=\"services-summary\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"services-summary\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -135,39 +87,13 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
           "theme": "default",
           "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section[aria-labelledby=\"services-summary\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"services-summary\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -240,7 +166,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
@@ -248,32 +174,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section[aria-labelledby=\"services-summary\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"services-summary\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -339,7 +239,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1920,
@@ -347,32 +247,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section[aria-labelledby=\"services-summary\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"services-summary\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -438,7 +312,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         }
       ]
     },
@@ -451,62 +325,8 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
-            {
-              "id": "region",
-              "impact": "moderate",
-              "tags": [
-                "cat.keyboard",
-                "best-practice",
-                "RGAAv4",
-                "RGAA-9.2.1"
-              ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
-              "nodes": [
-                {
-                  "target": [
-                    ".mobile-action-bar"
-                  ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"who-we-are\""
-                },
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"work-with-us\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -561,45 +381,13 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
           "theme": "default",
           "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"who-we-are\""
-                },
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"work-with-us\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -660,7 +448,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
@@ -668,38 +456,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"who-we-are\""
-                },
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"work-with-us\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -753,7 +509,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1920,
@@ -761,38 +517,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"who-we-are\""
-                },
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"work-with-us\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -846,7 +570,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         }
       ]
     },
@@ -859,68 +583,8 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
-            {
-              "id": "region",
-              "impact": "moderate",
-              "tags": [
-                "cat.keyboard",
-                "best-practice",
-                "RGAAv4",
-                "RGAA-9.2.1"
-              ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
-              "nodes": [
-                {
-                  "target": [
-                    ".mobile-action-bar"
-                  ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section[aria-labelledby=\"web-design\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"web-design\""
-                },
-                {
-                  "target": [
-                    "section[aria-labelledby=\"hosting\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"hosting\""
-                },
-                {
-                  "target": [
-                    "section[aria-labelledby=\"seo\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"seo\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -975,51 +639,13 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
           "theme": "default",
           "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section[aria-labelledby=\"web-design\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"web-design\""
-                },
-                {
-                  "target": [
-                    "section[aria-labelledby=\"hosting\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"hosting\""
-                },
-                {
-                  "target": [
-                    "section[aria-labelledby=\"seo\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"seo\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -1080,7 +706,7 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 38
         },
         {
           "width": 1280,
@@ -1088,44 +714,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section[aria-labelledby=\"web-design\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"web-design\""
-                },
-                {
-                  "target": [
-                    "section[aria-labelledby=\"hosting\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"hosting\""
-                },
-                {
-                  "target": [
-                    "section[aria-labelledby=\"seo\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"seo\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -1179,7 +767,7 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 38
         },
         {
           "width": 1920,
@@ -1187,44 +775,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section[aria-labelledby=\"web-design\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"web-design\""
-                },
-                {
-                  "target": [
-                    "section[aria-labelledby=\"hosting\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"hosting\""
-                },
-                {
-                  "target": [
-                    "section[aria-labelledby=\"seo\"]"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"seo\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -1278,7 +828,7 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 38
         }
       ]
     },
@@ -1291,62 +841,8 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
-            {
-              "id": "region",
-              "impact": "moderate",
-              "tags": [
-                "cat.keyboard",
-                "best-practice",
-                "RGAAv4",
-                "RGAA-9.2.1"
-              ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
-              "nodes": [
-                {
-                  "target": [
-                    ".mobile-action-bar"
-                  ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -1395,45 +891,13 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
           "theme": "default",
           "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -1488,7 +952,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
@@ -1496,38 +960,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -1575,7 +1007,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1920,
@@ -1583,38 +1015,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -1662,7 +1062,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         }
       ]
     },
@@ -1675,62 +1075,8 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
-            {
-              "id": "region",
-              "impact": "moderate",
-              "tags": [
-                "cat.keyboard",
-                "best-practice",
-                "RGAAv4",
-                "RGAA-9.2.1"
-              ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
-              "nodes": [
-                {
-                  "target": [
-                    ".mobile-action-bar"
-                  ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -1779,45 +1125,13 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
           "theme": "default",
           "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -1872,7 +1186,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
@@ -1880,38 +1194,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -1959,7 +1241,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1920,
@@ -1967,38 +1249,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -2046,7 +1296,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         }
       ]
     },
@@ -2059,62 +1309,8 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
-            {
-              "id": "region",
-              "impact": "moderate",
-              "tags": [
-                "cat.keyboard",
-                "best-practice",
-                "RGAAv4",
-                "RGAA-9.2.1"
-              ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
-              "nodes": [
-                {
-                  "target": [
-                    ".mobile-action-bar"
-                  ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -2163,45 +1359,13 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
           "theme": "default",
           "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -2256,7 +1420,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
@@ -2264,38 +1428,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -2343,7 +1475,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1920,
@@ -2351,38 +1483,6 @@
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".bg-paper"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"included\""
-                },
-                {
-                  "target": [
-                    ".bg-grey-100"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"how-we-work\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -2430,44 +1530,70 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         }
       ]
     },
     {
       "name": "blog-index",
       "path": "/blog/",
-      "httpStatus": 404,
+      "httpStatus": 200,
       "htmlErrors": [],
       "scans": [
         {
           "width": 375,
           "theme": "default",
-          "violations": [
+          "violations": [],
+          "incomplete": [
             {
-              "id": "region",
-              "impact": "moderate",
+              "id": "color-contrast",
+              "impact": "serious",
               "tags": [
-                "cat.keyboard",
-                "best-practice",
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
                 "RGAAv4",
-                "RGAA-9.2.1"
+                "RGAA-3.2.1"
               ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
               "nodes": [
                 {
                   "target": [
-                    ".mobile-action-bar"
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
                   ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 }
               ]
             }
           ],
-          "incomplete": [],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
@@ -2497,6 +1623,30 @@
               "nodes": [
                 {
                   "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
                     "li:nth-child(3) > .link-dark.text-body-sm"
                   ],
                   "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
@@ -2504,21 +1654,117 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
           "theme": "default",
           "violations": [],
-          "incomplete": [],
-          "passCount": 36
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
         },
         {
           "width": 1920,
           "theme": "default",
           "violations": [],
-          "incomplete": [],
-          "passCount": 36
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "tags": [
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
+                "RGAAv4",
+                "RGAA-3.2.1"
+              ],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
+              "nodes": [
+                {
+                  "target": [
+                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                }
+              ]
+            }
+          ],
+          "passCount": 37
         }
       ]
     },
@@ -2531,91 +1777,8 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"website-development\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            },
-            {
-              "id": "region",
-              "impact": "moderate",
-              "tags": [
-                "cat.keyboard",
-                "best-practice",
-                "RGAAv4",
-                "RGAA-9.2.1"
-              ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
-              "nodes": [
-                {
-                  "target": [
-                    ".mobile-action-bar"
-                  ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -2658,75 +1821,13 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"website-development\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -2775,75 +1876,13 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"website-development\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -2886,75 +1925,13 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1920,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"website-development\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -2997,7 +1974,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         }
       ]
     },
@@ -3010,91 +1987,8 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".mt-4 > .link-dark.text-body"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            },
-            {
-              "id": "region",
-              "impact": "moderate",
-              "tags": [
-                "cat.keyboard",
-                "best-practice",
-                "RGAAv4",
-                "RGAA-9.2.1"
-              ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
-              "nodes": [
-                {
-                  "target": [
-                    ".mobile-action-bar"
-                  ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -3137,75 +2031,13 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".mt-4 > .link-dark.text-body"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -3254,75 +2086,13 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".mt-4 > .link-dark.text-body"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -3365,75 +2135,13 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1920,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".mt-4 > .link-dark.text-body"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -3476,7 +2184,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         }
       ]
     },
@@ -3489,91 +2197,8 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"domains-hosting\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            },
-            {
-              "id": "region",
-              "impact": "moderate",
-              "tags": [
-                "cat.keyboard",
-                "best-practice",
-                "RGAAv4",
-                "RGAA-9.2.1"
-              ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
-              "nodes": [
-                {
-                  "target": [
-                    ".mobile-action-bar"
-                  ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -3616,75 +2241,13 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"domains-hosting\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -3733,75 +2296,13 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"domains-hosting\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -3844,75 +2345,13 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1920,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"domains-hosting\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -3955,7 +2394,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         }
       ]
     },
@@ -3968,91 +2407,8 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"paid-advertising\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            },
-            {
-              "id": "region",
-              "impact": "moderate",
-              "tags": [
-                "cat.keyboard",
-                "best-practice",
-                "RGAAv4",
-                "RGAA-9.2.1"
-              ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
-              "nodes": [
-                {
-                  "target": [
-                    ".mobile-action-bar"
-                  ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -4095,75 +2451,13 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"paid-advertising\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -4212,75 +2506,13 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"paid-advertising\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -4323,75 +2555,13 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1920,
           "theme": "default",
-          "violations": [
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "a[href$=\"paid-advertising\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                },
-                {
-                  "target": [
-                    ".link-dark.text-body[href$=\"blog\"]"
-                  ],
-                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #fd4000, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"posts\""
-                }
-              ]
-            },
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -4434,7 +2604,7 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         }
       ]
     },
@@ -4447,56 +2617,124 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
+          "violations": [],
+          "incomplete": [
             {
-              "id": "region",
-              "impact": "moderate",
+              "id": "color-contrast",
+              "impact": "serious",
               "tags": [
-                "cat.keyboard",
-                "best-practice",
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
+                "EN-301-549",
+                "EN-9.1.4.3",
+                "ACT",
                 "RGAAv4",
-                "RGAA-9.2.1"
+                "RGAA-3.2.1"
               ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+              "criteria": [
+                "1.4.3"
+              ],
               "nodes": [
                 {
                   "target": [
-                    ".mobile-action-bar"
+                    ".text-eyebrow.uppercase.text-text-on-dark-muted"
                   ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 }
               ]
             }
           ],
+          "passCount": 42
+        },
+        {
+          "width": 768,
+          "theme": "default",
+          "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
+              "id": "color-contrast",
+              "impact": "serious",
               "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
+                "cat.color",
+                "wcag2aa",
+                "wcag143",
+                "TTv5",
+                "TT13.c",
                 "EN-301-549",
-                "EN-9.4.1.2",
+                "EN-9.1.4.3",
+                "ACT",
                 "RGAAv4",
-                "RGAA-7.1.1"
+                "RGAA-3.2.1"
               ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
               "criteria": [
-                "4.1.2"
+                "1.4.3"
               ],
               "nodes": [
                 {
                   "target": [
-                    "section"
+                    ".text-eyebrow.uppercase.text-text-on-dark-muted"
                   ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"faq-heading\""
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "h1 > em"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    ".max-w-xl.text-body-lg.mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                },
+                {
+                  "target": [
+                    "li:nth-child(3) > .link-dark.text-body-sm"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
                 }
               ]
-            },
+            }
+          ],
+          "passCount": 38
+        },
+        {
+          "width": 1280,
+          "theme": "default",
+          "violations": [],
+          "incomplete": [
             {
               "id": "color-contrast",
               "impact": "serious",
@@ -4548,205 +2786,11 @@
           "passCount": 38
         },
         {
-          "width": 768,
-          "theme": "default",
-          "violations": [],
-          "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"faq-heading\""
-                }
-              ]
-            },
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".text-eyebrow.uppercase.text-text-on-dark-muted"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "h1"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "h1 > em"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    ".max-w-xl.text-body-lg.mt-6"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "li:nth-child(3) > .link-dark.text-body-sm"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
-                }
-              ]
-            }
-          ],
-          "passCount": 37
-        },
-        {
-          "width": 1280,
-          "theme": "default",
-          "violations": [],
-          "incomplete": [
-            {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"faq-heading\""
-                }
-              ]
-            },
-            {
-              "id": "color-contrast",
-              "impact": "serious",
-              "tags": [
-                "cat.color",
-                "wcag2aa",
-                "wcag143",
-                "TTv5",
-                "TT13.c",
-                "EN-301-549",
-                "EN-9.1.4.3",
-                "ACT",
-                "RGAAv4",
-                "RGAA-3.2.1"
-              ],
-              "help": "Elements must meet minimum color contrast ratio thresholds",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
-              "criteria": [
-                "1.4.3"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    ".text-eyebrow.uppercase.text-text-on-dark-muted"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "h1"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    "h1 > em"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                },
-                {
-                  "target": [
-                    ".max-w-xl.text-body-lg.mt-6"
-                  ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-                }
-              ]
-            }
-          ],
-          "passCount": 37
-        },
-        {
           "width": 1920,
           "theme": "default",
           "violations": [],
           "incomplete": [
             {
-              "id": "aria-valid-attr-value",
-              "impact": "critical",
-              "tags": [
-                "cat.aria",
-                "wcag2a",
-                "wcag412",
-                "EN-301-549",
-                "EN-9.4.1.2",
-                "RGAAv4",
-                "RGAA-7.1.1"
-              ],
-              "help": "ARIA attributes must conform to valid values",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-valid-attr-value?application=axeAPI",
-              "criteria": [
-                "4.1.2"
-              ],
-              "nodes": [
-                {
-                  "target": [
-                    "section"
-                  ],
-                  "summary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"faq-heading\""
-                }
-              ]
-            },
-            {
               "id": "color-contrast",
               "impact": "serious",
               "tags": [
@@ -4794,7 +2838,7 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 38
         }
       ]
     },
@@ -4809,7 +2853,7 @@
           "theme": "default",
           "violations": [],
           "incomplete": [],
-          "passCount": 37
+          "passCount": 38
         },
         {
           "width": 768,
@@ -4846,21 +2890,21 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
           "theme": "default",
           "violations": [],
           "incomplete": [],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1920,
           "theme": "default",
           "violations": [],
           "incomplete": [],
-          "passCount": 36
+          "passCount": 37
         }
       ]
     },
@@ -4941,7 +2985,7 @@
           "theme": "default",
           "violations": [],
           "incomplete": [],
-          "passCount": 38
+          "passCount": 39
         },
         {
           "width": 768,
@@ -4978,21 +3022,21 @@
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 38
         },
         {
           "width": 1280,
           "theme": "default",
           "violations": [],
           "incomplete": [],
-          "passCount": 37
+          "passCount": 38
         },
         {
           "width": 1920,
           "theme": "default",
           "violations": [],
           "incomplete": [],
-          "passCount": 37
+          "passCount": 38
         }
       ]
     },
@@ -5005,31 +3049,9 @@
         {
           "width": 375,
           "theme": "default",
-          "violations": [
-            {
-              "id": "region",
-              "impact": "moderate",
-              "tags": [
-                "cat.keyboard",
-                "best-practice",
-                "RGAAv4",
-                "RGAA-9.2.1"
-              ],
-              "help": "All page content should be contained by landmarks",
-              "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
-              "criteria": [],
-              "nodes": [
-                {
-                  "target": [
-                    ".mobile-action-bar"
-                  ],
-                  "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-                }
-              ]
-            }
-          ],
+          "violations": [],
           "incomplete": [],
-          "passCount": 37
+          "passCount": 41
         },
         {
           "width": 768,
@@ -5066,28 +3088,28 @@
               ]
             }
           ],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1280,
           "theme": "default",
           "violations": [],
           "incomplete": [],
-          "passCount": 36
+          "passCount": 37
         },
         {
           "width": 1920,
           "theme": "default",
           "violations": [],
           "incomplete": [],
-          "passCount": 36
+          "passCount": 37
         }
       ]
     }
   ],
   "summary": {
     "pages": 16,
-    "axeViolationRules": 29,
+    "axeViolationRules": 0,
     "htmlErrors": 0
   }
 }

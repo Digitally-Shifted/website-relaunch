@@ -24,7 +24,7 @@ import { withBase } from '../../lib/urls';
 
   <section class="bg-paper" aria-labelledby="posts">
     <div class="container-ds section">
-      <SectionHeader eyebrow="Posts" heading='Posts in this <em>topic</em>.' dark={false} />
+      <SectionHeader id="posts" eyebrow="Posts" heading='Posts in this <em>topic</em>.' dark={false} />
       <div class="mt-10 grid gap-6 md:grid-cols-2">
         <Card title="The Ultimate Digital Marketing Guide for Businesses" dark={false} interactive>
           <p>
@@ -32,12 +32,12 @@ import { withBase } from '../../lib/urls';
             crowded market, and turn attention into enquiries.
           </p>
           <div slot="action" class="mt-4">
-            <a class="link-dark text-body" href={withBase('/2023/02/09/ultimate-digital-marketing-guide-for-businesses/')}>Read the guide</a>
+            <a class="link-light text-body" href={withBase('/2023/02/09/ultimate-digital-marketing-guide-for-businesses/')}>Read the guide</a>
           </div>
         </Card>
       </div>
       <div class="mt-10">
-        <a class="link-dark text-body" href={withBase('/blog')}>All blog topics</a>
+        <a class="link-light text-body" href={withBase('/blog')}>All blog topics</a>
       </div>
     </div>
   </section>

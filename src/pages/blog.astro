@@ -1,0 +1,74 @@
+---
+/*
+ * Blog index (AC-009): the main nav and every topic page link to /blog.
+ * This route lists the four blog topics. The old legacy listing is
+ * retired (README porting workflow): when an Astro route takes over, the
+ * legacy page leaves legacy-static/.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Card from '../components/Card.astro';
+import { withBase } from '../lib/urls';
+
+const topics = [
+  {
+    title: 'Website Development',
+    href: '/blog/website-development',
+    body: 'Planning, building and improving conversion-focused business websites: WordPress, responsive design, performance and content structure.',
+  },
+  {
+    title: 'Digital Marketing',
+    href: '/blog/digital-marketing',
+    body: 'Strategy, SEO, analytics and campaign planning that connect marketing activity to measurable business growth.',
+  },
+  {
+    title: 'Hosting & Domains',
+    href: '/blog/hosting-domains',
+    body: 'Domain registration, WordPress hosting, website speed, email protection and the technical hosting choices behind a stable site.',
+  },
+  {
+    title: 'Paid Advertising',
+    href: '/blog/paid-advertising',
+    body: 'Google Ads, Meta campaigns, targeting, budget control and ROI measurement for clearer leads and smarter spend.',
+  },
+];
+---
+
+<BaseLayout
+  title="Blog"
+  description="Practical guidance for South African businesses on website development, digital marketing, hosting and domains, and paid advertising."
+  path="/blog"
+>
+  <PageHero
+    eyebrow="Blog"
+    statement='Digital marketing <em>insights</em>.'
+    opener="Practical guidance on website development, digital marketing, hosting and paid advertising for South African businesses. Posts are grouped into four topics; older posts stay in the archive on each topic page."
+    ctaHref="/contact?need=quote"
+  />
+
+  <section class="bg-paper" aria-labelledby="topics">
+    <div class="container-ds section">
+      <SectionHeader
+        id="topics"
+        eyebrow="Topics"
+        heading='Choose a <em>topic</em>.'
+        dark={false}
+      />
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {
+          topics.map((topic) => (
+            <Card title={topic.title} dark={false} interactive>
+              <p>{topic.body}</p>
+              <div slot="action" class="mt-4">
+                <a class="link-light text-body" href={withBase(topic.href)}>
+                  Read {topic.title} posts
+                </a>
+              </div>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

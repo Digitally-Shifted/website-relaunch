@@ -46,15 +46,37 @@ async function coveredByActionBar(page) {
     const el = document.activeElement;
     const bar = document.querySelector('.mobile-action-bar');
     if (!el || !bar || getComputedStyle(bar).display === 'none') return false;
+    /* The bar's own controls sit on the top layer; nothing obscures them. */
+    if (el.closest('.mobile-action-bar')) return false;
     const a = el.getBoundingClientRect();
     const b = bar.getBoundingClientRect();
     if (a.width === 0 && a.height === 0) return false;
-    return a.top < b.bottom && a.bottom > b.top && a.left < b.right && a.right > b.left;
+    /*
+     * A rect that ends flush at the bar's top edge is not obscured; the
+     * 1 px tolerance keeps floating-point grazing from reading as cover.
+     */
+    const eps = 1;
+    return a.top < b.bottom - eps && a.bottom > b.top + eps && a.left < b.right && a.right > b.left;
   });
 }
 
 async function tabStep(page, i) {
   await page.keyboard.press('Tab');
+  /*
+   * The site scrolls on focus with scroll-behavior smooth (and the AC-008
+   * lift is instant). Wait until the page stops scrolling so the focus
+   * reads describe the settled state, never a mid-flight frame.
+   */
+  await page
+    .waitForFunction(
+      async () => {
+        const y1 = window.scrollY;
+        await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+        return window.scrollY === y1;
+      },
+      { polling: 30, timeout: 1500 }
+    )
+    .catch(() => {});
   const d = await describe(page);
   const covered = await coveredByActionBar(page);
   return { step: i + 1, ...d, coveredByActionBar: covered };
@@ -73,7 +95,15 @@ try {
   for (const entry of config.pages) {
     if (!['home', 'services-hub', 'faq', 'contact'].includes(entry.name)) continue;
     const url = new URL(entry.path, config.baseUrl).href;
-    const context = await browser.newContext({ viewport: { width: 375, height: 900 } });
+    const context = await browser.newContext({
+      viewport: { width: 375, height: 900 },
+      /*
+       * Reduced motion: the focus pass measures focus behaviour, not
+       * motion. Instant scrolling keeps every position read settled and
+       * exercises the reduced-motion path the site supports.
+       */
+      reducedMotion: 'reduce',
+    });
     const page = await context.newPage();
     const record = { name: entry.name, path: entry.path, width: 375, steps: [] };
 

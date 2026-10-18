@@ -56,9 +56,10 @@
     { "fg": "accent", "bg": "paper", "theme": "light", "use": "Focus ring on light (non-text UI); large display accents only, never body-size text on light", "criterion": "1.4.11 / 2.4.13", "minimum": 3.0 },
     { "fg": "accent", "bg": "carbon", "theme": "dark", "use": "Focus ring on carbon", "criterion": "1.4.11 / 2.4.13", "minimum": 3.0 },
     { "fg": "grey-200", "bg": "paper", "theme": "light", "use": "Card border at rest on light — decorative boundary, text carries identification", "criterion": "1.4.11", "minimum": 3.0 },
-    { "fg": "grey-300", "bg": "paper", "theme": "light", "use": "Interactive card hover border on light — state indication", "criterion": "1.4.11", "minimum": 3.0 },
+    { "fg": "grey-300", "bg": "paper", "theme": "light", "use": "Reserved — unused since AC-012 moved card hover borders to grey-500", "criterion": "1.4.11", "minimum": 3.0 },
     { "fg": "grey-800", "bg": "carbon", "theme": "dark", "use": "Hairline separators on carbon/ink — decorative", "criterion": "1.4.11", "minimum": 3.0 },
-    { "fg": "grey-700", "bg": "carbon", "theme": "dark", "use": "Interactive card hover border on carbon — state indication", "criterion": "1.4.11", "minimum": 3.0 },
-    { "fg": "grey-500", "bg": "paper", "theme": "light", "use": "Decorative markers on light (never text)", "criterion": "1.4.11", "minimum": 3.0 }
+    { "fg": "grey-700", "bg": "carbon", "theme": "dark", "use": "Decorative hairline borders on carbon (feature panel, dialog) — decorative boundary, text carries identification", "criterion": "1.4.11", "minimum": 3.0 },
+    { "fg": "grey-500", "bg": "carbon", "theme": "dark", "use": "Interactive card hover border on carbon — state indication (AC-012)", "criterion": "1.4.11", "minimum": 3.0 },
+    { "fg": "grey-500", "bg": "paper", "theme": "light", "use": "Interactive card hover border on light — state indication (AC-012)", "criterion": "1.4.11", "minimum": 3.0 }
   ]
 }

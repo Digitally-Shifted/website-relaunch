@@ -26,7 +26,7 @@ import { withBase } from '../../lib/urls';
 
   <section class="bg-paper" aria-labelledby="included">
     <div class="container-ds section">
-      <SectionHeader eyebrow="What is included" heading='Campaigns built around <em>outcomes</em>.' dark={false} />
+      <SectionHeader id="included" eyebrow="What is included" heading='Campaigns built around <em>outcomes</em>.' dark={false} />
       <div class="mt-10 grid gap-6 md:grid-cols-3">
         <Card title="Targeting and structure" dark={false}>
           <p>
@@ -53,7 +53,7 @@ import { withBase } from '../../lib/urls';
   <section class="bg-grey-100" aria-labelledby="how-we-work">
     <div class="container-ds section">
       <div class="grid gap-12 lg:grid-cols-2">
-        <SectionHeader eyebrow="How we work" heading='Start small, <em>measure</em>, then scale.' dark={false} />
+        <SectionHeader id="how-we-work" eyebrow="How we work" heading='Start small, <em>measure</em>, then scale.' dark={false} />
         <div class="prose-ds text-body text-text-on-light-muted">
           <p>
             We agree the goal, the budget, and the channels in one short
@@ -62,7 +62,7 @@ import { withBase } from '../../lib/urls';
             enquiries.
           </p>
           <p>
-            <a class="link-dark" href={withBase('/services')}>See all services</a>
+            <a class="link-light" href={withBase('/services')}>See all services</a>
           </p>
         </div>
       </div>

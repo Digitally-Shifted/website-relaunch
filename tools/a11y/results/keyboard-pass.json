@@ -1,23 +1,11 @@
 {
-  "generatedAt": "2026-10-18T19:35:55.801Z",
+  "generatedAt": "2026-10-18T20:13:06.024Z",
   "findings": [
     {
       "page": "home",
       "check": "S3 skip link first and reaches main",
-      "ok": false,
-      "detail": "skip link focused, Enter lands in main: false"
-    },
-    {
-      "page": "home",
-      "check": "K5 focus not obscured (2.4.11)",
-      "ok": false,
-      "detail": "mobile action bar covers focused a \"Call\""
-    },
-    {
-      "page": "home",
-      "check": "K5 focus not obscured (2.4.11)",
-      "ok": false,
-      "detail": "mobile action bar covers focused a \"WhatsApp us\""
+      "ok": true,
+      "detail": "skip link focused, Enter lands in main: true"
     },
     {
       "page": "home",
@@ -40,20 +28,8 @@
     {
       "page": "services-hub",
       "check": "S3 skip link first and reaches main",
-      "ok": false,
-      "detail": "skip link focused, Enter lands in main: false"
-    },
-    {
-      "page": "services-hub",
-      "check": "K5 focus not obscured (2.4.11)",
-      "ok": false,
-      "detail": "mobile action bar covers focused a \"Call\""
-    },
-    {
-      "page": "services-hub",
-      "check": "K5 focus not obscured (2.4.11)",
-      "ok": false,
-      "detail": "mobile action bar covers focused a \"WhatsApp us\""
+      "ok": true,
+      "detail": "skip link focused, Enter lands in main: true"
     },
     {
       "page": "services-hub",
@@ -94,20 +70,8 @@
     {
       "page": "faq",
       "check": "S3 skip link first and reaches main",
-      "ok": false,
-      "detail": "skip link focused, Enter lands in main: false"
-    },
-    {
-      "page": "faq",
-      "check": "K5 focus not obscured (2.4.11)",
-      "ok": false,
-      "detail": "mobile action bar covers focused a \"Call\""
-    },
-    {
-      "page": "faq",
-      "check": "K5 focus not obscured (2.4.11)",
-      "ok": false,
-      "detail": "mobile action bar covers focused a \"WhatsApp us\""
+      "ok": true,
+      "detail": "skip link focused, Enter lands in main: true"
     },
     {
       "page": "faq",
@@ -130,8 +94,8 @@
     {
       "page": "contact",
       "check": "S3 skip link first and reaches main",
-      "ok": false,
-      "detail": "skip link focused, Enter lands in main: false"
+      "ok": true,
+      "detail": "skip link focused, Enter lands in main: true"
     },
     {
       "page": "contact",
@@ -153,8 +117,8 @@
     }
   ],
   "run": {
-    "generatedAt": "2026-10-18T19:35:55.801Z",
-    "baseUrl": "http://localhost:4173",
+    "generatedAt": "2026-10-18T20:13:06.024Z",
+    "baseUrl": "http://127.0.0.1:4173",
     "pages": [
       {
         "name": "home",
@@ -187,7 +151,7 @@
             "text": "Get a quote",
             "rect": {
               "x": 24,
-              "y": 475,
+              "y": 410,
               "w": 136,
               "h": 48
             },
@@ -204,7 +168,7 @@
             "text": "See what is included",
             "rect": {
               "x": 192,
-              "y": 486,
+              "y": 421,
               "w": 153,
               "h": 26
             },
@@ -221,7 +185,7 @@
             "text": "Get a quote",
             "rect": {
               "x": 24,
-              "y": 1891,
+              "y": 377,
               "w": 136,
               "h": 48
             },
@@ -238,7 +202,7 @@
             "text": "Get a quote",
             "rect": {
               "x": 73,
-              "y": 3029,
+              "y": 377,
               "w": 136,
               "h": 48
             },
@@ -255,7 +219,7 @@
             "text": "Get a quote",
             "rect": {
               "x": 73,
-              "y": 3816,
+              "y": 377,
               "w": 136,
               "h": 48
             },
@@ -272,7 +236,7 @@
             "text": "Home",
             "rect": {
               "x": 24,
-              "y": 4334,
+              "y": 393,
               "w": 40,
               "h": 16
             },
@@ -289,7 +253,7 @@
             "text": "Services",
             "rect": {
               "x": 24,
-              "y": 4366,
+              "y": 425,
               "w": 55,
               "h": 16
             },
@@ -306,7 +270,7 @@
             "text": "About",
             "rect": {
               "x": 24,
-              "y": 4396,
+              "y": 457,
               "w": 39,
               "h": 16
             },
@@ -323,7 +287,7 @@
             "text": "Blog",
             "rect": {
               "x": 24,
-              "y": 4428,
+              "y": 489,
               "w": 30,
               "h": 16
             },
@@ -340,7 +304,7 @@
             "text": "FAQ",
             "rect": {
               "x": 24,
-              "y": 4460,
+              "y": 521,
               "w": 27,
               "h": 16
             },
@@ -357,7 +321,7 @@
             "text": "Contact",
             "rect": {
               "x": 24,
-              "y": 4492,
+              "y": 553,
               "w": 51,
               "h": 16
             },
@@ -374,7 +338,7 @@
             "text": "Privacy",
             "rect": {
               "x": 24,
-              "y": 4524,
+              "y": 585,
               "w": 47,
               "h": 16
             },
@@ -391,7 +355,7 @@
             "text": "Call +27 63 171 8750",
             "rect": {
               "x": 24,
-              "y": 4625,
+              "y": 686,
               "w": 126,
               "h": 16
             },
@@ -408,7 +372,7 @@
             "text": "WhatsApp us",
             "rect": {
               "x": 24,
-              "y": 4655,
+              "y": 718,
               "w": 87,
               "h": 16
             },
@@ -425,7 +389,7 @@
             "text": "baruch@digitallyshifted.com",
             "rect": {
               "x": 24,
-              "y": 4687,
+              "y": 750,
               "w": 183,
               "h": 16
             },
@@ -442,7 +406,7 @@
             "text": "digitallyshifted.com",
             "rect": {
               "x": 24,
-              "y": 4719,
+              "y": 782,
               "w": 126,
               "h": 16
             },
@@ -465,7 +429,7 @@
             },
             "ariaExpanded": null,
             "outline": "2px solid",
-            "coveredByActionBar": true
+            "coveredByActionBar": false
           },
           {
             "phase": "walk",
@@ -482,7 +446,7 @@
             },
             "ariaExpanded": null,
             "outline": "2px solid",
-            "coveredByActionBar": true
+            "coveredByActionBar": false
           },
           {
             "phase": "walk",
@@ -549,7 +513,7 @@
             "text": "Get a quote",
             "rect": {
               "x": 24,
-              "y": 556,
+              "y": 491,
               "w": 136,
               "h": 48
             },
@@ -566,7 +530,7 @@
             "text": "About Digitally Shifted",
             "rect": {
               "x": 24,
-              "y": 620,
+              "y": 555,
               "w": 165,
               "h": 26
             },
@@ -583,7 +547,7 @@
             "text": "Get a quote",
             "rect": {
               "x": 24,
-              "y": 1180,
+              "y": 377,
               "w": 140,
               "h": 48
             },
@@ -600,7 +564,7 @@
             "text": "Read about website development",
             "rect": {
               "x": 24,
-              "y": 1241,
+              "y": 441,
               "w": 327,
               "h": 26
             },
@@ -617,7 +581,7 @@
             "text": "Get a quote",
             "rect": {
               "x": 24,
-              "y": 1781,
+              "y": 377,
               "w": 140,
               "h": 48
             },
@@ -634,7 +598,7 @@
             "text": "Read about domains and hosting",
             "rect": {
               "x": 24,
-              "y": 1845,
+              "y": 441,
               "w": 327,
               "h": 26
             },
@@ -651,7 +615,7 @@
             "text": "Get a quote",
             "rect": {
               "x": 73,
-              "y": 2652,
+              "y": 377,
               "w": 136,
               "h": 48
             },
@@ -668,7 +632,7 @@
             "text": "See what the plan covers",
             "rect": {
               "x": 73,
-              "y": 2716,
+              "y": 441,
               "w": 186,
               "h": 26
             },
@@ -685,7 +649,7 @@
             "text": "Get a quote",
             "rect": {
               "x": 24,
-              "y": 3277,
+              "y": 377,
               "w": 140,
               "h": 48
             },
@@ -702,7 +666,7 @@
             "text": "Home",
             "rect": {
               "x": 24,
-              "y": 3713,
+              "y": 786,
               "w": 40,
               "h": 16
             },
@@ -719,7 +683,7 @@
             "text": "Services",
             "rect": {
               "x": 24,
-              "y": 3745,
+              "y": 786,
               "w": 55,
               "h": 16
             },
@@ -736,7 +700,7 @@
             "text": "About",
             "rect": {
               "x": 24,
-              "y": 3777,
+              "y": 786,
               "w": 39,
               "h": 16
             },
@@ -753,7 +717,7 @@
             "text": "Blog",
             "rect": {
               "x": 24,
-              "y": 3809,
+              "y": 786,
               "w": 30,
               "h": 16
             },
@@ -770,7 +734,7 @@
             "text": "FAQ",
             "rect": {
               "x": 24,
-              "y": 3841,
+              "y": 786,
               "w": 27,
               "h": 16
             },
@@ -787,7 +751,7 @@
             "text": "Contact",
             "rect": {
               "x": 24,
-              "y": 3873,
+              "y": 786,
               "w": 51,
               "h": 16
             },
@@ -804,7 +768,7 @@
             "text": "Privacy",
             "rect": {
               "x": 24,
-              "y": 3903,
+              "y": 786,
               "w": 47,
               "h": 16
             },
@@ -821,7 +785,7 @@
             "text": "Call +27 63 171 8750",
             "rect": {
               "x": 24,
-              "y": 4004,
+              "y": 470,
               "w": 126,
               "h": 16
             },
@@ -838,7 +802,7 @@
             "text": "WhatsApp us",
             "rect": {
               "x": 24,
-              "y": 4036,
+              "y": 502,
               "w": 87,
               "h": 16
             },
@@ -855,7 +819,7 @@
             "text": "baruch@digitallyshifted.com",
             "rect": {
               "x": 24,
-              "y": 4068,
+              "y": 534,
               "w": 183,
               "h": 16
             },
@@ -872,7 +836,7 @@
             "text": "digitallyshifted.com",
             "rect": {
               "x": 24,
-              "y": 4100,
+              "y": 566,
               "w": 126,
               "h": 16
             },
@@ -895,7 +859,7 @@
             },
             "ariaExpanded": null,
             "outline": "2px solid",
-            "coveredByActionBar": true
+            "coveredByActionBar": false
           },
           {
             "phase": "walk",
@@ -912,7 +876,7 @@
             },
             "ariaExpanded": null,
             "outline": "2px solid",
-            "coveredByActionBar": true
+            "coveredByActionBar": false
           },
           {
             "phase": "walk",
@@ -984,7 +948,7 @@
             "text": "Get a quote",
             "rect": {
               "x": 24,
-              "y": 501,
+              "y": 439,
               "w": 136,
               "h": 48
             },
@@ -1001,7 +965,7 @@
             "text": "How much does a website cost?",
             "rect": {
               "x": 24,
-              "y": 930,
+              "y": 364,
               "w": 327,
               "h": 72
             },
@@ -1018,7 +982,7 @@
             "text": "What is Website-as-a-Service?",
             "rect": {
               "x": 24,
-              "y": 1004,
+              "y": 438,
               "w": 327,
               "h": 72
             },
@@ -1035,7 +999,7 @@
             "text": "How does the process work?",
             "rect": {
               "x": 24,
-              "y": 1077,
+              "y": 511,
               "w": 327,
               "h": 72
             },
@@ -1052,7 +1016,7 @@
             "text": "How long will my project take?",
             "rect": {
               "x": 24,
-              "y": 1150,
+              "y": 584,
               "w": 327,
               "h": 72
             },
@@ -1069,7 +1033,7 @@
             "text": "What do you do with my details?",
             "rect": {
               "x": 24,
-              "y": 1224,
+              "y": 658,
               "w": 327,
               "h": 72
             },
@@ -1086,7 +1050,7 @@
             "text": "Do you host the sites you build?",
             "rect": {
               "x": 24,
-              "y": 1297,
+              "y": 730,
               "w": 327,
               "h": 72
             },
@@ -1103,7 +1067,7 @@
             "text": "Can you move my existing website?",
             "rect": {
               "x": 24,
-              "y": 1347,
+              "y": 705,
               "w": 327,
               "h": 97
             },
@@ -1120,7 +1084,7 @@
             "text": "Do you only work with South African busi",
             "rect": {
               "x": 24,
-              "y": 1445,
+              "y": 706,
               "w": 327,
               "h": 97
             },
@@ -1137,7 +1101,7 @@
             "text": "Get a quote",
             "rect": {
               "x": 73,
-              "y": 2105,
+              "y": 377,
               "w": 136,
               "h": 48
             },
@@ -1154,7 +1118,7 @@
             "text": "Home",
             "rect": {
               "x": 24,
-              "y": 2624,
+              "y": 393,
               "w": 40,
               "h": 16
             },
@@ -1171,7 +1135,7 @@
             "text": "Services",
             "rect": {
               "x": 24,
-              "y": 2656,
+              "y": 425,
               "w": 55,
               "h": 16
             },
@@ -1188,7 +1152,7 @@
             "text": "About",
             "rect": {
               "x": 24,
-              "y": 2688,
+              "y": 457,
               "w": 39,
               "h": 16
             },
@@ -1205,7 +1169,7 @@
             "text": "Blog",
             "rect": {
               "x": 24,
-              "y": 2718,
+              "y": 489,
               "w": 30,
               "h": 16
             },
@@ -1222,7 +1186,7 @@
             "text": "FAQ",
             "rect": {
               "x": 24,
-              "y": 2750,
+              "y": 521,
               "w": 27,
               "h": 16
             },
@@ -1239,7 +1203,7 @@
             "text": "Contact",
             "rect": {
               "x": 24,
-              "y": 2782,
+              "y": 553,
               "w": 51,
               "h": 16
             },
@@ -1256,7 +1220,7 @@
             "text": "Privacy",
             "rect": {
               "x": 24,
-              "y": 2814,
+              "y": 585,
               "w": 47,
               "h": 16
             },
@@ -1273,7 +1237,7 @@
             "text": "Call +27 63 171 8750",
             "rect": {
               "x": 24,
-              "y": 2915,
+              "y": 686,
               "w": 126,
               "h": 16
             },
@@ -1290,7 +1254,7 @@
             "text": "WhatsApp us",
             "rect": {
               "x": 24,
-              "y": 2947,
+              "y": 718,
               "w": 87,
               "h": 16
             },
@@ -1307,7 +1271,7 @@
             "text": "baruch@digitallyshifted.com",
             "rect": {
               "x": 24,
-              "y": 2979,
+              "y": 750,
               "w": 183,
               "h": 16
             },
@@ -1324,7 +1288,7 @@
             "text": "digitallyshifted.com",
             "rect": {
               "x": 24,
-              "y": 3009,
+              "y": 782,
               "w": 126,
               "h": 16
             },
@@ -1347,7 +1311,7 @@
             },
             "ariaExpanded": null,
             "outline": "2px solid",
-            "coveredByActionBar": true
+            "coveredByActionBar": false
           },
           {
             "phase": "walk",
@@ -1364,7 +1328,7 @@
             },
             "ariaExpanded": null,
             "outline": "2px solid",
-            "coveredByActionBar": true
+            "coveredByActionBar": false
           },
           {
             "phase": "walk",
@@ -1431,7 +1395,7 @@
             "text": "Call +27 63 171 8750",
             "rect": {
               "x": 24,
-              "y": 653,
+              "y": 588,
               "w": 144,
               "h": 19
             },
@@ -1448,7 +1412,7 @@
             "text": "WhatsApp us",
             "rect": {
               "x": 24,
-              "y": 689,
+              "y": 627,
               "w": 100,
               "h": 19
             },
@@ -1465,7 +1429,7 @@
             "text": "baruch@digitallyshifted.com",
             "rect": {
               "x": 24,
-              "y": 727,
+              "y": 665,
               "w": 209,
               "h": 19
             },
@@ -1482,7 +1446,7 @@
             "text": "Home",
             "rect": {
               "x": 24,
-              "y": 1140,
+              "y": 442,
               "w": 40,
               "h": 16
             },
@@ -1499,7 +1463,7 @@
             "text": "Services",
             "rect": {
               "x": 24,
-              "y": 1172,
+              "y": 474,
               "w": 55,
               "h": 16
             },
@@ -1516,7 +1480,7 @@
             "text": "About",
             "rect": {
               "x": 24,
-              "y": 1204,
+              "y": 506,
               "w": 39,
               "h": 16
             },
@@ -1533,7 +1497,7 @@
             "text": "Blog",
             "rect": {
               "x": 24,
-              "y": 1213,
+              "y": 538,
               "w": 30,
               "h": 16
             },
@@ -1550,7 +1514,7 @@
             "text": "FAQ",
             "rect": {
               "x": 24,
-              "y": 1245,
+              "y": 570,
               "w": 27,
               "h": 16
             },
@@ -1567,7 +1531,7 @@
             "text": "Contact",
             "rect": {
               "x": 24,
-              "y": 1277,
+              "y": 602,
               "w": 51,
               "h": 16
             },
@@ -1584,7 +1548,7 @@
             "text": "Privacy",
             "rect": {
               "x": 24,
-              "y": 1309,
+              "y": 634,
               "w": 47,
               "h": 16
             },
@@ -1601,7 +1565,7 @@
             "text": "Call +27 63 171 8750",
             "rect": {
               "x": 24,
-              "y": 1410,
+              "y": 735,
               "w": 126,
               "h": 16
             },

@@ -121,6 +121,13 @@
     scroll-behavior: smooth;
   }
 
+  /* Motion safety: no smooth scrolling for reduced-motion users. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
     background-color: var(--color-paper);
     color: var(--color-text-on-light);
@@ -145,6 +152,23 @@
   @media (max-width: 767.98px) {
     body:has(.mobile-action-bar) {
       padding-bottom: 49px;
+    }
+
+    /*
+     * Focus not obscured (WCAG 2.2 2.4.11, AC-008): the fixed bar covers
+     * the bottom 49 px. scroll-margin on focusable elements keeps focus
+     * that enters from below the fold above the bar when the browser
+     * scrolls it into view; scroll-padding reserves the same zone for
+     * scroll alignment. 49 px is the bar height. Focus that is already
+     * visible under the bar is lifted by the focusin handler in
+     * BaseLayout.
+     */
+    html:has(body .mobile-action-bar) {
+      scroll-padding-bottom: 49px;
+    }
+
+    body:has(.mobile-action-bar) :is(a, button, input, select, textarea, summary, [tabindex]) {
+      scroll-margin-bottom: 49px;
     }
   }
 
@@ -394,9 +418,15 @@
     padding: var(--space-6);
   }
 
+  /*
+   * Interactive hover borders use grey-500 (AC-012): it is the darkest
+   * step that still clears 3:1 against carbon (5.08:1) and the light
+   * card grounds (3.95:1 on paper), which 1.4.11 needs for state
+   * borders. grey-700 and grey-300 measure 1.71:1 and 1.74:1.
+   */
   .card--interactive:hover {
     box-shadow: var(--shadow-raised-dark);
-    border-color: var(--color-grey-700);
+    border-color: var(--color-grey-500);
   }
 
   .card--light {
@@ -405,7 +435,7 @@
 
   .card--light.card--interactive:hover {
     box-shadow: var(--shadow-raised-light);
-    border-color: var(--color-grey-300);
+    border-color: var(--color-grey-500);
   }
 
   /* Feature panel (DESIGN-SPEC 4.5): corner-cut Carbon surface, one per view. */
