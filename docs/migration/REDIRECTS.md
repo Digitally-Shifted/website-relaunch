@@ -34,7 +34,7 @@ behaviour. Host rules stay off while the site builds under a base path.
 | `/privacy-policy/` | 301 | `/privacy/` | Page moved; POPIA rewrite is a separate content issue. |
 | `/blog/` | serves as-is | — | Same URL; served from `legacy-static/` until ported. |
 | `/2023/02/01/…top-digital-marketing-trends/` | serves as-is | — | Refreshed post returned to its exact URL (DIG-81; published by DIG-107, migration log row 5). Interim 301 row removed. |
-| `/2023/02/02/…effectiveness…/` | 301 | `/blog/` | Interim: post pending a light rewrite. Update on publish. |
+| `/2023/02/02/…effectiveness…/` | serves as-is | — | Rewritten post returned to its exact URL (copy approved in DIG-108; published by DIG-117, migration log row 6). Interim 301 row removed. |
 | `/2023/02/09/ultimate-digital-marketing-guide-for-businesses/` | serves as-is | — | Pillar guide keeps its exact URL (migration log row 7). |
 | `/2024/07/04/…domain-and-hosting-services/` | 301 | `/services/domains-hosting/` | Content merged into the service page (rows 8; audit 2.8). |
 | `/2024/07/15/…paid-advertising…/` | 301 | `/services/` | DIG-83 (2026-10-19): the service stays a quoted offer, but the launch site has no paid advertising page. Hub target until the Grow v2 page ships (row 9). |
@@ -107,10 +107,10 @@ python3 docs/migration/tools/test_redirects.py
 ```
 
 The test writes `docs/migration/redirect-test-results.md`. Latest run
-(DIG-107, 2026-10-19):
-116/116 request cases pass, 0 orphans over 145 distinct recorded old URLs,
-0 redirect targets missing, media 3 x 301 and 44 x 410. The trends URL now
-asserts 200 (serves as-is) instead of an interim 301.
+(DIG-117, 2026-10-19):
+115/115 request cases pass, 0 orphans over 145 distinct recorded old URLs,
+0 redirect targets missing, media 4 x 301 and 43 x 410. The trends and ROI
+post URLs now assert 200 (serve as-is) instead of interim 301s.
 
 The local engine executes the same mod_rewrite subset LiteSpeed runs
 (`R=301`/`G`/`L`/`QSA`/`NC`; the `HTTPS`, `HTTP_HOST`, `QUERY_STRING` and

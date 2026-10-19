@@ -116,7 +116,7 @@ const ga4Id = import.meta.env.PUBLIC_GA4_ID || '';
         if (!bar || getComputedStyle(bar).display === 'none') return;
         if (!el || el === document.body || bar.contains(el)) return;
         if (el.closest('dialog')) return;
-        for (let n = el; n && n !== document.body; n = n.parentElement) {
+        for (let n: Element | null = el; n && n !== document.body; n = n.parentElement) {
           if (getComputedStyle(n).position === 'fixed') return;
         }
         const overlap =

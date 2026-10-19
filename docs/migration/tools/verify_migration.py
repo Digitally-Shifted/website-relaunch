@@ -4,7 +4,10 @@
 Cross-references three layers:
   1. docs/CONTENT-INVENTORY.md  (the 14-row work list)
   2. docs/migration/extracted/*.json (source records from the old site crawl)
-  3. the built pages in the repo
+  3. the pages in the repo. Legacy pages live in legacy-static/; the
+     pre-port reference copies of Astro-ported pages live in
+     docs/migration/generated/ (DIG-71); ported routes are checked at
+     their Astro sources (DIG-72 port workflow).
 
 Writes docs/migration/VERIFICATION.md. Exits 1 when any check fails.
 
@@ -19,7 +22,8 @@ import sys
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 EXT = os.path.join(REPO, "docs", "migration", "extracted")
-MEDIA = os.path.join(REPO, "assets", "media")
+LEGACY = os.path.join(REPO, "legacy-static")
+MEDIA = os.path.join(LEGACY, "assets", "media")
 
 results = []
 
@@ -53,18 +57,19 @@ def words(s):
 
 def main():
     pages = {p: read(p) for p in [
-        "blog/index.html",
-        "services/index.html",
-        "contact/index.html",
-        "contact/thank-you/index.html",
-        "privacy/index.html",
-        "2023/02/09/ultimate-digital-marketing-guide-for-businesses/index.html",
+        "docs/migration/generated/services-index.html",
+        "docs/migration/generated/contact-index.html",
+        "docs/migration/generated/contact-thank-you-index.html",
+        "docs/migration/generated/privacy-index.html",
+        "legacy-static/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/index.html",
+        "legacy-static/2023/02/09/ultimate-digital-marketing-guide-for-businesses/index.html",
+        "legacy-static/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts/index.html",
     ]}
 
     # ---------------------------------------------------------------- row 1
     home = load("000")
-    check("Row 1 home (Rewrite)", "flagged, not migrated: scaffold home untouched",
-          "Smoke test change" in read("index.html"))
+    check("Row 1 home (Rewrite)", "flagged, not migrated: Astro home serves (scaffold home removed, DIG-71)",
+          'title="Websites that work as hard as you do"' in read("src/pages/index.astro"))
     check("Row 1 home (Rewrite)", "hero ad videos preserved in asset library",
           os.path.exists(f"{MEDIA}/Digitally-Shifted-Ad.mp4")
           and os.path.exists(f"{MEDIA}/Digitally-Shifted-Ad-9x16-1.mp4"))
@@ -76,7 +81,7 @@ def main():
 
     # ---------------------------------------------------------------- row 2
     contact = load("012")
-    page = pages["contact/index.html"]
+    page = pages["docs/migration/generated/contact-index.html"]
     check("Row 2 contact (Keep)", "meta title preserved",
           contact["title"] in page)
     check("Row 2 contact (Keep)", "meta description preserved",
@@ -100,28 +105,35 @@ def main():
           'content="noindex"' in page)
 
     # ---------------------------------------------------------------- row 3
+    # The legacy blog page retired when the Astro route took over /blog
+    # (DIG-72 port workflow). The record keeps the old page; the live checks
+    # run against the Astro sources that serve the route now.
     blog = load("007")
-    page = pages["blog/index.html"]
-    check("Row 3 blog (Keep)", "meta title kept with brand suffix",
-          "Digital Marketing Insights | Digitally Shifted" in page)
-    check("Row 3 blog (Keep)", "H1 pipe suffix removed",
-          "<h1>Digital Marketing Insights</h1>" in page)
-    check("Row 3 blog (Keep)", "meta description preserved",
-          blog["description"] in page)
+    blog_src = read("src/pages/blog.astro")
+    topic_srcs = {name: read(f"src/pages/blog/{name}.astro") for name in
+                  ("digital-marketing", "hosting-domains", "paid-advertising",
+                   "website-development")}
+    check("Row 3 blog (Keep)", "legacy blog record preserved (page retired; Astro route serves /blog)",
+          blog["title"] == "Digital Marketing Insights | Digitally Shifted"
+          and len(blog["description"]) > 20)
     for name, anchor, desc in [
         ("digital-marketing", "x", "Explore practical digital marketing guidance"),
         ("hosting-domains", "x", "Find domain and hosting guidance"),
         ("paid-advertising", "x", "Improve paid media performance"),
         ("website-development", "x", "Explore website development advice"),
     ]:
-        check("Row 3 blog (Keep)", f"topic present: {name}", f'id="{name}"' in page)
+        check("Row 3 blog (Keep)", f"topic present: {name}",
+              f"slug: '{name}'" in blog_src and desc in topic_srcs[name])
     cats = [load(f) for f in ("008", "009", "010", "011")]
-    for c, key in zip(cats, ["digital marketing guidance", "domain and hosting guidance",
+    for c, name, key in zip(cats,
+                            ["digital-marketing", "hosting-domains",
+                             "paid-advertising", "website-development"],
+                            ["digital marketing guidance", "domain and hosting guidance",
                              "paid media performance", "website development advice"]):
         first_p = [b for b in c["blocks"] if b["kind"] == "p"][0]["text"]
         first_p = re.sub(r"\s*Search Search.*$", "", first_p)
         check("Rows 11-14 categories (Merge)", f"description verbatim: {key}",
-              first_p in page, first_p[:60])
+              first_p in topic_srcs[name], first_p[:60])
     thumbs = ["Untitled-design-7-768x511.png", "Advertising-768x768.png",
               "pexels-brett-sayles-1597776-768x512.jpg",
               "pexels-ketut-subiyanto-4350093-768x512.jpg",
@@ -134,7 +146,7 @@ def main():
 
     # ---------------------------------------------------------------- row 4
     privacy = load("013")
-    page = pages["privacy/index.html"]
+    page = pages["docs/migration/generated/privacy-index.html"]
     check("Row 4 privacy (Rewrite)", "flagged, launch-default page only",
           "What we store" in page and "POPIA" not in page)
     check("Row 4 privacy (Rewrite)", "meta title preserved",
@@ -145,31 +157,54 @@ def main():
           "Gravatar" in " ".join(b["text"] for b in privacy["blocks"]))
 
     # ---------------------------------------------------------------- row 5
+    # The year refresh is published at the exact old URL (DIG-107); the
+    # interim 301 row left the redirect map on publish.
     trends = load("001")
-    check("Row 5 trends post (Rewrite)", "flagged, not migrated",
-          not os.path.exists(os.path.join(REPO, "2023/02/01")))
-    check("Row 5 trends post (Rewrite)", "meta title/description preserved in record",
+    page = pages["legacy-static/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/index.html"]
+    check("Row 5 trends post (Rewrite published)", "old meta title/description preserved in record",
           trends["title"] == "2023 Digital Marketing Trends | Digitally Shifted"
           and len(trends["description"]) > 20)
-    check("Row 5 trends post (Rewrite)", "featured image preserved in library",
-          os.path.exists(f"{MEDIA}/AI-Trends-2023.webp"))
-    img_alts = [i["alt"] for i in trends["images_content"] if "AI-Trends" in i["src"]]
-    check("Row 5 trends post (Rewrite)", "missing alt documented in record",
-          img_alts == [""], "alt empty on old page; rewrite issue assigns one")
+    check("Row 5 trends post (Rewrite published)", "refreshed meta title on the published page",
+          "<title>Digital Marketing Trends 2027 SA | Digitally Shifted</title>" in page)
+    check("Row 5 trends post (Rewrite published)", "canonical keeps the exact old URL",
+          'rel="canonical" href="https://digitallyshifted.com/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/"' in page)
+    check("Row 5 trends post (Rewrite published)", "featured image present",
+          'src="../../../../assets/media/AI-Trends-2023.webp"' in page
+          and os.path.exists(f"{MEDIA}/AI-Trends-2023.webp"))
+    check("Row 5 trends post (Rewrite published)", "assigned alt on the published page (old page had none)",
+          'alt="Black and white photo of a robotic arm handing a coffee cup to a bearded businessman reading a report, showing AI at work."' in page)
 
     # ---------------------------------------------------------------- row 6
+    # The approved light rewrite (DIG-108 copy) is published at the original
+    # URL; the interim 301 row left the redirect map on publish (DIG-117).
     roi = load("002")
-    check("Row 6 ROI post (Rewrite)", "flagged, not migrated",
-          not os.path.exists(os.path.join(REPO, "2023/02/02")))
-    check("Row 6 ROI post (Rewrite)", "meta title/description preserved in record",
-          roi["title"] == "Measure Digital Marketing ROI | Digitally Shifted")
-    check("Row 6 ROI post (Rewrite)", "featured image and alt preserved",
-          os.path.exists(f"{MEDIA}/Analytics.webp")
-          and any(i["alt"] for i in roi["images_content"]))
+    page = pages["legacy-static/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts/index.html"]
+    check("Row 6 ROI post (Rewrite published)", "meta title preserved",
+          roi["title"] == "Measure Digital Marketing ROI | Digitally Shifted"
+          and "<title>Measure Digital Marketing ROI | Digitally Shifted</title>" in page)
+    check("Row 6 ROI post (Rewrite published)", "H1 preserved",
+          roi["h1"].startswith("How to Evaluate the Effectiveness of Your Digital Marketing Efforts")
+          and "<h1>How to Evaluate the Effectiveness of Your Digital Marketing Efforts</h1>" in page)
+    check("Row 6 ROI post (Rewrite published)", "featured image present",
+          'src="../../../../assets/media/Analytics.webp"' in page
+          and os.path.exists(f"{MEDIA}/Analytics.webp"))
+    check("Row 6 ROI post (Rewrite published)", "alt preserved",
+          'alt="Analytics dashboard representing digital marketing insights"' in page
+          and roi["images_content"][0]["alt"] == "Analytics dashboard representing digital marketing insights")
+    check("Row 6 ROI post (Rewrite published)", "internal links present",
+          'href="../../../../blog/digital-marketing/"' in page
+          and 'href="../../../../2023/02/09/ultimate-digital-marketing-guide-for-businesses/#analytics-and-tracking"' in page
+          # DIG-83 retired /services/paid-advertising/ from the launch build;
+          # its URL 301s to the services hub, so the copy anchor targets the
+          # hub too (DIG-83 review retarget, applied before the DIG-117 commit).
+          and 'href="../../../../services/">paid advertising on Google</a>' in page
+          and 'href="../../../../services/">our website and marketing services</a>' in page)
+    check("Row 6 ROI post (Rewrite published)", "illustrative label present on the published page",
+          "Example numbers are illustrative." in page)
 
     # ---------------------------------------------------------------- row 7
     guide = load("003")
-    page = pages["2023/02/09/ultimate-digital-marketing-guide-for-businesses/index.html"]
+    page = pages["legacy-static/2023/02/09/ultimate-digital-marketing-guide-for-businesses/index.html"]
     check("Row 7 guide (Keep)", "meta title preserved",
           "Digital Marketing Guide | Digitally Shifted" in page)
     check("Row 7 guide (Keep)", "meta description preserved",
@@ -192,7 +227,7 @@ def main():
           page.count("<h2") >= 13)
 
     # --------------------------------------------------------------- rows 8-10
-    services = pages["services/index.html"]
+    services = pages["docs/migration/generated/services-index.html"]
     hosting = load("004")
     ads = load("005")
     webdev = load("006")

@@ -35,6 +35,10 @@
     {
       "path": "/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/",
       "note": "Trends post keeps its exact URL after the DIG-81 refresh (updated October 2026). Served from legacy-static until ported. The interim 301 row was removed on publish (DIG-107); pattern fallbacks must not swallow it; tests assert 200."
+    },
+    {
+      "path": "/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts/",
+      "note": "Row 6 ROI post light rewrite published at its original URL (DIG-82). Served from legacy-static until ported. The interim 301 row was removed on publish; pattern fallbacks must not swallow it; tests assert 200."
     }
   ],
   "redirects": [
@@ -77,14 +81,6 @@
       "kind": "merged content",
       "inventoryRow": 10,
       "note": "Promo post merged into the website development service page. CONTENT-AUDIT 2.10 recommends the 301."
-    },
-    {
-      "old": "/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts/",
-      "new": "/blog/",
-      "status": 301,
-      "kind": "interim target",
-      "inventoryRow": 6,
-      "note": "Post is pending a light rewrite (REWRITE, not removed). Interim 301 to the blog hub; update on publish."
     },
     {
       "old": "/category/digital-marketing/",
