@@ -1,7 +1,9 @@
 ---
 /*
  * Blog topic filter: Paid Advertising (DIG-72). Verbatim category text.
- * The topic's post merged into the Paid Advertising service page.
+ * DIG-83: the launch site ships no paid advertising service page; the old
+ * post URL 301s to /services/ (DIG-109). The card carries the approved
+ * DIG-111 replacement copy and links to the quote enquiry, not to a page.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
@@ -24,12 +26,12 @@ import { withBase } from '../../lib/urls';
 
   <section class="bg-paper" aria-labelledby="posts">
     <div class="container-ds section">
-      <SectionHeader id="posts" eyebrow="From the archive" heading='Where the posts <em>live now</em>.' dark={false} />
+      <SectionHeader id="posts" eyebrow="From the archive" heading='Where this topic <em>stands now</em>.' dark={false} />
       <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <Card title="Maximizing ROI with Precision (July 2024)" dark={false}>
-          <p>This guide now lives with our Paid Advertising service, where we keep it current.</p>
+        <Card title="Paid advertising" dark={false}>
+          <p>Digitally Shifted offers paid advertising as a separate, quoted service. Ask us about a campaign for your business.</p>
           <div slot="action" class="mt-4">
-            <a class="link-light text-body" href={withBase('/services/paid-advertising')}>Read it on the service page</a>
+            <a class="link-light text-body" href={withBase('/contact?need=quote')}>Get a quote</a>
           </div>
         </Card>
       </div>

@@ -33,7 +33,9 @@ echo "Smoke test: $BASE_URL (environment: $ENV_MODE)"
 
 # --- core routes ------------------------------------------------------------
 echo "Routes:"
-for route in / /services /services/website-development /services/domains-hosting /services/paid-advertising /about /contact /privacy /blog /blog/digital-marketing /blog/hosting-domains /blog/paid-advertising /blog/website-development /faq /2023/02/09/ultimate-digital-marketing-guide-for-businesses/; do
+# DIG-83/DIG-112: /services/paid-advertising is retired from the build and is
+# checked as absent in the 404 section below.
+for route in / /services /services/website-development /services/domains-hosting /about /contact /privacy /blog /blog/digital-marketing /blog/hosting-domains /blog/paid-advertising /blog/website-development /faq /2023/02/09/ultimate-digital-marketing-guide-for-businesses/; do
   read -r status body < <(fetch "$route")
   if [ "$status" = "200" ]; then pass "$route → 200"; else fail "$route → $status (expected 200)"; fi
   if [ -n "${body:-}" ]; then rm -f "$body"; fi
@@ -96,6 +98,19 @@ else
   fail "404 page missing or unbranded (status $status)"
 fi
 rm -f "$nf"
+
+# Retired draft page (DIG-83 decision, removed in DIG-112): no paid
+# advertising service page ships.
+status="$(curl -sL -o /dev/null -w '%{http_code}' "${BASE_URL}/services/paid-advertising")"
+if [ "$status" = "404" ]; then
+  pass "/services/paid-advertising is retired (404)"
+else
+  if [ "$ENV_MODE" = "staging" ]; then
+    pass "/services/paid-advertising answered $status (GitHub Pages project hosting may soft-serve; absence is asserted in the build output)"
+  else
+    fail "/services/paid-advertising answered $status (expected 404; DIG-83 retired the draft service page)"
+  fi
+fi
 
 # --- redirect stubs -----------------------------------------------------------
 echo "Redirects (meta-refresh stubs; host-level 301s land at cutover):"
