@@ -1,6 +1,6 @@
 # Redirect map test report — DIG-89
 
-- Run: 2026-10-18T19:54:00Z
+- Run: 2026-10-19T22:07:38Z
 - Build: production semantics (`BUILD_ENV=production`), commit marker `dig89-local-test`
 - Method: `scripts/build-site.sh` output served through a local engine that executes
   the generated `.htaccess` (mod_rewrite subset: R=301/G/L/QSA/NC; HTTPS, HTTP_HOST,
@@ -23,8 +23,8 @@ Generator checks:
 | 4 | `/privacy-policy` | 301 /privacy/ | 301 /privacy/ | PASS |
 | 5 | `/2024/07/04/unlock-your-online-potential-with-digitally-shifted-expert-domain-and-hosting-services/` | 301 /services/domains-hosting/ | 301 /services/domains-hosting/ | PASS |
 | 6 | `/2024/07/04/unlock-your-online-potential-with-digitally-shifted-expert-domain-and-hosting-services` | 301 /services/domains-hosting/ | 301 /services/domains-hosting/ | PASS |
-| 7 | `/2024/07/15/maximizing-roi-with-precision-explore-paid-advertising-with-digitally-shifted/` | 301 /services/paid-advertising/ | 301 /services/paid-advertising/ | PASS |
-| 8 | `/2024/07/15/maximizing-roi-with-precision-explore-paid-advertising-with-digitally-shifted` | 301 /services/paid-advertising/ | 301 /services/paid-advertising/ | PASS |
+| 7 | `/2024/07/15/maximizing-roi-with-precision-explore-paid-advertising-with-digitally-shifted/` | 301 /services/ | 301 /services/ | PASS |
+| 8 | `/2024/07/15/maximizing-roi-with-precision-explore-paid-advertising-with-digitally-shifted` | 301 /services/ | 301 /services/ | PASS |
 | 9 | `/2024/08/12/elevate-your-online-presence-professional-website-development-at-digitally-shifted/` | 301 /services/website-development/ | 301 /services/website-development/ | PASS |
 | 10 | `/2024/08/12/elevate-your-online-presence-professional-website-development-at-digitally-shifted` | 301 /services/website-development/ | 301 /services/website-development/ | PASS |
 | 11 | `/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/` | 301 /blog/ | 301 /blog/ | PASS |
@@ -80,7 +80,7 @@ Generator checks:
 | 61 | `/?attachment_id=12` | 301 /blog/ | 301 /blog/ | PASS |
 | 62 | `/wp-content/uploads/AI-Trends-2023.jpg` | 410 | 410 | PASS |
 | 63 | `/wp-content/uploads/Advertising.png` | 410 | 410 | PASS |
-| 64 | `/wp-content/uploads/Analytics.jpg` | 301 /assets/media/Analytics.webp | 301 /assets/media/Analytics.webp | PASS |
+| 64 | `/wp-content/uploads/Analytics.jpg` | 410 | 410 | PASS |
 | 65 | `/wp-content/uploads/2022/07/Artboard-10.jpg` | 301 /assets/media/Artboard-10.webp | 301 /assets/media/Artboard-10.webp | PASS |
 | 66 | `/wp-content/uploads/Digitally-Shifted-Ad-9x16-1.mp4` | 410 | 410 | PASS |
 | 67 | `/wp-content/uploads/Digitally-Shifted-Ad.mp4` | 410 | 410 | PASS |
@@ -138,13 +138,13 @@ Generator checks:
 ## 301 targets in build output
 
 - All 301 targets exist in the build: YES
-- Migrated media: 3 exact 301 rules verified; 44 pruned-by-DIG-90 URLs correctly return 410
+- Migrated media: 2 exact 301 rules verified; 45 pruned-by-DIG-90 URLs correctly return 410
 
 ## Old-URL coverage (orphan check)
 
 - Distinct recorded old URLs checked: 145
-- 301: 83
-- 410: 59
+- 301: 82
+- 410: 60
 - served (same URL): 3
 - Orphans (old URLs that would 404): 0
 

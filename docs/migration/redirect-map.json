@@ -60,11 +60,11 @@
     },
     {
       "old": "/2024/07/15/maximizing-roi-with-precision-explore-paid-advertising-with-digitally-shifted/",
-      "new": "/services/paid-advertising/",
+      "new": "/services/",
       "status": 301,
-      "kind": "merged content",
+      "kind": "interim target",
       "inventoryRow": 9,
-      "note": "Promo post merged into the paid advertising service page (page exists since DIG-72). CONTENT-AUDIT 2.9 recommends the 301."
+      "note": "Decision DIG-83 (2026-10-19): paid advertising stays a live separate quoted offer (MVP scope DIG-2, service reference DIG-25 section 3). The launch site publishes no paid advertising page (conversion spec 3.2 lists four services only). The placement is deferred to Grow v2, and the preserved post copy is seed copy for that page. This 301 sends the post to the services hub. Update this row when the Grow v2 service page ships."
     },
     {
       "old": "/2024/08/12/elevate-your-online-presence-professional-website-development-at-digitally-shifted/",
@@ -223,7 +223,7 @@
     "oldPrefix": "/wp-content/uploads/",
     "targetDir": "/assets/media/",
     "nameRule": "Same base name as the old upload; the 12 converted files (jpg/png to webp) use the webp name. Derivation is verified against legacy-static/assets/media at generation time.",
-    "deployRule": "scripts/build-site.sh prunes media that no deploy page references (DIG-90), so the generator emits exact 301s only for files present in the build output. At the current build state that is 3 of 47 (Analytics.webp, Artboard-10.webp, pexels-ketut-subiyanto-4350093.webp). Every other old upload URL returns 410 until a page that reuses the asset ships and the file re-enters the output.",
+    "deployRule": "scripts/build-site.sh prunes media that no deploy page references (DIG-90), so the generator emits exact 301s only for files present in the build output. At the current build state that is 2 of 47 (Artboard-10.webp, pexels-ketut-subiyanto-4350093.webp). Analytics.webp lost its last deploy reference when DIG-92 ported the blog index to Astro. Every other old upload URL returns 410 until a page that reuses the asset ships and the file re-enters the output.",
     "fallbackStatus": 410,
     "count": 47
   },

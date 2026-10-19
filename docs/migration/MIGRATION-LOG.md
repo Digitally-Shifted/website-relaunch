@@ -34,7 +34,7 @@ Re-verify with `python3 docs/migration/tools/verify_migration.py`.
 | 6 | `/2023/02/02/...effectiveness/` | Rewrite | Not migrated. Preserved in `extracted/002.*`. Issue: light rewrite (~800 words, local example, end CTA). |
 | 7 | `/2023/02/09/...guide/` | Keep | `2023/02/09/ultimate-digital-marketing-guide-for-businesses/index.html`. Full text migrated; URL, title, description, canonical preserved; 57-link TOC; tags kept; 2 internal links added to `/services/`. Follow-ups: statistics sources, author, content-upgrade CTA (issues). |
 | 8 | `/2024/07/04/...domain-and-hosting/` | Merge | Merged into `services/index.html` §02 Hosting and management (domains: extensions + WHOIS privacy; hosting: LiteSpeed/TTFB, scalability, Imunify360, SpamExperts, 24/7 support). Two unverified statistics excluded (see §4). URL becomes a 301 after launch (DIG-18). |
-| 9 | `/2024/07/15/...paid-advertising/` | Merge | No target section exists in the new service IA (see §3.1). Full text preserved in `extracted/005.*`; not published. Issue: placement decision + 301. |
+| 9 | `/2024/07/15/...paid-advertising/` | Deferred (library) | Not published at launch. Full text preserved in `extracted/005.*` as seed copy for Grow v2. Decision recorded in DIG-83. URL 301s to `/services/`. |
 | 10 | `/2024/08/12/...website-development/` | Merge | Merged into `services/index.html` §01 Website design and development (all five "why choose" points verbatim). Off-topic thumbnail not reused (audit flag); URL becomes a 301 (DIG-18). |
 | 11–14 | `/category/...` (4 archives) | Merge | Descriptions kept verbatim as topic blocks on `blog/index.html` (`#digital-marketing`, `#hosting-domains`, `#paid-advertising`, `#website-development`). No new URLs, so no 301s needed. Duplicate blog title resolved (only `/blog/` carries it now). |
 
@@ -53,7 +53,7 @@ eight services. Mapping of old service mentions:
 | (new) | §03 WaaS (spec copy; prices only from the copy task) |
 | Search Engine Optimization (SEO) | §04 SEO |
 | Marketing Plan & Execution | none — preserved in this log and `extracted/000.*` |
-| Paid Advertising | none — issue open (placement or retirement) |
+| Paid Advertising | none — offer stays (DIG-83); no launch page; preserved copy is seed copy for Grow v2 |
 | Social Media & PR | none — preserved in records |
 | Brand & Content Creation | none — preserved in records |
 | Software Development | none — preserved in records |
@@ -62,6 +62,12 @@ eight services. Mapping of old service mentions:
 The old contact form's 9-option service list is replaced by the spec's
 " What do you need?" select (7 options). The old list is preserved in
 `extracted/012.json` and checked by the verifier.
+
+The same DIG-83 principle applies to the other five dropped service cards.
+These are Social Media & PR, Software Development, Machine Learning & AI,
+Marketing Plan & Execution, and Brand & Content Creation. The launch site
+keeps their titles only. This log and `extracted/000.*` preserve the details.
+Social Media Marketing is likewise a live separate offer with no launch page.
 
 ### 3.2 Contact details follow the approved conversion spec §2.2
 
@@ -179,9 +185,10 @@ Updates to this log's rows:
 
 - Rows 5 and 6 (2023 posts, REWRITE pending): interim 301 to `/blog/`.
   Update the map rows when the rewrites publish (DIG-81, DIG-82).
-- Row 9 (paid advertising post): 301 to `/services/paid-advertising/`
-  (the service page exists since DIG-72; closes this log's open placement
-  question for the redirect itself, DIG-83 still owns the content decision).
+- Row 9 (paid advertising post): DIG-83 (2026-10-19) decided that the offer
+  stays but the launch site publishes no paid advertising page. The URL now
+  301s to `/services/`, and this row updates again when the Grow v2 service
+  page ships.
 - Rows 11–14 (category archives): this log said "no 301s needed" because the
   descriptions moved into the blog index. DIG-72 then added real topic pages,
   so the four category URLs now 301 to `/blog/<topic>/` — the stronger
