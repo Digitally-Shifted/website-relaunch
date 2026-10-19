@@ -10,6 +10,11 @@ apply to production releases only. Staging has no versions.
 
 ### Added
 
+- The enquiry form end to end: the `ContactForm` component (validation,
+  honeypot, time trap, UTM capture, quote-intent button) and the
+  zero-dependency backend behind `POST /api/contact` (SQLite leads store,
+  email notification with retries, rate limit, idempotency) with 14
+  end-to-end tests and 14 real-browser checks (DIG-69, DIG-91).
 - Redirect map for every old URL (`docs/migration/redirect-map.json`, DIG-89):
   meta-refresh stubs ship in the static build, and a generator produces the
   LiteSpeed `.htaccess` (11 page 301s, 47 media redirects, 14 WordPress
@@ -35,6 +40,9 @@ apply to production releases only. Staging has no versions.
 
 - The build gate now also verifies the redirect map
   (`scripts/build-site.sh`, DIG-91).
+- The form backend accepts cPanel/Passenger mounts: `MOUNT_PATH=/api`
+  makes both the prefixed and the stripped request path reach the same
+  routes (DIG-91).
 
 ### Fixed
 

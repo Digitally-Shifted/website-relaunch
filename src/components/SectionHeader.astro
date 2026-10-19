@@ -11,7 +11,8 @@ interface Props {
   opener?: string;
   dark?: boolean;
   align?: 'left' | 'center';
-  /** Heading id. Sections point aria-labelledby at this id. */
+  /** Heading id. Sections point aria-labelledby at this id; deep links
+   * from migrated content target these ids. */
   id?: string;
 }
 

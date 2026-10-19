@@ -90,7 +90,12 @@ const sections = [
             </div>
           ) : (
             <div class="grid gap-8 md:grid-cols-2 md:items-center">
-              <SectionHeader id={section.id} eyebrow={section.eyebrow} heading={section.heading} opener={section.body} />
+              <SectionHeader
+                id={section.id}
+                eyebrow={section.eyebrow}
+                heading={section.heading}
+                opener={section.body}
+              />
               <div class="md:text-right">
                 <a
                   href={withBase(`/contact?need=${section.need}`)}

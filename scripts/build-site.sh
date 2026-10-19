@@ -82,6 +82,38 @@ python3 "$SRC_DIR/docs/migration/tools/generate_redirects.py" \
   --base-path "${PUBLIC_BASE_PATH:-}" \
   --out "$OUT_DIR/.htaccess"
 
+# Analytics on legacy pages (DIG-88). The migrated HTML predates the Astro
+# layout, so it has no analytics wiring. Ship the standalone module and
+# inject it, plus the guarded init, into every page that lacks the module.
+# Astro pages already carry the bundled module and are skipped.
+mkdir -p "$OUT_DIR/analytics"
+cp "$SRC_DIR/analytics/ds-analytics.js" "$OUT_DIR/analytics/ds-analytics.js"
+GA4_ID="${PUBLIC_GA4_ID:-}"
+ANALYTICS_BASE="${PUBLIC_BASE_PATH:-}"
+ANALYTICS_BASE="${ANALYTICS_BASE%/}"
+python3 - "$OUT_DIR" "$GA4_ID" "$ANALYTICS_BASE" <<'PY'
+import sys, pathlib
+
+out_dir = pathlib.Path(sys.argv[1])
+ga4_id = sys.argv[2]
+base = sys.argv[3]
+snippet = (
+    '<script defer src="' + base + '/analytics/ds-analytics.js"></script>\n'
+    '<script defer>window.addEventListener("DOMContentLoaded",function(){'
+    'var id="' + ga4_id + '";'
+    'if(window.DSAnalytics&&/^G-[A-Z0-9]{6,12}$/.test(id)){'
+    'window.DSAnalytics.init({measurementId:id});}});</script>'
+)
+changed = 0
+for html in out_dir.rglob('*.html'):
+    text = html.read_text(encoding='utf-8')
+    if 'DSAnalytics' in text or '</head>' not in text:
+        continue
+    html.write_text(text.replace('</head>', snippet + '\n</head>', 1), encoding='utf-8')
+    changed += 1
+print(f'analytics injected into {changed} legacy page(s)')
+PY
+
 # Inject build identity into the marker block (every HTML file).
 find "$OUT_DIR" -name '*.html' -type f -exec sed -i \
   "s/__BUILD_SHA__/$BUILD_SHA/g; s/__BUILD_TIME__/$BUILD_TIME/g; s/__BUILD_ENV__/$BUILD_ENV/g" {} +

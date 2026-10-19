@@ -19,6 +19,9 @@ Status on 2026-10-18:
 - Search Console verification: waits on domain DNS access.
 - Weekly report: recipe below. Build it after the GA4 property exists.
 - Live event test: waits on the GA4 property. The offline event test passed.
+- Owner decision 2026-10-18: the site launches with analytics dormant (no
+  measurement ID at build). Enable it in a patch release with the steps in
+  section 2 and `docs/go-live-runbook.md` step 8.
 
 Issue: DIG-65. Related: DIG-20 (go-live checklist), DIG-66 (lead capture spec).
 

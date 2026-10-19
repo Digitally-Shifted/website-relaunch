@@ -16,7 +16,10 @@
     "audit:a11y:contrast": "node tools/a11y/bin/token-contrast.mjs",
     "audit:a11y:fixture": "node tools/a11y/bin/verify-fixture.mjs",
     "audit:a11y:keyboard": "node tools/a11y/bin/keyboard-pass.mjs",
-    "audit:a11y:checklist": "node tools/a11y/bin/manual-checklist.mjs"
+    "audit:a11y:checklist": "node tools/a11y/bin/manual-checklist.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:analytics": "node analytics/test/run-tests.cjs",
+    "test:backend": "node --test form-backend/test/"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
