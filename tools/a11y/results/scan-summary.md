@@ -1,6 +1,6 @@
-# Automated scan — 2026-10-18T20:16:11.826Z
+# Automated scan — 2026-10-19T12:34:24.725Z
 
-Base URL: http://127.0.0.1:4173 · Pages: 16 · axe rule hits: 0 · HTML errors: 0
+Base URL: http://localhost:4173 · Pages: 16 · axe rule hits: 0 · HTML errors: 0
 
 ## home (/) — HTTP 200
 

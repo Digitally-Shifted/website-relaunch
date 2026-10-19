@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T20:16:36.529Z",
+  "generatedAt": "2026-10-19T12:34:50.086Z",
   "findings": [
     {
       "page": "home",
@@ -117,8 +117,8 @@
     }
   ],
   "run": {
-    "generatedAt": "2026-10-18T20:16:36.529Z",
-    "baseUrl": "http://127.0.0.1:4173",
+    "generatedAt": "2026-10-19T12:34:50.086Z",
+    "baseUrl": "http://localhost:4173",
     "pages": [
       {
         "name": "home",
@@ -1389,15 +1389,15 @@
           {
             "phase": "walk",
             "step": 1,
-            "tag": "a",
-            "id": null,
-            "cls": "link-dark text-body",
-            "text": "Call +27 63 171 8750",
+            "tag": "input",
+            "id": "field-name",
+            "cls": "ds-control",
+            "text": null,
             "rect": {
               "x": 24,
-              "y": 588,
-              "w": 144,
-              "h": 19
+              "y": 343,
+              "w": 327,
+              "h": 52
             },
             "ariaExpanded": null,
             "outline": "2px solid",
@@ -1406,15 +1406,15 @@
           {
             "phase": "walk",
             "step": 2,
-            "tag": "a",
-            "id": null,
-            "cls": "link-dark text-body",
-            "text": "WhatsApp us",
+            "tag": "input",
+            "id": "field-email",
+            "cls": "ds-control",
+            "text": null,
             "rect": {
               "x": 24,
-              "y": 627,
-              "w": 100,
-              "h": 19
+              "y": 478,
+              "w": 327,
+              "h": 52
             },
             "ariaExpanded": null,
             "outline": "2px solid",
@@ -1423,15 +1423,15 @@
           {
             "phase": "walk",
             "step": 3,
-            "tag": "a",
-            "id": null,
-            "cls": "link-dark text-body",
-            "text": "baruch@digitallyshifted.com",
+            "tag": "input",
+            "id": "field-phone",
+            "cls": "ds-control",
+            "text": null,
             "rect": {
               "x": 24,
-              "y": 665,
-              "w": 209,
-              "h": 19
+              "y": 612,
+              "w": 327,
+              "h": 52
             },
             "ariaExpanded": null,
             "outline": "2px solid",
@@ -1440,15 +1440,15 @@
           {
             "phase": "walk",
             "step": 4,
-            "tag": "a",
-            "id": null,
-            "cls": "text-body-sm text-grey-400 no-underline",
-            "text": "Home",
+            "tag": "input",
+            "id": "field-business",
+            "cls": "ds-control",
+            "text": null,
             "rect": {
               "x": 24,
-              "y": 442,
-              "w": 40,
-              "h": 16
+              "y": 746,
+              "w": 327,
+              "h": 52
             },
             "ariaExpanded": null,
             "outline": "2px solid",
@@ -1457,15 +1457,15 @@
           {
             "phase": "walk",
             "step": 5,
-            "tag": "a",
-            "id": null,
-            "cls": "text-body-sm text-grey-400 no-underline",
-            "text": "Services",
+            "tag": "select",
+            "id": "field-need",
+            "cls": "ds-control",
+            "text": "General enquiryA new websiteA redesign o",
             "rect": {
               "x": 24,
-              "y": 474,
-              "w": 55,
-              "h": 16
+              "y": 852,
+              "w": 327,
+              "h": 48
             },
             "ariaExpanded": null,
             "outline": "2px solid",
@@ -1474,15 +1474,15 @@
           {
             "phase": "walk",
             "step": 6,
-            "tag": "a",
-            "id": null,
-            "cls": "text-body-sm text-grey-400 no-underline",
-            "text": "About",
+            "tag": "textarea",
+            "id": "field-message",
+            "cls": "ds-control",
+            "text": null,
             "rect": {
               "x": 24,
-              "y": 506,
-              "w": 39,
-              "h": 16
+              "y": 425,
+              "w": 327,
+              "h": 158
             },
             "ariaExpanded": null,
             "outline": "2px solid",
@@ -1493,12 +1493,12 @@
             "step": 7,
             "tag": "a",
             "id": null,
-            "cls": "text-body-sm text-grey-400 no-underline",
-            "text": "Blog",
+            "cls": "link-dark",
+            "text": "privacy notice",
             "rect": {
-              "x": 24,
-              "y": 538,
-              "w": 30,
+              "x": 165,
+              "y": 659,
+              "w": 90,
               "h": 16
             },
             "ariaExpanded": null,
@@ -1508,15 +1508,15 @@
           {
             "phase": "walk",
             "step": 8,
-            "tag": "a",
+            "tag": "button",
             "id": null,
-            "cls": "text-body-sm text-grey-400 no-underline",
-            "text": "FAQ",
+            "cls": "btn btn--primary",
+            "text": "Send enquiry",
             "rect": {
               "x": 24,
-              "y": 570,
-              "w": 27,
-              "h": 16
+              "y": 678,
+              "w": 148,
+              "h": 48
             },
             "ariaExpanded": null,
             "outline": "2px solid",
@@ -1527,13 +1527,13 @@
             "step": 9,
             "tag": "a",
             "id": null,
-            "cls": "text-body-sm text-grey-400 no-underline",
-            "text": "Contact",
+            "cls": "link-dark text-body",
+            "text": "Call +27 63 171 8750",
             "rect": {
               "x": 24,
-              "y": 602,
-              "w": 51,
-              "h": 16
+              "y": 855,
+              "w": 144,
+              "h": 19
             },
             "ariaExpanded": null,
             "outline": "2px solid",
@@ -1544,13 +1544,13 @@
             "step": 10,
             "tag": "a",
             "id": null,
-            "cls": "text-body-sm text-grey-400 no-underline",
-            "text": "Privacy",
+            "cls": "link-dark text-body",
+            "text": "WhatsApp us",
             "rect": {
               "x": 24,
-              "y": 634,
-              "w": 47,
-              "h": 16
+              "y": 881,
+              "w": 100,
+              "h": 19
             },
             "ariaExpanded": null,
             "outline": "2px solid",
@@ -1561,11 +1561,147 @@
             "step": 11,
             "tag": "a",
             "id": null,
+            "cls": "link-dark text-body",
+            "text": "baruch@digitallyshifted.com",
+            "rect": {
+              "x": 24,
+              "y": 441,
+              "w": 209,
+              "h": 19
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 12,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Home",
+            "rect": {
+              "x": 24,
+              "y": 854,
+              "w": 40,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 13,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Services",
+            "rect": {
+              "x": 24,
+              "y": 884,
+              "w": 55,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 14,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "About",
+            "rect": {
+              "x": 24,
+              "y": 442,
+              "w": 39,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 15,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Blog",
+            "rect": {
+              "x": 24,
+              "y": 474,
+              "w": 30,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 16,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "FAQ",
+            "rect": {
+              "x": 24,
+              "y": 506,
+              "w": 27,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 17,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Contact",
+            "rect": {
+              "x": 24,
+              "y": 538,
+              "w": 51,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 18,
+            "tag": "a",
+            "id": null,
+            "cls": "text-body-sm text-grey-400 no-underline",
+            "text": "Privacy",
+            "rect": {
+              "x": 24,
+              "y": 570,
+              "w": 47,
+              "h": 16
+            },
+            "ariaExpanded": null,
+            "outline": "2px solid",
+            "coveredByActionBar": false
+          },
+          {
+            "phase": "walk",
+            "step": 19,
+            "tag": "a",
+            "id": null,
             "cls": "link-dark text-body-sm",
             "text": "Call +27 63 171 8750",
             "rect": {
               "x": 24,
-              "y": 735,
+              "y": 671,
               "w": 126,
               "h": 16
             },
