@@ -33,6 +33,15 @@ const redirectMap = JSON.parse(
 let distDir;
 let htmlFiles;
 
+/* The staging build (build-site.sh default) serves under the GitHub Pages
+ * project prefix, so absolute internal hrefs carry it. Strip the same base
+ * path the build script applies before resolving (DIG-121). */
+const buildEnv = process.env.BUILD_ENV || 'staging';
+const basePath =
+  buildEnv === 'staging'
+    ? process.env.PUBLIC_BASE_PATH || '/website-relaunch'
+    : process.env.PUBLIC_BASE_PATH || '';
+
 async function walkHtml(dir) {
   const out = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
@@ -163,7 +172,11 @@ test('every internal fragment link resolves to an existing id', async () => {
       const rawPath = href.slice(0, hashIndex);
       let targetDir;
       if (rawPath.startsWith('/')) {
-        targetDir = join(distDir, rawPath.replace(/\/$/, '').replace(/^\//, ''));
+        const stripped =
+          basePath && rawPath.startsWith(basePath)
+            ? rawPath.slice(basePath.length) || '/'
+            : rawPath;
+        targetDir = join(distDir, stripped.replace(/\/$/, '').replace(/^\//, ''));
       } else {
         targetDir = resolve(dirname(file), rawPath.replace(/\/$/, ''));
       }

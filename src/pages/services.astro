@@ -6,6 +6,10 @@
  *
  * DRAFT COPY: section copy is pending DIG-63. Prices are not stated (the
  * spec forbids inventing them).
+ *
+ * Naming: section 03 carries the approved ladder name Care plan (DIG-25;
+ * DIG-121). The #waas anchor, need=waas routing key, and modal id stay as
+ * routing keys; only display text renamed.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
@@ -36,7 +40,7 @@ const sections = [
   {
     id: 'waas',
     eyebrow: 'Service 03',
-    heading: 'Website-as-a-Service <em>(WaaS)</em>.',
+    heading: 'Care <em>plan</em>.',
     body: 'One monthly fee covers design, hosting, management and SEO. Your website stays current without a large upfront cost, and we keep improving it. This is how most of our clients run their sites.',
     need: 'waas',
     panel: true,
@@ -54,7 +58,7 @@ const sections = [
 
 <BaseLayout
   title="Services"
-  description="Website design and development, hosting and management, Website-as-a-Service, and SEO. One team covers the whole life of your website."
+  description="Website design and development, hosting and management, Care plan, and SEO. One team covers the whole life of your website."
   path="/services"
 >
   <PageHero
@@ -123,7 +127,7 @@ const sections = [
   }
 
   <dialog class="waas-dialog" id="waas-modal" aria-labelledby="waas-modal-title">
-    <p class="text-eyebrow uppercase text-text-on-dark-muted">Website-as-a-Service</p>
+    <p class="text-eyebrow uppercase text-text-on-dark-muted">Care plan</p>
     <h2 id="waas-modal-title" class="mt-3 text-h2 text-paper">What the monthly plan covers</h2>
     <ul class="mt-6 list-disc pl-6 text-body text-text-on-dark">
       <li>Design — your site designed in the Digitally Shifted system.</li>

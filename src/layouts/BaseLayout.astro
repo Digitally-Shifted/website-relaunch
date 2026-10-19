@@ -24,6 +24,21 @@ interface Props {
   hideHeaderCta?: boolean;
   /** Hide the mobile action bar (contact, thank-you, privacy). */
   hideMobileBar?: boolean;
+  /** Emit the title verbatim with no ` — {site.name}` suffix. Use for
+   * pages whose preserved title already carries the brand (DIG-101). */
+  titleSuffix?: boolean;
+  /** Production robots meta override (DIG-101: the home page preserves the
+   * full migrated value with the snippet and preview directives). Staging
+   * builds keep the site-wide noindex guard regardless of this value. */
+  robots?: string;
+  /** Social share image site path; defaults to /og-default.png. */
+  ogImage?: string;
+  /** Social share image intrinsic width, for example "1904". */
+  ogImageWidth?: string;
+  /** Social share image intrinsic height, for example "901". */
+  ogImageHeight?: string;
+  /** Social share image alt text. */
+  ogImageAlt?: string;
 }
 
 const {
@@ -33,14 +48,20 @@ const {
   noindex = false,
   hideHeaderCta = false,
   hideMobileBar = false,
+  titleSuffix = true,
+  robots,
+  ogImage,
+  ogImageWidth = '1200',
+  ogImageHeight = '630',
+  ogImageAlt = 'Digitally Shifted — digital agency',
 } = Astro.props;
 
 const buildEnv = import.meta.env.PUBLIC_BUILD_ENV || 'production';
 const isStaging = buildEnv !== 'production';
-const robotsContent = noindex || isStaging ? 'noindex, nofollow' : 'index, follow';
-const pageTitle = `${title} — ${site.name}`;
+const robotsContent = noindex || isStaging ? 'noindex, nofollow' : robots || 'index, follow';
+const pageTitle = titleSuffix ? `${title} — ${site.name}` : title;
 const pageUrl = canonical(path);
-const ogImage = canonical('/og-default.png');
+const ogImageSrc = canonical(ogImage ?? '/og-default.png');
 const fontHref = withBase('/fonts/raleway-variable.woff2');
 /* GA4 measurement ID (format G-XXXXXXXXXX), set at build time. Empty means
  * analytics stays dormant until the ID lands (docs/analytics-setup.md §2). */
@@ -64,14 +85,14 @@ const ga4Id = import.meta.env.PUBLIC_GA4_ID || '';
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={pageUrl} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Digitally Shifted — digital agency" />
+    <meta property="og:image" content={ogImageSrc} />
+    <meta property="og:image:width" content={ogImageWidth} />
+    <meta property="og:image:height" content={ogImageHeight} />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageSrc} />
 
     <link rel="preload" href={fontHref} as="font" type="font/woff2" crossorigin />
     <script>

@@ -42,6 +42,19 @@ apply to production releases only. Staging has no versions.
 
 ### Changed
 
+- Home page copy rewritten from the approved final draft
+  (`docs/copy/home-page-copy.md`, DIG-79/DIG-121): one H1, four service
+  cards, the Care plan panel, the Variant B "How we work" proof section,
+  and the closing band. Preserved SEO values wire verbatim (DIG-101): the
+  title tag carries no site suffix, the home page overrides the robots
+  meta with the full migrated directives, and the og image is the
+  migrated hero banner from this host (`public/og/home-page-banner.jpg`,
+  1904x901 JPEG) with the original alt text. BaseLayout gains the
+  `titleSuffix`, `robots`, and og-image override props.
+- The `/services` third section renames to the approved ladder name
+  "Care plan" (DIG-25, DIG-121). Display text only: the `#waas` anchor,
+  `need=waas` routing key, and modal id are unchanged.
+
 - The build gate now also verifies the redirect map
   (`scripts/build-site.sh`, DIG-91).
 - The form backend accepts cPanel/Passenger mounts: `MOUNT_PATH=/api`

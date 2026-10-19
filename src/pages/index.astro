@@ -1,11 +1,16 @@
 ---
 /*
- * Home (conversion spec 3.1): the visitor starts an enquiry or requests a
- * quote. Primary CTA above the fold, secondary "See what is included",
- * one repeated CTA after the services summary, one in the closing band.
+ * Home (conversion spec 3.1): hero, services summary with four cards and
+ * the Care plan panel, proof (Variant B "How we work"), closing band.
  *
- * DRAFT COPY: page copy is pending DIG-63 (website copy). Structure and
- * claims follow docs/conversion-spec.md; no unproven claims.
+ * FINAL COPY: wired from docs/copy/home-page-copy.md v1.0 (DIG-79/DIG-121).
+ * Owner-gated lines render on staging per the copy flag table (HC1, HC2,
+ * HC4, HC5, HC6 shown; HC3 logo strip held; HC7 reply-time line omitted).
+ * Production deploy waits for the owner answers on DIG-79.
+ *
+ * SEO: preserved values verbatim (DIG-101). No title suffix, full robots
+ * directives, og image served from this host at the original 1904x901.
+ * Exactly one H1: the old DOM repeated the phrase twice.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
@@ -17,58 +22,115 @@ import { withBase } from '../lib/urls';
 const services = [
   {
     title: 'Website design and development',
-    body: 'A fast, clear website built around your customers. We design it, build it and hand you a site that is easy to live with.',
-    need: 'new-website',
+    body: 'We design and build your website around your customers and your goals. Fast pages, clear structure, and a site you can grow. You own the result, and we stay available to look after it. Right for your first website, or a rebuild of an old one. The once-off build is Launch: live in 15 working days from complete content, from R12 000 to R50 000 per project. You approve the quote before any work starts.',
+    href: '/services#web-design',
   },
   {
     title: 'Hosting and management',
-    body: 'We host your site, keep it updated, watch it and fix problems before your visitors see them.',
-    need: 'hosting',
+    body: 'We host your site, keep its software current, and fix problems before visitors see them. Backups, updates, and security are our job, not your weekend. Your site stays fast and safe while you run your business. Take hosting and management on its own, or as part of the Care plan. Right if your site is live but nobody looks after it.',
+    href: '/services#hosting',
   },
   {
-    title: 'Website-as-a-Service',
-    body: 'One monthly fee covers design, hosting, management and SEO. No large upfront cost, and the site stays current.',
-    need: 'waas',
+    title: 'Care plan',
+    body: 'The monthly bundle. One price covers design, hosting, management, SEO basics, and small changes: the everyday edits your site needs. From R1 000 to R6 000 per month. Your website stays current without a large upfront cost, and we keep improving it. No new quote every time something changes. Take it with a new build, or on its own.',
+    href: '/services#waas',
   },
   {
-    title: 'SEO',
-    body: 'We help the right people find you on Google with honest, technical and content work that lasts.',
-    need: 'seo',
+    title: 'SEO and AIO',
+    body: 'Technical foundations, clear content, and steady improvement help the right people find you on Google. AIO extends that work to visibility in AI-generated answers. No tricks that put your domain at risk. Right if customers search for what you do, and they cannot find you.',
+    href: '/services#seo',
+  },
+];
+
+const covers = ['Design', 'Hosting', 'Management', 'SEO basics', 'Small changes'];
+
+const steps = [
+  {
+    lead: 'You send the short form.',
+    body: 'We talk about your business, and then you get a clear quote. You decide with the price in front of you.',
+  },
+  {
+    lead: 'We design and build.',
+    body: 'Your website takes shape around your customers. You see it and approve it before it goes live.',
+  },
+  {
+    lead: 'We look after it.',
+    body: 'After launch, we host it, manage it, and improve it. Every month.',
   },
 ];
 ---
 
 <BaseLayout
-  title="Websites that work as hard as you do"
-  description="Digitally Shifted designs, hosts and manages websites for South African businesses. Get a quote for a new website, hosting, WaaS or SEO."
+  title="Digital Marketing Agency South Africa | Digitally Shifted"
+  titleSuffix={false}
+  description="Digitally Shifted helps South African businesses generate leads with SEO, web design, Google Ads, social media and digital strategy."
   path="/"
+  robots="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+  ogImage="/og/home-page-banner.jpg"
+  ogImageWidth="1904"
+  ogImageHeight="901"
+  ogImageAlt="Digitally Shifted digital marketing agency hero banner"
 >
   <PageHero
     eyebrow="Websites, hosting and SEO"
-    statement='Your website, <strong>built</strong>, <em>hosted</em> and <em>managed</em>.'
-    opener="We design, host and manage websites for South African businesses."
+    statement="Digital Marketing Agency South Africa"
+    opener="Digitally Shifted designs, builds, hosts, and manages websites for South African businesses, so new customers find you and contact you."
+    ctaHref="/contact?need=quote"
+    ctaLabel="Get a quote"
     secondaryHref="/services"
     secondaryLabel="See what is included"
   />
 
-  <section class="bg-carbon" aria-labelledby="services-summary">
+  <section class="bg-carbon" aria-labelledby="what-we-do">
     <div class="container-ds section">
       <SectionHeader
-        id="services-summary"
-        eyebrow="What we do"
-        heading='Everything your site needs, <em>in one place</em>.'
-        opener="Four services that cover the whole life of your website."
+        id="what-we-do"
+        heading="What we do"
+        opener="Four services cover the whole life of your website. Buy a website once with Launch, and own it outright. Or put your website on the Care plan and let us run it for a monthly fee. Choose what you need today and add more later."
       />
       <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {
           services.map((service) => (
             <Card title={service.title} interactive>
               <p class="text-text-on-dark-muted">{service.body}</p>
+              <a
+                slot="action"
+                href={withBase(service.href)}
+                class="link-dark mt-4 inline-block text-body-sm"
+              >
+                {service.title}
+              </a>
             </Card>
           ))
         }
       </div>
-      <div class="mt-12">
+      <div class="feature-panel corner-cut-md mt-16">
+        <h3 id="care-plan" class="text-display text-paper">
+          One monthly plan. <em>Everything included.</em>
+        </h3>
+        <p class="mt-4 max-w-xl text-body-lg text-text-on-dark-muted">
+          The Care plan turns your website into a service we run for you. You never
+          touch the technical work. Your site stays current, and the cost stays
+          predictable.
+        </p>
+        <ul class="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-body text-paper">
+          {
+            covers.map((item) => (
+              <li class="flex items-center gap-2">
+                <span aria-hidden="true" class="text-accent">
+                  +
+                </span>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <p class="mt-4 max-w-xl text-body-sm text-text-on-dark-muted">
+        Need an online shop, a booking system, or a member area? Those are custom
+        builds, quoted per project. They sit outside the fixed Launch scope.
+      </p>
+      <div class="mt-10">
         <a href={withBase('/contact?need=quote')} class="btn btn--primary" data-ds-location="content">
           Get a quote
         </a>
@@ -78,45 +140,54 @@ const services = [
 
   <section class="bg-grey-100" aria-labelledby="how-we-work">
     <div class="container-ds section">
-      <div class="feature-panel corner-cut-md">
-        <p class="text-eyebrow uppercase text-text-on-dark-muted">How we work</p>
-        <h2 id="how-we-work" class="mt-3 text-display text-paper">
-          One monthly fee. <em>Everything covered.</em>
-        </h2>
-        <p class="mt-4 max-w-xl text-body-lg text-text-on-dark-muted">
-          Website-as-a-Service: your website stays a product we look after, not a
-          project you have to re-buy every few years. Design, hosting, management
-          and SEO for one monthly fee.
-        </p>
-        <ol class="mt-8 grid gap-6 sm:grid-cols-3">
-          <li>
-            <p class="text-h4 text-paper">1. Enquiry</p>
-            <p class="mt-2 text-body-sm text-text-on-dark-muted">
-              You tell us what you need. We reply within one business day.
-            </p>
-          </li>
-          <li>
-            <p class="text-h4 text-paper">2. Scope and build</p>
-            <p class="mt-2 text-body-sm text-text-on-dark-muted">
-              We agree the scope, then design and build your site.
-            </p>
-          </li>
-          <li>
-            <p class="text-h4 text-paper">3. Managed</p>
-            <p class="mt-2 text-body-sm text-text-on-dark-muted">
-              We host, manage and improve it while you run your business.
-            </p>
-          </li>
-        </ol>
-        <a href={withBase('/contact?need=waas')} class="btn btn--primary mt-10" data-ds-location="content">
-          Get a quote
-        </a>
+      <SectionHeader
+        id="how-we-work"
+        dark={false}
+        heading="How we work"
+        opener="Your customers are already online. You do not have the time or the skill to run a website, and you should not have to. That is our job."
+      />
+      <ol class="mt-12 grid gap-8 md:grid-cols-3">
+        {
+          steps.map((step, index) => (
+            <li>
+              <p class="text-h4 text-text-on-light">
+                <span aria-hidden="true" class="mr-2 text-text-on-light-muted">
+                  {index + 1}.
+                </span>
+                <strong>{step.lead}</strong>
+              </p>
+              <p class="mt-2 text-body-sm text-text-on-light-muted">{step.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="mt-16 grid gap-10 md:grid-cols-2">
+        <div>
+          <h3 class="text-h3 text-text-on-light">Who it is for</h3>
+          <p class="mt-3 text-body text-text-on-light-muted">
+            Owner-run businesses with 1 to 50 people. Service industries,
+            hospitality, and tourism, in and near Gauteng, the Western Cape, and
+            KwaZulu-Natal. If your customers find you through Google and word of
+            mouth, you are who we built this for.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-h3 text-text-on-light">One supplier</h3>
+          <p class="mt-3 text-body text-text-on-light-muted">
+            One supplier stays accountable for your whole website. When something
+            needs fixing, you do not chase three suppliers. You pay a predictable
+            monthly cost, not a large upfront sum. The technical work stays with
+            us.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
   <CtaBand
-    heading='Tell us what you need. <em>We take it from there.</em>'
-    line="One short form. We reply within one business day."
+    heading={'Ready <em>when you are</em>'}
+    line="Tell us what your business needs. We reply with a clear quote, and work starts only when you approve it."
+    ctaHref="/contact?need=quote"
+    ctaLabel="Get a quote"
   />
 </BaseLayout>
