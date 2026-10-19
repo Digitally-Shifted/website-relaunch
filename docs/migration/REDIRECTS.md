@@ -7,6 +7,7 @@ regenerate and test the redirect configuration.
 - Source of truth: `docs/migration/redirect-map.json`
 - Generator: `docs/migration/tools/generate_redirects.py`
 - Test: `docs/migration/tools/test_redirects.py`
+- Sitemap entries: `docs/migration/tools/generate_legacy_sitemap.py`
 - Latest evidence: `docs/migration/redirect-test-results.md`
 - Evidence inputs: `docs/audit-evidence/` (14-page crawl, sitemaps, host
   checks), `docs/migration/extracted/` (all internal links of the old pages),
@@ -50,6 +51,27 @@ row is gone and the URL serves the refreshed post. One row still points at
 awaits the Grow v2 paid advertising page (DIG-83). If the owner later
 chooses the audit's "drop" option for a post, change that row's status to
 410 and regenerate.
+
+## XML sitemap (sameUrl pages)
+
+The Astro sitemap (`@astrojs/sitemap`) lists only Astro routes, so the
+legacy pages that serve as-is never appeared in it. `scripts/build-site.sh`
+now runs `docs/migration/tools/generate_legacy_sitemap.py` after the build;
+it appends every `sameUrl` page that the sitemap does not already list
+(DIG-118):
+
+- `lastmod` lives in the map next to each `sameUrl` path (YYYY-MM-DD) and
+  records the page's real last-modified date. Update it whenever a legacy
+  page's content changes; the build fails when it is missing.
+- URLs the Astro sitemap already lists (routes such as `/` and `/blog/`)
+  are skipped, so a page needs no `lastmod` once Astro serves its route.
+- The step refuses a `sameUrl` path that is also a 301 redirect or a system
+  410, and refuses any URL without a page in the build output: no sitemap
+  URL can be a redirect or a 404.
+- Staging builds list the pages under the `/website-relaunch` prefix,
+  matching the Astro locs.
+
+Tests: `python3 docs/migration/tools/test_legacy_sitemap.py`.
 
 ## 410 Gone (intentionally removed)
 

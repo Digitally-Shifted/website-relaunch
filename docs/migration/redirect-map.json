@@ -30,14 +30,17 @@
     },
     {
       "path": "/2023/02/09/ultimate-digital-marketing-guide-for-businesses/",
+      "lastmod": "2026-10-18",
       "note": "Pillar guide keeps its exact URL (migration log row 7, KEEP). Served from legacy-static until ported. Pattern fallbacks must not swallow it; tests assert 200."
     },
     {
       "path": "/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/",
+      "lastmod": "2026-10-19",
       "note": "Trends post keeps its exact URL after the DIG-81 refresh (updated October 2026). Served from legacy-static until ported. The interim 301 row was removed on publish (DIG-107); pattern fallbacks must not swallow it; tests assert 200."
     },
     {
       "path": "/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts/",
+      "lastmod": "2026-10-20",
       "note": "Row 6 ROI post light rewrite published at its original URL (DIG-82). Served from legacy-static until ported. The interim 301 row was removed on publish; pattern fallbacks must not swallow it; tests assert 200."
     }
   ],

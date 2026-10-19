@@ -20,11 +20,15 @@ import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { mkdtemp, rm, readdir, readFile } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname, resolve, relative } from 'node:path';
 
 const execFileAsync = promisify(execFile);
 const repoRoot = resolve(dirname(new URL(import.meta.url).pathname), '..');
+const redirectMap = JSON.parse(
+  readFileSync(join(repoRoot, 'docs', 'migration', 'redirect-map.json'), 'utf8'),
+);
 
 let distDir;
 let htmlFiles;
@@ -243,5 +247,12 @@ test('redirect stub refresh targets carry the staging base path (DIG-88)', async
       `stub target misses the base path: ${match[1]} in ${file}`,
     );
   }
-  assert.ok(stubs.length >= 11, `expected the full stub set, got ${stubs.length}`);
+  /* One stub page ships per redirect-map row. The row count shrinks when
+     a rewrite publishes at its exact URL (DIG-107, DIG-117), so the
+     expectation follows the map instead of a hardcoded number. */
+  assert.equal(
+    stubs.length,
+    redirectMap.redirects.length,
+    `expected one stub per redirect-map row (${redirectMap.redirects.length}), got ${stubs.length}`,
+  );
 });

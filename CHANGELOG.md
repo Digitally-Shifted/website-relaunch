@@ -22,6 +22,10 @@ apply to production releases only. Staging has no versions.
 - Redirect verification as a build gate: every redirect stub ships, every
   destination resolves, and no old URL from the content inventory is
   orphaned (`scripts/test-redirects.mjs`, DIG-91).
+- Legacy pages in the XML sitemap: the build appends every redirect-map
+  `sameUrl` page that serves as-is to `sitemap-0.xml` with its map-tracked
+  `lastmod` date, and refuses redirects, 410s, or 404s in the sitemap
+  (`docs/migration/tools/generate_legacy_sitemap.py`, DIG-118).
 - Go-live runbook with the DNS cutover, TLS, host headers, release, smoke
   test, and rollback steps (`docs/go-live-runbook.md`, DIG-91).
 - Production smoke test script for any deployed URL

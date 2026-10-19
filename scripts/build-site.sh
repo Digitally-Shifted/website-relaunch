@@ -82,6 +82,15 @@ python3 "$SRC_DIR/docs/migration/tools/generate_redirects.py" \
   --base-path "${PUBLIC_BASE_PATH:-}" \
   --out "$OUT_DIR/.htaccess"
 
+# XML sitemap (DIG-118): the Astro sitemap lists only Astro routes. Append
+# the legacy pages that serve as-is (redirect map sameUrl) with their real
+# lastmod dates from the map. The map is the single source of truth; update
+# a page's lastmod there whenever its content changes.
+python3 "$SRC_DIR/docs/migration/tools/generate_legacy_sitemap.py" \
+  --map "$SRC_DIR/docs/migration/redirect-map.json" \
+  --base-path "${PUBLIC_BASE_PATH:-}" \
+  --out-dir "$OUT_DIR"
+
 # Analytics on legacy pages (DIG-88). The migrated HTML predates the Astro
 # layout, so it has no analytics wiring. Ship the standalone module and
 # inject it, plus the guarded init, into every page that lacks the module.
