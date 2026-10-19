@@ -1,13 +1,13 @@
 # Redirect map test report — DIG-89
 
-- Run: 2026-10-19T22:07:38Z
+- Run: 2026-10-19T22:24:55Z
 - Build: production semantics (`BUILD_ENV=production`), commit marker `dig89-local-test`
 - Method: `scripts/build-site.sh` output served through a local engine that executes
   the generated `.htaccess` (mod_rewrite subset: R=301/G/L/QSA/NC; HTTPS, HTTP_HOST,
   QUERY_STRING, REQUEST_FILENAME conditions). Plain `http.server` underneath.
 - Re-run: `python3 docs/migration/tools/test_redirects.py`
 
-## Results: 117/117 request cases pass
+## Results: 116/116 request cases pass
 
 Generator checks:
 
@@ -27,125 +27,124 @@ Generator checks:
 | 8 | `/2024/07/15/maximizing-roi-with-precision-explore-paid-advertising-with-digitally-shifted` | 301 /services/ | 301 /services/ | PASS |
 | 9 | `/2024/08/12/elevate-your-online-presence-professional-website-development-at-digitally-shifted/` | 301 /services/website-development/ | 301 /services/website-development/ | PASS |
 | 10 | `/2024/08/12/elevate-your-online-presence-professional-website-development-at-digitally-shifted` | 301 /services/website-development/ | 301 /services/website-development/ | PASS |
-| 11 | `/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/` | 301 /blog/ | 301 /blog/ | PASS |
-| 12 | `/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends` | 301 /blog/ | 301 /blog/ | PASS |
-| 13 | `/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts/` | 301 /blog/ | 301 /blog/ | PASS |
-| 14 | `/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts` | 301 /blog/ | 301 /blog/ | PASS |
-| 15 | `/category/digital-marketing/` | 301 /blog/digital-marketing/ | 301 /blog/digital-marketing/ | PASS |
-| 16 | `/category/digital-marketing` | 301 /blog/digital-marketing/ | 301 /blog/digital-marketing/ | PASS |
-| 17 | `/category/hosting-domains/` | 301 /blog/hosting-domains/ | 301 /blog/hosting-domains/ | PASS |
-| 18 | `/category/hosting-domains` | 301 /blog/hosting-domains/ | 301 /blog/hosting-domains/ | PASS |
-| 19 | `/category/paid-advertising/` | 301 /blog/paid-advertising/ | 301 /blog/paid-advertising/ | PASS |
-| 20 | `/category/paid-advertising` | 301 /blog/paid-advertising/ | 301 /blog/paid-advertising/ | PASS |
-| 21 | `/category/website-development/` | 301 /blog/website-development/ | 301 /blog/website-development/ | PASS |
-| 22 | `/category/website-development` | 301 /blog/website-development/ | 301 /blog/website-development/ | PASS |
-| 23 | `/contact-us/?need=quote` | 301 /contact/?need=quote | 301 /contact/?need=quote | PASS |
-| 24 | `/` | 200 | 200 | PASS |
-| 25 | `/blog/` | 200 | 200 | PASS |
-| 26 | `/2023/02/09/ultimate-digital-marketing-guide-for-businesses/` | 200 | 200 | PASS |
-| 27 | `/2023/02/09/ultimate-digital-marketing-guide-for-businesses` | 200 | 200 | PASS |
-| 28 | `/feed/` | 410 | 410 | PASS |
-| 29 | `/comments/feed/` | 410 | 410 | PASS |
-| 30 | `/wp-login.php` | 410 | 410 | PASS |
-| 31 | `/xmlrpc.php` | 410 | 410 | PASS |
-| 32 | `/wp-admin/` | 410 | 410 | PASS |
-| 33 | `/wp-json/` | 410 | 410 | PASS |
-| 34 | `/wp-cron.php` | 410 | 410 | PASS |
-| 35 | `/readme.html` | 410 | 410 | PASS |
-| 36 | `/wp-includes/` | 410 | 410 | PASS |
-| 37 | `/wp-content/plugins/` | 410 | 410 | PASS |
-| 38 | `/wp-content/themes/` | 410 | 410 | PASS |
-| 39 | `/wp-content/litespeed/` | 410 | 410 | PASS |
-| 40 | `/wp-content/cache/` | 410 | 410 | PASS |
-| 41 | `/wp-content/upgrade/` | 410 | 410 | PASS |
-| 42 | `/wp-json/wp/v2/users` | 410 | 410 | PASS |
-| 43 | `/wp-includes/js/jquery/jquery.min.js` | 410 | 410 | PASS |
-| 44 | `/wp-content/plugins/x/y.js` | 410 | 410 | PASS |
-| 45 | `/wp-content/themes/t/style.css` | 410 | 410 | PASS |
-| 46 | `/wp-content/litespeed/js/abc.js` | 410 | 410 | PASS |
-| 47 | `/wp-content/cache/all/x.html` | 410 | 410 | PASS |
-| 48 | `/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/feed/` | 410 | 410 | PASS |
-| 49 | `/author/admin/` | 410 | 410 | PASS |
-| 50 | `/category/unknown-topic/` | 301 /blog/ | 301 /blog/ | PASS |
-| 51 | `/tag/google-ads/` | 301 /blog/ | 301 /blog/ | PASS |
-| 52 | `/2023/` | 410 | 410 | PASS |
-| 53 | `/2023/02/` | 410 | 410 | PASS |
-| 54 | `/2023/06/01/a-post-we-never-saw/` | 410 | 410 | PASS |
-| 55 | `/page/2/` | 410 | 410 | PASS |
-| 56 | `/wp-content/uploads/some-other-file.jpg` | 410 | 410 | PASS |
-| 57 | `/?p=8` | 301 /blog/ | 301 /blog/ | PASS |
-| 58 | `/?page_id=2` | 301 /blog/ | 301 /blog/ | PASS |
-| 59 | `/?cat=3` | 301 /blog/ | 301 /blog/ | PASS |
-| 60 | `/?s=hosting` | 301 /blog/ | 301 /blog/ | PASS |
-| 61 | `/?attachment_id=12` | 301 /blog/ | 301 /blog/ | PASS |
-| 62 | `/wp-content/uploads/AI-Trends-2023.jpg` | 410 | 410 | PASS |
-| 63 | `/wp-content/uploads/Advertising.png` | 410 | 410 | PASS |
-| 64 | `/wp-content/uploads/Analytics.jpg` | 410 | 410 | PASS |
-| 65 | `/wp-content/uploads/2022/07/Artboard-10.jpg` | 301 /assets/media/Artboard-10.webp | 301 /assets/media/Artboard-10.webp | PASS |
-| 66 | `/wp-content/uploads/Digitally-Shifted-Ad-9x16-1.mp4` | 410 | 410 | PASS |
-| 67 | `/wp-content/uploads/Digitally-Shifted-Ad.mp4` | 410 | 410 | PASS |
-| 68 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-01.png` | 410 | 410 | PASS |
-| 69 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-02.png` | 410 | 410 | PASS |
-| 70 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-03.png` | 410 | 410 | PASS |
-| 71 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-04.png` | 410 | 410 | PASS |
-| 72 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-05.png` | 410 | 410 | PASS |
-| 73 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-06.png` | 410 | 410 | PASS |
-| 74 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-07.png` | 410 | 410 | PASS |
-| 75 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-08.png` | 410 | 410 | PASS |
-| 76 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-09.png` | 410 | 410 | PASS |
-| 77 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-10.png` | 410 | 410 | PASS |
-| 78 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-11.png` | 410 | 410 | PASS |
-| 79 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-12.png` | 410 | 410 | PASS |
-| 80 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-13.png` | 410 | 410 | PASS |
-| 81 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-14.png` | 410 | 410 | PASS |
-| 82 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-15.png` | 410 | 410 | PASS |
-| 83 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-16.png` | 410 | 410 | PASS |
-| 84 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-17.png` | 410 | 410 | PASS |
-| 85 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-18.png` | 410 | 410 | PASS |
-| 86 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-19.png` | 410 | 410 | PASS |
-| 87 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-20.png` | 410 | 410 | PASS |
-| 88 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-21.png` | 410 | 410 | PASS |
-| 89 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-22.png` | 410 | 410 | PASS |
-| 90 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-23.png` | 410 | 410 | PASS |
-| 91 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-24.png` | 410 | 410 | PASS |
-| 92 | `/wp-content/uploads/Digitally-Shifted-Logo-White.png` | 410 | 410 | PASS |
-| 93 | `/wp-content/uploads/Facebook-Banner.jpg` | 410 | 410 | PASS |
-| 94 | `/wp-content/uploads/Home-page-banner.jpg` | 410 | 410 | PASS |
-| 95 | `/wp-content/uploads/Phonebanner.jpg` | 410 | 410 | PASS |
-| 96 | `/wp-content/uploads/Untitled-design-7.png` | 410 | 410 | PASS |
-| 97 | `/wp-content/uploads/Video-Banner.jpg` | 410 | 410 | PASS |
-| 98 | `/wp-content/uploads/digital.webp` | 410 | 410 | PASS |
-| 99 | `/wp-content/uploads/hosting.webp` | 410 | 410 | PASS |
-| 100 | `/wp-content/uploads/logo-e1659285869632.png` | 410 | 410 | PASS |
-| 101 | `/wp-content/uploads/marketing.webp` | 410 | 410 | PASS |
-| 102 | `/wp-content/uploads/ml.webp` | 410 | 410 | PASS |
-| 103 | `/wp-content/uploads/pexels-brett-sayles-1597776-scaled.jpg` | 410 | 410 | PASS |
-| 104 | `/wp-content/uploads/pexels-ketut-subiyanto-4350093.jpg` | 301 /assets/media/pexels-ketut-subiyanto-4350093.webp | 301 /assets/media/pexels-ketut-subiyanto-4350093.webp | PASS |
-| 105 | `/wp-content/uploads/pexels-magnus-mueller-2818118-2048x2048.jpg` | 410 | 410 | PASS |
-| 106 | `/wp-content/uploads/scroll.png` | 410 | 410 | PASS |
-| 107 | `/wp-content/uploads/software.webp` | 410 | 410 | PASS |
-| 108 | `/wp-content/uploads/websites.webp` | 410 | 410 | PASS |
-| 109 | `digitallyshifted.com:/` | 301 https://digitallyshifted.com/ | 301 https://digitallyshifted.com/ | PASS |
-| 110 | `www.digitallyshifted.com:/about/` | 301 https://digitallyshifted.com/about/ | 301 https://digitallyshifted.com/about/ | PASS |
-| 111 | `www.digitallyshifted.com:/contact/` | 301 https://digitallyshifted.com/contact/ | 301 https://digitallyshifted.com/contact/ | PASS |
-| 112 | `/definitely-not-here-xyz/` | 404 | 404 | PASS |
-| 113 | `/definitely-not-here-xyz/` | html | html | PASS |
-| 114 | `/website-relaunch/contact-us/` | 301 /website-relaunch/contact/ | 301 /website-relaunch/contact/ | PASS |
-| 115 | `/website-relaunch/tag/seo/` | 301 /website-relaunch/blog/ | 301 /website-relaunch/blog/ | PASS |
-| 116 | `/website-relaunch/wp-login.php` | 410 | 410 | PASS |
-| 117 | `/website-relaunch/` | 200 | 200 | PASS |
+| 11 | `/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts/` | 301 /blog/ | 301 /blog/ | PASS |
+| 12 | `/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts` | 301 /blog/ | 301 /blog/ | PASS |
+| 13 | `/category/digital-marketing/` | 301 /blog/digital-marketing/ | 301 /blog/digital-marketing/ | PASS |
+| 14 | `/category/digital-marketing` | 301 /blog/digital-marketing/ | 301 /blog/digital-marketing/ | PASS |
+| 15 | `/category/hosting-domains/` | 301 /blog/hosting-domains/ | 301 /blog/hosting-domains/ | PASS |
+| 16 | `/category/hosting-domains` | 301 /blog/hosting-domains/ | 301 /blog/hosting-domains/ | PASS |
+| 17 | `/category/paid-advertising/` | 301 /blog/paid-advertising/ | 301 /blog/paid-advertising/ | PASS |
+| 18 | `/category/paid-advertising` | 301 /blog/paid-advertising/ | 301 /blog/paid-advertising/ | PASS |
+| 19 | `/category/website-development/` | 301 /blog/website-development/ | 301 /blog/website-development/ | PASS |
+| 20 | `/category/website-development` | 301 /blog/website-development/ | 301 /blog/website-development/ | PASS |
+| 21 | `/contact-us/?need=quote` | 301 /contact/?need=quote | 301 /contact/?need=quote | PASS |
+| 22 | `/` | 200 | 200 | PASS |
+| 23 | `/blog/` | 200 | 200 | PASS |
+| 24 | `/2023/02/09/ultimate-digital-marketing-guide-for-businesses/` | 200 | 200 | PASS |
+| 25 | `/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/` | 200 | 200 | PASS |
+| 26 | `/2023/02/09/ultimate-digital-marketing-guide-for-businesses` | 200 | 200 | PASS |
+| 27 | `/feed/` | 410 | 410 | PASS |
+| 28 | `/comments/feed/` | 410 | 410 | PASS |
+| 29 | `/wp-login.php` | 410 | 410 | PASS |
+| 30 | `/xmlrpc.php` | 410 | 410 | PASS |
+| 31 | `/wp-admin/` | 410 | 410 | PASS |
+| 32 | `/wp-json/` | 410 | 410 | PASS |
+| 33 | `/wp-cron.php` | 410 | 410 | PASS |
+| 34 | `/readme.html` | 410 | 410 | PASS |
+| 35 | `/wp-includes/` | 410 | 410 | PASS |
+| 36 | `/wp-content/plugins/` | 410 | 410 | PASS |
+| 37 | `/wp-content/themes/` | 410 | 410 | PASS |
+| 38 | `/wp-content/litespeed/` | 410 | 410 | PASS |
+| 39 | `/wp-content/cache/` | 410 | 410 | PASS |
+| 40 | `/wp-content/upgrade/` | 410 | 410 | PASS |
+| 41 | `/wp-json/wp/v2/users` | 410 | 410 | PASS |
+| 42 | `/wp-includes/js/jquery/jquery.min.js` | 410 | 410 | PASS |
+| 43 | `/wp-content/plugins/x/y.js` | 410 | 410 | PASS |
+| 44 | `/wp-content/themes/t/style.css` | 410 | 410 | PASS |
+| 45 | `/wp-content/litespeed/js/abc.js` | 410 | 410 | PASS |
+| 46 | `/wp-content/cache/all/x.html` | 410 | 410 | PASS |
+| 47 | `/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/feed/` | 410 | 410 | PASS |
+| 48 | `/author/admin/` | 410 | 410 | PASS |
+| 49 | `/category/unknown-topic/` | 301 /blog/ | 301 /blog/ | PASS |
+| 50 | `/tag/google-ads/` | 301 /blog/ | 301 /blog/ | PASS |
+| 51 | `/2023/` | 410 | 410 | PASS |
+| 52 | `/2023/02/` | 410 | 410 | PASS |
+| 53 | `/2023/06/01/a-post-we-never-saw/` | 410 | 410 | PASS |
+| 54 | `/page/2/` | 410 | 410 | PASS |
+| 55 | `/wp-content/uploads/some-other-file.jpg` | 410 | 410 | PASS |
+| 56 | `/?p=8` | 301 /blog/ | 301 /blog/ | PASS |
+| 57 | `/?page_id=2` | 301 /blog/ | 301 /blog/ | PASS |
+| 58 | `/?cat=3` | 301 /blog/ | 301 /blog/ | PASS |
+| 59 | `/?s=hosting` | 301 /blog/ | 301 /blog/ | PASS |
+| 60 | `/?attachment_id=12` | 301 /blog/ | 301 /blog/ | PASS |
+| 61 | `/wp-content/uploads/AI-Trends-2023.jpg` | 301 /assets/media/AI-Trends-2023.webp | 301 /assets/media/AI-Trends-2023.webp | PASS |
+| 62 | `/wp-content/uploads/Advertising.png` | 410 | 410 | PASS |
+| 63 | `/wp-content/uploads/Analytics.jpg` | 410 | 410 | PASS |
+| 64 | `/wp-content/uploads/2022/07/Artboard-10.jpg` | 301 /assets/media/Artboard-10.webp | 301 /assets/media/Artboard-10.webp | PASS |
+| 65 | `/wp-content/uploads/Digitally-Shifted-Ad-9x16-1.mp4` | 410 | 410 | PASS |
+| 66 | `/wp-content/uploads/Digitally-Shifted-Ad.mp4` | 410 | 410 | PASS |
+| 67 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-01.png` | 410 | 410 | PASS |
+| 68 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-02.png` | 410 | 410 | PASS |
+| 69 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-03.png` | 410 | 410 | PASS |
+| 70 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-04.png` | 410 | 410 | PASS |
+| 71 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-05.png` | 410 | 410 | PASS |
+| 72 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-06.png` | 410 | 410 | PASS |
+| 73 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-07.png` | 410 | 410 | PASS |
+| 74 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-08.png` | 410 | 410 | PASS |
+| 75 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-09.png` | 410 | 410 | PASS |
+| 76 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-10.png` | 410 | 410 | PASS |
+| 77 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-11.png` | 410 | 410 | PASS |
+| 78 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-12.png` | 410 | 410 | PASS |
+| 79 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-13.png` | 410 | 410 | PASS |
+| 80 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-14.png` | 410 | 410 | PASS |
+| 81 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-15.png` | 410 | 410 | PASS |
+| 82 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-16.png` | 410 | 410 | PASS |
+| 83 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-17.png` | 410 | 410 | PASS |
+| 84 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-18.png` | 410 | 410 | PASS |
+| 85 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-19.png` | 410 | 410 | PASS |
+| 86 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-20.png` | 410 | 410 | PASS |
+| 87 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-21.png` | 410 | 410 | PASS |
+| 88 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-22.png` | 410 | 410 | PASS |
+| 89 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-23.png` | 410 | 410 | PASS |
+| 90 | `/wp-content/uploads/Digitally-Shifted-Clients-Logos-24.png` | 410 | 410 | PASS |
+| 91 | `/wp-content/uploads/Digitally-Shifted-Logo-White.png` | 410 | 410 | PASS |
+| 92 | `/wp-content/uploads/Facebook-Banner.jpg` | 410 | 410 | PASS |
+| 93 | `/wp-content/uploads/Home-page-banner.jpg` | 410 | 410 | PASS |
+| 94 | `/wp-content/uploads/Phonebanner.jpg` | 410 | 410 | PASS |
+| 95 | `/wp-content/uploads/Untitled-design-7.png` | 410 | 410 | PASS |
+| 96 | `/wp-content/uploads/Video-Banner.jpg` | 410 | 410 | PASS |
+| 97 | `/wp-content/uploads/digital.webp` | 410 | 410 | PASS |
+| 98 | `/wp-content/uploads/hosting.webp` | 410 | 410 | PASS |
+| 99 | `/wp-content/uploads/logo-e1659285869632.png` | 410 | 410 | PASS |
+| 100 | `/wp-content/uploads/marketing.webp` | 410 | 410 | PASS |
+| 101 | `/wp-content/uploads/ml.webp` | 410 | 410 | PASS |
+| 102 | `/wp-content/uploads/pexels-brett-sayles-1597776-scaled.jpg` | 410 | 410 | PASS |
+| 103 | `/wp-content/uploads/pexels-ketut-subiyanto-4350093.jpg` | 301 /assets/media/pexels-ketut-subiyanto-4350093.webp | 301 /assets/media/pexels-ketut-subiyanto-4350093.webp | PASS |
+| 104 | `/wp-content/uploads/pexels-magnus-mueller-2818118-2048x2048.jpg` | 410 | 410 | PASS |
+| 105 | `/wp-content/uploads/scroll.png` | 410 | 410 | PASS |
+| 106 | `/wp-content/uploads/software.webp` | 410 | 410 | PASS |
+| 107 | `/wp-content/uploads/websites.webp` | 410 | 410 | PASS |
+| 108 | `digitallyshifted.com:/` | 301 https://digitallyshifted.com/ | 301 https://digitallyshifted.com/ | PASS |
+| 109 | `www.digitallyshifted.com:/about/` | 301 https://digitallyshifted.com/about/ | 301 https://digitallyshifted.com/about/ | PASS |
+| 110 | `www.digitallyshifted.com:/contact/` | 301 https://digitallyshifted.com/contact/ | 301 https://digitallyshifted.com/contact/ | PASS |
+| 111 | `/definitely-not-here-xyz/` | 404 | 404 | PASS |
+| 112 | `/definitely-not-here-xyz/` | html | html | PASS |
+| 113 | `/website-relaunch/contact-us/` | 301 /website-relaunch/contact/ | 301 /website-relaunch/contact/ | PASS |
+| 114 | `/website-relaunch/tag/seo/` | 301 /website-relaunch/blog/ | 301 /website-relaunch/blog/ | PASS |
+| 115 | `/website-relaunch/wp-login.php` | 410 | 410 | PASS |
+| 116 | `/website-relaunch/` | 200 | 200 | PASS |
 
 ## 301 targets in build output
 
 - All 301 targets exist in the build: YES
-- Migrated media: 2 exact 301 rules verified; 45 pruned-by-DIG-90 URLs correctly return 410
+- Migrated media: 3 exact 301 rules verified; 44 pruned-by-DIG-90 URLs correctly return 410
 
 ## Old-URL coverage (orphan check)
 
 - Distinct recorded old URLs checked: 145
 - 301: 82
-- 410: 60
-- served (same URL): 3
+- 410: 59
+- served (same URL): 4
 - Orphans (old URLs that would 404): 0
 
 ## Failures

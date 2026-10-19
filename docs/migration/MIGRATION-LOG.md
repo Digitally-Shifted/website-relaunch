@@ -30,7 +30,7 @@ Re-verify with `python3 docs/migration/tools/verify_migration.py`.
 | 2 | `/contact-us/` | Keep | `contact/index.html`. Copy verbatim; title, H1, meta description preserved. New form per conversion spec §4. |
 | 3 | `/blog/` | Keep | `blog/index.html`. H1 pipe suffix removed; title + meta description preserved; featured-guide slot; four topic blocks carry the category descriptions verbatim. |
 | 4 | `/privacy-policy/` | Rewrite | Not migrated. `privacy/index.html` carries the conversion-spec §3.6 launch default. Old policy text preserved in `extracted/013.*`. Issue: POPIA rewrite + client sign-off. |
-| 5 | `/2023/02/01/...trends/` | Rewrite | Not migrated. Title, description, and body preserved in `extracted/001.*`. Issue: refresh to current year. |
+| 5 | `/2023/02/01/...trends/` | Rewrite (published) | Published 2026-10-19 (DIG-81 refresh; DIG-107). Serves from `legacy-static/2023/02/01/.../index.html` at the exact old URL. Body from the DIG-105 article draft; title, description, canonical, og tags, alt text and links from the DIG-106 SEO package; post meta reads "Updated October 2026". Interim 301 row removed (DIG-107). Old copy preserved in `extracted/001.*`. |
 | 6 | `/2023/02/02/...effectiveness/` | Rewrite | Not migrated. Preserved in `extracted/002.*`. Issue: light rewrite (~800 words, local example, end CTA). |
 | 7 | `/2023/02/09/...guide/` | Keep | `2023/02/09/ultimate-digital-marketing-guide-for-businesses/index.html`. Full text migrated; URL, title, description, canonical preserved; 57-link TOC; tags kept; 2 internal links added to `/services/`. Follow-ups: statistics sources, author, content-upgrade CTA (issues). |
 | 8 | `/2024/07/04/...domain-and-hosting/` | Merge | Merged into `services/index.html` §02 Hosting and management (domains: extensions + WHOIS privacy; hosting: LiteSpeed/TTFB, scalability, Imunify360, SpamExperts, 24/7 support). Two unverified statistics excluded (see §4). URL becomes a 301 after launch (DIG-18). |
@@ -138,8 +138,10 @@ transparency, existing WebP illustrations and both videos are untouched.
 
 Not downloaded: the LiteSpeed avatar cache file (a Gravatar copy, not site
 content). Known old-site media defects stay attached to their owners: empty
-alt on `AI-Trends-2023` (row 5 issue) and the off-topic web-dev thumbnail
-(row 10 / services page uses the audit-recommended replacement approach).
+alt on `AI-Trends-2023` (row 5 issue; fixed by the DIG-81 refresh — DIG-107
+sets the alt text from the DIG-106 SEO package) and the off-topic web-dev
+thumbnail (row 10 / services page uses the audit-recommended replacement
+approach).
 
 ## 5. Handoff to other issues
 
@@ -178,13 +180,16 @@ alt on `AI-Trends-2023` (row 5 issue) and the off-topic web-dev thumbnail
 Every old URL now has a defined destination. Source of truth:
 `docs/migration/redirect-map.json`; decisions and regeneration steps:
 `docs/migration/REDIRECTS.md`; the build writes `.htaccess` into every output
-and `docs/migration/tools/test_redirects.py` verifies it locally (117/117
-cases, 0 orphans over 145 recorded old URLs).
+and `docs/migration/tools/test_redirects.py` verifies it locally (116/116
+cases at the DIG-107 run, 0 orphans over 145 recorded old URLs).
 
 Updates to this log's rows:
 
-- Rows 5 and 6 (2023 posts, REWRITE pending): interim 301 to `/blog/`.
-  Update the map rows when the rewrites publish (DIG-81, DIG-82).
+- Row 5 (2023 trends post): rewrite published (DIG-107, 2026-10-19). The
+  interim 301 row is removed and the exact old URL serves the refreshed
+  post; the URL moved to the map's sameUrl list.
+- Row 6 (2023 ROI post, REWRITE pending): interim 301 to `/blog/`.
+  Update the map row when the rewrite publishes (DIG-82).
 - Row 9 (paid advertising post): DIG-83 (2026-10-19) decided that the offer
   stays but the launch site publishes no paid advertising page. The URL now
   301s to `/services/`, and this row updates again when the Grow v2 service

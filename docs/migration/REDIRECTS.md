@@ -33,7 +33,7 @@ behaviour. Host rules stay off while the site builds under a base path.
 | `/contact-us/` | 301 | `/contact/` | Page moved to the new IA route. |
 | `/privacy-policy/` | 301 | `/privacy/` | Page moved; POPIA rewrite is a separate content issue. |
 | `/blog/` | serves as-is | — | Same URL; served from `legacy-static/` until ported. |
-| `/2023/02/01/…top-digital-marketing-trends/` | 301 | `/blog/` | Interim: the post is pending a year refresh, not removed. Update the row when the rewrite publishes. |
+| `/2023/02/01/…top-digital-marketing-trends/` | serves as-is | — | Refreshed post returned to its exact URL (DIG-81; published by DIG-107, migration log row 5). Interim 301 row removed. |
 | `/2023/02/02/…effectiveness…/` | 301 | `/blog/` | Interim: post pending a light rewrite. Update on publish. |
 | `/2023/02/09/ultimate-digital-marketing-guide-for-businesses/` | serves as-is | — | Pillar guide keeps its exact URL (migration log row 7). |
 | `/2024/07/04/…domain-and-hosting-services/` | 301 | `/services/domains-hosting/` | Content merged into the service page (rows 8; audit 2.8). |
@@ -44,10 +44,12 @@ behaviour. Host rules stay off while the site builds under a base path.
 No crawled content page qualifies for 410 Gone. Every page has a recorded
 KEEP, REWRITE or MERGE decision, and a REWRITE page must not tell search
 engines that it is gone forever. The interim rows flip to their final URLs
-when their pages publish. Two point at `/blog/` and await the post rewrites
-(DIG-81, DIG-82). Row 9 points at `/services/` and awaits the Grow v2 paid
-advertising page (DIG-83). If the owner later chooses the audit's "drop"
-option for a post, change that row's status to 410 and regenerate.
+when their pages publish. The DIG-81 trends rewrite has published, so its
+row is gone and the URL serves the refreshed post. One row still points at
+`/blog/` and awaits the DIG-82 rewrite. Row 9 points at `/services/` and
+awaits the Grow v2 paid advertising page (DIG-83). If the owner later
+chooses the audit's "drop" option for a post, change that row's status to
+410 and regenerate.
 
 ## 410 Gone (intentionally removed)
 
@@ -84,11 +86,13 @@ Explicit rules always run before the patterns.
 All 47 migrated upload files are known by name from
 `docs/migration/media-manifest.json`. `scripts/build-site.sh` prunes media
 that no deploy page references (DIG-90), so the generator emits a 301 only
-for files that ship in the build output — currently 2 (`Artboard-10.webp`,
-`pexels-ketut-subiyanto-4350093.webp`). `Analytics.webp` lost its last deploy
-reference when DIG-92 ported the blog index to Astro. Every other old upload
-URL returns 410 until a page that reuses the asset ships and the file
-re-enters the output; then the same build regenerates the 301 automatically.
+for files that ship in the build output — currently 3 (`Artboard-10.webp`,
+`pexels-ketut-subiyanto-4350093.webp`, and `AI-Trends-2023.webp`, which
+re-entered the output with the DIG-107 trends post). `Analytics.webp` lost
+its last deploy reference when DIG-92 ported the blog index to Astro. Every
+other old upload URL returns 410 until a page that reuses the asset ships
+and the file re-enters the output; then the same build regenerates the 301
+automatically.
 
 ## Regenerate and test
 
@@ -103,9 +107,10 @@ python3 docs/migration/tools/test_redirects.py
 ```
 
 The test writes `docs/migration/redirect-test-results.md`. Latest run
-(DIG-109, 2026-10-19):
-117/117 request cases pass, 0 orphans over 145 distinct recorded old URLs,
-0 redirect targets missing, media 2 x 301 and 45 x 410.
+(DIG-107, 2026-10-19):
+116/116 request cases pass, 0 orphans over 145 distinct recorded old URLs,
+0 redirect targets missing, media 3 x 301 and 44 x 410. The trends URL now
+asserts 200 (serves as-is) instead of an interim 301.
 
 The local engine executes the same mod_rewrite subset LiteSpeed runs
 (`R=301`/`G`/`L`/`QSA`/`NC`; the `HTTPS`, `HTTP_HOST`, `QUERY_STRING` and
