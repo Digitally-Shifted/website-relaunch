@@ -12,10 +12,11 @@ mkdir -p "$DEST/logs" "$SYSTEMD_DIR"
 install -m 644 "$SRC/sites.txt" "$DEST/sites.txt"
 install -m 755 "$SRC/uptime_check.py" "$DEST/uptime_check.py"
 install -m 755 "$SRC/notify.sh" "$DEST/notify.sh"
+install -m 755 "$SRC/send_email.py" "$DEST/send_email.py"
 
 # Keep an existing alert configuration across reinstalls.
 if [ ! -f "$DEST/email.conf" ]; then
-  printf '# Alert email. RECIPIENT is required for delivery.\n# SENDER: agentmail (needs AGENTMAIL_API_KEY and AGENTMAIL_INBOX) or sendmail.\n#RECIPIENT=you@example.com\n#SENDER=agentmail\n#AGENTMAIL_INBOX=\n#AGENTMAIL_API_KEY=\n' > "$DEST/email.conf"
+  printf '# Alert email configuration. Keep this file private (600).\n# Delivery target:\nRECIPIENT=%s\n# Send path: smtp (own mailbox, needs SMTP_PASSWORD), agentmail, sendmail.\n#SENDER=smtp\n# --- SMTP (SENDER=smtp). Copy SMTP_PASSWORD from Thunderbird:\n# Thunderbird > Settings > Privacy & Security > Saved Passwords.\n#SMTP_HOST=mail.example.com\n#SMTP_PORT=465\n#SMTP_USER=you@example.com\n#SMTP_PASSWORD=\n' "${RECIPIENT:-you@example.com}" > "$DEST/email.conf"
   chmod 600 "$DEST/email.conf"
 fi
 

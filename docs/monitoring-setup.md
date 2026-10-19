@@ -6,7 +6,9 @@ baseline), DIG-20 (go-live).
 
 Status on 2026-10-18: uptime checks and local alert records run. The owner
 picked email as the alert channel (baruch@digitallyshifted.com) and deferred
-error tracking on 2026-10-18. The email sender needs a service connection
+error tracking on 2026-10-18. On 2026-10-19 the owner asked for a free,
+open-source send path with no extra service. The sender now uses the
+owner's own SMTP account; one password step stays with the owner
 (section 7).
 
 ## 1. Standard baseline for client sites
@@ -34,6 +36,7 @@ untouched.
 | Alert events | `alerts.jsonl` |
 | Run logs (14 days) | `logs/` |
 | Alert delivery hook | `notify.sh` (logs every event; sends email when configured) |
+| Email sender | `send_email.py` (Python standard library; no extra packages) |
 | Alert email config | `email.conf` on the installed copy (600 permissions; not versioned) |
 | Timer units | `~/.config/systemd/user/site-monitor.{service,timer}` |
 
@@ -90,9 +93,11 @@ notify.sh tls     <site-url> <detail>
 ```
 
 `notify.sh` appends every event to `notify.log`. When `email.conf` in the
-installed copy sets `RECIPIENT` and a working `SENDER`, the hook also sends
-the event as email to the owner address. Keep the hook under 30 seconds. It
-must never fail the check round.
+installed copy sets `RECIPIENT`, `SENDER`, and the sender settings, the hook
+also sends the event as email to the owner address. `SENDER=smtp` uses
+`send_email.py` with `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, and
+`SMTP_PASSWORD`. Keep the hook under 30 seconds. It must never fail the
+check round.
 
 ## 6. Verification record, 2026-10-18
 
@@ -111,12 +116,19 @@ must never fail the check round.
 
 The owner answered the DIG-76 question card:
 
-1. **Alert delivery: email to baruch@digitallyshifted.com.** The hook reads
-   the address from `email.conf`. This machine has no mail agent, so the
-   sender needs a service connection. The requested route is AgentMail
-   (`email-agent`); Gmail through the catalog can only draft, not send.
-   Until the connection is approved and wired, alerts land in `alerts.jsonl`
-   and `notify.log` only.
+1. **Alert delivery: email to baruch@digitallyshifted.com through the
+   owner's own SMTP account.** The owner rejected a hosted service and
+   asked for free and open source. Sending goes through
+   `mail.digitallyshifted.com:465` (SSL), the same SMTP account and
+   credentials the owner's Thunderbird already stores; the settings were
+   read from the local Thunderbird profile on 2026-10-19 and the server
+   answered a TLS handshake. `send_email.py` uses only the Python standard
+   library, so no package install is needed. The owner adds `SMTP_PASSWORD`
+   to `email.conf` (600 permissions, outside git); the password stays on
+   this machine. A Thunderbird-automation bridge was evaluated and
+   rejected: every checked bridge needs Thunderbird, an extension, a bridge
+   daemon, and an active desktop session at the moment of sending, so a
+   logout or reboot would stop alerts with no error anywhere.
 2. **Error tracking: defer.** No error tracking for now. Uptime checks and
    TLS alerts continue. The baseline stays valid without it. Revisit the
    deferral when a client incident shows the need, or at the next review of

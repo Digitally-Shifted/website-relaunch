@@ -8,8 +8,10 @@
 #
 # Every event is logged to notify.log. When email.conf defines RECIPIENT and
 # a SENDER, the event is also sent as email. Supported senders:
-#   SENDER=agentmail  send through the AgentMail API (API key in email.conf)
-#   SENDER=sendmail   send through $SENDMAIL (for example msmtp)
+#   SENDER=smtp      send through the owner's own SMTP account (send_email.py;
+#                    settings and password live in email.conf, 600 permissions)
+#   SENDER=agentmail send through the AgentMail API (API key in email.conf)
+#   SENDER=sendmail  send through $SENDMAIL (for example msmtp)
 #
 # Keep this script fast and quiet. It must never fail the check round.
 
@@ -33,6 +35,10 @@ Detail: $detail
 History: $BASE/alerts.jsonl
 Status: $BASE/uptime_check.py --summary"
 
+send_smtp() {
+  python3 "$BASE/send_email.py" "$event" "$site" "$detail" >/dev/null 2>&1
+}
+
 send_agentmail() {
   curl -fsS --max-time 20 -X POST "https://api.agentmail.to/v0/inboxes/${AGENTMAIL_INBOX}/messages" \
     -H "Authorization: Bearer $AGENTMAIL_API_KEY" \
@@ -52,6 +58,7 @@ send_sendmail() {
 }
 
 case "${SENDER:-}" in
+  smtp)      [ -n "${SMTP_PASSWORD:-}" ] && send_smtp ;;
   agentmail) [ -n "${AGENTMAIL_API_KEY:-}" ] && send_agentmail ;;
   sendmail)  [ -x "${SENDMAIL:-/usr/sbin/sendmail}" ] && send_sendmail ;;
 esac
