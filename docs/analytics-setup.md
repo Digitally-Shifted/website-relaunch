@@ -73,6 +73,14 @@ Status 2026-10-18: the external provider route (Composio) was offered and
 declined. The answer was `None for now` for Google Analytics and for Search
 Console. Do not reconnect it unless the owner asks.
 
+Status 2026-10-20: the owner picked the secret store for key delivery and
+asked for an assisted browser session (the agent opens the window; the owner
+signs in). The agent run that day had no browser tool, so the assisted
+session could not start. A guided walk-through for Route A went out on the
+issue instead. If the browser tool is enabled for this agent later, the
+agent can drive the window while the owner signs in; that mode needs no key
+for the setup itself (Route C below).
+
 Two routes remain.
 
 **Route A — service account key through the secret pathway (active).** A
@@ -107,6 +115,12 @@ email as a delegated owner in Search Console (Settings, then Users).
 **Route B — owner does the browser steps.** The owner follows sections 3.1 to
 3.4 and section 4 in the browser and sends the three IDs. The steps below work
 without any connection or key.
+
+**Route C — assisted browser session (not available on 2026-10-20).** The
+agent opens a browser window and drives sections 3.1 to 3.4 and 4 while the
+owner signs in inside that window. No key is needed for the setup itself.
+The agent run on 2026-10-20 had no browser tool, so this route needs the
+browser tool enabled for agent runs first.
 
 Follow 3.1 to 3.4 for both routes. Route A runs them through the APIs.
 Route B runs them in the browser.
