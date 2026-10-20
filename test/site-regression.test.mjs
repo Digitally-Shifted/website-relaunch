@@ -11,7 +11,9 @@
  *      post's #hosting and #seo links landed on a page without them),
  *   4. the analytics module is referenced by every page and carries the
  *      event contract (it was never loaded anywhere),
- *   5. the staging base path reaches the form's thank-you redirect.
+ *   5. the staging base path reaches the form's thank-you redirect,
+ *   6. the DIG-133 guide upgrade (junk trim, byline, author box, CTA box,
+ *      JSON-LD) and the /checklist/ pages ship as specified.
  *
  * Run: node --test test/site-regression.test.mjs
  */
@@ -232,7 +234,77 @@ test('every page loads the analytics module and the wiring keeps the event contr
   assert.match(everything, /G-\[A-Z0-9\]\{6,12\}/, 'measurement ID guard not found');
 });
 
-/* ---------- 5. base path reaches the form ---------- */
+/* ---------- 5. guide content upgrade (DIG-133) ---------- */
+
+const GUIDE_PATH = join(
+  '2023', '02', '09', 'ultimate-digital-marketing-guide-for-businesses', 'index.html',
+);
+
+test('the guide trims the old-site junk and carries byline, author box, CTA box and JSON-LD', async () => {
+  const html = await readBuilt(GUIDE_PATH);
+
+  const conclusion = html.match(/<p>In conclusion[\s\S]*?<\/p>/)?.[0];
+  assert.ok(conclusion, 'conclusion paragraph not found');
+  assert.match(conclusion, /stay ahead of the competition\.<\/p>$/);
+  for (const junk of ['Share Article', 'sales@digitallyshifted.com', 'Facebook-f', '"prefetch"']) {
+    assert.ok(!html.includes(junk), `junk text still renders: ${junk}`);
+  }
+
+  assert.match(html, /<p class="post-meta">By Digitally Shifted<\/p>/);
+  const authorBox = html.match(/<aside class="author-box">[\s\S]*?<\/aside>/)?.[0];
+  assert.ok(authorBox, 'author box not found');
+  assert.match(authorBox, /<h2>About Digitally Shifted<\/h2>/);
+  assert.match(authorBox, /owner-managed South African businesses/);
+
+  const checklistCta = html.match(/<aside class="feature-panel">[\s\S]*?<\/aside>/)?.[0];
+  assert.ok(checklistCta, 'checklist CTA box not found');
+  assert.match(checklistCta, /<h2>Work through this guide step by step<\/h2>/);
+  assert.match(checklistCta, /href="\.\.\/\.\.\/\.\.\/\.\.\/checklist\/"/);
+  assert.match(checklistCta, />Get the checklist<\/a>/);
+
+  const jsonLd = html.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/)?.[0];
+  assert.ok(jsonLd, 'Article JSON-LD not found');
+  assert.match(jsonLd, /"@type": "Article"/);
+  assert.match(
+    jsonLd,
+    /"mainEntityOfPage": "https:\/\/digitallyshifted\.com\/2023\/02\/09\/ultimate-digital-marketing-guide-for-businesses\/"/,
+  );
+  assert.match(jsonLd, /"@type": "Organization"/);
+});
+
+test('the checklist landing page renders the shared form in the reduced 3.8 mode', async () => {
+  const html = await readBuilt('checklist/index.html');
+  assert.match(html, /<title>Free Digital Marketing Checklist \| Digitally Shifted<\/title>/);
+  assert.match(html, /Help customers/);
+  assert.match(html, /Twelve short steps that follow our digital marketing guide, from your website to video\./);
+
+  const form = html.match(/<form[^>]*data-ds-contact-form[\s\S]*?<\/form>/)?.[0];
+  assert.ok(form, 'checklist form not found');
+  assert.ok(!form.includes('id="field-need"'), 'no need select in the landing-page markup');
+  assert.ok(!form.includes('id="field-business"'), 'no business field in the landing-page markup');
+  assert.match(form, /<input type="hidden" name="need" value="checklist"/);
+  assert.match(form, /name="form_location" value="\/checklist\/"/);
+  assert.match(form, /Tell us about your project \(optional\)/);
+  const messageTag = form.match(/<textarea[^>]*id="field-message"[^>]*>/)?.[0] || '';
+  assert.ok(!/\srequired(=|\s|>)/.test(messageTag), 'message must not be natively required');
+  assert.match(form, /data-need="checklist"/);
+  assert.match(form, />Send enquiry<\/button>/);
+});
+
+test('the printable checklist page ships with the deliverable content and stays out of the sitemap', async () => {
+  const html = await readBuilt(join('checklist', 'print', 'index.html'));
+  assert.match(html, /The Digital Marketing Checklist for South African Businesses/);
+  assert.match(html, /Google Business Profile/);
+  assert.match(html, /Tick each box as you finish the step\./);
+  const checkboxCount = (html.match(/type="checkbox"/g) || []).length;
+  assert.equal(checkboxCount, 12, 'twelve tick-box items');
+
+  const sitemap = await readBuilt(join('sitemap-0.xml'));
+  assert.match(sitemap, /\/checklist\/<\/loc>/, 'the landing page belongs in the sitemap');
+  assert.ok(!sitemap.includes('checklist/print'), 'the noindex print page stays out of the sitemap');
+});
+
+/* ---------- 6. base path reaches the form ---------- */
 test('the form posts to /api/contact; the server owns the 303 redirect', async () => {
   const html = await readBuilt('contact/index.html');
   /* Native POST (spec 4.3): no client-side navigation target. The

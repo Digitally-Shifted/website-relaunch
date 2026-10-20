@@ -8,7 +8,9 @@
  */
 import { createHmac } from 'node:crypto';
 
-export const NEED_VALUES = ['general', 'new-website', 'redesign', 'waas', 'seo', 'hosting', 'quote'];
+export const NEED_VALUES = [
+  'general', 'new-website', 'redesign', 'waas', 'seo', 'hosting', 'quote', 'checklist',
+];
 export const QUOTE_INTENT = new Set(['new-website', 'redesign', 'waas', 'quote']);
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -35,7 +37,12 @@ export function validate(body) {
   if (values.phone && !PHONE_RE.test(values.phone)) errors.phone = 'That phone number does not look right.';
   if (values.business.length > 120) errors.business = 'Please keep the business name under 120 characters.';
   if (!NEED_VALUES.includes(values.need)) errors.need = 'Please choose what you need.';
-  if (!values.message || values.message.length > 5000) errors.message = 'Please add a short message (up to 5000 characters).';
+  /* Message: required on the main form; optional in the 3.8 landing-page
+   * reduction (the checklist page, DIG-133). The 5000 cap still applies. */
+  const messageRequired = values.need !== 'checklist';
+  if ((messageRequired && !values.message) || values.message.length > 5000) {
+    errors.message = 'Please add a short message (up to 5000 characters).';
+  }
   if (!values.email && !values.phone && !errors.email && !errors.phone) {
     errors.email = 'Add your email or phone number so we can reply.';
   }

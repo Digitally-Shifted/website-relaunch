@@ -441,6 +441,7 @@ a:hover { color: var(--slate); }
   margin-right: var(--space-2);
 }
 
+.feature-panel,
 .post-closer {
   max-width: 56rem;
   margin-top: var(--space-8);
@@ -450,9 +451,30 @@ a:hover { color: var(--slate); }
   color: var(--grey-100);
 }
 
+.feature-panel h2,
 .post-closer h2 { color: var(--paper); }
 
+.feature-panel p,
 .post-closer p { color: var(--grey-300); }
+
+/* Author box (DIG-133): one light panel in the same visual family as
+   .toc and .topic. Organization byline only — never a person record. */
+.author-box {
+  max-width: 56rem;
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  background: var(--grey-50);
+  border: 1px solid var(--grey-200);
+}
+
+/* The post-body rule adds a section gap above every h2; the box heading
+   sits inside a panel, so it resets to the box padding. */
+.author-box h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+}
+
+.author-box p:last-child { margin-bottom: 0; }
 
 /* -------------------------------------------------------------- services */
 

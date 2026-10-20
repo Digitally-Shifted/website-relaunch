@@ -50,6 +50,13 @@ class LeadsDb {
     return this._db.prepare('SELECT 1 FROM leads WHERE id = ?').get(submissionId) !== undefined;
   }
 
+  /** Stored need for one lead id; drives the replay redirect marker (DIG-133). */
+  leadNeed(submissionId) {
+    if (!submissionId) return null;
+    const row = this._db.prepare('SELECT need FROM leads WHERE id = ?').get(submissionId);
+    return row ? row.need : null;
+  }
+
   /** Rows stored for this ip_hash in the last hour (spam rows included). */
   recentRowCount(ipHash, now = Date.now()) {
     const cutoff = new Date(now - 60 * 60 * 1000).toISOString();

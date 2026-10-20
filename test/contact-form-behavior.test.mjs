@@ -47,23 +47,27 @@ function makeControl(overrides = {}) {
   };
 }
 
-function makeForm() {
+function makeForm(options = {}) {
   const summary = makeControl({ hidden: true });
   const status = makeControl({ hidden: true });
   const fallback = makeControl({ hidden: true });
   const button = makeControl({ textContent: 'Send enquiry' });
-  const need = makeControl({
-    options: [
-      { value: 'general' },
-      { value: 'new-website' },
-      { value: 'redesign' },
-      { value: 'waas' },
-      { value: 'seo' },
-      { value: 'hosting' },
-      { value: 'quote' },
-    ],
-    value: 'general',
-  });
+  /* Landing-page mode (spec 3.8, DIG-133): no need select and no business
+     field render; data-need carries the fixed value instead. */
+  const need = options.landingPage
+    ? null
+    : makeControl({
+        options: [
+          { value: 'general' },
+          { value: 'new-website' },
+          { value: 'redesign' },
+          { value: 'waas' },
+          { value: 'seo' },
+          { value: 'hosting' },
+          { value: 'quote' },
+        ],
+        value: 'general',
+      });
   const fields = {
     name: makeControl(),
     email: makeControl(),
@@ -87,7 +91,7 @@ function makeForm() {
     ['[data-ds-field="name"]', fields.name],
     ['[data-ds-field="email"]', fields.email],
     ['[data-ds-field="phone"]', fields.phone],
-    ['[data-ds-field="business"]', fields.business],
+    ['[data-ds-field="business"]', options.landingPage ? null : fields.business],
     ['[data-ds-field="message"]', fields.message],
     ['[data-ds-field="company_website"]', fields.company_website],
     ['[data-ds-submit]', button],
@@ -112,7 +116,9 @@ function makeForm() {
       const defaults = {
         'data-quote-needs': 'new-website,redesign,waas,quote',
         'data-quote-label': 'Request quote',
-        'data-form-location': '/contact',
+        'data-form-location': options.formLocation || '/contact',
+        'data-need': options.landingPage ? options.fixedNeed || null : null,
+        'data-message-optional': options.landingPage ? 'true' : null,
       };
       return this[`attr:${key}`] ?? defaults[key] ?? null;
     },
@@ -281,4 +287,58 @@ test('a second submit while in flight is ignored', async () => {
     1,
     'only one lead_pending record',
   );
+});
+
+/* ---------- checklist landing-page mode (spec 3.8, DIG-133) ---------- */
+
+test('messageOptional keeps an empty message valid in pure validation', () => {
+  const errors = validateContactFields(
+    { name: 'A', email: 'a@b.co', phone: '', message: '' },
+    { messageOptional: true },
+  );
+  assert.deepEqual(errors, {});
+  const stillRequired = validateContactFields({ name: 'A', email: 'a@b.co', phone: '', message: '' });
+  assert.equal(stillRequired.message, MESSAGES.message);
+});
+
+function makeChecklistForm() {
+  const t = makeForm({ landingPage: true, fixedNeed: 'checklist', formLocation: '/checklist/' });
+  return t;
+}
+
+test('the checklist form has no select, so the submit label never switches', () => {
+  const t = makeChecklistForm();
+  setupContactForm(t.form, makeEnv());
+  assert.equal(t.need, null, 'no need select renders in landing-page mode');
+  assert.equal(t.button.textContent, 'Send enquiry', 'label stays the approved default');
+});
+
+test('the checklist form records need=checklist and an optional empty message', async () => {
+  const t = makeChecklistForm();
+  const env = makeEnv();
+  setupContactForm(t.form, env);
+  t.fields.name.value = 'Thabo Mokoena';
+  t.fields.email.value = 'thabo@example.co.za';
+  /* The message stays empty: optional on the checklist page. */
+  const event = makeSubmitEvent();
+  await t.form.submitEvent(event);
+
+  assert.equal(event.defaultPrevented, false, 'valid checklist submit runs the native POST');
+  assert.deepEqual(env.__calls.stored, [
+    ['lead_pending', JSON.stringify({ need: 'checklist', form_location: '/checklist/' })],
+  ]);
+  assert.equal(t.button.textContent, 'Sending…');
+});
+
+test('the checklist form still enforces name and the email-or-phone rule', async () => {
+  const t = makeChecklistForm();
+  const env = makeEnv();
+  setupContactForm(t.form, env);
+  const event = makeSubmitEvent();
+  await t.form.submitEvent(event);
+
+  assert.equal(event.defaultPrevented, true, 'a submit without name or contact route is blocked');
+  assert.equal(env.__calls.stored.length, 0, 'no lead_pending records on an invalid submit');
+  assert.match(t.errors.name.textContent, /Please add your name\./);
+  assert.match(t.errors.email.textContent, /Add your email or phone number/);
 });

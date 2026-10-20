@@ -44,8 +44,12 @@ export default defineConfig({
   redirects,
   integrations: [
     sitemap({
-      /* Keep noindex pages (thank-you, privacy) out of the sitemap. */
-      filter: (page) => !page.endsWith('contact/thank-you/') && !page.endsWith('/privacy/'),
+      /* Keep noindex pages (thank-you, privacy, the printable checklist
+         deliverable) out of the sitemap. */
+      filter: (page) =>
+        !page.endsWith('contact/thank-you/') &&
+        !page.endsWith('/privacy/') &&
+        !page.endsWith('checklist/print/'),
     }),
   ],
   vite: {

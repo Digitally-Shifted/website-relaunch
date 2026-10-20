@@ -40,7 +40,9 @@ import {
 
 // Select options with labels for the 400 fallback page. Values and labels
 // must stay in sync with src/lib/site.config.ts (the site renders the
-// live form and exports needOptions).
+// live form and exports needOptions) plus the one server-side value the
+// checklist landing page fills through a hidden field (DIG-133); the
+// main form's select never renders it.
 export const NEED_OPTIONS = [
   { value: 'general', label: 'General enquiry' },
   { value: 'new-website', label: 'A new website' },
@@ -49,6 +51,7 @@ export const NEED_OPTIONS = [
   { value: 'seo', label: 'SEO' },
   { value: 'hosting', label: 'Hosting or management' },
   { value: 'quote', label: 'Not sure — I want prices' },
+  { value: 'checklist', label: 'The digital marketing checklist' },
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -94,6 +97,14 @@ export function createService(overrides = {}) {
     res.writeHead(303, { Location: location });
     res.end();
   };
+  /* Redirect target for a genuine success (DIG-133): checklist leads
+   * carry an ?offer=checklist marker so the thank-you page shows the
+   * checklist link. Spam and rate-limit paths never redirect through
+   * here, so their thank-you responses stay marker-free. */
+  const thankYouLocation = (need) =>
+    need === 'checklist'
+      ? `${config.basePath}/contact/thank-you?offer=checklist`
+      : `${config.basePath}/contact/thank-you`;
   const html = (res, status, body) => {
     res.writeHead(status, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(body);
@@ -138,9 +149,11 @@ export function createService(overrides = {}) {
     }
 
     // Idempotency: a repeated submission_id stores nothing again (spec 4.4).
+    // The stored need drives the marker, so a replayed checklist lead
+    // still lands with its checklist link.
     if (db.submissionExists(submissionId)) {
       setLeadCookie(res, leadCookieValue(config.cookieSecret, submissionId));
-      redirect(res, `${config.basePath}/contact/thank-you`);
+      redirect(res, thankYouLocation(db.leadNeed(submissionId)));
       return;
     }
 
@@ -175,7 +188,7 @@ export function createService(overrides = {}) {
     }
 
     setLeadCookie(res, leadCookieValue(config.cookieSecret, id));
-    redirect(res, `${config.basePath}/contact/thank-you`);
+    redirect(res, thankYouLocation(values.need));
 
     // Notify after the redirect is already on the wire (store first,
     // notify after; a failed email never blocks the visitor).

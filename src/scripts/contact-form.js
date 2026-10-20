@@ -52,9 +52,12 @@ export function isQuoteIntent(need, quoteIntentValues) {
 /**
  * Pure form validation (spec 4.1, 4.3). Returns a map of field name to
  * message for every invalid field. Email and phone follow the either-or
- * rule: at least one of the two must be present.
+ * rule: at least one of the two must be present. The options carry the
+ * landing-page reduction (spec 3.8, DIG-133): with messageOptional the
+ * empty message stays valid, as on the checklist page.
  */
-export function validateContactFields(values) {
+export function validateContactFields(values, options = {}) {
+  const messageOptional = options.messageOptional === true;
   const errors = {};
   const name = (values.name || '').trim();
   const email = (values.email || '').trim();
@@ -70,7 +73,7 @@ export function validateContactFields(values) {
   if (email === '' && phone === '') {
     errors.contactRoute = MESSAGES.contactRoute;
   }
-  if (message.length < 1) {
+  if (message.length < 1 && !messageOptional) {
     errors.message = MESSAGES.message;
   }
   return errors;
@@ -120,6 +123,10 @@ export function setupContactForm(form, env = {}) {
   const needValues = select
     ? Array.from(select.options || []).map((option) => option.value)
     : [];
+  /* Landing-page mode (spec 3.8, DIG-133): no select renders, so the page
+   * fills the need through data-need and the message is optional. */
+  const fixedNeed = form.getAttribute('data-need') || '';
+  const messageOptional = form.getAttribute('data-message-optional') === 'true';
   const quoteIntentValues = (form.getAttribute('data-quote-needs') || '')
     .split(',')
     .map((value) => value.trim())
@@ -153,7 +160,7 @@ export function setupContactForm(form, env = {}) {
   }
 
   const fieldErrors = (values) => {
-    const errors = validateContactFields(values);
+    const errors = validateContactFields(values, { messageOptional });
     if (errors.contactRoute) {
       /* The either-or message points at both route fields. */
       errors.email = errors.email || errors.contactRoute;
@@ -280,7 +287,7 @@ export function setupContactForm(form, env = {}) {
     }
     inFlight = true;
 
-    const need = select ? select.value : DEFAULT_NEED;
+    const need = select ? select.value : fixedNeed || DEFAULT_NEED;
     try {
       const storage = store();
       if (storage) {

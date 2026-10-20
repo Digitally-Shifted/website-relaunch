@@ -39,6 +39,23 @@ import { withBase } from '../../lib/urls';
             rel="noopener">WhatsApp us</a
           >
         </div>
+        <p class="mt-8" id="checklist-offer" hidden>
+          <a href={withBase('/checklist/print/')} class="btn btn--secondary-dark"
+            >Get the checklist</a
+          >
+        </p>
+        <script is:inline>
+          /*
+           * Checklist link (DIG-133): the form backend appends
+           * ?offer=checklist to the 303 redirect for need=checklist
+           * successes. Ordinary enquiries never carry the marker, so the
+           * link stays hidden for them. Inline so the link is present
+           * before first paint. No event fires here (spec 3.5).
+           */
+          if (new URLSearchParams(location.search).get('offer') === 'checklist') {
+            document.getElementById('checklist-offer')?.removeAttribute('hidden');
+          }
+        </script>
         <p class="mt-8">
           <a href={withBase('/services')} class="link-dark text-body">See what we do</a>
         </p>

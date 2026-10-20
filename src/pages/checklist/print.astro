@@ -1,0 +1,216 @@
+---
+/*
+ * /checklist/print — the printable checklist deliverable (DIG-133).
+ *
+ * The page the thank-you link hands over after a checklist submission.
+ * One A4 page, 12 tick-box items in 9 groups, every step from the pillar
+ * guide. Permanently noindex (BaseLayout noindex prop, like the
+ * thank-you page); the sitemap filter in astro.config.mjs keeps it out
+ * of the XML sitemap too.
+ *
+ * Print CSS strips the site chrome and sets the sheet in two compact
+ * columns so the output fits one A4 portrait page. Copy is final and
+ * approved (DIG-133 brief). The checklist says "Google Business Profile"
+ * while the guide body says "Google My Business"; each stays exactly as
+ * written in its own source.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const items = [
+  'Open your website on your phone and check that every page loads quickly and shows your phone number.',
+  'Give every page one clear next step, such as a Get a quote button or your phone number.',
+  'Write a unique page title and description for each main page, using the words your customers search for.',
+  'Describe every image on your website in its alt text.',
+  'Before you spend on ads, write down one goal, one monthly budget, and the exact words customers type into Google.',
+  'Install Google Analytics on your website, then check once a month which pages bring enquiries.',
+  'Claim your Google Business Profile and add your address, trading hours, photos, and services.',
+  'Ask happy customers for reviews, and reply to every review you receive.',
+  'Add a sign-up form to your website and send one useful email to your list every month.',
+  'Choose the one or two platforms your customers actually use, and plan a month of posts.',
+  'Publish one blog post that answers a real question your customers ask.',
+  'Film one short video that shows what you do, and put the main keywords in its title and description.',
+];
+
+const groups = [
+  { heading: 'Website Optimization', items: [0, 1] },
+  { heading: 'On-Page SEO', items: [2, 3] },
+  { heading: 'PPC Advertising', items: [4] },
+  { heading: 'Analytics and Tracking', items: [5] },
+  { heading: 'Local SEO', items: [6, 7] },
+  { heading: 'Email Marketing', items: [8] },
+  { heading: 'Social Media Marketing', items: [9] },
+  { heading: 'Content Marketing', items: [10] },
+  { heading: 'Video Marketing', items: [11] },
+];
+---
+
+<BaseLayout
+  title="The Digital Marketing Checklist for South African Businesses"
+  titleSuffix={false}
+  description="Print the digital marketing checklist for South African businesses. Twelve short steps from the Digitally Shifted guide, one tick box each."
+  path="/checklist/print"
+  noindex={true}
+  hideHeaderCta={true}
+  hideMobileBar={true}
+>
+  <div class="bg-paper">
+    <div class="container-ds py-16 md:py-24">
+      <article class="checklist-sheet">
+        <h1 class="checklist-title">
+          The Digital Marketing Checklist for South African Businesses
+        </h1>
+        <p class="checklist-source">
+          Every step comes from The Ultimate Digital Marketing Guide for Businesses.
+        </p>
+        <p class="checklist-note">One printable page. Tick each box as you finish the step.</p>
+        <div class="checklist-groups">
+          {
+            groups.map((group) => (
+              <section class="checklist-group">
+                <h2>{group.heading}</h2>
+                <ul>
+                  {group.items.map((index) => (
+                    <li>
+                      <label>
+                        <input type="checkbox" name={`checklist-item-${index + 1}`} />
+                        <span>{items[index]}</span>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))
+          }
+        </div>
+      </article>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .checklist-sheet {
+    max-width: 56rem;
+  }
+
+  .checklist-title {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.15;
+  }
+
+  .checklist-source {
+    margin-top: 0.75rem;
+    color: var(--color-slate);
+  }
+
+  .checklist-note {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--color-text-on-light-muted);
+  }
+
+  .checklist-groups {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1.5rem 3rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 48rem) {
+    .checklist-groups {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .checklist-group h2 {
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .checklist-group ul {
+    margin-top: 0.5rem;
+  }
+
+  .checklist-group li + li {
+    margin-top: 0.5rem;
+  }
+
+  .checklist-group label {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    line-height: 1.45;
+  }
+
+  .checklist-group input {
+    margin-top: 0.3rem;
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--color-accent);
+    flex-shrink: 0;
+  }
+</style>
+
+<style is:global>
+  /* Print output: one A4 portrait page, no navigation chrome. These rules
+     ship only with this page, so other pages keep their print defaults. */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin: 12mm;
+    }
+
+    .skip-link,
+    header,
+    footer,
+    .mobile-action-bar {
+      display: none !important;
+    }
+
+    .container-ds {
+      max-width: none !important;
+      padding: 0 !important;
+    }
+
+    .checklist-sheet {
+      max-width: none;
+    }
+
+    .checklist-title {
+      font-size: 15pt;
+    }
+
+    .checklist-source,
+    .checklist-note {
+      font-size: 8.5pt;
+      margin-top: 1mm;
+    }
+
+    .checklist-groups {
+      margin-top: 4mm;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm 8mm;
+    }
+
+    .checklist-group {
+      break-inside: avoid;
+    }
+
+    .checklist-group h2 {
+      font-size: 9.5pt;
+    }
+
+    .checklist-group ul {
+      margin-top: 1.5mm;
+    }
+
+    .checklist-group li + li {
+      margin-top: 1.5mm;
+    }
+
+    .checklist-group label {
+      font-size: 9pt;
+      line-height: 1.35;
+    }
+  }
+</style>

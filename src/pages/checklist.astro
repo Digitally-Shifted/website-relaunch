@@ -1,0 +1,60 @@
+---
+/*
+ * /checklist/ landing page (conversion spec 3.8, DIG-133).
+ *
+ * One offer, one form: the digital marketing checklist. The page renders
+ * the shared ContactForm in the reduced 3.8 mode: name, phone or email
+ * (either-or rule), optional message, no business field, no need select.
+ * A hidden field fills need=checklist (spec 4.2), so the submit label
+ * stays `Send enquiry` and the thank-you page still fires the one
+ * `contact_form_submit` event. The form backend answers a checklist
+ * success with a 303 to /contact/thank-you?offer=checklist, which shows
+ * the checklist link there. No header CTA on this page (3.8): the form
+ * is the action.
+ *
+ * All copy below is final and approved (DIG-85 package; DIG-133 brief).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const bullets = [
+  'Twelve short steps that follow our digital marketing guide, from your website to video.',
+  'Plain language for busy business owners. No marketing jargon.',
+  'One printable page you can keep at your desk and tick off as you go.',
+];
+---
+
+<BaseLayout
+  title="Free Digital Marketing Checklist | Digitally Shifted"
+  titleSuffix={false}
+  description="Work through website, local search, ads, email and social media steps for your business. Get the free digital marketing checklist from Digitally Shifted."
+  path="/checklist"
+  hideHeaderCta={true}
+>
+  <div class="bg-carbon">
+    <div class="container-ds pt-16 pb-24 md:pt-24 md:pb-32">
+      <div class="max-w-2xl">
+        <header>
+          <h1 class="text-display text-paper">
+            Help customers <em>find your business</em> online
+          </h1>
+          <p class="mt-4 text-body-lg text-text-on-dark-muted">
+            A free digital marketing checklist for South African businesses.
+          </p>
+        </header>
+
+        <ul class="mt-8 list-disc space-y-3 pl-6 text-body-lg text-text-on-dark-muted">
+          {bullets.map((bullet) => <li>{bullet}</li>)}
+        </ul>
+
+        <p class="mt-12 text-body-lg text-paper">Fill in your name and one contact detail.</p>
+        <div class="mt-6" data-ds-form-slot="checklist">
+          <ContactForm fixedNeed="checklist" formLocation="/checklist/" />
+        </div>
+        <p class="mt-6 text-body-sm text-text-on-dark-muted">
+          After you send the form, your checklist link appears on the thank-you page.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

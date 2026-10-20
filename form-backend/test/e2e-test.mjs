@@ -361,3 +361,103 @@ test('MOUNT_PATH accepts both the stripped and the full request path', async () 
     stopService(svc);
   }
 });
+
+/* ---------- checklist landing page (DIG-133) ---------- */
+
+function checklistFields(overrides = {}) {
+  return validFields({
+    need: 'checklist',
+    form_location: '/checklist/',
+    message: '',
+    ...overrides,
+  });
+}
+
+test('checklist success: 303 carries the offer marker, cookie, row, and email', async () => {
+  const svc = await startTestService();
+  try {
+    const res = await post(svc.base, checklistFields());
+    assert.equal(res.status, 303);
+    assert.match(res.headers.get('location'), /\/contact\/thank-you\?offer=checklist$/);
+    assert.match(cookieHeader(res), /^lead_ok=[0-9a-f]{32}/);
+
+    assert.equal(await rowCount(svc), 1);
+    const row = svc.db._db.prepare('SELECT * FROM leads').get();
+    assert.equal(row.need, 'checklist');
+    assert.equal(row.form_location, '/checklist/');
+    assert.equal(row.spam_flag, 0);
+    assert.ok(await waitFor(async () =>
+      svc.db._db.prepare('SELECT email_sent FROM leads WHERE id = ?').get(row.id).email_sent === 1));
+    const eml = await readFile(join(svc.stubDir, `${row.id}.eml`), 'utf8');
+    assert.match(eml, /^Subject: Website enquiry — checklist — Thabo Mokoena/m);
+  } finally {
+    stopService(svc);
+  }
+});
+
+test('checklist need keeps the message optional; general need does not', async () => {
+  const svc = await startTestService();
+  try {
+    const checklist = await post(svc.base, checklistFields());
+    assert.equal(checklist.status, 303, 'empty message is valid for need=checklist');
+
+    const general = await post(svc.base, validFields({ message: '' }));
+    assert.equal(general.status, 400);
+    const html = await general.text();
+    assert.match(html, /Please add a short message \(up to 5000 characters\)\./);
+  } finally {
+    stopService(svc);
+  }
+});
+
+test('ordinary enquiry success carries no offer marker', async () => {
+  const svc = await startTestService();
+  try {
+    const res = await post(svc.base, validFields());
+    assert.equal(res.status, 303);
+    const location = res.headers.get('location');
+    assert.match(location, /\/contact\/thank-you$/);
+    assert.ok(!location.includes('offer='), 'ordinary enquiries must not see the checklist link');
+  } finally {
+    stopService(svc);
+  }
+});
+
+test('spam checklist submission redirects without the offer marker', async () => {
+  const svc = await startTestService();
+  try {
+    const res = await post(svc.base, checklistFields({ company_website: 'bot-fill' }));
+    assert.equal(res.status, 303);
+    assert.doesNotMatch(res.headers.get('location'), /offer=checklist/);
+    const row = svc.db._db.prepare('SELECT spam_flag FROM leads').get();
+    assert.equal(row.spam_flag, 1);
+  } finally {
+    stopService(svc);
+  }
+});
+
+test('idempotent replay of a checklist lead keeps the offer marker', async () => {
+  const svc = await startTestService();
+  try {
+    const id = crypto.randomUUID();
+    await post(svc.base, checklistFields({ submission_id: id }));
+    const replay = await post(svc.base, checklistFields({ submission_id: id }));
+    assert.equal(replay.status, 303);
+    assert.match(replay.headers.get('location'), /\/contact\/thank-you\?offer=checklist$/);
+    assert.equal(await rowCount(svc), 1);
+  } finally {
+    stopService(svc);
+  }
+});
+
+test('the 400 fallback page keeps the checklist need selected', async () => {
+  const svc = await startTestService();
+  try {
+    const res = await post(svc.base, checklistFields({ name: '' }));
+    assert.equal(res.status, 400);
+    const html = await res.text();
+    assert.match(html, /<option value="checklist" selected>/);
+  } finally {
+    stopService(svc);
+  }
+});

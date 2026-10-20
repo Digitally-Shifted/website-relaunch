@@ -78,6 +78,7 @@ Use the same label for the same action on every page. Approved labels only:
 | `Call` | Phone routes | `tel:` |
 | `WhatsApp us` | WhatsApp routes | `wa.me` |
 | `See what is included` | Secondary link from Home hero | `/services` |
+| `Get the checklist` | Guide checklist CTA | `/checklist/` |
 
 Do not use `free`, `cheap`, `guaranteed`, or `best` in any label or button (DIG-38 voice rules; unproven claims are banned).
 
@@ -211,10 +212,12 @@ The select drives the conversion event and the button label. Store the option `v
 | `seo` | SEO | No | `?need=seo` |
 | `hosting` | Hosting or management | No | `?need=hosting` |
 | `quote` | Not sure — I want prices | Yes | `?need=quote` |
+| `checklist` | The digital marketing checklist | No | — |
 
 - Default selection: `general`.
 - `?need=quote` (header CTA) preselects `quote`.
 - Unknown `?need=` values fall back to `general`. Never show an error for them.
+- The `checklist` value never appears in the main form's select. The `/checklist/` landing page (3.8) fills it through a hidden field, so its submit label stays `Send enquiry` and its event stays `contact_form_submit`.
 
 ### 4.3 Client-side behaviour
 
