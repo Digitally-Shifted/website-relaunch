@@ -54,6 +54,15 @@ apply to production releases only. Staging has no versions.
 - The `/services` third section renames to the approved ladder name
   "Care plan" (DIG-25, DIG-121). Display text only: the `#waas` anchor,
   `need=waas` routing key, and modal id are unchanged.
+- The migrated pillar guide now carries only sourced statistics
+  (DIG-84/DIG-127): the internet-user, local-search, and product-discovery
+  claims replaced with verified figures and links (Kepios/DataReportal,
+  BrightLocal 2023, Sprout Social 2026), the credibility claim replaced
+  with the Stanford/Consumer Reports WebWatch 2002 result, and the Gomez
+  claim given its archived source. Three unverifiable claims removed.
+- The domains-and-hosting page gains the approved speed and security proof
+  lines with their archived sources (Google/SOASTA 2017, Symantec ISTR 23)
+  inside the Fast hosting and Security cards (DIG-84/DIG-127).
 
 - The build gate now also verifies the redirect map
   (`scripts/build-site.sh`, DIG-91).
