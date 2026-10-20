@@ -2,10 +2,10 @@
 
 | | |
 |---|---|
-| Version | 1.0 |
-| Date | 2026-10-19 |
+| Version | 1.1 |
+| Date | 2026-10-20 |
 | Author | Content Creator — DIG-100 (child of DIG-79) |
-| Status | Final draft for engineering wiring. Owner-gated items in the flag table block publishing of those lines only. |
+| Status | Final. Owner gates resolved 2026-10-20 (decision card on DIG-79). Engineering applies the v1.1 changes on staging; production deploy follows the go-live decision. |
 | Structure | Conversion spec (DIG-66) section 3.1: hero, services summary, proof, closing CTA |
 | Facts | DIG-25 document `services` (canonical offer ladder, approved 2026-10-19); DIG-38 document `product-marketing-brief` v1.2; extracted old home record `docs/migration/extracted/000.md` and `000.json` |
 | Reused lines | Owner-approved website copy v1.2 (DIG-63 document `website-copy`), updated to the new offer names |
@@ -17,21 +17,24 @@ Engineering wires this copy into `src/pages/index.astro`. This document does not
 - Exactly one H1 on the page. Text exactly: `Digital Marketing Agency South Africa`. The old DOM repeated this text twice; render it once.
 - Use CTA labels verbatim: `Get a quote`, `See what is included`. Links exactly as given.
 - Three `Get a quote` buttons on the page: hero, after the services summary, closing band. One primary button per page region (conversion spec 2.4).
-- Proof section: ship **Variant B** by default. **Variant A** (logo strip) may not publish before the permissions check completes (flag HC3).
+- Proof section: ship **Variant B**. The logo strip stays parked: the record check found zero logo-use permissions (DIG-102) and the owner declined the consent-email round (HC3 / B1, B2, resolved 2026-10-20).
 - The old draft display statement ("Your website, built, hosted and managed.") is retired. The fixed SEO H1 is the only display heading, so the page does not carry two competing headlines (flag HC8).
 - Footer contact block and mobile action bar follow conversion spec 2.2 and 2.3. This copy adds no other phone or WhatsApp links.
-- Do not render the optional reply-time line unless the owner confirms flag HC7.
+- Render the reply-time line under the closing button (HC7 confirmed 2026-10-20).
 
-## SEO block (preserved from the extracted record)
+## SEO block (title, robots and og values preserved; description rewritten)
+
+The title tag, robots directives, canonical URL and og fields stay preserved verbatim per DIG-101. The owner approved a meta description rewrite on 2026-10-20 (flag HC8a). The SEO Specialist ruled the final string on DIG-123 the same day; engineering ships it verbatim (135 characters, no truncation or suffix).
 
 | Field | Value |
 |---|---|
 | Title tag | `Digital Marketing Agency South Africa \| Digitally Shifted` |
-| Meta description | `Digitally Shifted helps South African businesses generate leads with SEO, web design, Google Ads, social media and digital strategy.` |
+| Meta description (final, DIG-123 ruling 2026-10-20, ship verbatim) | `Digitally Shifted builds, hosts and manages websites for South African businesses. Web design, the Care plan and SEO to bring in leads.` |
+| Meta description (draft, superseded by the DIG-123 ruling) | `Digitally Shifted builds, hosts and manages websites for South African businesses. Web design, the Care plan and SEO that bring in leads.` |
 | H1 (exactly one) | `Digital Marketing Agency South Africa` |
 | og:image alt | `Digitally Shifted digital marketing agency hero banner` |
 
-Assumptions are recorded in flag HC8. An SEO Specialist runs the parallel check on DIG-79 and rules on refinements.
+The old preserved description (`Digitally Shifted helps South African businesses generate leads with SEO, web design, Google Ads, social media and digital strategy.`) stays in the migration record (`000.json`). The body no longer substantiates Google Ads or social media, which is why the owner chose the rewrite. Assumptions (b), (c) and (d) of flag HC8 are implemented in the wiring.
 
 ---
 
@@ -51,7 +54,7 @@ Assumptions are recorded in flag HC8. An SEO Specialist runs the parallel check 
 
 **Card 1 — heading and link: Website design and development → `/services#web-design`**
 
-> We design and build your website around your customers and your goals. Fast pages, clear structure, and a site you can grow. You own the result, and we stay available to look after it. Right for your first website, or a rebuild of an old one. The once-off build is Launch: live in 15 working days from complete content, from R12 000 to R50 000 per project. You approve the quote before any work starts.
+> We design and build your website around your customers and your goals. Fast pages, clear structure, and a site you can grow. You own the result, and we stay available to look after it. Right for your first website, or a rebuild of an old one. The once-off build is Launch: live in 20 working days from complete content. Late content moves the launch date by the same number of days. You approve the quote before any work starts.
 
 **Card 2 — heading and link: Hosting and management → `/services#hosting`**
 
@@ -59,7 +62,7 @@ Assumptions are recorded in flag HC8. An SEO Specialist runs the parallel check 
 
 **Card 3 — heading and link: Care plan → `/services#waas`**
 
-> The monthly bundle. One price covers design, hosting, management, SEO basics, and small changes: the everyday edits your site needs. From R1 000 to R6 000 per month. Your website stays current without a large upfront cost, and we keep improving it. No new quote every time something changes. Take it with a new build, or on its own.
+> The monthly bundle. One price covers design, hosting, management, SEO basics, and small changes: the everyday edits your site needs. Your website stays current without a large upfront cost, and we keep improving it. No new quote every time something changes. Take it with a new build, or on its own.
 
 **Card 4 — heading and link: SEO and AIO → `/services#seo`**
 
@@ -93,7 +96,7 @@ Assumptions are recorded in flag HC8. An SEO Specialist runs the parallel check 
 3. **We look after it.** After launch, we host it, manage it, and improve it. Every month.
 
 - **H3: Who it is for**
-- Owner-run businesses with 1 to 50 people. Service industries, hospitality, and tourism, in and near Gauteng, the Western Cape, and KwaZulu-Natal. If your customers find you through Google and word of mouth, you are who we built this for.
+- Owner-run South African businesses. If your customers find you through Google and word of mouth, this is for you.
 
 - **H3: One supplier**
 - One supplier stays accountable for your whole website. When something needs fixing, you do not chase three suppliers. You pay a predictable monthly cost, not a large upfront sum. The technical work stays with us.
@@ -103,13 +106,29 @@ Assumptions are recorded in flag HC8. An SEO Specialist runs the parallel check 
 - **H2:** Ready when you are
 - **Line:** Tell us what your business needs. We reply with a clear quote, and work starts only when you approve it.
 - **Button:** `Get a quote` → `/contact?need=quote`
-- **Optional line (only if flag HC7 is confirmed):** We aim to reply within one business day.
+- **Reply-time line (under the button):** We aim to reply within one business day.
 
 ---
 
-## Owner-gated items (flag table)
+## Owner decisions (2026-10-20)
 
-Do not publish a flagged line before the owner resolves its flag. Prices were flagged in copy v1.2 as F7; that precedent carries over.
+All flags were resolved on the DIG-79 owner decision card on 2026-10-20.
+
+| Flag | Decision |
+|---|---|
+| HC1 | Remove the price sentences from cards 1 and 3. The offer names and links stay. |
+| HC2 | Promise wording: live in 20 working days from complete content, plus the late-content companion line. DIG-25 updated to match. |
+| HC3 / B1 | Variant B ships. All 24 logos stay parked; the record check found zero permissions. |
+| B2 | No consent emails now. The strip returns only after a future approved permission round. |
+| HC4 | The AIO sentence and the `SEO and AIO` heading are approved as written. |
+| HC5 | The small-changes clause stays as written. |
+| HC6 | The who-it-is-for block is softened to the owner-approved generic wording. |
+| HC7 | Render `We aim to reply within one business day.` under the closing button. |
+| HC8 | (a) The meta description rewrite is approved; the draft sits in the SEO block and the SEO Specialist rules on the final string. (b), (c) and (d) are done. |
+
+## Original flag table (historical)
+
+Prices were flagged in copy v1.2 as F7; that precedent carried over. The original gate wording follows for the record.
 
 | # | Item | Where | What the owner must decide or supply | Trace |
 |---|---|---|---|---|
@@ -126,7 +145,7 @@ Do not publish a flagged line before the owner resolves its flag. Prices were fl
 
 Every on-page claim traces to an approved source:
 
-- **Hero intro, card bodies, panel, custom-builds line** — DIG-25 (offer ladder, Care plan contents, Launch delivery promise and price basis, custom builds quoted per project and outside fixed Launch scope); live `/services` section copy in `src/pages/services.astro`; reused lines from owner-approved copy v1.2 (home intro, value lines, process steps, who-it-is-for, accountable-supplier lines), updated to the new offer names.
+- **Hero intro, card bodies, panel, custom-builds line** — DIG-25 (offer ladder, Care plan contents, Launch delivery promise at 20 working days, owner-set 2026-10-20; prices removed from the page by HC1; custom builds quoted per project and outside fixed Launch scope); live `/services` section copy in `src/pages/services.astro`; reused lines from owner-approved copy v1.2 (home intro, value lines, process steps, who-it-is-for, accountable-supplier lines), updated to the new offer names.
 - **"So new customers find you and contact you", "Your customers are already online", who-it-is-for, predictable monthly cost, one accountable supplier, no large upfront cost** — DIG-38 (jobs to be done, ICP, emotional tension, differentiation, bundle facts, words to use).
 - **"Our clients" heading and Variant A intro** — the extracted old home record (client logo carousel is real and listed in 000.json). Gated by HC3.
 - **SEO block** — extracted 000.json and 000.md, preserved verbatim.
@@ -136,4 +155,4 @@ Excluded by instruction: Paid Advertising (open decision DIG-83), Grow and Engin
 
 ## Length note
 
-The on-page copy is about 650 words. The brief asked for roughly 700 to 1 000 words of purposeful copy. The conversion-spec structure (hero, four-card summary, gated proof, closing) with the no-invented-proof rule and the brand voice caps what can be said without padding or duplication of `/services`. Two owner-directed expansions can lift the page into the range when approved: value-theme cards (quality, bundle, speed) once the competitive-intel task clears DIG-25 section 4 for publication, and a Launch deliverables list once the owner confirms scope lines. Neither exists yet, so this draft ships lean rather than padded.
+The on-page copy is about 630 words after the 2026-10-20 owner decisions (prices removed, target-client block softened). The brief asked for roughly 700 to 1 000 words of purposeful copy. The conversion-spec structure (hero, four-card summary, gated proof, closing) with the no-invented-proof rule and the brand voice caps what can be said without padding or duplication of `/services`. Two owner-directed expansions can lift the page into the range when approved: value-theme cards (quality, bundle, speed) once the competitive-intel task clears DIG-25 section 4 for publication, and a Launch deliverables list once the owner confirms scope lines. Neither exists yet, so this draft ships lean rather than padded.

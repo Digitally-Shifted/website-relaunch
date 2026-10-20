@@ -11,9 +11,11 @@ interface Props {
   line?: string;
   ctaHref?: string;
   ctaLabel?: string;
+  /** Optional small note rendered under the button (e.g. a reply-time promise). */
+  note?: string;
 }
 
-const { heading, line, ctaHref = '/contact?need=quote', ctaLabel = 'Get a quote' } = Astro.props;
+const { heading, line, ctaHref = '/contact?need=quote', ctaLabel = 'Get a quote', note } = Astro.props;
 ---
 
 <div class="bg-carbon">
@@ -26,6 +28,9 @@ const { heading, line, ctaHref = '/contact?need=quote', ctaLabel = 'Get a quote'
       <a href={withBase(ctaHref)} class="btn btn--primary mt-8" data-ds-location="content">
         {ctaLabel}
       </a>
+      {
+        note && <p class="mt-6 text-body-sm text-text-on-dark-muted">{note}</p>
+      }
     </div>
   </div>
 </div>

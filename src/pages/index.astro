@@ -3,10 +3,12 @@
  * Home (conversion spec 3.1): hero, services summary with four cards and
  * the Care plan panel, proof (Variant B "How we work"), closing band.
  *
- * FINAL COPY: wired from docs/copy/home-page-copy.md v1.0 (DIG-79/DIG-121).
- * Owner-gated lines render on staging per the copy flag table (HC1, HC2,
- * HC4, HC5, HC6 shown; HC3 logo strip held; HC7 reply-time line omitted).
- * Production deploy waits for the owner answers on DIG-79.
+ * FINAL COPY: docs/copy/home-page-copy.md v1.1 (DIG-79/DIG-121/DIG-124).
+ * Owner decisions of 2026-10-20 applied: prices removed (HC1), Launch
+ * promise at 20 working days with the late-content line (HC2), softened
+ * who-it-is-for (HC6), reply-time line under the closing button (HC7).
+ * Logo strip stays parked (HC3/B1/B2). Production deploy waits for the
+ * go-live decision on DIG-79.
  *
  * SEO: preserved values verbatim (DIG-101). No title suffix, full robots
  * directives, og image served from this host at the original 1904x901.
@@ -22,7 +24,7 @@ import { withBase } from '../lib/urls';
 const services = [
   {
     title: 'Website design and development',
-    body: 'We design and build your website around your customers and your goals. Fast pages, clear structure, and a site you can grow. You own the result, and we stay available to look after it. Right for your first website, or a rebuild of an old one. The once-off build is Launch: live in 15 working days from complete content, from R12 000 to R50 000 per project. You approve the quote before any work starts.',
+    body: 'We design and build your website around your customers and your goals. Fast pages, clear structure, and a site you can grow. You own the result, and we stay available to look after it. Right for your first website, or a rebuild of an old one. The once-off build is Launch: live in 20 working days from complete content. Late content moves the launch date by the same number of days. You approve the quote before any work starts.',
     href: '/services#web-design',
   },
   {
@@ -32,7 +34,7 @@ const services = [
   },
   {
     title: 'Care plan',
-    body: 'The monthly bundle. One price covers design, hosting, management, SEO basics, and small changes: the everyday edits your site needs. From R1 000 to R6 000 per month. Your website stays current without a large upfront cost, and we keep improving it. No new quote every time something changes. Take it with a new build, or on its own.',
+    body: 'The monthly bundle. One price covers design, hosting, management, SEO basics, and small changes: the everyday edits your site needs. Your website stays current without a large upfront cost, and we keep improving it. No new quote every time something changes. Take it with a new build, or on its own.',
     href: '/services#waas',
   },
   {
@@ -63,7 +65,7 @@ const steps = [
 <BaseLayout
   title="Digital Marketing Agency South Africa | Digitally Shifted"
   titleSuffix={false}
-  description="Digitally Shifted helps South African businesses generate leads with SEO, web design, Google Ads, social media and digital strategy."
+  description="Digitally Shifted builds, hosts and manages websites for South African businesses. Web design, the Care plan and SEO to bring in leads."
   path="/"
   robots="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
   ogImage="/og/home-page-banner.jpg"
@@ -165,10 +167,8 @@ const steps = [
         <div>
           <h3 class="text-h3 text-text-on-light">Who it is for</h3>
           <p class="mt-3 text-body text-text-on-light-muted">
-            Owner-run businesses with 1 to 50 people. Service industries,
-            hospitality, and tourism, in and near Gauteng, the Western Cape, and
-            KwaZulu-Natal. If your customers find you through Google and word of
-            mouth, you are who we built this for.
+            Owner-run South African businesses. If your customers find you
+            through Google and word of mouth, this is for you.
           </p>
         </div>
         <div>
@@ -189,5 +189,6 @@ const steps = [
     line="Tell us what your business needs. We reply with a clear quote, and work starts only when you approve it."
     ctaHref="/contact?need=quote"
     ctaLabel="Get a quote"
+    note="We aim to reply within one business day."
   />
 </BaseLayout>
