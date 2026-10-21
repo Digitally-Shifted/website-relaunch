@@ -4,12 +4,13 @@ This document describes the monitoring baseline for the launched client
 sites. Owner: DIG-76. Related: DIG-64 (deploy process), DIG-65 (analytics
 baseline), DIG-20 (go-live).
 
-Status on 2026-10-18: uptime checks and local alert records run. The owner
-picked email as the alert channel (baruch@digitallyshifted.com) and deferred
+Status on 2026-10-21: uptime checks, local alert records, and email
+delivery run. The owner picked email as the alert channel and deferred
 error tracking on 2026-10-18. On 2026-10-19 the owner asked for a free,
-open-source send path with no extra service. The sender now uses the
-owner's own SMTP account; one password step stays with the owner
-(section 7).
+open-source send path with no extra service, so alerts send through the
+owner's own SMTP account (section 7). On 2026-10-21 the owner added the
+SMTP password, moved the alert address to support@digitallyshifted.com,
+and the mail server accepted a test email (section 6).
 
 ## 1. Standard baseline for client sites
 
@@ -94,7 +95,8 @@ notify.sh tls     <site-url> <detail>
 
 `notify.sh` appends every event to `notify.log`. When `email.conf` in the
 installed copy sets `RECIPIENT`, `SENDER`, and the sender settings, the hook
-also sends the event as email to the owner address. `SENDER=smtp` uses
+also sends the event as email to the `RECIPIENT` address.
+`SENDER=smtp` uses
 `send_email.py` with `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, and
 `SMTP_PASSWORD`. Keep the hook under 30 seconds. It must never fail the
 check round.
@@ -112,20 +114,40 @@ check round.
 4. systemd run: `site-monitor.service` checked 31 sites, 0 down. The timer
    is enabled and fires every 5 minutes with `Persistent=true`.
 
+### 2026-10-21 — email delivery live
+
+1. The owner added `SMTP_PASSWORD` with the `set-password.sh` helper. The
+   paste carried a leading carriage return, so the stored value started
+   with `\r` and the sender read an empty password. The stray character
+   was removed; the clean value parsed as 14 characters.
+2. The owner moved the alert address to support@digitallyshifted.com
+   (request on DIG-76, 2026-10-21). The SMTP login account stays
+   baruch@digitallyshifted.com.
+3. Test email: `send_email.py` sent one message through
+   `mail.digitallyshifted.com:465` to support@digitallyshifted.com. The
+   server accepted it (exit 0) at 08:53 UTC. Alert email delivery is live;
+   events from this point reach the inbox.
+4. Note: alerts that opened before 08:53 UTC 2026-10-21 were logged in
+   `alerts.jsonl` and `notify.log` only. The bmgmotorgroup.co.za 500
+   episodes of 2026-10-20 and 2026-10-21 produced records, not emails.
+   All episodes resolved on their own.
+
 ## 7. Owner decisions, answered 2026-10-18
 
 The owner answered the DIG-76 question card:
 
-1. **Alert delivery: email to baruch@digitallyshifted.com through the
+1. **Alert delivery: email to support@digitallyshifted.com through the
    owner's own SMTP account.** The owner rejected a hosted service and
    asked for free and open source. Sending goes through
    `mail.digitallyshifted.com:465` (SSL), the same SMTP account and
    credentials the owner's Thunderbird already stores; the settings were
    read from the local Thunderbird profile on 2026-10-19 and the server
    answered a TLS handshake. `send_email.py` uses only the Python standard
-   library, so no package install is needed. The owner adds `SMTP_PASSWORD`
-   to `email.conf` (600 permissions, outside git); the password stays on
-   this machine. A Thunderbird-automation bridge was evaluated and
+   library, so no package install is needed. The owner added
+   `SMTP_PASSWORD` to `email.conf` on 2026-10-21 (600 permissions, outside
+   git); the password stays on this machine. The owner moved the alert
+   address to support@digitallyshifted.com on 2026-10-21. A
+   Thunderbird-automation bridge was evaluated and
    rejected: every checked bridge needs Thunderbird, an extension, a bridge
    daemon, and an active desktop session at the moment of sending, so a
    logout or reboot would stop alerts with no error anywhere.
