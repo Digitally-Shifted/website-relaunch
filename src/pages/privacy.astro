@@ -1,39 +1,356 @@
 ---
 /*
- * Privacy (conversion spec 3.6): one screen that says what the form stores
- * and how to remove it. Plain text on Paper, no CTA, no tracking events.
- * The owner reviews the wording (conversion spec open item 5).
+ * Privacy Policy & Terms (DIG-80). Replaces the conversion spec 3.6
+ * launch default. Source copy: the copy-master document on DIG-80,
+ * revision 5 — revision 3 (approved DIG-103 draft with the DIG-104
+ * fact-check and DIG-119 compliance-review fixes, and the owner's
+ * question-card answers inserted, 2026-10-20), plus revision 5: the six
+ * company-protective terms clauses from the DIG-130 wording pass as
+ * validated by DIG-131, and the PAIA manual statement removed after the
+ * owner's decision of 2026-10-21 (F10 recorded as an accepted risk).
+ *
+ * Constraints from the issue: keep noindex; keep the URL /privacy.
+ * The /privacy-policy/ 301 belongs to the redirect task (DIG-18).
  */
 import ContentLayout from '../layouts/ContentLayout.astro';
-import { site } from '../lib/site.config';
+import { site, legal } from '../lib/site.config';
 ---
 
 <ContentLayout
-  title="Privacy notice"
-  description="What Digitally Shifted stores when you send an enquiry, why we store it, and how to have it removed."
+  title="Privacy Policy & Terms"
+  description="How Digitally Shifted handles personal information on digitallyshifted.com under POPIA, and the terms that apply to your use of this site."
   path="/privacy"
   eyebrow="Privacy"
+  meta="Last updated 21 October 2026"
   noindex={true}
 >
-  <h2>What we store</h2>
+  <h2>1. Who we are</h2>
   <p>
-    When you send us an enquiry through our forms, we store the details you
-    send: your name, email address or phone number, your business name when
-    you give it, and your message, with the date.
+    Digitally Shifted is a digital agency. We operate the website
+    digitallyshifted.com. We operate in South Africa. Under the Protection of
+    Personal Information Act (POPIA), we are the responsible party for the
+    personal information that this website collects.
+  </p>
+  <p>
+    Digitally Shifted is the trading name of {legal.legalName}, a private
+    company registered in South Africa.
+  </p>
+  <ul>
+    <li>Registration number: {legal.registrationNumber}</li>
+    <li>Registered office: {legal.registeredOffice}</li>
+    <li>Director: {legal.director}</li>
+  </ul>
+  <p>Contact us about privacy in these ways:</p>
+  <ul>
+    <li>
+      Email: <a href={`mailto:${site.email}`} class="link-dark">{site.email}</a>
+    </li>
+    <li>Phone and WhatsApp: {site.phoneDisplay}</li>
+  </ul>
+
+  <h2>2. What personal information we collect</h2>
+  <p>
+    We collect personal information when you send us an enquiry or a quote
+    request through our forms. We collect only the information listed in this
+    section. Our forms collect:
+  </p>
+  <ul>
+    <li>Your name (required)</li>
+    <li>
+      Your email address or your phone number. Give at least one, so that we
+      can reply to you
+    </li>
+    <li>The option that you pick from the &ldquo;What do you need?&rdquo; list (required)</li>
+    <li>Your business name (optional)</li>
+    <li>Your message (required)</li>
+  </ul>
+  <p>
+    You do not have to fill in the optional fields. The form works without
+    them. Your message gives us the details of your enquiry. We do not
+    knowingly collect personal information from children.
+  </p>
+  <p>
+    The form record also stores the date and time and a submission ID. For
+    spam control and rate limiting, the form record stores a salted hash of
+    your IP address. The form record does not store your raw IP address.
+  </p>
+  <p>Our analytics tool also collects website usage data. Section 4 describes this data.</p>
+
+  <h2>3. Why we process it and on what basis</h2>
+  <p>We process your personal information for these purposes:</p>
+  <ul>
+    <li>To reply to your enquiry</li>
+    <li>To prepare the quote that you request</li>
+    <li>To keep the site secure through spam control and rate limiting</li>
+    <li>To measure how people use the site through analytics</li>
+  </ul>
+  <p>
+    We process this information only for these purposes. Each purpose has a
+    lawful basis under section 11 of POPIA:
+  </p>
+  <ul>
+    <li>
+      Your consent is the basis for the details that you give us in the form.
+      You give this consent when you submit the form. You can withdraw it at
+      any time (section 8 of this policy).
+    </li>
+    <li>
+      Your request is the basis for using your details to reply to you and to
+      prepare your quote. These are steps that we take at your request before
+      a possible contract (section 11(1)(b) of POPIA).
+    </li>
+    <li>
+      Our legitimate interest is the basis for spam control, rate limiting,
+      and analytics. The interest is a secure website that works well
+      (section 11(1)(f) of POPIA).
+    </li>
+  </ul>
+  <p>The form includes a consent line. It reads:</p>
+  <blockquote>
+    <p>We use your details to reply to this enquiry. We do not sell them.</p>
+  </blockquote>
+  <p>This policy gives you more detail. You can read it before you submit the form.</p>
+
+  <h2>4. Cookies and analytics</h2>
+  <p>
+    We use Google Analytics 4 (GA4) to measure this website. GA4 measures page
+    views and button clicks. The button clicks include calls, WhatsApp clicks,
+    and form submissions. This data shows us which pages and buttons people
+    use.
+  </p>
+  <p>
+    GA4 uses cookies or similar identifiers for this measurement. Cookies are
+    small files that a website can store on your device. At launch, this site
+    sends no advertising trackers.
   </p>
 
-  <h2>Why we store it</h2>
-  <p>To reply to your enquiry and to prepare any quote you asked for.</p>
-
-  <h2>What we do not do</h2>
+  <h2>5. Who receives personal information</h2>
+  <p>We do not sell your personal information. We share it only with the service providers that operate this website for us:</p>
+  <ul>
+    <li>Our hosting provider</li>
+    <li>Our form backend</li>
+    <li>Google, for Analytics</li>
+    <li>Our email delivery service</li>
+  </ul>
   <p>
-    We do not sell your details. We do not pass them to third parties for
-    their own marketing.
+    These providers are operators under POPIA. They process personal
+    information only for us and on our instructions. When you submit a form,
+    one notification email goes to {site.email}. The notification email
+    contains the details of your submission. We send no automatic marketing
+    email.
   </p>
 
-  <h2>How to have your details removed</h2>
+  <h2>6. Storage, security safeguards, and how long we keep records</h2>
   <p>
-    Email <a href={`mailto:${site.email}`}>{site.email}</a> and ask us to
-    remove your details. We will delete them and confirm that we have done it.
+    We keep personal information only as long as we need it for the purposes
+    in section 3. Section 14 of POPIA controls this. We may keep a record
+    longer only if the law requires or authorises it, if we reasonably need it
+    for lawful purposes related to our functions or activities, if a contract
+    requires it, or if you consented. When we may no longer keep a record, we
+    destroy or delete it, or de-identify it, as soon as reasonably
+    practicable, in a way that prevents reconstruction (sections 14(4) and
+    (5) of POPIA).
+  </p>
+  <p>Our analytics provider keeps website usage data for 14 months.</p>
+  <p>
+    As a guide, we keep enquiry records for 24 months after our last contact
+    with you, unless the law requires us to keep them longer or you ask us to
+    remove them sooner.
+  </p>
+  <p>
+    We keep enquiry records until you ask us to remove them. We also remove
+    enquiry records when we no longer need them for the purposes in section 3.
+    Enquiry records include the form fields described in section 2.
+  </p>
+  <p>You can ask us to remove your records at any time. Send your request to {site.email}.</p>
+  <p>
+    We apply reasonable security safeguards to protect the personal
+    information that we hold. If a security compromise affects your personal
+    information, we notify the Information Regulator and you when POPIA
+    section 22 requires it.
+  </p>
+
+  <h2>7. Cross-border processing</h2>
+  <p>
+    Our analytics provider may process data outside South Africa. Section 72
+    of POPIA sets the conditions for transfers of personal information outside
+    South Africa. We will transfer your personal information outside South
+    Africa only if the recipient is bound by law, binding corporate rules, or
+    a binding agreement that gives adequate protection, or if you consented,
+    or if the transfer is necessary for a contract with you or in your
+    interest, or if the transfer is for your benefit where we cannot
+    reasonably get your consent.
+  </p>
+  <p>
+    The analytics provider is Google, as described in section 4. Google
+    processes this data for us and on our instructions. Google is bound by a
+    data processing agreement for Analytics.
+  </p>
+
+  <h2>8. Your rights under POPIA</h2>
+  <p>POPIA gives you rights over your personal information. You can:</p>
+  <ul>
+    <li>
+      Ask us to confirm whether we hold personal information about you, and
+      ask for access to the record or a description of it, including the third
+      parties who have had access (section 23 of POPIA)
+    </li>
+    <li>
+      Ask us to correct or delete information that is inaccurate, irrelevant,
+      excessive, out of date, incomplete, misleading, or obtained unlawfully,
+      or to destroy or delete a record that we may no longer keep (section 24
+      of POPIA)
+    </li>
+    <li>
+      Object, at any time, to our processing of your personal information. If
+      you object, we may no longer process your information (sections 11(3)
+      and 11(4) of POPIA). You can object on Form 1 of the POPIA Regulations,
+      available from the Information Regulator
+    </li>
+    <li>Withdraw your consent to processing</li>
+  </ul>
+  <p>
+    To use a right, send an email to {site.email}. Tell us which right you
+    want to use. Describe the information or the change that you want. We will
+    respond to your request within 30 days.
+  </p>
+  <p>
+    If we ever send direct marketing by electronic communication, we will do
+    it only as section 69 of POPIA allows: with your consent, or to you as an
+    existing customer for our own similar services, with a free way to object
+    in every message.
+  </p>
+  <p>
+    If you believe that we have interfered with the protection of your
+    personal information, you can submit a complaint to the Information
+    Regulator (South Africa) under section 74 of POPIA (read with sections 73
+    and 75). The Information Regulator enforces POPIA. Its website is
+    <a href="https://inforegulator.org.za/" class="link-dark" rel="noopener">inforegulator.org.za</a>.
+    You can complain through its eServices Portal
+    (<a href="https://eservices.inforegulator.org.za/" class="link-dark" rel="noopener">eservices.inforegulator.org.za</a>)
+    or by email to POPIAComplaints@inforegulator.org.za.
+  </p>
+
+  <h2>9. Access to other records under the Promotion of Access to Information Act (PAIA)</h2>
+  <p>
+    PAIA gives you a way to request access to certain records that we hold. To
+    request access to a record, send your request to our Information Officer
+    in the prescribed form (section 53 of PAIA).
+  </p>
+  <p>
+    Our Information Officer is {legal.informationOfficer}. Send your request
+    to <a href={`mailto:${site.email}`} class="link-dark">{site.email}</a>.
+  </p>
+
+  <h2>10. Changes to this policy and the effective date</h2>
+  <p>
+    We may update this policy from time to time. We publish every change on
+    this page. You can check this page for the current version. This policy
+    and these terms take effect on the day that this page goes live.
+  </p>
+
+  <h2 id="terms">Terms &amp; Conditions</h2>
+
+  <h2>Agreement to these terms</h2>
+  <p>
+    These terms apply to your use of digitallyshifted.com. When you use this
+    site, you agree to these terms. If you do not agree with these terms, do
+    not use the site.
+  </p>
+  <p>If we do not enforce a term, we do not lose the right to enforce it later.</p>
+
+  <h2>What the site is for</h2>
+  <p>
+    This site gives information about Digitally Shifted and our services. You
+    can use our forms to send us an enquiry. Our services are:
+  </p>
+  <ul>
+    <li>Launch</li>
+    <li>Care plan</li>
+    <li>Custom builds</li>
+    <li>Social Media Marketing</li>
+    <li>Paid Ads</li>
+  </ul>
+  <p>
+    This site does not promise any result from these services. We may change,
+    pause, or close the site, or any part of it, at any time.
+  </p>
+
+  <h2>Our content is not advice</h2>
+  <p>
+    Content on this site is general information about our services. It is not
+    legal, financial, or other professional advice. Get advice from a
+    qualified professional before you make a decision.
+  </p>
+
+  <h2>Enquiries and quotes are invitations to enquire</h2>
+  <p>
+    Content on this site and any quote that we send are invitations to
+    enquire. They are not binding offers. An engagement with us starts only
+    when we sign an agreement with you.
+  </p>
+
+  <h2>Intellectual property in the site content</h2>
+  <p>
+    Digitally Shifted owns the content on this site. The content includes the
+    text, design, logos, and images. You may read this content and share links
+    to it. You may not copy, change, or republish it without our written
+    permission.
+  </p>
+
+  <h2>Acceptable use of the site</h2>
+  <p>Use this site lawfully and respectfully. Do not:</p>
+  <ul>
+    <li>Send spam or harmful content through our forms</li>
+    <li>Try to gain unauthorized access to the site or its systems</li>
+    <li>Interfere with the operation of the site</li>
+    <li>Use the site in a way that harms us or other people</li>
+  </ul>
+  <p>If you breach these terms, we may suspend or end your access to the site.</p>
+
+  <h2>Links to other websites</h2>
+  <p>
+    The site may link to other websites. We do not control those websites. We
+    are not responsible for their content or their privacy practices. Read
+    the terms and privacy policy of any website that you visit.
+  </p>
+
+  <h2>Limitation of liability and no warranty</h2>
+  <p>
+    These terms cover this website only. They do not cover client
+    engagements. Client engagements run under separate signed agreements.
+  </p>
+  <p>
+    We provide this site as is, without warranties of any kind. We do not
+    promise that the site will be available or free of errors.
+  </p>
+  <p>
+    <strong>
+      We limit our liability for loss or damage from your use of the site only
+      to the extent that the law permits. Nothing in these terms excludes
+      liability that we cannot lawfully exclude. This includes liability for
+      gross negligence.
+    </strong>
+  </p>
+
+  <h2>Governing law</h2>
+  <p>
+    South African law governs these terms and any dispute that relates to
+    them. The South African courts have jurisdiction over disputes about these
+    terms.
+  </p>
+
+  <h2>If part of these terms is invalid</h2>
+  <p>If a court finds part of these terms invalid, the remaining terms stay in force.</p>
+
+  <h2>Changes to these terms and how to contact us</h2>
+  <p>
+    We may change these terms from time to time. We publish every change on
+    this page. Your continued use of the site after a change means that you
+    accept the changed terms.
+  </p>
+  <p>
+    If you have a question about these terms, contact us at
+    <a href={`mailto:${site.email}`} class="link-dark">{site.email}</a>.
   </p>
 </ContentLayout>

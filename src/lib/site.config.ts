@@ -15,6 +15,21 @@ export const site = {
   email: 'baruch@digitallyshifted.com',
 } as const;
 
+/*
+ * Legal identity facts (DIG-80). Sources: the owner's answers on the
+ * DIG-80 question card (2026-10-20) and the CIPC disclosure certificate
+ * for registration number 2022/305680/07 (issued 9 March 2023), taken
+ * from the owner's company documents folder at the owner's direction.
+ */
+export const legal = {
+  legalName: 'Digitallyshifted (Pty) Ltd',
+  registrationNumber: '2022/305680/07',
+  registeredOffice:
+    'Mall Mews 5, 55 Mountain Mill Drive, Hospital Hill, Worcester, Western Cape, 6850, South Africa',
+  director: 'Baruch Truter',
+  informationOfficer: 'Baruch Truter (Owner)',
+} as const;
+
 export const nav = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
