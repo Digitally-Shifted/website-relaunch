@@ -1,0 +1,42 @@
+---
+/*
+ * Checklist teaser (DIG-993 spec 5.8). Quiet section: Paper ground, one
+ * grey-50 panel (border-grey-200, max-w-2xl), section reveal only. The
+ * section's one action is a link, not a button, so it never competes
+ * with a primary button.
+ */
+import SectionHeader from '../SectionHeader.astro';
+import DiagonalJoin from '../DiagonalJoin.astro';
+import { withBase } from '../../lib/urls';
+
+const bullets = [
+  'Twelve short steps that follow our digital marketing guide, from your website to video.',
+  'Plain language for busy business owners. No marketing jargon.',
+  'One printable page you can keep at your desk and tick off as you go.',
+];
+---
+
+<section class="bg-paper" aria-labelledby="checklist-teaser">
+  <div class="container-ds section">
+    <div class="max-w-2xl border border-grey-200 bg-grey-50 p-8 md:p-12">
+      <div data-reveal data-reveal-index="0">
+        <SectionHeader
+          id="checklist-teaser"
+          eyebrow="Free checklist"
+          dark={false}
+          heading="Start with the checklist"
+          opener="A free digital marketing checklist for South African businesses."
+        />
+      </div>
+      <ul class="mt-6 list-disc space-y-2 pl-5">
+        {bullets.map((bullet) => <li class="text-body text-text-on-light-muted">{bullet}</li>)}
+      </ul>
+      <a href={withBase('/checklist/')} class="link-light mt-8 inline-block text-body-lg">
+        Get the checklist
+      </a>
+    </div>
+  </div>
+  <div class="container-ds">
+    <DiagonalJoin from="grey-300" />
+  </div>
+</section>

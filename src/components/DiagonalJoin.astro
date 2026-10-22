@@ -1,0 +1,29 @@
+---
+/*
+ * Diagonal join (DIG-993 spec 6.5, D5). One hairline diagonal seating on
+ * the boundary between two sections. Place it as the last child of the
+ * upper section (inside the container): margin-bottom -1px seats the
+ * line on the boundary. Decorative: aria-hidden, hairline only, no
+ * interaction.
+ */
+interface Props {
+  /** Hairline colour token: `grey-700` on dark joins, `grey-300` on light joins. */
+  from?: 'grey-700' | 'grey-300';
+  /** Optional 3x12 px accent tick at the left end (hero join only). */
+  tick?: boolean;
+}
+
+const { from = 'grey-300', tick = false } = Astro.props;
+---
+
+<div aria-hidden="true" class="-mb-px h-16 w-full">
+  <svg
+    class:list={['h-full w-full', from === 'grey-700' ? 'stroke-grey-700' : 'stroke-grey-300']}
+    viewBox="0 0 1200 64"
+    preserveAspectRatio="none"
+    fill="none"
+  >
+    <line x1="0" y1="64" x2="1200" y2="0" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+    {tick && <rect x="0" y="52" width="3" height="12" class="fill-accent"></rect>}
+  </svg>
+</div>

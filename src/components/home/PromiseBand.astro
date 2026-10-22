@@ -1,0 +1,31 @@
+---
+/*
+ * Promise band (DIG-993 spec 5.6). The page's mid-scroll scale event:
+ * carbon ground, grey-900 full-bleed inner band (D1), monumental
+ * statement with the count-up numeral. No texture-lines, no grain (both
+ * are spent on the hero and the CTA band). The numeral renders `20` in
+ * server HTML; the complete promise wording with both pause sentences
+ * sits directly below the short form so the claim is never bare.
+ */
+import { withBase } from '../../lib/urls';
+---
+
+<section class="bg-carbon py-16 md:py-24" aria-label="Delivery promise">
+  <div class="bg-grey-900">
+    <div class="container-ds section">
+      <div data-reveal data-reveal-index="0" class="max-w-4xl">
+        <h2 id="promise" class="text-display text-paper md:text-display-xl">
+          Live in <span class="promise-count tabular-nums">20</span> <em>working days</em>
+        </h2>
+        <p class="mt-4 max-w-xl text-body-sm text-text-on-dark-muted">
+          From complete content. Late content moves the launch date by the same
+          number of days. The days while a preview waits for your changes or
+          your go-live approval do not count.
+        </p>
+        <a href={withBase('/services')} class="link-dark mt-6 inline-block text-body-sm">
+          See what is included
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

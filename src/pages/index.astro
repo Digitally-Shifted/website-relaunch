@@ -1,51 +1,37 @@
 ---
 /*
- * Home (conversion spec 3.1): hero, services summary with four cards and
- * the Care plan panel, proof (Variant B "How we work"), closing band.
+ * Home — Phase 1 rebuild ("precision in motion", DIG-993 build spec).
  *
- * FINAL COPY: docs/copy/home-page-copy.md v1.1 (DIG-79/DIG-121/DIG-124).
- * Owner decisions of 2026-10-20 applied: prices removed (HC1), Launch
- * promise at 20 working days with the late-content and preview-pause
- * lines (HC2; pause added from MVP scope v5, DIG-603), softened
- * who-it-is-for (HC6), reply-time line under the closing button (HC7).
- * Logo strip stays parked (HC3/B1/B2). Production deploy waits for the
- * go-live decision on DIG-79.
+ * Eleven regions in DOM order (spec section 3): sticky header, hero,
+ * facts row, why us, services index, process, promise band, care plan,
+ * checklist teaser, closing CTA, footer. Grounds alternate by the D1
+ * layered-grounds rule; diagonal joins seat on the boundaries (D5).
  *
- * SEO: preserved values verbatim (DIG-101). No title suffix, full robots
- * directives, og image served from this host at the original 1904x901.
- * Exactly one H1: the old DOM repeated the phrase twice.
+ * Copy sources, shipped verbatim (spec section 10):
+ *   - Hero, process, care, teaser, closing: docs/copy/home-page-copy.md
+ *     approved copy, per spec sections 5.1, 5.5, 5.7, 5.8, 5.9.
+ *   - Why us (region 4): DIG-994 document `why-us-reframe-copy` slots
+ *     A-G, with the integration rulings from the build brief (slot F as
+ *     its own panel, slot G as the section CTA, no promise numeral in
+ *     this section, R2 kicker).
+ *   - Facts row and promise band: DIG-25 document `services` offer facts.
+ *
+ * SEO: preserved values verbatim (DIG-101). Exactly one H1, rendered
+ * once. Motion: CSS-only load choreography (6.1), scroll reveals (6.2),
+ * the promise count-up (6.3) and the logo sweep (6.4). Added JS stays
+ * under the 2 KB gz budget; zero React islands; zero new dependencies.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from '../components/PageHero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import Card from '../components/Card.astro';
 import CtaBand from '../components/CtaBand.astro';
+import DiagonalJoin from '../components/DiagonalJoin.astro';
+import FactsRow from '../components/home/FactsRow.astro';
+import WhyUs from '../components/home/WhyUs.astro';
+import ServiceIndex from '../components/home/ServiceIndex.astro';
+import PromiseBand from '../components/home/PromiseBand.astro';
+import CareBlock from '../components/home/CareBlock.astro';
+import ChecklistTeaser from '../components/home/ChecklistTeaser.astro';
 import { withBase } from '../lib/urls';
-
-const services = [
-  {
-    title: 'Website design and development',
-    body: 'We design and build your website around your customers and your goals. Fast pages, clear structure, and a site you can grow. You own the result, and we stay available to look after it. Right for your first website, or a rebuild of an old one. The once-off build is Launch: live in 20 working days from complete content. Late content moves the launch date by the same number of days. The days while a preview waits for your changes or your go-live approval do not count. You approve the quote before any work starts.',
-    href: '/services#web-design',
-  },
-  {
-    title: 'Hosting and management',
-    body: 'We host your site, keep its software current, and fix problems before visitors see them. Backups, updates, and security are our job, not your weekend. Your site stays fast and safe while you run your business. Take hosting and management on its own, or as part of the Care plan. Right if your site is live but nobody looks after it.',
-    href: '/services#hosting',
-  },
-  {
-    title: 'Care plan',
-    body: 'The monthly bundle. One price covers design, hosting, management, SEO basics, and small changes: the everyday edits your site needs. Your website stays current without a large upfront cost, and we keep improving it. No new quote every time something changes. Take it with a new build, or on its own.',
-    href: '/services#waas',
-  },
-  {
-    title: 'SEO and AIO',
-    body: 'Technical foundations, clear content, and steady improvement help the right people find you on Google. AIO extends that work to visibility in AI-generated answers. No tricks that put your domain at risk. Right if customers search for what you do, and they cannot find you.',
-    href: '/services#seo',
-  },
-];
-
-const covers = ['Design', 'Hosting', 'Management', 'SEO basics', 'Small changes'];
 
 const steps = [
   {
@@ -74,118 +60,123 @@ const steps = [
   ogImageHeight="901"
   ogImageAlt="Digitally Shifted digital marketing agency hero banner"
 >
-  <PageHero
-    eyebrow="Websites, hosting and SEO"
-    statement="Digital Marketing Agency South Africa"
-    opener="Digitally Shifted designs, builds, hosts, and manages websites for South African businesses, so new customers find you and contact you."
-    ctaHref="/contact?need=quote"
-    ctaLabel="Get a quote"
-    secondaryHref="/services"
-    secondaryLabel="See what is included"
-  />
+  <script is:inline slot="head">
+    /* Pre-paint motion flags (DIG-993 spec 6.2/6.4): the reveal system and
+       the logo sweep mount only on the home page. */
+    document.documentElement.classList.add('js-reveal', 'js-logo-sweep');
+  </script>
 
-  <section class="bg-carbon" aria-labelledby="what-we-do">
-    <div class="container-ds section">
-      <SectionHeader
-        id="what-we-do"
-        heading="What we do"
-        opener="Four services cover the whole life of your website. Buy a website once with Launch, and own it outright. Or put your website on the Care plan and let us run it for a monthly fee. Choose what you need today and add more later."
-      />
-      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {
-          services.map((service) => (
-            <Card title={service.title} interactive>
-              <p class="text-text-on-dark-muted">{service.body}</p>
-              <a
-                slot="action"
-                href={withBase(service.href)}
-                class="link-dark mt-4 inline-block text-body-sm"
-              >
-                {service.title}
-              </a>
-            </Card>
-          ))
-        }
-      </div>
-      <div class="feature-panel corner-cut-md mt-16">
-        <h3 id="care-plan" class="text-display text-paper">
-          One monthly plan. <em>Everything included.</em>
-        </h3>
-        <p class="mt-4 max-w-xl text-body-lg text-text-on-dark-muted">
-          The Care plan turns your website into a service we run for you. You never
-          touch the technical work. Your site stays current, and the cost stays
-          predictable.
+  <!-- Client motion scripts (DIG-993 spec 6.2/6.3): scroll reveals and the
+       promise count-up. Bundled by Astro, deferred, ~1.5 KB gz total. -->
+  <script>
+    import '../scripts/reveal';
+    import '../scripts/count-up';
+  </script>
+
+  <!-- Region 2: hero (spec 5.1). Carbon, grid background (D8) + grain
+       (D7), single-column statement. The H1 is the LCP element and is
+       server-rendered; the word choreography is pure CSS (spec 6.1). -->
+  <div class="grain relative overflow-hidden bg-carbon">
+    <div class="container-ds relative pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
+      <div class="grid-bg-12" aria-hidden="true"></div>
+      <div class="relative z-10 max-w-4xl">
+        <p class="shift-enter text-eyebrow uppercase text-text-on-dark-muted">
+          Websites, hosting and SEO
         </p>
-        <ul class="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-body text-paper">
-          {
-            covers.map((item) => (
-              <li class="flex items-center gap-2">
-                <span aria-hidden="true" class="text-accent">
-                  +
-                </span>
-                {item}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <p class="mt-4 max-w-xl text-body-sm text-text-on-dark-muted">
-        Need an online shop, a booking system, or a member area? Those are custom
-        builds, quoted per project. They sit outside the fixed Launch scope.
-      </p>
-      <div class="mt-10">
-        <a href={withBase('/contact?need=quote')} class="btn btn--primary" data-ds-location="content">
-          Get a quote
-        </a>
+        <h1 class="mt-6 text-display text-paper md:text-display-xl">
+          <span class="split-word" style="--word-i: 0">Digital</span>{' '}
+          <span class="split-word" style="--word-i: 1">Marketing</span>{' '}
+          <span class="split-word" style="--word-i: 2">Agency</span>{' '}
+          <em>
+            <span class="split-word" style="--word-i: 3">South</span>{' '}
+            <span class="split-word" style="--word-i: 4">Africa</span>
+          </em>
+        </h1>
+        <p
+          class="shift-enter mt-6 max-w-xl text-body-lg text-text-on-dark-muted"
+          style="--enter-delay: 360ms"
+        >
+          Digitally Shifted designs, builds, hosts, and manages websites for
+          South African businesses, so new customers find you and contact you.
+        </p>
+        <div class="shift-enter mt-10 flex flex-wrap items-center gap-x-8 gap-y-4" style="--enter-delay: 480ms">
+          <a href={withBase('/contact?need=quote')} class="btn btn--primary" data-ds-location="content">
+            Get a quote
+          </a>
+          <a href={withBase('/services')} class="link-dark text-body">See what is included</a>
+        </div>
       </div>
     </div>
-  </section>
+    <div class="container-ds">
+      <DiagonalJoin from="grey-700" tick />
+    </div>
+  </div>
 
+  <!-- Region 3: facts row (spec 5.2). -->
+  <FactsRow />
+
+  <!-- Region 4: why us (spec 5.3; DIG-994 slots A-G). -->
+  <WhyUs />
+
+  <!-- Region 5: services index (spec 5.4). -->
+  <ServiceIndex />
+
+  <!-- Region 6: process (spec 5.5, restyle in place, #how-we-work kept).
+       Mobile steps connect on a 1px grey-300 hairline; numerals are
+       informative and reveal with their step. -->
   <section class="bg-grey-100" aria-labelledby="how-we-work">
     <div class="container-ds section">
-      <SectionHeader
-        id="how-we-work"
-        dark={false}
-        heading="How we work"
-        opener="Your customers are already online. You do not have the time or the skill to run a website, and you should not have to. That is our job."
-      />
+      <div data-reveal data-reveal-index="0">
+        <SectionHeader
+          id="how-we-work"
+          dark={false}
+          eyebrow="Process"
+          heading="How we work"
+          opener="Your customers are already online. You do not have the time or the skill to run a website, and you should not have to. That is our job."
+        />
+      </div>
       <ol class="mt-12 grid gap-8 md:grid-cols-3">
         {
           steps.map((step, index) => (
-            <li>
-              <p class="text-h4 text-text-on-light">
-                <span aria-hidden="true" class="mr-2 text-text-on-light-muted">
-                  {index + 1}.
-                </span>
+            <li
+              data-reveal
+              data-reveal-index={index + 1}
+              class:list={[
+                'border-l border-grey-300 pl-6',
+                'md:border-l-0 md:pl-0',
+              ]}
+            >
+              <p class="text-display-xl tabular-nums text-text-on-light">{`0${index + 1}`}</p>
+              <p class="mt-4 text-h4 text-text-on-light">
                 <strong>{step.lead}</strong>
               </p>
-              <p class="mt-2 text-body-sm text-text-on-light-muted">{step.body}</p>
+              <p class="mt-2 max-w-[42rem] text-body-sm text-text-on-light-muted">{step.body}</p>
             </li>
           ))
         }
       </ol>
-      <div class="mt-16 grid gap-10 md:grid-cols-2">
-        <div>
-          <h3 class="text-h3 text-text-on-light">Who it is for</h3>
-          <p class="mt-3 text-body text-text-on-light-muted">
-            Owner-run South African businesses. If your customers find you
-            through Google and word of mouth, this is for you.
-          </p>
-        </div>
-        <div>
-          <h3 class="text-h3 text-text-on-light">One supplier</h3>
-          <p class="mt-3 text-body text-text-on-light-muted">
-            One supplier stays accountable for your whole website. When something
-            needs fixing, you do not chase three suppliers. You pay a predictable
-            monthly cost, not a large upfront sum. The technical work stays with
-            us.
-          </p>
-        </div>
-      </div>
+    </div>
+    <div class="container-ds">
+      <DiagonalJoin from="grey-300" />
     </div>
   </section>
 
+  <!-- Region 7: promise band (spec 5.6). -->
+  <PromiseBand />
+
+  <!-- Region 8: care plan (spec 5.7). -->
+  <CareBlock />
+
+  <!-- Region 9: checklist teaser (spec 5.8). -->
+  <ChecklistTeaser />
+
+  <!-- Region 10: closing CTA (spec 5.9). -->
   <CtaBand
+    id="closing-cta"
+    textured
+    grain
+    panelClass="bg-grey-900"
+    reveal
     heading={'Ready <em>when you are</em>'}
     line="Tell us what your business needs. We reply with a clear quote, and work starts only when you approve it."
     ctaHref="/contact?need=quote"

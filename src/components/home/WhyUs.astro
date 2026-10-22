@@ -1,0 +1,105 @@
+---
+/*
+ * Why us (DIG-993 spec 5.3 as ruled for the build): Paper ground,
+ * grey-50 supporting panels, D1 light layering, staggered reveal.
+ * Copy builds to DIG-994 document `why-us-reframe-copy` slots A-G
+ * (final, approved). Integration rulings applied:
+ *   - Slot F renders as its own small panel with the H3 `Who it is for`
+ *     above the verbatim line.
+ *   - Slot G is the section's one primary button, `data-ds-location`
+ *     per the spec CTA convention.
+ *   - The answer body carries no delivery promise (Creative Director
+ *     ruling, 2026-10-22) and ends with the approved R2 kicker.
+ * Numerals 01/02/03 are informative: read by screen readers, ink on
+ * paper, tabular numerals.
+ */
+import SectionHeader from '../SectionHeader.astro';
+import DiagonalJoin from '../DiagonalJoin.astro';
+import { withBase } from '../../lib/urls';
+
+const routes = [
+  {
+    numeral: '01',
+    name: 'The DIY builder',
+    line: 'A self-service tool. You design, write, launch, and maintain the site yourself.',
+  },
+  {
+    numeral: '02',
+    name: 'The freelancer',
+    line: 'A build, then a handover. Hosting, updates, and getting found on Google become yours to arrange.',
+  },
+  {
+    numeral: '03',
+    name: 'The agency',
+    line: 'A custom project. The work ends at launch, and the website is yours to run.',
+  },
+];
+---
+
+<section class="bg-paper" aria-labelledby="why-us">
+  <div class="container-ds section">
+    <!-- Slots A-C: eyebrow, statement (900/300 in one h2), opener. -->
+    <div data-reveal data-reveal-index="0">
+      <SectionHeader
+        id="why-us"
+        eyebrow="Why us"
+        dark={false}
+        heading="<strong>Build it yourself, brief a freelancer, or hire an agency.</strong> <em>All three leave the website work with you.</em>"
+        opener="Your customers are already online. You do not have the time or the skill to run a website, and you should not have to."
+      />
+    </div>
+
+    <!-- Slot D: three ruled rows, informative numerals. -->
+    <div class="mt-12">
+      {
+        routes.map((route, index) => (
+          <div
+            data-reveal
+            data-reveal-index={index + 1}
+            class:list={[
+              'grid gap-x-8 gap-y-2 border-t border-grey-200 py-8 md:grid-cols-[6rem_1fr] md:items-baseline',
+              index === routes.length - 1 && 'border-b border-grey-200',
+            ]}
+          >
+            <p class="text-display tabular-nums text-text-on-light">{route.numeral}</p>
+            <div>
+              <h3 class="text-h3 text-text-on-light">{route.name}</h3>
+              <p class="mt-2 max-w-[42rem] text-body text-text-on-light-muted">{route.line}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Slots E-F: answer panel and who-it-is-for panel (grey-50, D1). -->
+    <div data-reveal data-reveal-index="4" class="mt-12 grid gap-6 md:grid-cols-2">
+      <div class="border border-grey-200 bg-grey-50 p-8">
+        <h3 class="text-h3 text-text-on-light">The fourth option</h3>
+        <p class="mt-3 text-body text-text-on-light-muted">
+          One team designs, builds, hosts, and manages your website. The same
+          team stays accountable after launch. Start with Launch, the once-off
+          build. You approve the quote before any work starts. Then keep the
+          whole site on the Care plan for one monthly price. You run your
+          business. We run the website.
+        </p>
+      </div>
+      <div class="border border-grey-200 bg-grey-50 p-8">
+        <h3 class="text-h3 text-text-on-light">Who it is for</h3>
+        <p class="mt-3 text-body text-text-on-light-muted">
+          Owner-run South African businesses. If your customers find you
+          through Google and word of mouth, this is for you.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slot G: the section's one primary action. -->
+    <div class="mt-10">
+      <a href={withBase('/contact?need=quote')} class="btn btn--primary" data-ds-location="content">
+        Get a quote
+      </a>
+    </div>
+  </div>
+  <div class="container-ds">
+    <DiagonalJoin from="grey-300" />
+  </div>
+</section>

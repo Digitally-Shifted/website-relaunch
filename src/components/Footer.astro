@@ -1,10 +1,13 @@
 ---
 /*
- * Footer (DESIGN-SPEC 4.2): Ink ground, hairline top border, vertical
- * lockup with tagline, nav columns at body-sm, legal line at caption size.
- * The contact block keeps all four routes always visible (conversion
- * spec 2.2). The build marker block is the DIG-64 staging verification
- * contract: the deploy check greps for "Deployed build".
+ * Footer (DESIGN-SPEC 4.2; DIG-993 spec 4.3): Ink ground, hairline top
+ * border. Order: monumental wordmark row (static; the marquee motion is
+ * not built in Phase 1), then the nav and contact columns with hairline
+ * column dividers, then the legal line. The contact block keeps all four
+ * routes always visible (conversion spec 2.2); the brand column keeps
+ * its description line so the page carries no second wordmark. The
+ * build marker block is the DIG-64 staging verification contract: the
+ * deploy check greps for "Deployed build".
  */
 import { nav, site } from '../lib/site.config';
 import { withBase } from '../lib/urls';
@@ -14,23 +17,25 @@ const year = new Date().getFullYear();
 
 <footer class="border-t border-grey-800 bg-ink text-text-on-dark">
   <div class="container-ds section">
-    <div class="grid gap-12 md:grid-cols-[minmax(0,20rem)_1fr]">
+    <!-- Monumental wordmark row (static in Phase 1, DIG-993 spec 4.3). -->
+    <img
+      src={withBase('/brand/logo/ds-lockup-horizontal-compact-paper.svg')}
+      alt="Digitally Shifted"
+      width="245"
+      height="31"
+      class="h-auto w-full max-w-2xl"
+    />
+
+    <div class="mt-12 grid gap-12 md:grid-cols-[minmax(0,20rem)_1fr]">
       <div>
-        <img
-          src={withBase('/brand/logo/ds-lockup-vertical-paper.svg')}
-          alt={`Digitally Shifted — ${site.tagline}`}
-          width="200"
-          height="28"
-          class="h-auto w-48"
-        />
-        <p class="mt-6 text-body-sm text-text-on-dark-muted">
+        <p class="text-body-sm text-text-on-dark-muted">
           Websites that work hard for South African businesses. Designed, hosted
           and managed by one team.
         </p>
       </div>
 
-      <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
-        <nav aria-label="Footer">
+      <div class="grid gap-12 sm:grid-cols-2 md:divide-x md:divide-grey-800 lg:grid-cols-3">
+        <nav aria-label="Footer" class="md:pr-12">
           <h2 class="text-eyebrow uppercase text-grey-400">Site</h2>
           <ul class="mt-4 space-y-2">
             {
@@ -64,7 +69,7 @@ const year = new Date().getFullYear();
           </ul>
         </nav>
 
-        <div>
+        <div class="md:px-12">
           <h2 class="text-eyebrow uppercase text-grey-400">Contact</h2>
           <ul class="mt-4 space-y-2">
             <li>

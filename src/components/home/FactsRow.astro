@@ -1,0 +1,54 @@
+---
+/*
+ * Facts row (DIG-993 spec 5.2). Three board-approved facts in named
+ * columns; offer facts from DIG-25 document `services` (rev 7, 2026-10-22).
+ * Facts stay at body size (DIG-153 data-moments rule) — the monumental
+ * promise treatment lives in the promise band. Prices use tabular
+ * numerals and spaced thousands per the approved brand voice.
+ *
+ * Markup: a description list keeps each label bound to its value and
+ * support line without adding heading levels to the page outline.
+ */
+import DiagonalJoin from '../DiagonalJoin.astro';
+---
+
+<section id="facts" class="bg-grey-900" aria-label="Delivery promise and price bands">
+  <div class="container-ds section">
+    <dl data-reveal data-reveal-index="0" class="md:grid md:grid-cols-3 md:divide-x md:divide-grey-800">
+      <div class="border-t border-grey-800 p-8 md:border-t-0 md:px-8 md:py-0 md:first:pl-0 md:last:pr-0">
+        <dt class="text-eyebrow uppercase text-text-on-dark-muted">Delivery promise</dt>
+        <dd class="mt-3 text-body-lg font-semibold text-paper">
+          Live in 20 working days from complete content.
+        </dd>
+        <dd class="mt-2 text-body-sm text-text-on-dark-muted">
+          Late content moves the launch date by the same number of days. The days
+          while a preview waits for your changes or your go-live approval do not
+          count.
+        </dd>
+      </div>
+      <div class="border-t border-grey-800 p-8 md:border-t-0 md:px-8 md:py-0 md:first:pl-0 md:last:pr-0">
+        <dt class="text-eyebrow uppercase text-text-on-dark-muted">Launch, once-off</dt>
+        <dd class="mt-3 text-body-lg font-semibold text-paper tabular-nums">
+          R12 000–R50 000 per project.
+        </dd>
+        <dd class="mt-2 text-body-sm text-text-on-dark-muted">
+          You approve the quote before any work starts.
+        </dd>
+      </div>
+      <div class="border-t border-grey-800 p-8 md:border-t-0 md:px-8 md:py-0 md:first:pl-0 md:last:pr-0">
+        <dt class="text-eyebrow uppercase text-text-on-dark-muted">Care plan, monthly</dt>
+        <dd class="mt-3 text-body-lg font-semibold text-paper tabular-nums">
+          R1 000–R6 000 per month.
+        </dd>
+        <dd class="mt-2 text-body-sm text-text-on-dark-muted">
+          Hosting, management, SEO basics, and changes and new pages in one
+          monthly price, under our fair usage policy. Includes remote email
+          support.
+        </dd>
+      </div>
+    </dl>
+  </div>
+  <div class="container-ds">
+    <DiagonalJoin from="grey-700" />
+  </div>
+</section>
