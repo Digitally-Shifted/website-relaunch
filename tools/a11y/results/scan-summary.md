@@ -1,6 +1,6 @@
-# Automated scan — 2026-10-22T19:52:05.064Z
+# Automated scan — 2026-10-22T21:38:51.379Z
 
-Base URL: http://127.0.0.1:4173 · Pages: 15 · axe rule hits: 0 · HTML errors: 0
+Base URL: http://localhost:4173 · Pages: 15 · axe rule hits: 0 · HTML errors: 0
 
 ## home (/) — HTTP 200
 
@@ -18,16 +18,16 @@ Base URL: http://127.0.0.1:4173 · Pages: 15 · axe rule hits: 0 · HTML errors:
 ## about (/about/) — HTTP 200
 
 ### 375px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 10 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 10 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 10 node(s)
 
 ### 1920px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 10 node(s)
 ## services-hub (/services/) — HTTP 200
 
 ### 375px · default — 0 rule hits, 1 needs review

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-22T19:52:05.064Z",
-  "baseUrl": "http://127.0.0.1:4173",
+  "generatedAt": "2026-10-22T21:38:51.379Z",
+  "baseUrl": "http://localhost:4173",
   "tags": [
     "wcag2a",
     "wcag2aa",
@@ -368,38 +368,68 @@
               "nodes": [
                 {
                   "target": [
-                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                    ".text-text-on-dark-muted.shift-enter.text-eyebrow"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
-                    "h1"
+                    "h1 > .split-word:nth-child(1)"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
                 },
                 {
                   "target": [
-                    "h1 > em"
+                    ".split-word:nth-child(2)"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(3)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(4)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    "em > .split-word"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(6)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(7)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
                     ".text-body-lg.max-w-xl.text-text-on-dark-muted"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
                     ".link-dark.text-body[href$=\"services\"]"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 }
               ]
             }
           ],
-          "passCount": 41
+          "passCount": 42
         },
         {
           "width": 768,
@@ -429,38 +459,68 @@
               "nodes": [
                 {
                   "target": [
-                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                    ".text-text-on-dark-muted.shift-enter.text-eyebrow"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
-                    "h1"
+                    "h1 > .split-word:nth-child(1)"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
                 },
                 {
                   "target": [
-                    "h1 > em"
+                    ".split-word:nth-child(2)"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(3)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(4)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    "em > .split-word"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(6)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(7)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
                     ".text-body-lg.max-w-xl.text-text-on-dark-muted"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
                     ".link-dark.text-body[href$=\"services\"]"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 }
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 38
         },
         {
           "width": 1280,
@@ -490,38 +550,68 @@
               "nodes": [
                 {
                   "target": [
-                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                    ".text-text-on-dark-muted.shift-enter.text-eyebrow"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
-                    "h1"
+                    "h1 > .split-word:nth-child(1)"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
                 },
                 {
                   "target": [
-                    "h1 > em"
+                    ".split-word:nth-child(2)"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(3)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(4)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    "em > .split-word"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(6)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(7)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
                     ".text-body-lg.max-w-xl.text-text-on-dark-muted"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
                     ".link-dark.text-body[href$=\"services\"]"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 }
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 38
         },
         {
           "width": 1920,
@@ -551,38 +641,68 @@
               "nodes": [
                 {
                   "target": [
-                    ".text-text-on-dark-muted.text-eyebrow.uppercase"
+                    ".text-text-on-dark-muted.shift-enter.text-eyebrow"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
-                    "h1"
+                    "h1 > .split-word:nth-child(1)"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
                 },
                 {
                   "target": [
-                    "h1 > em"
+                    ".split-word:nth-child(2)"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(3)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(4)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    "em > .split-word"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(6)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+                },
+                {
+                  "target": [
+                    ".split-word:nth-child(7)"
+                  ],
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
                     ".text-body-lg.max-w-xl.text-text-on-dark-muted"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 },
                 {
                   "target": [
                     ".link-dark.text-body[href$=\"services\"]"
                   ],
-                  "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+                  "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
                 }
               ]
             }
           ],
-          "passCount": 37
+          "passCount": 38
         }
       ]
     },
@@ -1125,7 +1245,7 @@
               ]
             }
           ],
-          "passCount": 42
+          "passCount": 41
         },
         {
           "width": 768,
@@ -1180,7 +1300,7 @@
               ]
             }
           ],
-          "passCount": 38
+          "passCount": 37
         },
         {
           "width": 1280,
@@ -1235,7 +1355,7 @@
               ]
             }
           ],
-          "passCount": 38
+          "passCount": 37
         },
         {
           "width": 1920,
@@ -1290,7 +1410,7 @@
               ]
             }
           ],
-          "passCount": 38
+          "passCount": 37
         }
       ]
     },
