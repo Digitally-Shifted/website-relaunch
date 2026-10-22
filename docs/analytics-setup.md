@@ -49,11 +49,28 @@ in this file. Fill each row during setup.
 | Item | Value | Set by |
 | --- | --- | --- |
 | GA4 property name | Digitally Shifted — digitallyshifted.com | route A agent, or human, step 3.1 |
-| GA4 property ID | `TO FILL — format 123456789` | route A agent, or human, step 3.1 |
-| Web data stream ID | `TO FILL — format 1234567890` | route A agent, or human, step 3.2 |
-| Measurement ID | `TO FILL — format G-XXXXXXXXXX` | route A agent, or human, step 3.2 |
-| Search Console property | Domain property `digitallyshifted.com` | route A agent, or human, step 4.1 |
-| Search Console verification | DNS TXT record at the registrar | human, step 4.2 |
+| GA4 property ID | `559909520` | agent, 2026-10-21 (Route D) |
+| Web data stream ID | `16173008721` | agent, 2026-10-21 (Route D) |
+| Measurement ID | `G-QEC7TYQY6F` | agent, 2026-10-21 (Route D) |
+| Search Console property | Domain property `sc-domain:digitallyshifted.com` | exists; verified owner: accounts@digitallyshifted.com |
+| Search Console verification | already verified (long-standing; no new DNS step) | — |
+| GitHub variable `PUBLIC_GA4_ID` | `G-QEC7TYQY6F` (set 2026-10-21) | agent; picked up by the 2026-10-22 staging build after the workflow fix (commit `721cd9c`) |
+
+Google Cloud project: `digitally-shifted`. Service account:
+`ds-analytics-agent@digitally-shifted.iam.gserviceaccount.com`. APIs enabled:
+Analytics Admin, Search Console, Site Verification. The GA4 Editor grant for
+the service account is active at account level (verified 2026-10-22). The
+2026-10-21 key download was lost in the server crash. A new key was created
+on 2026-10-22 and proposed through the Paperclip secret pathway
+(`google/accounts-sa-key` → `access.google_accounts_sa`, proposals
+`18fb4cf9` + `a9a74d29`). Board approval of the two cards activates API
+access. The old active key `b93ebb83…4999b6c` (2026-10-21) has no known
+private-key copy; the owner may delete it in the console Keys tab.
+
+The workflows read `vars.PUBLIC_GA4_ID` (a repository **variable**, not a
+secret; commit `721cd9c`, 2026-10-22). The value ships in page HTML, so a
+variable is the correct store. Keep the two stores in mind when changing
+build inputs: `secrets.*` and `vars.*` are separate GitHub stores.
 
 Put the measurement ID into the site config when the site code exists.
 Do not put any other Google credential in this repository.
@@ -73,17 +90,23 @@ Status 2026-10-18: the external provider route (Composio) was offered and
 declined. The answer was `None for now` for Google Analytics and for Search
 Console. Do not reconnect it unless the owner asks.
 
-Status 2026-10-20: the owner picked the secret store for key delivery and
-asked for an assisted browser session (the agent opens the window; the owner
-signs in). The agent run that day had no browser tool, so the assisted
-session could not start. A guided walk-through for Route A went out on the
-issue instead. If the browser tool is enabled for this agent later, the
-agent can drive the window while the owner signs in; that mode needs no key
-for the setup itself (Route C below).
+Status 2026-10-20: the owner picked the secret store for key delivery, and
+then chose an assisted browser session. The agent opened the managed
+window, but Google refused the sign-in in it: "This browser or app may not
+be secure". That block is part of the Google account protection against
+automated browsers. The agent does not bypass it. Route C is closed.
 
-Two routes remain.
+Status 2026-10-21: the owner picked Route D (attach to their own browser).
+The agent launched the machine's own Chromium with a debug port and a
+dedicated profile. Google served the normal sign-in page in it, and the
+sign-in completed. At 11:46 the browser was inside analytics.google.com.
+The 12:00 memory outage crashed that browser. The profile keeps the
+sign-in, so a relaunch continues without a new sign-in. Route D is the
+active route. Route A stays the fallback if Google refuses this window too.
 
-**Route A — service account key through the secret pathway (active).** A
+Three routes remain.
+
+**Route A — service account key through the secret pathway (fallback).** A
 google service account works through the Google APIs. The key reaches this
 agent only through the Paperclip secret pathway. No key value ever lands in a
 comment, document, or this file.
@@ -116,14 +139,94 @@ email as a delegated owner in Search Console (Settings, then Users).
 3.4 and section 4 in the browser and sends the three IDs. The steps below work
 without any connection or key.
 
-**Route C — assisted browser session (not available on 2026-10-20).** The
-agent opens a browser window and drives sections 3.1 to 3.4 and 4 while the
-owner signs in inside that window. No key is needed for the setup itself.
-The agent run on 2026-10-20 had no browser tool, so this route needs the
-browser tool enabled for agent runs first.
+**Route C — assisted browser session (closed 2026-10-20).** The agent opens
+a managed browser window and drives the setup while the owner signs in
+inside that window. On 2026-10-20 Google refused the sign-in in the managed
+browser with "This browser or app may not be secure". The block protects
+the account against automated browsers. The agent does not bypass it. Do
+not retry this route in a managed browser.
 
-Follow 3.1 to 3.4 for both routes. Route A runs them through the APIs.
-Route B runs them in the browser.
+**Route D — attach to the owner's own browser (active).** The agent starts
+the machine's own Chromium with a remote-debugging port and a dedicated
+profile directory. The window is a normal headed browser with no automation
+flags, so Google treats it as a normal browser. The owner signs in inside
+that window and types the password and the verification code. The agent
+attaches to the debug port and drives the setup steps. The owner types all
+credentials; the agent never sees them.
+
+Launch record 2026-10-21:
+
+- Binary: `/usr/bin/chromium` (Chromium 154.0.8037.97, Arch package).
+- Profile: `/home/baruch/.ds-debug-profile` (dedicated; not the owner's
+  normal browser profile, so no personal tabs or stored passwords exist in
+  the window).
+- Debug port: `127.0.0.1:9222` (localhost only; the agent reaches the port
+  only on this machine, hostname `cachyos-x8664`).
+- Flags: `--user-data-dir`, `--remote-debugging-port=9222`,
+  `--password-store=basic`, `--no-first-run`, `--no-default-browser-check`,
+  `--start-maximized`. No `--enable-automation`, no headless mode.
+- Start page: Google sign-in with continue to console.cloud.google.com.
+- Result: the normal sign-in page loaded (no security block), and the
+  sign-in completed.
+
+Manual relaunch command, if the window is closed:
+
+```sh
+chromium --user-data-dir="$HOME/.ds-debug-profile" \
+  --remote-debugging-port=9222 --password-store=basic --no-first-run \
+  --no-default-browser-check \
+  "https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Fconsole.cloud.google.com%2F"
+```
+
+Rules for Route D:
+
+1. The owner types all credentials in the window. The agent never sees or
+   stores them.
+2. Do not close the window while the setup runs.
+3. While the agent is attached, it can see the tabs of that window. Keep
+   personal browsing out of that window.
+4. The agent attaches and then drives: project create, the three API
+   enables, service account and JSON key, GA4 property and stream, Editor
+   grant, Search Console insert and verification token.
+5. If Google refuses this window too, close it and use Route A.
+
+Status 2026-10-21 (continuation): the Route D sign-in survived the 12:00
+server restart. The agent relaunched the same profile, reattached on port
+9222, and completed the setup through the browser.
+
+Status 2026-10-22: the profile folder survived (`.ds-debug-profile`); a
+relaunch and reattach needed no new sign-in. Completed in that window: the
+five key-event marks (3.4), verification that the GA4 Editor grant for the
+service account is already active, and the new service account key delivery
+through the Paperclip secret pathway. The GSC delegated-owner step waits on
+the binding approval (the old verification-home UI retired; use the Site
+Verification API afterwards).
+
+The 2026-10-21 session had already done: project `digitally-shifted`, the
+three APIs, service account, GA4 account and property, web data stream,
+measurement ID, `PUBLIC_GA4_ID` variable, live DebugView test with all five
+events. Open items (state 2026-10-22):
+
+- ~~Key-event marks for the five events~~ — done 2026-10-22 (step 3.4).
+- ~~Service account key~~ — new key created 2026-10-22 and proposed through
+  the Paperclip secret pathway (`google/accounts-sa-key`, config path
+  `access.google_accounts_sa`). Board approval of the two cards (proposals
+  `18fb4cf9` + `a9a74d29`) activates it. Then delete the old orphaned key
+  `b93ebb83…` in the console Keys tab.
+- ~~GA4 Editor grant~~ — already active (verified 2026-10-22).
+- Search Console delegated owner for the service account — optional. The
+  users dialog rejects the service account email and the old
+  verification-home UI retired. Do it through the Site Verification API once
+  the key binding is approved.
+
+Known UI quirk for Route D runs: Google panel dialogs can render off-screen
+or need a horizontal scroll on this dual-monitor setup. If a click does
+nothing, screenshot first, scroll the panel header, and click at the visible
+position.
+
+Follow 3.1 to 3.4 for every route. Route D runs them in the attached
+window. Route A runs them through the APIs. Route B runs them in the
+owner's browser.
 
 ### 3.1 Create the property
 
@@ -153,19 +256,22 @@ Route B runs them in the browser.
 
 ### 3.4 Key events
 
-The module sends five events that count conversions. Mark each one as a key event.
+Done 2026-10-22. All five events are registered and marked as key events in
+GA4 (Admin → Data display → Events → Key events tab, filled stars;
+evidence `/tmp/DIG-65/key-events-marked.png`). Each was created through
+"Create event" with a never-matching page condition (`URL contains
+__ds-no-match-000__`), so only the module's own events fire under these
+names; the mark applies by event name. `purchase` was left unmarked on
+purpose.
 
-1. Open Admin, then Events.
-2. Wait for the test visit in section 7. New events appear in this list.
-3. Put each of these event names in the Mark as key event column:
-   `contact_form_submit`, `quote_request`, `call_click`, `whatsapp_click`,
-   `generate_lead`.
+To change a mark later: Admin → Data display → Events → Key events tab.
 
 ## 4. Search Console
 
 Route A: the agent inserts the site through the Site Verification API and
 supplies the verification token. The human places the DNS record (step 4.2).
-Route B: the owner does all steps in the browser.
+Route B: the owner does all steps in the browser. Route D: the agent drives
+the steps in the attached window.
 
 ### 4.1 Create the property
 
@@ -239,6 +345,17 @@ the site project. Do not edit the event names.
 Consent defaults: `analytics_storage` granted, ads signals denied. Set the
 `analyticsConsent` option to `denied` only for a client in a region that needs it.
 
+### 6.1 Repository state (own site)
+
+- `main` carries the module, the `BaseLayout` boot, and this doc. Do **not**
+  merge `analytics/dig-65-conversion-tracking` or `analytics/dig-65-route3`:
+  both branches are stale (based on the early scaffold `de86e4f`) and a merge
+  would delete the current site build. Delete them after this issue closes.
+- Staging (GitHub Pages) deploys on every push to `main` and runs the offline
+  analytics tests first (`npm run test:analytics`).
+- The production release is gated (`.github/workflows/deploy-production.yml`);
+  it reads the same `vars.PUBLIC_GA4_ID`.
+
 ## 7. How to check the setup
 
 ### 7.1 Offline event test (done)
@@ -256,23 +373,49 @@ API, `page_view`, and input validation.
 
 Run this test after each change to the module.
 
-### 7.2 Live DebugView test (waits on the GA4 property)
+### 7.2 Live DebugView test (done 2026-10-21)
 
-Do this after step 3 creates the property. A pass needs the real Measurement ID
-and a visible DebugView entry. Do not record a pass without DebugView.
+Done on 2026-10-21 against the real property. The harness ran with the real
+measurement ID and debug mode. DebugView (Debug Device) showed, in one
+visit: `page_view`, `session_start`, `first_visit`, `scroll`,
+`contact_form_submit`, `generate_lead` (contact), `quote_request`,
+`generate_lead` (quote), `call_click`, `whatsapp_click`. Evidence:
+`/tmp/DIG-65/debugview-all-events.png`.
+
+Do this again after any change to the module:
 
 1. Open a terminal in the `analytics/test` folder.
-2. Start a local web server: `python3 -m http.server 8901`.
-3. Open `http://localhost:8901/live-harness.html?id=G-XXXXXXXXXX` in a browser.
-   Use the real Measurement ID.
+2. Start a local web server from the `analytics` folder:
+   `python3 -m http.server 8901`. The harness loads `../ds-analytics.js`,
+   so serve the `analytics` folder, not `analytics/test`.
+3. Open `http://localhost:8901/test/live-harness.html?id=G-QEC7TYQY6F` in a
+   browser.
 4. Open GA4, then Admin, then DebugView, in a second tab.
 5. Click each button once: contact form, quote form, call link, WhatsApp link.
 6. Watch each event land in DebugView. Check the parameters of each event.
 7. Record each result in the test record, section 8.
 8. The harness sends hits with `debug_mode: true`. Real traffic does not use
-   DebugView. This does not change the event names or parameters.
+   DebugView. This does not change the event names or parameters. Debug hits
+   do not appear in the events list, so key-event marks need the production
+   test in 7.3.
 
-### 7.3 Production checks (waits on the live site)
+### 7.3 Staging checks (done 2026-10-22)
+
+The staging build (commit `721cd9c`) serves the module with the real ID.
+Verified with a live visit to
+`https://digitally-shifted.github.io/website-relaunch/`:
+
+1. `page_view`: `POST google-analytics.com/g/collect` → 204, `tid=G-QEC7TYQY6F`,
+   `gcs=G101` (analytics granted), `npa=1` (ads denied). PASS.
+2. Footer `tel:` click: collect → 204, `en=call_click`, `ep.location=footer`. PASS.
+3. Footer `wa.me` click: dataLayer records `whatsapp_click`; collect leaves the page. PASS.
+4. Module state: `window.DSAnalytics.ready === true`, measurement ID set. PASS.
+5. Form leads were NOT tested on staging by design: a staging submit creates a
+   real `generate_lead` in reports. The full lead chain (form → `lead_ok`
+   cookie → thank-you → two lead events) was proven in DebugView (7.2) and
+   repeats in the production checks below.
+
+### 7.4 Production checks (waits on the live site)
 
 1. Load the live site. Open the browser network tools. Filter on `google-analytics.com/collect`.
 2. Check that a collect request appears on page load.
@@ -293,11 +436,18 @@ and a visible DebugView entry. Do not record a pass without DebugView.
 | `call_click` | Offline runner | 2026-10-18 | PASS (queued hit correct) |
 | `whatsapp_click` | Offline runner | 2026-10-18 | PASS (queued hit correct) |
 | `page_view` | Offline runner | 2026-10-18 | PASS (queued hit correct) |
-| `contact_form_submit` | DebugView | PENDING | waits on GA4 property (step 3) |
-| `quote_request` | DebugView | PENDING | waits on GA4 property (step 3) |
-| `call_click` | DebugView | PENDING | waits on GA4 property (step 3) |
-| `whatsapp_click` | DebugView | PENDING | waits on GA4 property (step 3) |
-| all events on live site | Realtime + collect | PENDING | waits on site deploy (DIG-15, DIG-64) |
+| `contact_form_submit` | DebugView | 2026-10-21 | PASS (landed 12:28:54 with `form_location`) |
+| `generate_lead` (contact) | DebugView | 2026-10-21 | PASS (landed 12:28:55 with `form_type`) |
+| `quote_request` | DebugView | 2026-10-21 | PASS (landed 12:29:03) |
+| `generate_lead` (quote) | DebugView | 2026-10-21 | PASS (landed 12:29:02) |
+| `call_click` | DebugView | 2026-10-21 | PASS (landed 12:29:19) |
+| `whatsapp_click` | DebugView | 2026-10-21 | PASS (landed 12:29:25) |
+| key-event marks (all five) | GA4 Admin → Events → Key events tab | 2026-10-22 | PASS (five stars set; `purchase` left unmarked) |
+| `page_view` on staging | collect beacon | 2026-10-22 | PASS (204, `tid=G-QEC7TYQY6F`, `gcs=G101`, `npa=1`) |
+| `call_click` on staging | collect beacon after footer `tel:` click | 2026-10-22 | PASS (204, `en=call_click`, `ep.location=footer`) |
+| `whatsapp_click` on staging | dataLayer + collect after footer `wa.me` click | 2026-10-22 | PASS (event recorded, beacon leaves page) |
+| module boot on staging | `window.DSAnalytics` state | 2026-10-22 | PASS (`ready=true`, real ID set) |
+| all events on live site | Realtime + collect | PENDING | waits on the production release (go-live, DIG-20 / §7.4) |
 
 Issue DIG-65 is complete when every PENDING row becomes PASS.
 
@@ -337,12 +487,15 @@ Engagement, then Events. Set the date range to 7 days. Read the key event counts
 
 Before go-live, confirm each row:
 
-- [ ] GA4 property and stream created. IDs recorded in section 2.
+- [x] GA4 property and stream created. IDs recorded in section 2.
 - [ ] Tracking module live on the production site with the real Measurement ID.
-- [ ] DebugView test passed. All four events recorded in section 8.
-- [ ] Key events marked in GA4 (step 3.4).
-- [ ] Search Console verified through DNS. Sitemap submitted.
-- [ ] Weekly report built and scheduled.
+- [x] DebugView test passed. All five events recorded in section 8.
+- [x] Key events marked in GA4 (step 3.4, done 2026-10-22, before first production traffic).
+- [x] Search Console verified (long-standing). Sitemap submitted and succeeding.
+- [ ] Weekly report built and scheduled (recipe in section 9.2).
+- [x] `PUBLIC_GA4_ID` flows into builds (workflow fix `721cd9c`; staging verified 2026-10-22).
+- [ ] Service account key binding approved in Paperclip (proposals `18fb4cf9` + `a9a74d29`). Optional: unlocks unattended API reports and GSC data pulls.
+- [ ] Search Console delegated owner for the service account. Optional: the users dialog rejects service-account emails and the old verification-home UI retired; do it later through the Site Verification API once the key binding is approved.
 
 Keep this document current. When the setup changes, change this file in the
 same pull request.
