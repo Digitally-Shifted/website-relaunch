@@ -4,7 +4,7 @@ This document is the measurement baseline for the relaunch of digitallyshifted.c
 It is also the standard baseline for future client sites. Copy this file into a
 new client project and fill the IDs table.
 
-Status on 2026-10-18:
+Status on 2026-10-22:
 
 - Tracking code and event layer: done and tested. See `analytics/ds-analytics.js`.
 - Loader installed on every page (DIG-91): `BaseLayout` loads the module
@@ -14,14 +14,16 @@ Status on 2026-10-18:
   two-signal lead conversions from `docs/conversion-spec.md` section 7.2;
   the form (DIG-69) writes `sessionStorage.lead_pending` and the server
   sets the `lead_ok` cookie.
-- GA4 property and data stream: waits on a person with Google account access.
-  The steps are below. Fill the IDs table after creation.
-- Search Console verification: waits on domain DNS access.
-- Weekly report: recipe below. Build it after the GA4 property exists.
-- Live event test: waits on the GA4 property. The offline event test passed.
+- GA4 property and stream: done (IDs in section 2). Staging verified.
+- Search Console: domain property verified; sitemap submitted.
+- Weekly report: built and scheduled (Monday 08:00 SAST email, first send
+  2026-10-26).
+- Service account API access: active and verified (section 3.0.1). GA4 and
+  Search Console automation can run through the bound key.
 - Owner decision 2026-10-18: the site launches with analytics dormant (no
   measurement ID at build). Enable it in a patch release with the steps in
   section 2 and `docs/go-live-runbook.md` step 8.
+- Remaining: the production checks (section 7.5) at go-live (DIG-20).
 
 Issue: DIG-65. Related: DIG-20 (go-live checklist), DIG-66 (lead capture spec).
 
@@ -59,12 +61,12 @@ in this file. Fill each row during setup.
 Google Cloud project: `digitally-shifted`. Service account:
 `ds-analytics-agent@digitally-shifted.iam.gserviceaccount.com`. APIs enabled:
 Analytics Admin, Search Console, Site Verification. The GA4 Editor grant for
-the service account is active at account level (verified 2026-10-22). The
-2026-10-21 key download was lost in the server crash. A new key was created
-on 2026-10-22 and proposed through the Paperclip secret pathway
-(`google/accounts-sa-key` → `access.google_accounts_sa`, proposals
-`18fb4cf9` + `a9a74d29`). Board approval of the two cards activates API
-access. The old active key `b93ebb83…4999b6c` (2026-10-21) has no known
+the service account is active at account level (verified 2026-10-22).
+API access is active: the board approved secret `google/accounts-sa-key`
+(secret ref `5aa50bc4`) and its binding to this agent at
+`access.google_accounts_sa` (binding proposal `8a2b0ae0`, executed
+2026-10-22). The key passed the end-to-end API check on 2026-10-22
+(section 3.0.1). The old key `b93ebb83…4999b6c` (2026-10-21) has no known
 private-key copy; the owner may delete it in the console Keys tab.
 
 The workflows read `vars.PUBLIC_GA4_ID` (a repository **variable**, not a
@@ -205,24 +207,69 @@ Verification API afterwards).
 The 2026-10-21 session had already done: project `digitally-shifted`, the
 three APIs, service account, GA4 account and property, web data stream,
 measurement ID, `PUBLIC_GA4_ID` variable, live DebugView test with all five
-events. Open items (state 2026-10-22):
+events. Closed items (all done by 2026-10-22):
 
 - ~~Key-event marks for the five events~~ — done 2026-10-22 (step 3.4).
-- ~~Service account key~~ — new key created 2026-10-22 and proposed through
-  the Paperclip secret pathway (`google/accounts-sa-key`, config path
-  `access.google_accounts_sa`). Board approval of the two cards (proposals
-  `18fb4cf9` + `a9a74d29`) activates it. Then delete the old orphaned key
-  `b93ebb83…` in the console Keys tab.
+- ~~Service account key~~ — key created 2026-10-22, delivered through the
+  Paperclip secret pathway, approved by the board, and bound to this agent
+  at `access.google_accounts_sa` (secret ref `5aa50bc4`, binding `8a2b0ae0`
+  executed 2026-10-22; see section 3.0.1).
 - ~~GA4 Editor grant~~ — already active (verified 2026-10-22).
-- Search Console delegated owner for the service account — optional. The
-  users dialog rejects the service account email and the old
-  verification-home UI retired. Do it through the Site Verification API once
-  the key binding is approved.
+- ~~Search Console access for the service account~~ — active. The
+  Search Console API returns the domain property with `siteFullUser`
+  permission (verified 2026-10-22 through the bound key), so the
+  delegated-owner step is not needed.
+- Optional owner step: delete the old orphaned key `b93ebb83…4999b6c` in
+  the console Keys tab.
 
 Known UI quirk for Route D runs: Google panel dialogs can render off-screen
 or need a horizontal scroll on this dual-monitor setup. If a click does
 nothing, screenshot first, scroll the panel header, and click at the visible
 position.
+
+### 3.0.1 API access through the bound service account (active)
+
+The board approved the key and its binding, so unattended Google API work
+runs now. The setup:
+
+- Paperclip stores the key as company secret `google/accounts-sa-key`
+  (secret ref `5aa50bc4`). The binding gives this agent read access at the
+  config path `access.google_accounts_sa`.
+- The agent reads the value at run time through the secret API
+  (`POST /api/agents/me/secrets/accounts-sa-key/value`), uses it in memory
+  or in a `0600`-permission temp file, and shreds the copies after use. The
+  value never lands in a comment, document, log, or this repository.
+
+Token exchange pattern (works for the GA4 and Search Console APIs):
+
+1. Build a RS256 JWT. Claims: `iss` is the service account email, `aud` is
+   `https://oauth2.googleapis.com/token`, plus `iat`, `exp` (about
+   50 minutes), and `scope`. Sign it with the key's `private_key`.
+2. POST the assertion to the token endpoint with the same scope.
+3. Use the returned `access_token` as the bearer token.
+
+Scopes in use (read-only): `analytics.admin.readonly` (property and stream
+settings), `analytics.readonly` (report data for the weekly report),
+`webmasters.readonly` (Search Console). Write scopes exist when needed; the
+GA4 Editor grant covers them.
+
+Known quirk: the token endpoint sometimes answers `200` with only an
+`id_token` and no `access_token`. The cause sits on Google's side and is
+transient. Retry the same exchange up to five times with a short wait; a
+later response carries the access token.
+
+Verified on 2026-10-22 with the bound key (temp files shredded after the
+run; no values printed):
+
+- GA4 Admin API: property `559909520` returns `Digitally Shifted —
+  digitallyshifted.com`, time zone `Africa/Johannesburg`, currency `ZAR`.
+- GA4 Admin API: stream `16173008721`, measurement ID `G-QEC7TYQY6F`,
+  default URI `https://digitallyshifted.com`.
+- Search Console API: `sc-domain:digitallyshifted.com` with `siteFullUser`
+  permission.
+
+This path powers the report automation and future property maintenance.
+It changes nothing on the site.
 
 Follow 3.1 to 3.4 for every route. Route D runs them in the attached
 window. Route A runs them through the APIs. Route B runs them in the
@@ -415,7 +462,23 @@ Verified with a live visit to
    cookie → thank-you → two lead events) was proven in DebugView (7.2) and
    repeats in the production checks below.
 
-### 7.4 Production checks (waits on the live site)
+### 7.4 API access check (done 2026-10-22)
+
+The bound service account key was verified end to end. Method:
+
+1. Read the secret through the Paperclip secret API
+   (`POST /api/agents/me/secrets/accounts-sa-key/value`). Write it to a
+   temp file with `0600` permissions. Never print it.
+2. Exchange a signed JWT for an access token (section 3.0.1). Retry when
+   the response carries only an `id_token`.
+3. `GET /v1beta/properties/559909520` and its `dataStreams` on the GA4
+   Admin API. Compare the returned IDs against the IDs table.
+4. `GET /webmasters/v3/sites` on the Search Console API. Check the domain
+   property and the permission level.
+5. Shred every temp copy of the key (`shred -u`). Record the rows in
+   section 8.
+
+### 7.5 Production checks (waits on the live site)
 
 1. Load the live site. Open the browser network tools. Filter on `google-analytics.com/collect`.
 2. Check that a collect request appears on page load.
@@ -447,7 +510,11 @@ Verified with a live visit to
 | `call_click` on staging | collect beacon after footer `tel:` click | 2026-10-22 | PASS (204, `en=call_click`, `ep.location=footer`) |
 | `whatsapp_click` on staging | dataLayer + collect after footer `wa.me` click | 2026-10-22 | PASS (event recorded, beacon leaves page) |
 | module boot on staging | `window.DSAnalytics` state | 2026-10-22 | PASS (`ready=true`, real ID set) |
-| all events on live site | Realtime + collect | PENDING | waits on the production release (go-live, DIG-20 / §7.4) |
+| secret binding `access.google_accounts_sa` | Paperclip secret API read | 2026-10-22 | PASS (binding executed; value returned, then shredded) |
+| GA4 property lookup through the service account | GA4 Admin API | 2026-10-22 | PASS (property `559909520`, `Africa/Johannesburg`, `ZAR`) |
+| GA4 data stream lookup through the service account | GA4 Admin API | 2026-10-22 | PASS (stream `16173008721`, `G-QEC7TYQY6F`) |
+| Search Console access through the service account | Search Console API sites list | 2026-10-22 | PASS (`sc-domain:digitallyshifted.com`, `siteFullUser`) |
+| all events on live site | Realtime + collect | PENDING | waits on the production release (go-live, DIG-20 / §7.5) |
 
 Issue DIG-65 is complete when every PENDING row becomes PASS.
 
@@ -535,8 +602,8 @@ Before go-live, confirm each row:
 - [x] Search Console verified (long-standing). Sitemap submitted and succeeding.
 - [x] Weekly report built and scheduled (section 9.3; first email Monday 2026-10-26 08:00 SAST).
 - [x] `PUBLIC_GA4_ID` flows into builds (workflow fix `721cd9c`; staging verified 2026-10-22).
-- [ ] Service account key approved in Paperclip. Optional: unlocks unattended API reports and GSC data pulls. State 2026-10-22 16:39: the board accepted two binding cards; both writes failed `http_409` (the compound approve-plus-bind step conflicts). The key value sits intact in pending proposal `18fb4cf9` (expires 2026-11-05). Fix path, recorded on the issue: the board approves the proposal in Settings → Secrets → Proposals, then the agent re-proposes the binding against the created secret. Say "drop it" to close the thread without the API.
-- [ ] Search Console delegated owner for the service account. Optional: the users dialog rejects service-account emails and the old verification-home UI retired; do it later through the Site Verification API once the key binding is approved.
+- [x] Service account key approved in Paperclip and bound (`access.google_accounts_sa`, binding `8a2b0ae0` executed 2026-10-22). End-to-end API check passed (sections 3.0.1 and 7.4): GA4 property and stream lookups and Search Console access verified.
+- [x] Search Console access for the service account: `siteFullUser` on `sc-domain:digitallyshifted.com`, verified 2026-10-22 through the bound key. No delegated-owner step needed.
 
 Keep this document current. When the setup changes, change this file in the
 same pull request.
