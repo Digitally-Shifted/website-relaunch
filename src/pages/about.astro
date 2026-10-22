@@ -5,6 +5,11 @@
  * proof-point rule). One "Get a quote" button at the end.
  *
  * DRAFT COPY: pending DIG-63.
+ *
+ * Phase 2 (DIG-1009 spec 5.4): Split Text hero entrance (M0 home
+ * choreography), static grain on the hero band, diagonal join, scroll
+ * reveals, and the one sanctioned display fix — the "How we work" list
+ * item names the Care plan (DIG-25 rev 7 naming rule 2).
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
@@ -18,25 +23,41 @@ import { site } from '../lib/site.config';
   description="Digitally Shifted is a South African digital agency. We design, host and manage websites, and we keep them working. Meet the team behind the work."
   path="/about"
 >
+  <script is:inline slot="head">
+    /* Pre-paint motion flag (DIG-1009 spec 5.4): the reveal system mounts
+       on this page. */
+    document.documentElement.classList.add('js-reveal');
+  </script>
+
+  <!-- Scroll reveals (DIG-1009 spec 5.4). -->
+  <script>
+    import '../scripts/reveal';
+  </script>
+
   <PageHero
     eyebrow="About us"
     statement='A digital agency that <em>stays</em> after launch.'
     opener="We build websites and then we keep them working. That is the whole idea."
     secondaryHref="/services"
     secondaryLabel="See what is included"
+    split
+    grain
+    joinFrom="grey-300"
   />
 
   <section class="bg-grey-100" aria-labelledby="who-we-are">
     <div class="container-ds section">
       <div class="grid gap-12 lg:grid-cols-2">
         <div>
-          <SectionHeader
-            id="who-we-are"
-            eyebrow="Who we are"
-            heading='Digitally Shifted, <em>in short</em>.'
-            dark={false}
-          />
-          <div class="prose-ds mt-6 max-w-xl text-body text-text-on-light-muted">
+          <div data-reveal data-reveal-index="0">
+            <SectionHeader
+              id="who-we-are"
+              eyebrow="Who we are"
+              heading='Digitally Shifted, <em>in short</em>.'
+              dark={false}
+            />
+          </div>
+          <div class="prose-ds mt-6 max-w-xl text-body text-text-on-light-muted" data-reveal data-reveal-index="1">
             <p>
               Digitally Shifted is a digital agency in South Africa. We design and
               build websites, host and manage them, and help businesses get found.
@@ -48,19 +69,21 @@ import { site } from '../lib/site.config';
           </div>
         </div>
         <div>
-          <SectionHeader
-            eyebrow="How we work"
-            heading='Plain language, <em>plain dealing</em>.'
-            dark={false}
-          />
-          <div class="prose-ds mt-6 max-w-xl text-body text-text-on-light-muted">
+          <div data-reveal data-reveal-index="0">
+            <SectionHeader
+              eyebrow="How we work"
+              heading='Plain language, <em>plain dealing</em>.'
+              dark={false}
+            />
+          </div>
+          <div class="prose-ds mt-6 max-w-xl text-body text-text-on-light-muted" data-reveal data-reveal-index="1">
             <ul class="list-disc pl-6">
               <li>You tell us what you need. We answer in plain language.</li>
               <li>We agree the scope and the price before any work starts.</li>
               <li>We build, launch, and then we stay available.</li>
               <li>
-                Most clients choose Website-as-a-Service: one monthly fee, no
-                large upfront cost.
+                Most clients choose the Care plan: one monthly fee, no large
+                upfront cost.
               </li>
             </ul>
           </div>
@@ -71,14 +94,16 @@ import { site } from '../lib/site.config';
 
   <section class="bg-paper" aria-labelledby="work-with-us">
     <div class="container-ds section">
-      <SectionHeader
-        id="work-with-us"
-        eyebrow="Work with us"
-        heading='Start with <em>one message</em>.'
-        dark={false}
-        opener="Tell us about your business and what you need. We reply within one business day."
-      />
-      <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+      <div data-reveal data-reveal-index="0">
+        <SectionHeader
+          id="work-with-us"
+          eyebrow="Work with us"
+          heading='Start with <em>one message</em>.'
+          dark={false}
+          opener="Tell us about your business and what you need. We reply within one business day."
+        />
+      </div>
+      <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4" data-reveal data-reveal-index="1">
         <a href={withBase('/contact?need=quote')} class="btn btn--primary" data-ds-location="content">
           Get a quote
         </a>

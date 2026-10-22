@@ -3,6 +3,10 @@
  * Thank-you page (conversion spec 3.5): confirms the submission and gives
  * direct routes for speed. Reached only through the form's 303 redirect;
  * never linked from navigation. Headline takes focus on load.
+ *
+ * Phase 2 (DIG-1009 spec 5.6): one decorative spring-check mark above the
+ * headline (CSS-only draw; aria-hidden, never announced). Everything else
+ * is byte-identical behavior.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site } from '../../lib/site.config';
@@ -20,6 +24,11 @@ import { withBase } from '../../lib/urls';
   <div class="bg-carbon">
     <div class="container-ds pt-24 pb-32 md:pt-32 md:pb-40">
       <div class="max-w-2xl">
+        <svg class="spring-check" viewBox="0 0 48 48" width="40" height="40"
+             aria-hidden="true" focusable="false" fill="none">
+          <circle cx="24" cy="24" r="21" stroke="var(--color-accent)" stroke-width="2"></circle>
+          <path d="M15 24.5l6.5 6.5L33 18" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="square"></path>
+        </svg>
         <h1 id="thankyou-title" tabindex="-1" class="text-display text-paper">
           Thank you. <em>We have your message.</em>
         </h1>

@@ -483,6 +483,167 @@
   }
 
   /*
+   * D3 border-glow spotlight (DIG-1009 4.1): greyscale radial follows the
+   * pointer on data-spotlight surfaces. Painted only when the script adds
+   * .is-spot (pointer-fine, motion allowed), so no-JS, touch, and reduced
+   * motion fall back to the border-only hover. Greyscale only (D3).
+   */
+  [data-spotlight] {
+    position: relative;
+  }
+
+  [data-spotlight]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      360px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      rgb(255 255 255 / 0.06),
+      transparent 65%
+    );
+    transition: opacity var(--duration-base) var(--easing-standard);
+  }
+
+  [data-spotlight].is-spot::before {
+    opacity: 1;
+  }
+
+  /*
+   * Glare Hover (DIG-1009 4.2): one greyscale sheen per hover enter.
+   * Dark surfaces shine white; light cards shine ink at 5% (decision
+   * log #6). Reduced motion: none (section 7.5).
+   */
+  .glare {
+    --glare-color: rgb(255 255 255 / 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card--light.glare {
+    --glare-color: rgb(7 8 8 / 0.05);
+  }
+
+  .glare::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 42%,
+      var(--glare-color) 50%,
+      transparent 58%
+    );
+    transform: translateX(-130%);
+  }
+
+  .glare:hover::after,
+  .glare:focus-within::after {
+    animation: ds-glare var(--duration-slow) var(--easing-standard);
+  }
+
+  @keyframes ds-glare {
+    to {
+      transform: translateX(130%);
+    }
+  }
+
+  /*
+   * Masked Heading (DIG-1009 4.3): load-time scan wipe. Negative insets
+   * keep descenders and glyph edges unclipped. Reduced motion: none.
+   */
+  .mask-heading {
+    animation: ds-mask-wipe var(--duration-reveal) var(--easing-standard) 120ms both;
+  }
+
+  @keyframes ds-mask-wipe {
+    from {
+      clip-path: inset(-0.1em 100% -0.15em -0.05em);
+    }
+    to {
+      clip-path: inset(-0.1em -0.05em -0.15em -0.05em);
+    }
+  }
+
+  /*
+   * Shiny Text sending state (DIG-1009 4.4): keyed to the existing
+   * disabled state; no JS change. Opt-in via .ds-form--shiny so the
+   * /checklist/ funnel keeps its current behavior.
+   */
+  .ds-form--shiny .btn--primary:disabled {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ds-form--shiny .btn--primary:disabled::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgb(255 255 255 / 0.25) 50%,
+      transparent 60%
+    );
+    transform: translateX(-130%);
+    animation: ds-shiny-sweep 1120ms linear infinite;
+  }
+
+  @keyframes ds-shiny-sweep {
+    to {
+      transform: translateX(130%);
+    }
+  }
+
+  /*
+   * Spring Check success mark (DIG-1009 4.5): circle then check draw,
+   * whole mark springs once. Overshoot lives in the keyframes.
+   */
+  .spring-check {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    animation: ds-spring var(--duration-reveal) var(--easing-standard) 200ms both;
+    transform-origin: center;
+  }
+
+  .spring-check circle {
+    stroke-dasharray: 132;
+    stroke-dashoffset: 132;
+    animation: ds-draw var(--duration-base) var(--easing-standard) 200ms forwards;
+  }
+
+  .spring-check path {
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: ds-draw var(--duration-slow) var(--easing-standard) 400ms forwards;
+  }
+
+  @keyframes ds-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes ds-spring {
+    0% {
+      transform: scale(0.7);
+    }
+    60% {
+      transform: scale(1.06);
+    }
+    80% {
+      transform: scale(0.98);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /*
    * Fixed quote pill (DIG-993 spec 4.2): hide/show steps opacity only,
    * never a display toggle, so nothing shifts. Instant under reduced
    * motion (tokens.css collapses the duration).
@@ -815,6 +976,30 @@
 
     .js-logo-sweep .logo-sweep::after {
       animation: none;
+    }
+
+    /* Phase 2 additions (DIG-1009 spec 7.5): the new patterns rest on
+       their static states. The D3 spotlight needs no rule here: the
+       script gates itself on the same media query. */
+    .glare::after,
+    .ds-form--shiny .btn--primary:disabled::after {
+      animation: none;
+    }
+
+    .mask-heading {
+      animation: none;
+      clip-path: none;
+    }
+
+    .spring-check,
+    .spring-check circle,
+    .spring-check path {
+      animation: none;
+    }
+
+    .spring-check circle,
+    .spring-check path {
+      stroke-dashoffset: 0;
     }
 
     *,

@@ -2,14 +2,19 @@
 /*
  * Card (DESIGN-SPEC 4.5): sharp corners, hairline border, no shadow at
  * rest. Interactive cards lift on hover with the fast duration.
+ *
+ * Phase 2 addition (DIG-1009 spec 4.6): opt-in `glare` adds the Glare
+ * Hover sheen (DIG-1009 4.2). Default renders byte-identical output.
  */
 interface Props {
   title: string;
   dark?: boolean;
   interactive?: boolean;
+  /** Glare Hover sheen on hover/focus-within (DIG-1009 4.2). */
+  glare?: boolean;
 }
 
-const { title, dark = true, interactive = false } = Astro.props;
+const { title, dark = true, interactive = false, glare = false } = Astro.props;
 ---
 
 <div
@@ -17,6 +22,7 @@ const { title, dark = true, interactive = false } = Astro.props;
     'card h-full',
     dark ? 'border-grey-800 text-text-on-dark' : 'card--light text-text-on-light',
     interactive && 'card--interactive',
+    glare && 'glare',
   ]}
 >
   <h3 class:list={['text-h3', dark ? 'text-paper' : 'text-text-on-light']}>{title}</h3>

@@ -24,9 +24,15 @@ interface Props {
   fixedNeed?: (typeof needOptions)[number]['value'] | 'checklist';
   /** Page path recorded as `form_location` (spec 4.4). */
   formLocation?: string;
+  /**
+   * Shiny Text sending state (DIG-1009 spec 4.4): the submit button's
+   * disabled state gains the shine sweep. Opt-in so the /checklist/
+   * funnel keeps its current behavior.
+   */
+  shiny?: boolean;
 }
 
-const { fixedNeed, formLocation = '/contact' } = Astro.props;
+const { fixedNeed, formLocation = '/contact', shiny = false } = Astro.props;
 
 const quoteNeeds = needOptions
   .filter((option) => option.quoteIntent)
@@ -35,7 +41,7 @@ const quoteNeeds = needOptions
 ---
 
 <form
-  class="ds-form"
+  class:list={['ds-form', shiny && 'ds-form--shiny']}
   method="POST"
   action="/api/contact"
   novalidate

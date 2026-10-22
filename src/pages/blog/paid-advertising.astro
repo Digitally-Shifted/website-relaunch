@@ -4,6 +4,9 @@
  * DIG-83: the launch site ships no paid advertising service page; the old
  * post URL 301s to /services/ (DIG-109). The card carries the approved
  * DIG-111 replacement copy and links to the quote enquiry, not to a page.
+ *
+ * Phase 2 (DIG-1009 spec 5.11): Masked Heading hero, Glare Hover cards,
+ * sparse scroll reveals, diagonal join. Copy unchanged.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
@@ -17,23 +20,40 @@ import { withBase } from '../../lib/urls';
   description="Practical insights into Google Ads, Meta campaigns, targeting, budget control and ROI measurement for businesses that want clearer leads and smarter spend."
   path="/blog/paid-advertising"
 >
+  <script is:inline slot="head">
+    /* Pre-paint motion flag (DIG-1009 spec 5.11): the reveal system mounts
+       on this page. */
+    document.documentElement.classList.add('js-reveal');
+  </script>
+
+  <!-- Scroll reveals (DIG-1009 spec 5.11). -->
+  <script>
+    import '../../scripts/reveal';
+  </script>
+
   <PageHero
     eyebrow="Blog topic"
     statement="Paid Advertising"
     opener="Improve paid media performance with practical insights into Google Ads, Meta campaigns, targeting, budget control and ROI measurement. Digitally Shifted shares paid advertising guidance for South African businesses that need clearer leads, smarter spend and campaigns connected to real commercial outcomes."
     ctaHref="/contact?need=quote"
+    masked
+    joinFrom="grey-300"
   />
 
   <section class="bg-paper" aria-labelledby="posts">
     <div class="container-ds section">
-      <SectionHeader id="posts" eyebrow="From the archive" heading='Where this topic <em>stands now</em>.' dark={false} />
+      <div data-reveal data-reveal-index="0">
+        <SectionHeader id="posts" eyebrow="From the archive" heading='Where this topic <em>stands now</em>.' dark={false} />
+      </div>
       <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <Card title="Paid advertising" dark={false}>
-          <p>Digitally Shifted offers paid advertising as a separate, quoted service. Ask us about a campaign for your business.</p>
-          <div slot="action" class="mt-4">
-            <a class="link-light text-body" href={withBase('/contact?need=quote')}>Get a quote</a>
-          </div>
-        </Card>
+        <div data-reveal data-reveal-index="1">
+          <Card title="Paid advertising" dark={false} glare>
+            <p>Digitally Shifted offers paid advertising as a separate, quoted service. Ask us about a campaign for your business.</p>
+            <div slot="action" class="mt-4">
+              <a class="link-light text-body" href={withBase('/contact?need=quote')}>Get a quote</a>
+            </div>
+          </Card>
+        </div>
       </div>
       <div class="mt-10">
         <a class="link-light text-body" href={withBase('/blog')}>All blog topics</a>
