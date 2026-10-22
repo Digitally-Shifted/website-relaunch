@@ -956,6 +956,63 @@
     height: 1px;
     overflow: hidden;
   }
+
+  /*
+   * Ruled spec tables (DIG-1026 rev 2, spec 5.1): static dl-based spec
+   * rows in the DIG-150 5 skeleton order. Zero JS, zero motion. Hairlines
+   * match the surface they sit on: grey-800 on the grey-900 row ground
+   * (matching the row rules), grey-700 inside the grey-800 Care panel
+   * (the feature-panel border token — grey-800 would vanish there).
+   */
+  .spec-table dl {
+    border-top: 1px solid var(--color-grey-800);
+  }
+
+  .spec-table-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2) var(--space-8);
+    padding-block: var(--space-4);
+    border-bottom: 1px solid var(--color-grey-800);
+  }
+
+  .spec-table-row dt,
+  .spec-table-row dd {
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .spec-table-row {
+      grid-template-columns: 11rem 1fr;
+    }
+  }
+
+  /* One token step up inside the grey-800 Care panel. */
+  .feature-panel .spec-table dl,
+  .feature-panel .spec-table-row {
+    border-color: var(--color-grey-700);
+  }
+
+  /*
+   * Launch-to-Care handoff band (DIG-1026 rev 2, spec 5.1): one
+   * full-width ruled link band. Border brighten matches .service-row;
+   * underline on hover carries the link affordance (spec 5.1 hover
+   * contract and QA step 12 — Tailwind preflight gives plain anchors
+   * no underline). No motion.
+   */
+  .service-handoff {
+    display: block;
+    border-top: 1px solid var(--color-grey-800);
+    transition: border-color var(--duration-fast) var(--easing-standard);
+  }
+
+  .service-handoff:hover,
+  .service-handoff:focus-visible {
+    border-top-color: var(--color-grey-500);
+    text-decoration-line: underline;
+    text-underline-offset: 3px;
+  }
+
   /*
    * Reduced-motion hardening (DIG-993 spec 7.1): no movement, no staged
    * delays, all content visible, sweep and count-up static.
