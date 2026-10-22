@@ -335,11 +335,25 @@
    * still wrap one by one. Spaces stay text nodes between spans, so
    * screen readers read the sentence normally. Word delay stages from
    * the word index.
+   *
+   * Choreography (Creative Director ruling, 2026-10-22): words are
+   * fully opaque at first paint and settle along the 45 degree diagonal
+   * into place. They do not fade in, so no word paint hides behind the
+   * animation and the H1 text stays the LCP paint.
    */
   .split-word {
     display: inline-block;
-    animation: ds-shift-enter var(--duration-slow) var(--easing-standard) both;
+    animation: ds-shift-settle var(--duration-slow) var(--easing-standard) both;
     animation-delay: calc(120ms + var(--word-i, 0) * 40ms);
+  }
+
+  @keyframes ds-shift-settle {
+    from {
+      transform: translate(-8px, 8px);
+    }
+    to {
+      transform: translate(0, 0);
+    }
   }
 
   /*
@@ -372,19 +386,12 @@
   }
 
   /*
-   * Grain overlay (DIG-993 spec 7.3, D7): fractal-noise SVG tile at 4%
-   * on the hero and CTA bands only (F3 two-surface budget). Decorative:
-   * aria-hidden is inherent to ::after.
+   * Grain overlay (DIG-993 spec 7.3, D7): server-rendered inline SVG in
+   * GrainLayer.astro at 4% on the hero and CTA bands only (F3
+   * two-surface budget). The old `.grain::after` CSS tile painted the
+   * full band as one large image paint and became the LCP element, so it
+   * was removed (Creative Director ruling, 2026-10-22).
    */
-  .grain::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-  }
 
   /*
    * Logo sweep (DIG-993 spec 6.4, M6): one 560ms sheen over the header

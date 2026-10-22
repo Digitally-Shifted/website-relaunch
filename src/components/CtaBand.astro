@@ -6,8 +6,8 @@
  * Phase 1 home additions (DIG-993 spec 5.9), all opt-in; defaults keep
  * every other page identical:
  *   - `textured`: line texture inside the panel (D6).
- *   - `grain`: grain overlay on the carbon band (F3), with the
- *     positioning the overlay needs.
+ *   - `grain`: grain overlay on the carbon band (F3), server-rendered
+ *     inline SVG (GrainLayer), with the positioning the layer needs.
  *   - `id`: band id; the home band carries `closing-cta` for the quote
  *     pill observer.
  *   - `panelClass`: panel ground override; the home panel reads grey-900
@@ -16,6 +16,7 @@
  *     `js-reveal` class).
  */
 import { withBase } from '../lib/urls';
+import GrainLayer from './GrainLayer.astro';
 
 interface Props {
   /** Heading content as HTML with strong/em for the 900/300 pairing. */
@@ -52,6 +53,7 @@ const {
 ---
 
 <div class:list={['bg-carbon', grain && 'grain relative overflow-hidden']} id={id}>
+  {grain && <GrainLayer filterId="ds-grain-cta" />}
   <div class="container-ds pt-32 pb-32">
     <div
       class:list={['feature-panel corner-cut-md', textured && 'texture-lines', panelClass]}

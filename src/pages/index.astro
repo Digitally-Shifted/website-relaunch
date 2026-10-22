@@ -25,6 +25,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import CtaBand from '../components/CtaBand.astro';
 import DiagonalJoin from '../components/DiagonalJoin.astro';
+import GrainLayer from '../components/GrainLayer.astro';
 import FactsRow from '../components/home/FactsRow.astro';
 import WhyUs from '../components/home/WhyUs.astro';
 import ServiceIndex from '../components/home/ServiceIndex.astro';
@@ -74,9 +75,12 @@ const steps = [
   </script>
 
   <!-- Region 2: hero (spec 5.1). Carbon, grid background (D8) + grain
-       (D7), single-column statement. The H1 is the LCP element and is
-       server-rendered; the word choreography is pure CSS (spec 6.1). -->
+       (D7, server-rendered inline SVG so the band never becomes the LCP
+       paint), single-column statement. The H1 is the LCP element and is
+       server-rendered; the word choreography is pure CSS (spec 6.1):
+       words are fully opaque at first paint and settle into place. -->
   <div class="grain relative overflow-hidden bg-carbon">
+    <GrainLayer filterId="ds-grain-hero" />
     <div class="container-ds relative pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
       <div class="grid-bg-12" aria-hidden="true"></div>
       <div class="relative z-10 max-w-4xl">
