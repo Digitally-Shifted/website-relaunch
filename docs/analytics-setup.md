@@ -535,7 +535,7 @@ Before go-live, confirm each row:
 - [x] Search Console verified (long-standing). Sitemap submitted and succeeding.
 - [x] Weekly report built and scheduled (section 9.3; first email Monday 2026-10-26 08:00 SAST).
 - [x] `PUBLIC_GA4_ID` flows into builds (workflow fix `721cd9c`; staging verified 2026-10-22).
-- [ ] Service account key approved in Paperclip. The board accepted the binding card; its write failed (`http_409`, the secret proposal was still pending). Re-proposed binding `ebb3cd0f` awaits the confirmation card. Optional: unlocks unattended API reports and GSC data pulls.
+- [ ] Service account key approved in Paperclip. Optional: unlocks unattended API reports and GSC data pulls. State 2026-10-22 16:39: the board accepted two binding cards; both writes failed `http_409` (the compound approve-plus-bind step conflicts). The key value sits intact in pending proposal `18fb4cf9` (expires 2026-11-05). Fix path, recorded on the issue: the board approves the proposal in Settings → Secrets → Proposals, then the agent re-proposes the binding against the created secret. Say "drop it" to close the thread without the API.
 - [ ] Search Console delegated owner for the service account. Optional: the users dialog rejects service-account emails and the old verification-home UI retired; do it later through the Site Verification API once the key binding is approved.
 
 Keep this document current. When the setup changes, change this file in the
