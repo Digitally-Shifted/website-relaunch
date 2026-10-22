@@ -483,7 +483,7 @@ Date range: last 7 days. Compare to the previous 7 days.
 For a quick manual check without Looker Studio: open GA4 Reports, then
 Engagement, then Events. Set the date range to 7 days. Read the key event counts.
 
-### 9.3 Build record (2026-10-22)
+### 9.3 Build record (2026-10-22, completed same day)
 
 Report created in Looker Studio with the company Google account
 (accounts@digitallyshifted.com, Route D browser session):
@@ -494,32 +494,35 @@ Report created in Looker Studio with the company Google account
 - Data source: Google Analytics connector, property 559909520
   (account 412753375), owner's credentials.
 
-Blocks built:
+Blocks built (all on Last 7 days, confirmed in each chart's Setup panel):
 
 | Block | State |
 | --- | --- |
-| Scorecard, Sessions | built. Date range still Auto (28 days). |
-| Scorecard, Active users | built (`1-day active users`). Date range still Auto (28 days). |
-| Time series, Date × Sessions + Key events | built. Last 7 days verified on the axis (Oct 15–21). |
-| Table, Session source / medium × Key events + Sessions | built. Last 7 days applied. |
-| Table, Event name × Views + Key events | built. Date range still Auto (28 days). |
+| Scorecard, Sessions | built. Custom Last 7 days (exclude today). |
+| Scorecard, Active users (`1-day active users`) | built. Custom Last 7 days (exclude today). |
+| Time series, Date × Sessions + Key events | built. Custom Last 7 days; axis verified Oct 15–21. |
+| Table, Session source / medium + Date × Key events + Sessions | built. Custom Last 7 days. |
+| Table, Event name × Views + Key events | built. Custom Last 7 days. |
 
-Not finished in this run: the Last-7-days switch for the two scorecards and
-the event table, layout tidy-up, and the email schedule. The schedule step
-was deliberately NOT taken: with 28-day scorecards the email would show
-month totals under a weekly title, which misleads. Finish order (one short
-session, agent or owner):
+Email schedule (verified in the Schedule delivery panel after saving):
 
-1. Open the report. Select each of the three charts above. In Setup, under
-   Default date range filter, select Custom, open the picker, choose the
-   Last 7 days preset, then Apply.
-2. Remove the extra Date dimension from the source table and the Views
-   metric from the event table (optional tidy-up).
-3. Share, then Schedule email delivery. Weekly, Monday 08:00,
-   `support@digitallyshifted.com`.
-4. Open the report once and check the numbers against GA4 (step 9.2 item 7).
+- "This report is scheduled for email delivery."
+- From: Digitally Shifted. To: Digitally Shifted group +
+  `support@digitallyshifted.com`.
+- Start Date: Monday, October 26, 2026. Repeat: Weekly on Monday.
+- Time: 8:00 AM, South Africa Standard Time.
 
-Evidence: `/tmp/DIG-65/report-state-final.png`.
+Optional tidy-up (cosmetic, not blocking): remove the spare Date dimension
+from the source table and the Views metric from the event table, and space
+the charts on the page. First email lands Monday, October 26 at 08:00 SAST.
+Check it arrives, then tick section 10.
+
+Note for the next person in this report: the five key events do not show
+values until the production site carries the tracking module (section 10,
+row 2). Staging traffic feeds the property since 2026-10-22.
+
+Evidence: `/tmp/DIG-65/report-state-final.png` (before the range fixes),
+`/tmp/DIG-65/key-events-marked.png`.
 
 ## 10. Go-live link (DIG-20)
 
@@ -530,9 +533,9 @@ Before go-live, confirm each row:
 - [x] DebugView test passed. All five events recorded in section 8.
 - [x] Key events marked in GA4 (step 3.4, done 2026-10-22, before first production traffic).
 - [x] Search Console verified (long-standing). Sitemap submitted and succeeding.
-- [ ] Weekly report built and scheduled (recipe in section 9.2).
+- [x] Weekly report built and scheduled (section 9.3; first email Monday 2026-10-26 08:00 SAST).
 - [x] `PUBLIC_GA4_ID` flows into builds (workflow fix `721cd9c`; staging verified 2026-10-22).
-- [ ] Service account key binding approved in Paperclip (proposals `18fb4cf9` + `a9a74d29`). Optional: unlocks unattended API reports and GSC data pulls.
+- [ ] Service account key approved in Paperclip. The board accepted the binding card; its write failed (`http_409`, the secret proposal was still pending). Re-proposed binding `ebb3cd0f` awaits the confirmation card. Optional: unlocks unattended API reports and GSC data pulls.
 - [ ] Search Console delegated owner for the service account. Optional: the users dialog rejects service-account emails and the old verification-home UI retired; do it later through the Site Verification API once the key binding is approved.
 
 Keep this document current. When the setup changes, change this file in the
