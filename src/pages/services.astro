@@ -14,7 +14,9 @@
  * Phase 2 restyle (DIG-1009 spec 5.1): grounds move from flat carbon to
  * the D1 layered arrangement — grey-900 rows, grey-800 Care panel. Rows
  * and the panel are D3 spotlight surfaces; sections reveal on scroll.
- * Copy, anchors, routing keys, and the WaaS modal are unchanged.
+ * Anchors, routing keys, and modal behavior are unchanged; the modal
+ * covers list ships the DIG-1013 copy-pass strings (spec decision log
+ * #6 flag resolved: no retired display names or "small changes").
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
@@ -168,8 +170,10 @@ const sections = [
     <ul class="mt-6 list-disc pl-6 text-body text-text-on-dark">
       <li>Design — your site designed in the Digitally Shifted system.</li>
       <li>Hosting — LiteSpeed servers, monitored and patched.</li>
-      <li>Management — updates, backups, security, and small changes.</li>
+      <li>Management — updates, backups, and security.</li>
+      <li>Changes and new pages — under our fair usage policy.</li>
       <li>SEO — the technical base, a content plan, and plain reporting.</li>
+      <li>Support — remote email support.</li>
     </ul>
     <p class="mt-4 text-body-sm text-text-on-dark-muted">
       One plan replaces the separate design bill, the hosting bills, and the
