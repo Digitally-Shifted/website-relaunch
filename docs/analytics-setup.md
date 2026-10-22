@@ -483,6 +483,44 @@ Date range: last 7 days. Compare to the previous 7 days.
 For a quick manual check without Looker Studio: open GA4 Reports, then
 Engagement, then Events. Set the date range to 7 days. Read the key event counts.
 
+### 9.3 Build record (2026-10-22)
+
+Report created in Looker Studio with the company Google account
+(accounts@digitallyshifted.com, Route D browser session):
+
+- Report: `Weekly traffic and conversions — digitallyshifted.com`
+- Report ID: `73eb5835-c06b-4a47-8b2a-a130faf99db8`
+- URL: https://datastudio.google.com/reporting/73eb5835-c06b-4a47-8b2a-a130faf99db8
+- Data source: Google Analytics connector, property 559909520
+  (account 412753375), owner's credentials.
+
+Blocks built:
+
+| Block | State |
+| --- | --- |
+| Scorecard, Sessions | built. Date range still Auto (28 days). |
+| Scorecard, Active users | built (`1-day active users`). Date range still Auto (28 days). |
+| Time series, Date × Sessions + Key events | built. Last 7 days verified on the axis (Oct 15–21). |
+| Table, Session source / medium × Key events + Sessions | built. Last 7 days applied. |
+| Table, Event name × Views + Key events | built. Date range still Auto (28 days). |
+
+Not finished in this run: the Last-7-days switch for the two scorecards and
+the event table, layout tidy-up, and the email schedule. The schedule step
+was deliberately NOT taken: with 28-day scorecards the email would show
+month totals under a weekly title, which misleads. Finish order (one short
+session, agent or owner):
+
+1. Open the report. Select each of the three charts above. In Setup, under
+   Default date range filter, select Custom, open the picker, choose the
+   Last 7 days preset, then Apply.
+2. Remove the extra Date dimension from the source table and the Views
+   metric from the event table (optional tidy-up).
+3. Share, then Schedule email delivery. Weekly, Monday 08:00,
+   `support@digitallyshifted.com`.
+4. Open the report once and check the numbers against GA4 (step 9.2 item 7).
+
+Evidence: `/tmp/DIG-65/report-state-final.png`.
+
 ## 10. Go-live link (DIG-20)
 
 Before go-live, confirm each row:
