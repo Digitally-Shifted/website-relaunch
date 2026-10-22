@@ -3,8 +3,24 @@
  * Page hero (DESIGN-SPEC 5.1): eyebrow, display-xl statement with the
  * 900/300 pairing, body-lg opener, primary button. Below 768px the
  * statement scales down one ramp step (DESIGN-SPEC 5.2).
+ *
+ * Phase 2 additions (DIG-1009 spec 4.6), all opt-in; every default
+ * renders byte-identical output for untouched callers:
+ *   - `masked`: the H1 gains `mask-heading` (load-time scan wipe, CSS).
+ *   - `grain`: the band gains `grain relative overflow-hidden` and a
+ *     server-rendered GrainLayer as its first child (F3, static).
+ *   - `split`: the statement renders as build-time `.split-word` spans
+ *     (preserving `em`/`strong` wrappers), and the eyebrow, opener, and
+ *     CTA row stage with `shift-enter` + `--enter-delay`, per the home
+ *     hero choreography (DIG-993 6.1). The H1 accessible name is
+ *     unchanged. Malformed statements fail the build.
+ *   - `joinFrom`: a diagonal join seats inside the band after the
+ *     content container (D5, the home hero arrangement; no tick — the
+ *     accent tick stays home-only).
  */
 import { withBase } from '../lib/urls';
+import DiagonalJoin from './DiagonalJoin.astro';
+import GrainLayer from './GrainLayer.astro';
 
 interface Props {
   eyebrow: string;
@@ -17,6 +33,14 @@ interface Props {
   /** Optional secondary text link under the button row. */
   secondaryHref?: string;
   secondaryLabel?: string;
+  /** Masked Heading scan wipe on the H1 (DIG-1009 4.3). */
+  masked?: boolean;
+  /** Static grain layer on the band (DIG-1009 4.6, F3). */
+  grain?: boolean;
+  /** Split-word hero entrance (DIG-1009 4.6, M0 choreography). */
+  split?: boolean;
+  /** Diagonal join inside the band after the content container (D5). */
+  joinFrom?: 'grey-700' | 'grey-300';
 }
 
 const {
@@ -27,18 +51,73 @@ const {
   ctaLabel = 'Get a quote',
   secondaryHref,
   secondaryLabel,
+  masked = false,
+  grain = false,
+  split = false,
+  joinFrom,
 } = Astro.props;
+
+/*
+ * Build-time split for the `split` prop (DIG-1009 4.6): one span per
+ * word, `--word-i` staged for the 40 ms settle stagger. `<em>` and
+ * `<strong>` must wrap exactly one plain word with no attributes;
+ * anything else fails the build rather than shipping broken markup.
+ */
+function splitStatement(text: string): string {
+  const words = text.trim().split(/\s+/);
+  const spans: string[] = [];
+  let index = 0;
+  for (const word of words) {
+    const wrap = /^<(em|strong)>(.+)<\/\1>$/.exec(word);
+    if (wrap) {
+      if (/[<>]/.test(wrap[2]) || wrap[2] === '') {
+        throw new Error(`PageHero split: a tag must wrap exactly one plain word, got "${word}"`);
+      }
+      spans.push(
+        `<${wrap[1]}><span class="split-word" style="--word-i: ${index}">${wrap[2]}</span></${wrap[1]}>`,
+      );
+    } else if (/<[a-z!/]/i.test(word)) {
+      throw new Error(`PageHero split: unsupported markup in statement word "${word}"`);
+    } else {
+      spans.push(`<span class="split-word" style="--word-i: ${index}">${word}</span>`);
+    }
+    index += 1;
+  }
+  for (const tag of ['em', 'strong']) {
+    const opens = (text.match(new RegExp(`<${tag}>`, 'g')) ?? []).length;
+    const closes = (text.match(new RegExp(`</${tag}>`, 'g')) ?? []).length;
+    if (opens !== closes) {
+      throw new Error(`PageHero split: unbalanced <${tag}> tags in statement`);
+    }
+  }
+  return spans.join(' ');
+}
+
+const h1Class = masked
+  ? 'mt-6 max-w-4xl text-display md:text-display-xl text-paper mask-heading'
+  : 'mt-6 max-w-4xl text-display md:text-display-xl text-paper';
 ---
 
-<div class="texture-lines bg-carbon">
+<div class:list={['texture-lines bg-carbon', grain && 'grain relative overflow-hidden']}>
+  {grain && <GrainLayer filterId="ds-grain-hero" />}
   <div class="container-ds pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
-    <p class="text-eyebrow uppercase text-text-on-dark-muted">{eyebrow}</p>
-    <h1
-      class="mt-6 max-w-4xl text-display md:text-display-xl text-paper"
-      set:html={statement}
-    />
-    <p class="mt-6 max-w-xl text-body-lg text-text-on-dark-muted">{opener}</p>
-    <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+    <p class:list={[split && 'shift-enter', 'text-eyebrow uppercase text-text-on-dark-muted']}>
+      {eyebrow}
+    </p>
+    <h1 class={h1Class} set:html={split ? splitStatement(statement) : statement} />
+    <p
+      class:list={[split && 'shift-enter', 'mt-6 max-w-xl text-body-lg text-text-on-dark-muted']}
+      style={split ? '--enter-delay: 360ms' : undefined}
+    >
+      {opener}
+    </p>
+    <div
+      class:list={[
+        split && 'shift-enter',
+        'mt-10 flex flex-wrap items-center gap-x-8 gap-y-4',
+      ]}
+      style={split ? '--enter-delay: 480ms' : undefined}
+    >
       <a href={withBase(ctaHref)} class="btn btn--primary" data-ds-location="content">
         {ctaLabel}
       </a>
@@ -51,4 +130,11 @@ const {
       }
     </div>
   </div>
+  {
+    joinFrom && (
+      <div class="container-ds">
+        <DiagonalJoin from={joinFrom} />
+      </div>
+    )
+  }
 </div>

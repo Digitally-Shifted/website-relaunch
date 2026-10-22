@@ -1,0 +1,59 @@
+---
+/*
+ * Care plan (DIG-993 spec 5.7). Section grey-900, one grey-800
+ * corner-cut-md panel (the section's one cut surface, D4). Covers list
+ * and scope line carry the DIG-25 rev 7 wording: the phrase "small
+ * changes" is retired by the 2026-10-22 board direction on DIG-95.
+ * Motion: section reveal only; the panel is static.
+ */
+import SectionHeader from '../SectionHeader.astro';
+import DiagonalJoin from '../DiagonalJoin.astro';
+import { withBase } from '../../lib/urls';
+
+const covers = ['Design', 'Hosting', 'Management', 'SEO basics', 'Changes and new pages'];
+---
+
+<section class="bg-grey-900" aria-labelledby="care-plan">
+  <div class="container-ds section">
+    <div data-reveal data-reveal-index="0">
+      <SectionHeader
+        id="care-plan"
+        eyebrow="Care plan"
+        heading="One monthly plan. <em>Everything included.</em>"
+        opener="The Care plan turns your website into a service we run for you. You never touch the technical work. Your site stays current, and the cost stays predictable."
+      />
+    </div>
+
+    <div class="feature-panel corner-cut-md mt-12 bg-grey-800">
+      <ul class="flex flex-wrap gap-x-8 gap-y-2">
+        {
+          covers.map((item) => (
+            <li class="flex items-center gap-2 text-body text-paper">
+              <span aria-hidden="true" class="text-accent">
+                +
+              </span>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-4 max-w-xl text-body-sm text-text-on-dark-muted">
+        One monthly price: R1 000–R6 000 per month, under our fair usage
+        policy. Includes remote email support.
+      </p>
+      <p class="mt-4 max-w-xl text-body-sm text-text-on-dark-muted">
+        Need an online shop, a booking system, or a member area? Those are
+        custom builds, quoted per project. They sit outside the fixed Launch
+        scope.
+      </p>
+      <div class="mt-8">
+        <a href={withBase('/contact?need=quote')} class="btn btn--primary" data-ds-location="content">
+          Get a quote
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container-ds">
+    <DiagonalJoin from="grey-700" />
+  </div>
+</section>

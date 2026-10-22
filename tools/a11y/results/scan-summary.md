@@ -1,33 +1,33 @@
-# Automated scan — 2026-10-19T12:34:24.725Z
+# Automated scan — 2026-10-22T21:38:51.379Z
 
-Base URL: http://localhost:4173 · Pages: 16 · axe rule hits: 0 · HTML errors: 0
+Base URL: http://localhost:4173 · Pages: 15 · axe rule hits: 0 · HTML errors: 0
 
 ## home (/) — HTTP 200
 
 ### 375px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 7 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 8 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 7 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 8 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 7 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 8 node(s)
 
 ### 1920px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 7 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 8 node(s)
 ## about (/about/) — HTTP 200
 
 ### 375px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 10 node(s)
 
 ### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 10 node(s)
 
 ### 1280px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 10 node(s)
 
 ### 1920px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 5 node(s)
+- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 10 node(s)
 ## services-hub (/services/) — HTTP 200
 
 ### 375px · default — 0 rule hits, 1 needs review
@@ -55,19 +55,6 @@ Base URL: http://localhost:4173 · Pages: 16 · axe rule hits: 0 · HTML errors:
 ### 1920px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
 ## service-domains-hosting (/services/domains-hosting/) — HTTP 200
-
-### 375px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
-
-### 768px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
-
-### 1280px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
-
-### 1920px · default — 0 rule hits, 1 needs review
-- needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)
-## service-paid-advertising (/services/paid-advertising/) — HTTP 200
 
 ### 375px · default — 0 rule hits, 1 needs review
 - needs review: **color-contrast** Elements must meet minimum color contrast ratio thresholds — 4 node(s)

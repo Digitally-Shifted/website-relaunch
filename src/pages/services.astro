@@ -4,19 +4,45 @@
  * order. Each section ends with one "Get a quote" button that preselects
  * that service's need value on the contact form.
  *
- * DRAFT COPY: section copy is pending DIG-63. Prices are not stated (the
- * spec forbids inventing them).
- *
- * Naming: section 03 carries the approved ladder name Care plan (DIG-25;
+ * Naming: section 04 carries the approved ladder name Care plan (DIG-25;
  * DIG-121). The #waas anchor, need=waas routing key, and modal id stay as
  * routing keys; only display text renamed.
+ *
+ * Phase 2 restyle (DIG-1009 spec 5.1): grounds move from flat carbon to
+ * the D1 layered arrangement — grey-900 rows, grey-800 Care panel. Rows
+ * and the panel are D3 spotlight surfaces; sections reveal on scroll.
+ * Anchors, routing keys, and modal behavior are unchanged; the modal
+ * covers list ships the DIG-1013 copy-pass strings (spec decision log
+ * #6 flag resolved: no retired display names or "small changes").
+ *
+ * Rev 2 delta (DIG-1026 spec 5.1, DIG-1008 ruling): every service renders
+ * in the DIG-150 section 5 skeleton order — header, ruled spec table,
+ * split content — with the DIG-1013 rev e785e44c Part B strings byte-exact.
+ * The Launch-to-Care handoff band sits after the SEO row and the Care
+ * panel closes the page; the Service 03/Service 04 eyebrows move with
+ * their sections. Tables and band are static: no accordion, no
+ * data-reveal, no JS, no new motion moments.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import { withBase } from '../lib/urls';
 
-const sections = [
+type SpecField = { label: string; value: string | string[] };
+
+type ServiceSection = {
+  id: string;
+  eyebrow: string;
+  heading: string;
+  body: string;
+  need: string;
+  detailHref?: string;
+  detailLabel?: string;
+  panel: boolean;
+  specs: SpecField[];
+};
+
+const sections: ServiceSection[] = [
   {
     id: 'web-design',
     eyebrow: 'Service 01',
@@ -26,6 +52,33 @@ const sections = [
     detailHref: '/services/website-development',
     detailLabel: 'Read about website development',
     panel: false,
+    specs: [
+      {
+        label: 'What you get',
+        value: [
+          'Get design, development, hosting, management, and SEO basics in one once-off build.',
+          'Approve a clear quote before any work starts.',
+          'Get fast pages, clear structure, and a site you can grow.',
+          'Own the result when it goes live.',
+        ],
+      },
+      {
+        label: 'Timeline',
+        value:
+          'Live in 20 working days from complete content. Late content moves the launch date by the same number of days. The days while a preview waits for your changes or your go-live approval do not count.',
+      },
+      {
+        label: 'Price basis',
+        value: [
+          'R12 000–R50 000 per project, once-off.',
+          'Custom builds (online shops, membership sites, portals, booking systems): quoted per project.',
+        ],
+      },
+      {
+        label: 'Best for',
+        value: 'Businesses that want a site built to turn visitors into enquiries.',
+      },
+    ],
   },
   {
     id: 'hosting',
@@ -36,22 +89,93 @@ const sections = [
     detailHref: '/services/domains-hosting',
     detailLabel: 'Read about domains and hosting',
     panel: false,
-  },
-  {
-    id: 'waas',
-    eyebrow: 'Service 03',
-    heading: 'Care <em>plan</em>.',
-    body: 'One monthly fee covers design, hosting, management and SEO. Your website stays current without a large upfront cost, and we keep improving it. This is how most of our clients run their sites.',
-    need: 'waas',
-    panel: true,
+    specs: [
+      {
+        label: 'What you get',
+        value: [
+          'Get hosting on LiteSpeed servers that we monitor and patch.',
+          'Leave updates, backups, and security to us.',
+          'Get problems fixed before visitors see them.',
+          'Switch hosts while your site stays live.',
+          'Ask us to host a site we did not build, after a short review.',
+        ],
+      },
+      {
+        label: 'Timeline',
+        value: 'Ongoing monthly.',
+      },
+      {
+        label: 'Price basis',
+        value: ['Quoted per job.', 'Launch and the Care plan include hosting.'],
+      },
+      {
+        label: 'Best for',
+        value: 'A live site that nobody looks after.',
+      },
+    ],
   },
   {
     id: 'seo',
-    eyebrow: 'Service 04',
+    eyebrow: 'Service 03',
     heading: 'SEO, <em>done honestly</em>.',
     body: 'Technical foundations, clear content and steady improvement that help the right people find you on Google. No tricks that put your domain at risk.',
     need: 'seo',
     panel: false,
+    specs: [
+      {
+        label: 'What you get',
+        value: [
+          'Get technical foundations that help the right people find you.',
+          'Get clear content with a plan behind it.',
+          'Get steady improvement with plain reporting.',
+          'Get honest methods that keep your domain safe.',
+          'Show up in AI answers with the same honest work (AIO).',
+        ],
+      },
+      {
+        label: 'Timeline',
+        value: 'Ongoing, with steady improvement.',
+      },
+      {
+        label: 'Price basis',
+        value: ['Quoted per job.', 'Launch and the Care plan include SEO basics.'],
+      },
+      {
+        label: 'Best for',
+        value: 'Businesses that want to be found when customers search.',
+      },
+    ],
+  },
+  {
+    id: 'waas',
+    eyebrow: 'Service 04',
+    heading: 'Care <em>plan</em>.',
+    body: 'One monthly fee covers design, hosting, management and SEO. Your website stays current without a large upfront cost, and we keep improving it. This is how most of our clients run their sites.',
+    need: 'waas',
+    panel: true,
+    specs: [
+      {
+        label: 'What you get',
+        value: [
+          'Get hosting, management, SEO basics, and changes and new pages in one monthly price.',
+          'Request changes and new pages under our fair usage policy, with no new quote each time.',
+          'Get remote email support.',
+          'Keep your site current while we improve it.',
+        ],
+      },
+      {
+        label: 'Timeline',
+        value: 'Monthly.',
+      },
+      {
+        label: 'Price basis',
+        value: ['R1 000–R6 000 per month.'],
+      },
+      {
+        label: 'Best for',
+        value: 'Owners who want one predictable monthly fee instead of a large upfront build.',
+      },
+    ],
   },
 ];
 ---
@@ -68,39 +192,59 @@ const sections = [
     ctaHref="/contact?need=quote"
     secondaryHref="/about"
     secondaryLabel="About Digitally Shifted"
+    joinFrom="grey-700"
   />
 
-  {
-    sections.map((section) => (
-      <section class="border-t border-grey-800 bg-carbon" aria-labelledby={section.id}>
-        <div class="container-ds section">
-          {section.panel ? (
-            <div class="feature-panel corner-cut-md">
-              <p class="text-eyebrow uppercase text-text-on-dark-muted">{section.eyebrow}</p>
-              <h2 id={section.id} class="mt-3 text-display text-paper" set:html={section.heading} />
-              <p class="mt-4 max-w-xl text-body-lg text-text-on-dark-muted">{section.body}</p>
-              <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-                <a
-                  href={withBase(`/contact?need=${section.need}`)}
-                  class="btn btn--primary"
-                  data-ds-location="content"
-                >
-                  Get a quote
-                </a>
-                <button type="button" class="link-dark text-body" data-open-dialog="waas-modal">
-                  See what the plan covers
-                </button>
+  <div class="bg-grey-900">
+    {
+      sections
+        .filter(({ panel }) => !panel)
+        .map((section) => (
+          <section
+            class="service-row border-t border-grey-800"
+            data-spotlight
+            aria-labelledby={section.id}
+          >
+            <div class="container-ds section">
+              <!-- 1 Row header: existing SectionHeader, unchanged content -->
+              <div data-reveal data-reveal-index="0">
+                <SectionHeader
+                  id={section.id}
+                  eyebrow={section.eyebrow}
+                  heading={section.heading}
+                  opener={section.body}
+                />
               </div>
-            </div>
-          ) : (
-            <div class="grid gap-8 md:grid-cols-2 md:items-center">
-              <SectionHeader
-                id={section.id}
-                eyebrow={section.eyebrow}
-                heading={section.heading}
-                opener={section.body}
-              />
-              <div class="md:text-right">
+
+              <!-- 2 Ruled spec table: DIG-1026 rev 2. Outside the reveal
+                   pairs — always visible, zero motion moments, zero JS. -->
+              <div class="spec-table mt-10 md:mt-12">
+                <dl>
+                  {section.specs.map((field) => (
+                    <div class="spec-table-row">
+                      <dt class="text-eyebrow uppercase text-text-on-dark-muted">{field.label}</dt>
+                      <dd class="text-body text-text-on-dark">
+                        {Array.isArray(field.value) ? (
+                          <ul class="list-disc space-y-2 pl-6">
+                            {field.value.map((item) => (
+                              <li>{item}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          field.value
+                        )}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+
+              <!-- 3 Split content: existing CTAs and detail link -->
+              <div
+                class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 md:mt-12"
+                data-reveal
+                data-reveal-index="1"
+              >
                 <a
                   href={withBase(`/contact?need=${section.need}`)}
                   class="btn btn--secondary-dark"
@@ -110,21 +254,95 @@ const sections = [
                 </a>
                 {
                   section.detailHref && (
-                    <a
-                      href={withBase(section.detailHref)}
-                      class="link-dark mt-4 block text-body"
-                    >
+                    <a href={withBase(section.detailHref)} class="link-dark text-body">
                       {section.detailLabel}
                     </a>
                   )
                 }
               </div>
             </div>
-          )}
-        </div>
-      </section>
-    ))
-  }
+          </section>
+        ))
+    }
+
+    <!-- Launch-to-Care handoff band (DIG-1026 rev 2, spec 5.1): one
+         full-width ruled link to the existing #waas anchor. Static:
+         no spotlight, no reveal, no JS. -->
+    <a class="service-handoff" href="#waas">
+      <div class="container-ds flex flex-wrap items-baseline gap-x-4 gap-y-2 py-8 md:py-10">
+        <p class="max-w-3xl text-body-lg text-text-on-dark">
+          Happy with your new site? The Care plan keeps it hosted, managed, and improving for one monthly price.
+        </p>
+        <span class="text-body-lg text-accent" aria-hidden="true">→</span>
+      </div>
+    </a>
+
+    {
+      sections
+        .filter(({ panel }) => panel)
+        .map((section) => (
+          <section class="border-t border-grey-800" aria-labelledby={section.id}>
+            <div class="container-ds section">
+              <div
+                class="feature-panel corner-cut-md bg-grey-800"
+                data-spotlight
+                data-reveal
+                data-reveal-index="0"
+              >
+                <p class="text-eyebrow uppercase text-text-on-dark-muted">{section.eyebrow}</p>
+                <h2 id={section.id} class="mt-3 text-display text-paper" set:html={section.heading} />
+                <p class="mt-4 max-w-xl text-body-lg text-text-on-dark-muted">{section.body}</p>
+                <div class="spec-table mt-10 md:mt-12">
+                  <dl>
+                    {section.specs.map((field) => (
+                      <div class="spec-table-row">
+                        <dt class="text-eyebrow uppercase text-text-on-dark-muted">{field.label}</dt>
+                        <dd class="text-body text-text-on-dark">
+                          {Array.isArray(field.value) ? (
+                            <ul class="list-disc space-y-2 pl-6">
+                              {field.value.map((item) => (
+                                <li>{item}</li>
+                              ))}
+                            </ul>
+                          ) : (
+                            field.value
+                          )}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+                <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+                  <a
+                    href={withBase(`/contact?need=${section.need}`)}
+                    class="btn btn--primary"
+                    data-ds-location="content"
+                  >
+                    Get a quote
+                  </a>
+                  <button type="button" class="link-dark text-body" data-open-dialog="waas-modal">
+                    See what the plan covers
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        ))
+    }
+  </div>
+
+  <script is:inline slot="head">
+    /* Pre-paint motion flag (DIG-1009 spec 5.1): the reveal system mounts
+       on this page. No logo sweep (home only). */
+    document.documentElement.classList.add('js-reveal');
+  </script>
+
+  <!-- Client motion scripts (DIG-1009 spec 5.1): scroll reveals and the
+       D3 spotlight. Bundled by Astro, deferred. -->
+  <script>
+    import '../scripts/reveal';
+    import '../scripts/spotlight';
+  </script>
 
   <dialog class="waas-dialog" id="waas-modal" aria-labelledby="waas-modal-title">
     <p class="text-eyebrow uppercase text-text-on-dark-muted">Care plan</p>
@@ -132,8 +350,10 @@ const sections = [
     <ul class="mt-6 list-disc pl-6 text-body text-text-on-dark">
       <li>Design — your site designed in the Digitally Shifted system.</li>
       <li>Hosting — LiteSpeed servers, monitored and patched.</li>
-      <li>Management — updates, backups, security, and small changes.</li>
+      <li>Management — updates, backups, and security.</li>
+      <li>Changes and new pages — under our fair usage policy.</li>
       <li>SEO — the technical base, a content plan, and plain reporting.</li>
+      <li>Support — remote email support.</li>
     </ul>
     <p class="mt-4 text-body-sm text-text-on-dark-muted">
       One plan replaces the separate design bill, the hosting bills, and the

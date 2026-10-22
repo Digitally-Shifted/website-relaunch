@@ -4,6 +4,9 @@
  * This route lists the four blog topics. The old legacy listing is
  * retired (README porting workflow): when an Astro route takes over, the
  * legacy page leaves legacy-static/.
+ *
+ * Phase 2 (DIG-1009 spec 5.7): Masked Heading hero, Glare Hover cards,
+ * sparse scroll reveals, diagonal join. Copy and anchors unchanged.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
@@ -44,11 +47,24 @@ const topics = [
   description="Practical guidance for South African businesses on website development, digital marketing, hosting and domains, and paid advertising."
   path="/blog"
 >
+  <script is:inline slot="head">
+    /* Pre-paint motion flag (DIG-1009 spec 5.7): the reveal system mounts
+       on this page. */
+    document.documentElement.classList.add('js-reveal');
+  </script>
+
+  <!-- Scroll reveals (DIG-1009 spec 5.7). -->
+  <script>
+    import '../scripts/reveal';
+  </script>
+
   <PageHero
     eyebrow="Blog"
     statement='Digital marketing <em>insights</em>.'
     opener="Practical guidance on website development, digital marketing, hosting and paid advertising for South African businesses. Posts are grouped into four topics; older posts stay in the archive on each topic page."
     ctaHref="/contact?need=quote"
+    masked
+    joinFrom="grey-300"
   />
 
   <section class="bg-paper" aria-labelledby="topics">
@@ -61,9 +77,9 @@ const topics = [
       />
       <div class="mt-10 grid gap-6 md:grid-cols-2">
         {
-          topics.map((topic) => (
-            <div id={topic.slug} class="scroll-mt-24">
-              <Card title={topic.title} dark={false} interactive>
+          topics.map((topic, index) => (
+            <div id={topic.slug} class="scroll-mt-24" data-reveal data-reveal-index={index + 1}>
+              <Card title={topic.title} dark={false} interactive glare>
                 <p>{topic.body}</p>
                 <div slot="action" class="mt-4">
                   <a class="link-light text-body" href={withBase(topic.href)}>

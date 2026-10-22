@@ -309,10 +309,13 @@
   /*
    * Motion: shift-enter (DESIGN-SPEC 2.6). Movement enters on the
    * 45-degree diagonal. Reduced motion keeps opacity only (tokens.css
-   * already collapses the durations).
+   * already collapses the durations). The delay comes from the
+   * `--enter-delay` custom property so the load choreography stages
+   * elements without JavaScript (DIG-993 spec 6.1).
    */
   .shift-enter {
     animation: ds-shift-enter var(--duration-slow) var(--easing-standard) both;
+    animation-delay: var(--enter-delay, 0ms);
   }
 
   @keyframes ds-shift-enter {
@@ -324,6 +327,334 @@
       opacity: 1;
       transform: translate(0, 0);
     }
+  }
+
+  /*
+   * Hero statement word spans (DIG-993 spec 6.1). Plain inline elements
+   * in the markup; inline-block here lets the transform run while words
+   * still wrap one by one. Spaces stay text nodes between spans, so
+   * screen readers read the sentence normally. Word delay stages from
+   * the word index.
+   *
+   * Choreography (Creative Director ruling, 2026-10-22): words are
+   * fully opaque at first paint and settle along the 45 degree diagonal
+   * into place. They do not fade in, so no word paint hides behind the
+   * animation and the H1 text stays the LCP paint.
+   */
+  .split-word {
+    display: inline-block;
+    animation: ds-shift-settle var(--duration-slow) var(--easing-standard) both;
+    animation-delay: calc(120ms + var(--word-i, 0) * 40ms);
+  }
+
+  @keyframes ds-shift-settle {
+    from {
+      transform: translate(-8px, 8px);
+    }
+    to {
+      transform: translate(0, 0);
+    }
+  }
+
+  /*
+   * Scroll reveal (DIG-993 spec 6.2). Elements start visible; only pages
+   * that add `js-reveal` to <html> hide unrevealed elements, so content
+   * is never lost without JavaScript.
+   */
+  .js-reveal [data-reveal] {
+    opacity: 0;
+  }
+
+  .js-reveal [data-reveal].is-in {
+    animation: ds-shift-enter var(--duration-slow) var(--easing-standard) both;
+    animation-delay: calc(var(--reveal-i, 0) * var(--duration-fast));
+  }
+
+  /*
+   * Hero grid background (DIG-993 spec 7.2, D8): 12 container-aligned
+   * verticals at 5% white (F4 ceiling 6%). Decorative overlay.
+   */
+  .grid-bg-12 {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgb(255 255 255 / 0.05) 0 1px,
+      transparent 1px calc(100% / 12)
+    );
+  }
+
+  /*
+   * Grain overlay (DIG-993 spec 7.3, D7): server-rendered inline SVG in
+   * GrainLayer.astro at 4% on the hero and CTA bands only (F3
+   * two-surface budget). The old `.grain::after` CSS tile painted the
+   * full band as one large image paint and became the LCP element, so it
+   * was removed (Creative Director ruling, 2026-10-22).
+   */
+
+  /*
+   * Logo sweep (DIG-993 spec 6.4, M6): one 560ms sheen over the header
+   * logo, home only (the page adds `js-logo-sweep` to <html>). The logo
+   * asset never changes; the sheen is an overlay.
+   */
+  .logo-sweep {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .logo-sweep::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgb(255 255 255 / 0.35) 50%,
+      transparent 70%
+    );
+    transform: translateX(-130%);
+  }
+
+  .js-logo-sweep .logo-sweep::after {
+    animation: ds-logo-sweep var(--duration-reveal) var(--easing-standard) 800ms both;
+  }
+
+  @keyframes ds-logo-sweep {
+    to {
+      transform: translateX(130%);
+    }
+  }
+
+  /*
+   * Promise numeral box (DIG-993 spec 7.3, CLS guard): the count-up
+   * walks 0-20, so the digit box is fixed at two tabular columns and
+   * centered while the number changes.
+   */
+  .promise-count {
+    display: inline-block;
+    min-width: 2ch;
+    text-align: center;
+  }
+
+  /*
+   * Desktop nav states (DIG-993 spec 4.1, M4): a 2px accent bar flush
+   * to the header bottom replaces the underline device. Hover draws the
+   * bar from the left; the active item keeps it plus accent text.
+   */
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-fast) var(--easing-standard);
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after,
+  .nav-link[aria-current='page']::after {
+    transform: scaleX(1);
+  }
+
+  /*
+   * Service index rows (DIG-993 spec 5.4, M1): the hairline carries the
+   * hover state (grey-800 to grey-500, 120ms). No translation, no
+   * scale, no shadow, no pointer script in Phase 1. Touch: same border
+   * step on :active.
+   */
+  .service-row {
+    transition: border-color var(--duration-fast) var(--easing-standard);
+  }
+
+  .service-row:hover,
+  .service-row:active {
+    border-color: var(--color-grey-500);
+  }
+
+  /*
+   * D3 border-glow spotlight (DIG-1009 4.1): greyscale radial follows the
+   * pointer on data-spotlight surfaces. Painted only when the script adds
+   * .is-spot (pointer-fine, motion allowed), so no-JS, touch, and reduced
+   * motion fall back to the border-only hover. Greyscale only (D3).
+   */
+  [data-spotlight] {
+    position: relative;
+  }
+
+  [data-spotlight]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      360px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      rgb(255 255 255 / 0.06),
+      transparent 65%
+    );
+    transition: opacity var(--duration-base) var(--easing-standard);
+  }
+
+  [data-spotlight].is-spot::before {
+    opacity: 1;
+  }
+
+  /*
+   * Glare Hover (DIG-1009 4.2): one greyscale sheen per hover enter.
+   * Dark surfaces shine white; light cards shine ink at 5% (decision
+   * log #6). Reduced motion: none (section 7.5).
+   */
+  .glare {
+    --glare-color: rgb(255 255 255 / 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card--light.glare {
+    --glare-color: rgb(7 8 8 / 0.05);
+  }
+
+  .glare::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 42%,
+      var(--glare-color) 50%,
+      transparent 58%
+    );
+    transform: translateX(-130%);
+  }
+
+  .glare:hover::after,
+  .glare:focus-within::after {
+    animation: ds-glare var(--duration-slow) var(--easing-standard);
+  }
+
+  @keyframes ds-glare {
+    to {
+      transform: translateX(130%);
+    }
+  }
+
+  /*
+   * Masked Heading (DIG-1009 4.3): load-time scan wipe. Negative insets
+   * keep descenders and glyph edges unclipped. Reduced motion: none.
+   */
+  .mask-heading {
+    animation: ds-mask-wipe var(--duration-reveal) var(--easing-standard) 120ms both;
+  }
+
+  @keyframes ds-mask-wipe {
+    from {
+      clip-path: inset(-0.1em 100% -0.15em -0.05em);
+    }
+    to {
+      clip-path: inset(-0.1em -0.05em -0.15em -0.05em);
+    }
+  }
+
+  /*
+   * Shiny Text sending state (DIG-1009 4.4): keyed to the existing
+   * disabled state; no JS change. Opt-in via .ds-form--shiny so the
+   * /checklist/ funnel keeps its current behavior.
+   */
+  .ds-form--shiny .btn--primary:disabled {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ds-form--shiny .btn--primary:disabled::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgb(255 255 255 / 0.25) 50%,
+      transparent 60%
+    );
+    transform: translateX(-130%);
+    animation: ds-shiny-sweep 1120ms linear infinite;
+  }
+
+  @keyframes ds-shiny-sweep {
+    to {
+      transform: translateX(130%);
+    }
+  }
+
+  /*
+   * Spring Check success mark (DIG-1009 4.5): circle then check draw,
+   * whole mark springs once. Overshoot lives in the keyframes.
+   */
+  .spring-check {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    animation: ds-spring var(--duration-reveal) var(--easing-standard) 200ms both;
+    transform-origin: center;
+  }
+
+  .spring-check circle {
+    stroke-dasharray: 132;
+    stroke-dashoffset: 132;
+    animation: ds-draw var(--duration-base) var(--easing-standard) 200ms forwards;
+  }
+
+  .spring-check path {
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: ds-draw var(--duration-slow) var(--easing-standard) 400ms forwards;
+  }
+
+  @keyframes ds-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes ds-spring {
+    0% {
+      transform: scale(0.7);
+    }
+    60% {
+      transform: scale(1.06);
+    }
+    80% {
+      transform: scale(0.98);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /*
+   * Fixed quote pill (DIG-993 spec 4.2): hide/show steps opacity only,
+   * never a display toggle, so nothing shifts. Instant under reduced
+   * motion (tokens.css collapses the duration).
+   */
+  .quote-pill {
+    transition: opacity var(--duration-fast) var(--easing-standard);
+  }
+
+  .quote-pill--hidden {
+    opacity: 0;
+    pointer-events: none;
   }
 
   /* Section texture: legacy stationery line pattern at max 8% contrast. */
@@ -356,22 +687,27 @@
     transition:
       background-color var(--duration-fast) var(--easing-standard),
       border-color var(--duration-fast) var(--easing-standard),
-      color var(--duration-fast) var(--easing-standard);
+      color var(--duration-fast) var(--easing-standard),
+      filter var(--duration-fast) var(--easing-standard);
   }
 
   .btn--compact {
     min-height: 40px;
   }
 
-  /* Primary: accent fill, Ink label. Hover shifts one grey step darker. */
+  /* Primary: accent fill, Ink label. Hover keeps the accent (M3,
+   * DIG-993 spec 7.4): brightness step and a 1px inset Paper ring
+   * replace the old grey fill, so the control never stops reading as
+   * the accent on hover. :active stays the ink fill. */
   .btn--primary {
     background-color: var(--color-accent);
     color: var(--color-ink);
   }
 
   .btn--primary:hover {
-    background-color: var(--color-grey-700);
-    color: var(--color-paper);
+    background-color: var(--color-accent);
+    filter: brightness(1.06);
+    box-shadow: inset 0 0 0 1px var(--color-paper);
   }
 
   .btn--primary:active {
@@ -465,9 +801,11 @@
    * step that still clears 3:1 against carbon (5.08:1) and the light
    * card grounds (3.95:1 on paper), which 1.4.11 needs for state
    * borders. grey-700 and grey-300 measure 1.71:1 and 1.74:1.
+   *
+   * D9 (DIG-993 spec 7.4): borders carry state everywhere; interactive
+   * cards lose the hover shadow.
    */
   .card--interactive:hover {
-    box-shadow: var(--shadow-raised-dark);
     border-color: var(--color-grey-500);
   }
 
@@ -476,7 +814,6 @@
   }
 
   .card--light.card--interactive:hover {
-    box-shadow: var(--shadow-raised-light);
     border-color: var(--color-grey-500);
   }
 
@@ -619,4 +956,114 @@
     height: 1px;
     overflow: hidden;
   }
+
+  /*
+   * Ruled spec tables (DIG-1026 rev 2, spec 5.1): static dl-based spec
+   * rows in the DIG-150 5 skeleton order. Zero JS, zero motion. Hairlines
+   * match the surface they sit on: grey-800 on the grey-900 row ground
+   * (matching the row rules), grey-700 inside the grey-800 Care panel
+   * (the feature-panel border token — grey-800 would vanish there).
+   */
+  .spec-table dl {
+    border-top: 1px solid var(--color-grey-800);
+  }
+
+  .spec-table-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2) var(--space-8);
+    padding-block: var(--space-4);
+    border-bottom: 1px solid var(--color-grey-800);
+  }
+
+  .spec-table-row dt,
+  .spec-table-row dd {
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .spec-table-row {
+      grid-template-columns: 11rem 1fr;
+    }
+  }
+
+  /* One token step up inside the grey-800 Care panel. */
+  .feature-panel .spec-table dl,
+  .feature-panel .spec-table-row {
+    border-color: var(--color-grey-700);
+  }
+
+  /*
+   * Launch-to-Care handoff band (DIG-1026 rev 2, spec 5.1): one
+   * full-width ruled link band. Border brighten matches .service-row;
+   * underline on hover carries the link affordance (spec 5.1 hover
+   * contract and QA step 12 — Tailwind preflight gives plain anchors
+   * no underline). No motion.
+   */
+  .service-handoff {
+    display: block;
+    border-top: 1px solid var(--color-grey-800);
+    transition: border-color var(--duration-fast) var(--easing-standard);
+  }
+
+  .service-handoff:hover,
+  .service-handoff:focus-visible {
+    border-top-color: var(--color-grey-500);
+    text-decoration-line: underline;
+    text-underline-offset: 3px;
+  }
+
+  /*
+   * Reduced-motion hardening (DIG-993 spec 7.1): no movement, no staged
+   * delays, all content visible, sweep and count-up static.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .js-reveal [data-reveal] {
+      opacity: 1;
+    }
+
+    .js-reveal [data-reveal].is-in {
+      animation: none;
+    }
+
+    .split-word,
+    .shift-enter {
+      animation: none;
+    }
+
+    .js-logo-sweep .logo-sweep::after {
+      animation: none;
+    }
+
+    /* Phase 2 additions (DIG-1009 spec 7.5): the new patterns rest on
+       their static states. The D3 spotlight needs no rule here: the
+       script gates itself on the same media query. */
+    .glare::after,
+    .ds-form--shiny .btn--primary:disabled::after {
+      animation: none;
+    }
+
+    .mask-heading {
+      animation: none;
+      clip-path: none;
+    }
+
+    .spring-check,
+    .spring-check circle,
+    .spring-check path {
+      animation: none;
+    }
+
+    .spring-check circle,
+    .spring-check path {
+      stroke-dashoffset: 0;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-delay: 0ms !important;
+    }
+  }
+
 }

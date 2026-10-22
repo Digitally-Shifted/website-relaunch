@@ -1,0 +1,91 @@
+---
+/*
+ * Services index (DIG-993 spec 5.4). Replaces the four-card grid with
+ * numbered ruled rows (FORMAT/Signal-A pattern): ghost numeral | title +
+ * one-liner | verb-first action link. Ground grey-900 (D1). Row hover
+ * brightens the hairline grey-800 to grey-500 at 120 ms (M1): no
+ * translation, no scale, no shadow, no pointer script.
+ *
+ * One-liners are derived from approved card copy; the CMO reviews them
+ * (with the action links and the eyebrow) in the DIG-994 pass.
+ */
+import SectionHeader from '../SectionHeader.astro';
+import DiagonalJoin from '../DiagonalJoin.astro';
+import { withBase } from '../../lib/urls';
+
+const rows = [
+  {
+    numeral: '01',
+    title: 'Website design and development',
+    line: 'A website built around your customers and your goals — you own the result.',
+    action: { label: 'Start your build', href: '/services#web-design' },
+  },
+  {
+    numeral: '02',
+    title: 'Hosting and management',
+    line: 'Hosting, updates, backups, and security — our job, not your weekend.',
+    action: { label: 'Hand over the hosting', href: '/services#hosting' },
+  },
+  {
+    numeral: '03',
+    title: 'Care plan',
+    line: 'Design, hosting, management, SEO basics, and changes and new pages in one monthly price.',
+    action: { label: 'Put your site on Care', href: '/services#waas' },
+  },
+  {
+    numeral: '04',
+    title: 'SEO and AIO',
+    line: 'Technical foundations and clear content that help the right people find you — on Google and in AI answers.',
+    action: { label: 'Get found', href: '/services#seo' },
+  },
+];
+---
+
+<section class="bg-grey-900" aria-labelledby="what-we-do">
+  <div class="container-ds section">
+    <div data-reveal data-reveal-index="0">
+      <SectionHeader
+        id="what-we-do"
+        eyebrow="Our services"
+        heading="What we do"
+        opener="Four services cover the whole life of your website. Buy a website once with Launch, and own it outright. Or put your website on the Care plan and let us run it for a monthly fee. Choose what you need today and add more later."
+      />
+    </div>
+
+    <div class="mt-12">
+      {
+        rows.map((row, index) => (
+          <div
+            data-reveal
+            data-reveal-index={index + 1}
+            class:list={[
+              'service-row grid gap-x-8 gap-y-4 border-t border-grey-800 py-8 md:grid-cols-[8rem_1fr_auto] md:items-start',
+              index === rows.length - 1 && 'border-b border-grey-800',
+            ]}
+          >
+            <span aria-hidden="true" class="text-display text-grey-800 tabular-nums md:text-display-xl">
+              {row.numeral}
+            </span>
+            <div class="max-w-[42rem]">
+              <h3 class="text-h3 text-paper">{row.title}</h3>
+              <p class="mt-2 text-body text-text-on-dark-muted">{row.line}</p>
+            </div>
+            <a href={withBase(row.action.href)} class="link-dark text-body-sm md:justify-self-end">
+              {row.action.label}
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Repeat CTA (conversion spec 3.1). -->
+    <div class="mt-12">
+      <a href={withBase('/contact?need=quote')} class="btn btn--primary" data-ds-location="content">
+        Get a quote
+      </a>
+    </div>
+  </div>
+  <div class="container-ds">
+    <DiagonalJoin from="grey-700" />
+  </div>
+</section>

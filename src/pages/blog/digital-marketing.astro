@@ -2,6 +2,10 @@
 /*
  * Blog topic filter: Digital Marketing (DIG-72). Description is the
  * verbatim category text kept per the content inventory.
+ *
+ * Phase 2 (DIG-1009 spec 5.8): Masked Heading hero, Glare Hover cards,
+ * sparse scroll reveals, diagonal join. Copy and legacy-post links
+ * unchanged.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
@@ -15,52 +19,74 @@ import { withBase } from '../../lib/urls';
   description="Practical digital marketing guidance for South African businesses: strategy, SEO, analytics and campaign planning that turn attention into enquiries."
   path="/blog/digital-marketing"
 >
+  <script is:inline slot="head">
+    /* Pre-paint motion flag (DIG-1009 spec 5.8): the reveal system mounts
+       on this page. */
+    document.documentElement.classList.add('js-reveal');
+  </script>
+
+  <!-- Scroll reveals (DIG-1009 spec 5.8). -->
+  <script>
+    import '../../scripts/reveal';
+  </script>
+
   <PageHero
     eyebrow="Blog topic"
     statement="Digital Marketing"
     opener="Explore practical digital marketing guidance from Digitally Shifted for South African businesses that want stronger online visibility, better leads and clearer reporting. This section covers strategy, SEO, analytics, campaign planning and the digital foundations that help marketing activity connect to measurable business growth."
     ctaHref="/contact?need=quote"
+    masked
+    joinFrom="grey-300"
   />
 
   <section class="bg-paper" aria-labelledby="posts">
     <div class="container-ds section">
-      <SectionHeader id="posts" eyebrow="Posts" heading='Posts in this <em>topic</em>.' dark={false} />
+      <div data-reveal data-reveal-index="0">
+        <SectionHeader id="posts" eyebrow="Posts" heading='Posts in this <em>topic</em>.' dark={false} />
+      </div>
       <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <Card title="The Top Digital Marketing Trends for 2027 in South Africa" dark={false} interactive>
-          <p>
-            The 2027 refresh: eight trends that matter for South African small
-            businesses, from AI search and local SEO to WhatsApp, with one
-            action to take for each.
-          </p>
-          <div slot="action" class="mt-4">
-            <a class="link-light text-body" href={withBase('/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/')}>Read the article</a>
-          </div>
-        </Card>
-        <Card title="The Ultimate Digital Marketing Guide for Businesses" dark={false} interactive>
-          <p>
-            The long-form guide: reach the right audience, stand out in a
-            crowded market, and turn attention into enquiries.
-          </p>
-          <div slot="action" class="mt-4">
-            <a class="link-light text-body" href={withBase('/2023/02/09/ultimate-digital-marketing-guide-for-businesses/')}>Read the guide</a>
-          </div>
-        </Card>
-        <Card
-          title="How to Evaluate the Effectiveness of Your Digital Marketing Efforts"
-          dark={false}
-          interactive
-        >
-          <p>
-            Set KPIs, read your campaign data and calculate ROI with a worked
-            South African example.
-          </p>
-          <div slot="action" class="mt-4">
-            <a
-              class="link-light text-body"
-              href={withBase('/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts/')}>Read the post</a
-            >
-          </div>
-        </Card>
+        <div data-reveal data-reveal-index="1">
+          <Card title="The Top Digital Marketing Trends for 2027 in South Africa" dark={false} interactive glare>
+            <p>
+              The 2027 refresh: eight trends that matter for South African small
+              businesses, from AI search and local SEO to WhatsApp, with one
+              action to take for each.
+            </p>
+            <div slot="action" class="mt-4">
+              <a class="link-light text-body" href={withBase('/2023/02/01/stay-ahead-of-the-game-2023s-top-digital-marketing-trends/')}>Read the article</a>
+            </div>
+          </Card>
+        </div>
+        <div data-reveal data-reveal-index="2">
+          <Card title="The Ultimate Digital Marketing Guide for Businesses" dark={false} interactive glare>
+            <p>
+              The long-form guide: reach the right audience, stand out in a
+              crowded market, and turn attention into enquiries.
+            </p>
+            <div slot="action" class="mt-4">
+              <a class="link-light text-body" href={withBase('/2023/02/09/ultimate-digital-marketing-guide-for-businesses/')}>Read the guide</a>
+            </div>
+          </Card>
+        </div>
+        <div data-reveal data-reveal-index="3">
+          <Card
+            title="How to Evaluate the Effectiveness of Your Digital Marketing Efforts"
+            dark={false}
+            interactive
+            glare
+          >
+            <p>
+              Set KPIs, read your campaign data and calculate ROI with a worked
+              South African example.
+            </p>
+            <div slot="action" class="mt-4">
+              <a
+                class="link-light text-body"
+                href={withBase('/2023/02/02/how-to-evaluate-the-effectiveness-of-your-digital-marketing-efforts/')}>Read the post</a
+              >
+            </div>
+          </Card>
+        </div>
       </div>
       <div class="mt-10">
         <a class="link-light text-body" href={withBase('/blog')}>All blog topics</a>
