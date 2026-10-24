@@ -2,8 +2,21 @@
 /*
  * Closing CTA band (DESIGN-SPEC 5.1: allow 128-192px before hero closers).
  * One primary call to action with a short supporting line.
+ *
+ * Phase 1 home additions (DIG-993 spec 5.9), all opt-in; defaults keep
+ * every other page identical:
+ *   - `textured`: line texture inside the panel (D6).
+ *   - `grain`: grain overlay on the carbon band (F3), server-rendered
+ *     inline SVG (GrainLayer), with the positioning the layer needs.
+ *   - `id`: band id; the home band carries `closing-cta` for the quote
+ *     pill observer.
+ *   - `panelClass`: panel ground override; the home panel reads grey-900
+ *     against the carbon band (D1).
+ *   - `reveal`: one panel reveal at 320 ms (inert without the page-level
+ *     `js-reveal` class).
  */
 import { withBase } from '../lib/urls';
+import GrainLayer from './GrainLayer.astro';
 
 interface Props {
   /** Heading content as HTML with strong/em for the 900/300 pairing. */
@@ -13,14 +26,40 @@ interface Props {
   ctaLabel?: string;
   /** Optional small note rendered under the button (e.g. a reply-time promise). */
   note?: string;
+  /** Line texture inside the panel (home closing band). */
+  textured?: boolean;
+  /** Grain overlay on the band (home closing band). */
+  grain?: boolean;
+  /** Band id (home: `closing-cta`, the quote-pill observer target). */
+  id?: string;
+  /** Panel ground override classes (home: bg-grey-900 on carbon). */
+  panelClass?: string;
+  /** One panel reveal at 320 ms (home closing band). */
+  reveal?: boolean;
 }
 
-const { heading, line, ctaHref = '/contact?need=quote', ctaLabel = 'Get a quote', note } = Astro.props;
+const {
+  heading,
+  line,
+  ctaHref = '/contact?need=quote',
+  ctaLabel = 'Get a quote',
+  note,
+  textured = false,
+  grain = false,
+  id,
+  panelClass = '',
+  reveal = false,
+} = Astro.props;
 ---
 
-<div class="bg-carbon">
+<div class:list={['bg-carbon', grain && 'grain relative overflow-hidden']} id={id}>
+  {grain && <GrainLayer filterId="ds-grain-cta" />}
   <div class="container-ds pt-32 pb-32">
-    <div class="feature-panel corner-cut-md">
+    <div
+      class:list={['feature-panel corner-cut-md', textured && 'texture-lines', panelClass]}
+      data-reveal={reveal ? '' : undefined}
+      data-reveal-index={reveal ? '0' : undefined}
+    >
       <h2 class="text-display text-paper" set:html={heading} />
       {
         line && <p class="mt-4 max-w-xl text-body-lg text-text-on-dark-muted">{line}</p>

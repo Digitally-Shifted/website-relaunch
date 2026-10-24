@@ -1,0 +1,65 @@
+---
+/*
+ * Fixed quote pill (DIG-993 spec 4.2): a persistent route to the primary
+ * action at md and above. Hidden on the funnel and legal paths by the
+ * same server-side path rule as the header CTA, so the funnel keeps one
+ * action. Hidden below md, where the mobile action bar owns conversion.
+ * Without JavaScript the pill stays visible on allowed paths; the
+ * observer only fades it while the closing band or the footer intersects
+ * (opacity + pointer-events, never a display toggle, so nothing shifts).
+ */
+import { withBase } from '../lib/urls';
+
+interface Props {
+  /** Absolute site path of the current page, passed from BaseLayout. */
+  path: string;
+}
+
+const { path } = Astro.props;
+const normalized = path === '/' ? '/' : path.replace(/\/$/, '');
+const hiddenPaths = ['/contact', '/contact/thank-you', '/privacy', '/checklist'];
+const visible = !hiddenPaths.includes(normalized);
+---
+
+{
+  visible && (
+    <nav aria-label="Quick quote action" class="fixed right-6 bottom-6 z-20 hidden md:block">
+      <a
+        href={withBase('/contact?need=quote')}
+        class="quote-pill btn btn--primary corner-cut-sm"
+        data-ds-location="quote_pill"
+      >
+        Get a quote
+      </a>
+    </nav>
+  )
+}
+
+<script>
+  /*
+   * Hide the pill while #closing-cta or the footer intersects the
+   * viewport (threshold 0.2). Show again when both leave.
+   */
+  const pill = document.querySelector<HTMLElement>('.quote-pill');
+  const band = document.getElementById('closing-cta');
+  const footer = document.querySelector('footer');
+  if (pill && (band || footer)) {
+    let bandVisible = false;
+    let footerVisible = false;
+    const apply = () => {
+      pill.classList.toggle('quote-pill--hidden', bandVisible || footerVisible);
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.target === band) bandVisible = entry.isIntersecting;
+          if (entry.target === footer) footerVisible = entry.isIntersecting;
+        }
+        apply();
+      },
+      { threshold: 0.2 },
+    );
+    if (band) io.observe(band);
+    if (footer) io.observe(footer);
+  }
+</script>
