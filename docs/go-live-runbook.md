@@ -95,6 +95,13 @@ site on the preview subdomain.
 4. Deploy the form backend as a cPanel Node.js app (Application Manager /
    Setup Node.js App):
 
+   > Superseded for release pending the Web3Forms swap (security review
+   > open condition 4). The board set forms to Web3Forms with a honeypot
+   > on 2026-10-21; DIG-57 R2 allows no custom back end. Run this step
+   > only if a VP of Engineering stack exception is recorded. Otherwise
+   > skip it; the Web3Forms form path replaces it, and the stored-row
+   > checks in step 7.3 change with it.
+
    1. Application root: a directory outside the document root (for
       example `~/form-backend`); upload `form-backend/` there.
    2. Application URL: `/api`. Startup file: `server.mjs`.
@@ -128,6 +135,29 @@ site on the preview subdomain.
      Header always set X-Frame-Options "DENY"
    </IfModule>
    ```
+
+8. Serve the preview subdomain noindexed before the owner review
+   (security review C4; board hosting standard, 2026-10-21). The
+   production build is indexable by design. The preview gets its
+   `noindex` on the host instead. Add this line inside the
+   `<IfModule mod_headers.c>` block of the preview document root
+   `.htaccess`:
+
+   ```apache
+   Header always set X-Robots-Tag "noindex, nofollow"
+   ```
+
+   Verify the served response, not only the file on disk:
+
+   ```sh
+   curl -sI https://new.digitallyshifted.com/ | grep -i x-robots-tag
+   # expect: X-Robots-Tag: noindex, nofollow
+   ```
+
+   The production smoke test reads only HTML meta tags, so it cannot see
+   this header. Keep the line in the preview configuration only. Remove
+   it from the apex serving path before the DNS switch (step 6). Then
+   run the reverse check after the switch (step 7).
 
 9. **Owner review gate.** With the preview subdomain serving the site
    (statics + redirects + headers + form), send the owner the preview URL
@@ -204,7 +234,11 @@ records flip.
 2. Switch the A record to the production host IP. Keep `www` as CNAME.
 3. Add the Search Console TXT record if not present (DIG-65 step 4.2).
 4. Verify SPF/DKIM records for the form-mail sender domain.
-5. Propagation check from outside:
+5. Make the apex serve the release without the preview `noindex` header.
+   Use a separate document root for the apex, or remove the
+   `X-Robots-Tag` line from its `.htaccess`. The preview subdomain keeps
+   its `noindex`.
+6. Propagation check from outside:
 
    ```sh
    dig +short digitallyshifted.com A
@@ -228,13 +262,25 @@ The build marker must show the released commit SHA.
 3. Form pass on the live host: submit one real enquiry through the page,
    confirm the thank-you page, the stored row, and the owner email; then
    confirm a honeypot-filled submission stores a spam row and sends no
-   email (`form-backend/README.md`, spec section 7.4).
+   email (`form-backend/README.md`, spec section 7.4). With the
+   Web3Forms form path (security review open condition 4), confirm the
+   inbox delivery and the thank-you conversion instead of stored rows.
 4. Security headers: `curl -sI https://digitallyshifted.com` shows HSTS,
    CSP, `X-Content-Type-Options`, `Referrer-Policy`, and frame protection
    (security review C1/C3 PASS).
-5. Staging stays up and noindexed; it is the next release's rehearsal
+5. Indexability: the apex serves no `noindex` anywhere.
+
+   ```sh
+   curl -sI https://digitallyshifted.com/ | grep -i x-robots-tag  # expect no output
+   bash scripts/smoke-test.sh https://digitallyshifted.com production
+   ```
+
+   The smoke test must print "production home is indexable". A live site
+   that serves `noindex` is invisible to search engines. Treat a hit
+   here as a release blocker.
+6. Staging stays up and noindexed; it is the next release's rehearsal
    environment.
-6. Record the go-live evidence (smoke output, header output, redirect and
+7. Record the go-live evidence (smoke output, header output, redirect and
    form results) on the DIG-91 issue.
 
 ## 8. Analytics and Search Console activation
