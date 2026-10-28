@@ -10,6 +10,10 @@
  * drop the form component in without layout work.
  *
  * The header CTA and the mobile action bar are hidden on this page.
+ *
+ * Phase 2 (DIG-1009 spec 5.5): the form opts into the Shiny Text sending
+ * state. Nothing above the form moves — no reveal, no join, no hero
+ * treatment; the page chrome is pixel-identical to 4a79fac.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
@@ -30,7 +34,7 @@ import { withBase } from '../lib/urls';
         <p class="text-eyebrow uppercase text-text-on-dark-muted">Contact</p>
         <h1 class="mt-3 text-display text-paper">Tell us <em>what you need</em>.</h1>
         <p class="mt-4 text-body-lg text-text-on-dark-muted">
-          Send the form, or reach us directly. We reply within one business day.
+          Send the form, or reach us directly. We aim to reply within one business day.
         </p>
       </header>
 
@@ -40,7 +44,7 @@ import { withBase } from '../lib/urls';
         slot attribute stays for verification and analytics targeting.
       */}
       <div class="mt-12 max-w-2xl" data-ds-form-slot="contact">
-        <ContactForm />
+        <ContactForm shiny />
       </div>
 
       <div class="mt-16 max-w-2xl border-t border-grey-800 pt-8">

@@ -50,7 +50,7 @@ export const needOptions = [
   { value: 'general', label: 'General enquiry', quoteIntent: false },
   { value: 'new-website', label: 'A new website', quoteIntent: true },
   { value: 'redesign', label: 'A redesign or upgrade', quoteIntent: true },
-  { value: 'waas', label: 'Website-as-a-Service (monthly plan)', quoteIntent: true },
+  { value: 'waas', label: 'The Care plan (monthly plan)', quoteIntent: true },
   { value: 'seo', label: 'SEO', quoteIntent: false },
   { value: 'hosting', label: 'Hosting or management', quoteIntent: false },
   { value: 'quote', label: 'Not sure — I want prices', quoteIntent: true },

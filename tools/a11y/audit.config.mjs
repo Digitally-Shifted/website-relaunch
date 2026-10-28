@@ -19,7 +19,6 @@ export const config = {
     { name: 'services-hub', path: '/services/' },
     { name: 'service-website-development', path: '/services/website-development/' },
     { name: 'service-domains-hosting', path: '/services/domains-hosting/' },
-    { name: 'service-paid-advertising', path: '/services/paid-advertising/' },
     { name: 'blog-index', path: '/blog/' },
     { name: 'blog-website-development', path: '/blog/website-development/' },
     { name: 'blog-digital-marketing', path: '/blog/digital-marketing/' },

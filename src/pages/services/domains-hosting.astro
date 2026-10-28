@@ -3,6 +3,11 @@
  * Service detail: domains and hosting (DIG-72). Merge target of the
  * 2024-07-04 post. CTA preselects need=hosting (conversion spec 3.2).
  * DRAFT COPY: pending DIG-63.
+ *
+ * Phase 2 (DIG-1009 spec 5.3): same treatment as website-development,
+ * plus the one sanctioned display fix — the CtaBand line names the Care
+ * plan (DIG-25 rev 7 naming rule 2). The two external citations carry
+ * over verbatim.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
@@ -17,51 +22,71 @@ import { withBase } from '../../lib/urls';
   description="Domain registration, LiteSpeed hosting, and website management for South African businesses: fast, secure, and maintained for you."
   path="/services/domains-hosting"
 >
+  <script is:inline slot="head">
+    /* Pre-paint motion flag (DIG-1009 spec 5.3): the reveal system mounts
+       on this page. */
+    document.documentElement.classList.add('js-reveal');
+  </script>
+
+  <!-- Scroll reveals (DIG-1009 spec 5.3). -->
+  <script>
+    import '../../scripts/reveal';
+  </script>
+
   <PageHero
     eyebrow="Services — Domains and hosting"
     statement='A fast, secure base for your <em>site</em>.'
     opener="We register and protect your domain, host on LiteSpeed servers, and manage updates, backups, and security. You run the business; we keep the site up."
     ctaHref="/contact?need=hosting"
+    joinFrom="grey-300"
   />
 
   <section class="bg-paper" aria-labelledby="included">
     <div class="container-ds section">
-      <SectionHeader id="included" eyebrow="What is included" heading='Hosting and management, <em>handled</em>.' dark={false} />
+      <div data-reveal data-reveal-index="0">
+        <SectionHeader id="included" eyebrow="What is included" heading='Hosting and management, <em>handled</em>.' dark={false} />
+      </div>
       <div class="mt-10 grid gap-6 md:grid-cols-3">
-        <Card title="Domains and email" dark={false}>
-          <p>
-            Registration, renewal, and DNS handled for you, with protected
-            business email set up on your domain.
-          </p>
-        </Card>
-        <Card title="Fast hosting" dark={false}>
-          <p>
-            LiteSpeed servers built for speed, with seamless email migration
-            from your old host when you move.
-          </p>
-          <p class="mt-3 text-caption text-text-on-light-muted">
-            A
-            <a
-              class="link-light"
-              href="https://web.archive.org/web/20210101013501/https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/"
-            >Google/SOASTA study (2017)</a>
-            found that as page load time goes from 1 to 3 seconds, the
-            probability of a user bouncing increases by 32%.
-          </p>
-        </Card>
-        <Card title="Security and backups" dark={false}>
-          <p>
-            Imunify360 protection, patches applied on time, and backups taken
-            so a bad day never becomes a lost site.
-          </p>
-          <p class="mt-3 text-caption text-text-on-light-muted">
-            In 2017, 1 in 13 web requests led to malware
-            (<a
-              class="link-light"
-              href="https://docs.broadcom.com/doc/istr-23-2018-en"
-            >Symantec, Internet Security Threat Report 2018</a>).
-          </p>
-        </Card>
+        <div data-reveal data-reveal-index="1">
+          <Card title="Domains and email" dark={false} glare>
+            <p>
+              Registration, renewal, and DNS handled for you, with protected
+              business email set up on your domain.
+            </p>
+          </Card>
+        </div>
+        <div data-reveal data-reveal-index="2">
+          <Card title="Fast hosting" dark={false} glare>
+            <p>
+              LiteSpeed servers built for speed, with seamless email migration
+              from your old host when you move.
+            </p>
+            <p class="mt-3 text-caption text-text-on-light-muted">
+              A
+              <a
+                class="link-light"
+                href="https://web.archive.org/web/20210101013501/https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/"
+              >Google/SOASTA study (2017)</a>
+              found that as page load time goes from 1 to 3 seconds, the
+              probability of a user bouncing increases by 32%.
+            </p>
+          </Card>
+        </div>
+        <div data-reveal data-reveal-index="3">
+          <Card title="Security and backups" dark={false} glare>
+            <p>
+              Imunify360 protection, patches applied on time, and backups taken
+              so a bad day never becomes a lost site.
+            </p>
+            <p class="mt-3 text-caption text-text-on-light-muted">
+              In 2017, 1 in 13 web requests led to malware
+              (<a
+                class="link-light"
+                href="https://docs.broadcom.com/doc/istr-23-2018-en"
+              >Symantec, Internet Security Threat Report 2018</a>).
+            </p>
+          </Card>
+        </div>
       </div>
     </div>
   </section>
@@ -74,7 +99,8 @@ import { withBase } from '../../lib/urls';
           <p>
             We review your current domain, host, and email setup, then quote
             the move in plain language. We migrate the site and email, switch
-            the DNS, and stay on for management, updates, and small changes.
+            the DNS, and stay on for management, updates, and changes and new
+            pages under our fair usage policy.
             Your site stays live while we work.
           </p>
           <p>
@@ -87,7 +113,12 @@ import { withBase } from '../../lib/urls';
 
   <CtaBand
     heading='Hosting is one part of the <em>plan</em>.'
-    line="Website-as-a-Service bundles hosting with design, management, and SEO in one monthly fee."
+    line="The Care plan bundles hosting with design, management, and SEO in one monthly fee."
     ctaHref="/contact?need=waas"
+    textured
+    grain
+    panelClass="bg-grey-900"
+    reveal
+    id="closing-cta"
   />
 </BaseLayout>

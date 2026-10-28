@@ -282,6 +282,10 @@ a:hover { color: var(--slate); }
 
 .no-header-cta .header-cta { display: none; }
 
+@media (max-width: 47.99rem) {
+  .header-cta { display: none; }
+}
+
 @media (min-width: 64rem) {
   .site-nav { display: block; }
 }
@@ -696,5 +700,42 @@ a:hover { color: var(--slate); }
     border: 0;
     border-radius: 0;
     min-height: 56px;
+  }
+}
+
+/* ---------------------------------------------------- Phase 2 (DIG-1009) */
+
+/* Motion tokens (DIG-1009 7.6): copied from brand/tokens/tokens.css
+   v4.1.0 — content.css is standalone and carried no durations. */
+:root {
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --duration-reveal: 560ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Masked Heading, load-time, guide-quiet (320ms, no delay). The h1 is
+   the LCP element; measured at QA (decision log #7). */
+.post-header h1 {
+  animation: ds-mask-wipe-guide var(--duration-slow) var(--easing-standard) both;
+}
+
+@keyframes ds-mask-wipe-guide {
+  from { clip-path: inset(-0.1em 100% -0.15em -0.05em); }
+  to { clip-path: inset(-0.1em -0.05em -0.15em -0.05em); }
+}
+
+/* Inline CTA emphasis (DIG-1009 4.5 in DIG-150 2.6): accent marks the
+   conversion panels. Static; no motion; content untouched. */
+.feature-panel,
+.post-closer {
+  border-top: 3px solid var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-header h1 {
+    animation: none;
+    clip-path: none;
   }
 }

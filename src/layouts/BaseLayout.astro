@@ -8,6 +8,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileActionBar from '../components/MobileActionBar.astro';
+import QuotePill from '../components/QuotePill.astro';
 import { canonical, withBase } from '../lib/urls';
 import { site } from '../lib/site.config';
 
@@ -95,6 +96,9 @@ const ga4Id = import.meta.env.PUBLIC_GA4_ID || '';
     <meta name="twitter:image" content={ogImageSrc} />
 
     <link rel="preload" href={fontHref} as="font" type="font/woff2" crossorigin />
+    <!-- Named head slot: pages add inline pre-paint scripts here (the home
+         page adds `js-reveal` and `js-logo-sweep`, DIG-993 spec 6.2/6.4). -->
+    <slot name="head" />
     <script>
       /*
        * Analytics boot (DIG-65, conversion spec §7). Loads the shared
@@ -121,32 +125,57 @@ const ga4Id = import.meta.env.PUBLIC_GA4_ID || '';
     {
       !hideMobileBar && <MobileActionBar />
     }
+    <QuotePill path={path} />
     <script>
       /*
        * Focus not obscured (WCAG 2.2 2.4.11, AC-008): the fixed mobile
-       * bar covers the bottom 49 px. CSS scroll margins handle focus that
-       * enters from below the fold. Browsers leave focus that is already
-       * visible in place, even when the bar partially covers it, so this
-       * handler scrolls the page by the exact overlap. Fixed containers
-       * (menu overlay, dialog top layer) cannot be lifted this way; they
-       * are skipped.
+       * bar covers the bottom 49 px, and at md and above the fixed quote
+       * pill covers the bottom-right corner. CSS scroll margins handle
+       * focus that enters from below the fold. Browsers leave focus that
+       * is already visible in place, even when a fixed surface partially
+       * covers it, so this handler scrolls the page by the exact overlap.
+       * Fixed containers (menu overlay, dialog top layer) cannot be
+       * lifted this way; they are skipped.
        */
       document.addEventListener('focusin', () => {
-        const bar = document.querySelector('.mobile-action-bar');
         const el = document.activeElement;
-        if (!bar || getComputedStyle(bar).display === 'none') return;
-        if (!el || el === document.body || bar.contains(el)) return;
+        if (!el || el === document.body) return;
         if (el.closest('dialog')) return;
         for (let n: Element | null = el; n && n !== document.body; n = n.parentElement) {
           if (getComputedStyle(n).position === 'fixed') return;
         }
-        const overlap =
-          el.getBoundingClientRect().bottom - bar.getBoundingClientRect().top;
         /*
          * Instant, not smooth: a focus lift should be immediate, and an
          * animated scroll races any check that reads the position.
          */
-        if (overlap > 0) window.scrollBy({ top: overlap, behavior: 'instant' });
+        const bar = document.querySelector('.mobile-action-bar');
+        if (bar && getComputedStyle(bar).display !== 'none' && !bar.contains(el)) {
+          const overlap =
+            el.getBoundingClientRect().bottom - bar.getBoundingClientRect().top;
+          if (overlap > 0) window.scrollBy({ top: overlap, behavior: 'instant' });
+        }
+        /*
+         * Quote pill lift (DIG-993 spec 4.2): mirror of the bar logic at
+         * md and above (the pill is display:none below md). A hidden pill
+         * (opacity 0, pointer-events none) obscures nothing, so it is
+         * skipped. The pill occupies the bottom-right corner only, so the
+         * lift applies when the focused element overlaps it horizontally.
+         */
+        const pill = document.querySelector<HTMLElement>('.quote-pill');
+        if (
+          pill &&
+          getComputedStyle(pill).display !== 'none' &&
+          !pill.classList.contains('quote-pill--hidden') &&
+          !pill.contains(el)
+        ) {
+          const pillRect = pill.getBoundingClientRect();
+          const elRect = el.getBoundingClientRect();
+          const overlapsHorizontally = elRect.right > pillRect.left && elRect.left < pillRect.right;
+          const overlap = elRect.bottom - pillRect.top;
+          if (overlapsHorizontally && overlap > 0) {
+            window.scrollBy({ top: overlap, behavior: 'instant' });
+          }
+        }
       });
     </script>
   </body>

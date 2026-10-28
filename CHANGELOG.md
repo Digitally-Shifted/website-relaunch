@@ -10,6 +10,14 @@ apply to production releases only. Staging has no versions.
 
 ### Added
 
+- Phase 1 home page rebuild (DIG-998, to the DIG-993 build spec): facts row,
+  why-us section (DIG-994 slots A–G), services ruled-row index, promise band
+  with the count-up numeral, Care plan block, checklist teaser, the fixed
+  quote pill at `md` and above, diagonal joins, the sticky header with the
+  M4 nav states and tap-to-call at `sm`–`md`, and the monumental footer
+  wordmark row. Scroll reveals, the count-up and the logo sweep add under
+  2 KB of JavaScript gzipped, with zero React islands and zero new
+  dependencies.
 - The enquiry form end to end: the `ContactForm` component (validation,
   honeypot, time trap, UTM capture, quote-intent button) and the
   zero-dependency backend behind `POST /api/contact` (SQLite leads store,
@@ -42,6 +50,10 @@ apply to production releases only. Staging has no versions.
 
 ### Changed
 
+- Global interaction fixes (DIG-993 spec 7.4): the primary button hover
+  keeps the accent fill (brightness step plus a 1px inset Paper ring), and
+  interactive cards carry the hover state on the border only — the hover
+  shadow is gone.
 - Home page copy rewritten from the approved final draft
   (`docs/copy/home-page-copy.md`, DIG-79/DIG-121): one H1, four service
   cards, the Care plan panel, the Variant B "How we work" proof section,
